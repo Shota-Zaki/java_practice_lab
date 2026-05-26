@@ -1,6 +1,6 @@
 window.JAVA_STUDY_DATA = {
   "title": "Java Practice Lab",
-  "version": "multi-course-exercises-2026-05-26",
+  "version": "multi-course-extra-practice-2026-05-26-09",
   "disclaimer": "このサイトは学習用の非公式オリジナル教材です。問題文・選択肢・解説は公開向けに新規作成したものです。特定書籍・試験提供元とは関係ありません。Java Silver対策として一般的な出題形式・論点配分に寄せています。",
   "units": [
     {
@@ -232,6 +232,70 @@ window.JAVA_STUDY_DATA = {
       "mode": "exam",
       "timeLimitMinutes": 90,
       "fixedCount": 60
+    },
+    {
+      "id": "basic-p1",
+      "title": "Java基礎 確認問題",
+      "status": "ready",
+      "page": "foundation.html",
+      "description": "Javaの実行、変数、条件分岐、配列、クラスの入口を確認します。",
+      "course": "basic"
+    },
+    {
+      "id": "basic-p2",
+      "title": "Java基礎 文法問題",
+      "status": "ready",
+      "page": "syntax.html",
+      "description": "文法・式・メソッド・null・Stringの基本を反復します。",
+      "course": "basic"
+    },
+    {
+      "id": "bronze-p3",
+      "title": "条件分岐・配列",
+      "status": "ready",
+      "page": "control-array.html",
+      "description": "if、switch、for、配列、Stringの基本を確認します。",
+      "course": "bronze"
+    },
+    {
+      "id": "bronze-p4",
+      "title": "Bronze総合確認",
+      "status": "ready",
+      "page": "final-check.html",
+      "description": "Bronze範囲の基本文法とオブジェクト入門を総合確認します。",
+      "course": "bronze"
+    },
+    {
+      "id": "java11-p4",
+      "title": "API・文字列",
+      "status": "ready",
+      "page": "api-string.html",
+      "description": "String、StringBuilder、ArrayList、配列、参照比較を確認します。",
+      "course": "java11"
+    },
+    {
+      "id": "java11-p5",
+      "title": "例外・継承",
+      "status": "ready",
+      "page": "exception-inheritance.html",
+      "description": "例外、継承、interface、オーバーロード、コンパイル可否を確認します。",
+      "course": "java11"
+    },
+    {
+      "id": "gold-p5",
+      "title": "Stream応用",
+      "status": "ready",
+      "page": "stream-advanced.html",
+      "description": "Stream、Collectors、Optional、ラムダ式の応用を確認します。",
+      "course": "gold"
+    },
+    {
+      "id": "gold-p6",
+      "title": "並行処理・NIO",
+      "status": "ready",
+      "page": "concurrency-nio.html",
+      "description": "Executor、Future、Path、Files、Date and Time APIを確認します。",
+      "course": "gold"
     }
   ],
   "questions": {
@@ -72857,6 +72921,17702 @@ window.JAVA_STUDY_DATA = {
           "collection",
           "lambda",
           "output"
+        ]
+      }
+    ],
+    "basic-p1": [
+      {
+        "id": "basic-p1-001",
+        "number": 1,
+        "title": "Java基礎確認：mainと出力 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-002",
+        "number": 2,
+        "title": "Java基礎確認：変数初期化 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-003",
+        "number": 3,
+        "title": "Java基礎確認：boolean #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-004",
+        "number": 4,
+        "title": "Java基礎確認：if文 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-005",
+        "number": 5,
+        "title": "Java基礎確認：for文 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-006",
+        "number": 6,
+        "title": "Java基礎確認：配列 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-007",
+        "number": 7,
+        "title": "Java基礎確認：メソッド #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-008",
+        "number": 8,
+        "title": "Java基礎確認：クラス #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p1-009",
+        "number": 9,
+        "title": "Java基礎確認：String #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p1-010",
+        "number": 10,
+        "title": "Java基礎確認：例外の入口 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p1-011",
+        "number": 11,
+        "title": "Java基礎確認：mainと出力 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-012",
+        "number": 12,
+        "title": "Java基礎確認：変数初期化 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-013",
+        "number": 13,
+        "title": "Java基礎確認：boolean #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-014",
+        "number": 14,
+        "title": "Java基礎確認：if文 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-015",
+        "number": 15,
+        "title": "Java基礎確認：for文 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-016",
+        "number": 16,
+        "title": "Java基礎確認：配列 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-017",
+        "number": 17,
+        "title": "Java基礎確認：メソッド #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-018",
+        "number": 18,
+        "title": "Java基礎確認：クラス #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p1-019",
+        "number": 19,
+        "title": "Java基礎確認：String #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p1-020",
+        "number": 20,
+        "title": "Java基礎確認：例外の入口 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p1-021",
+        "number": 21,
+        "title": "Java基礎確認：mainと出力 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-022",
+        "number": 22,
+        "title": "Java基礎確認：変数初期化 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-023",
+        "number": 23,
+        "title": "Java基礎確認：boolean #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-024",
+        "number": 24,
+        "title": "Java基礎確認：if文 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-025",
+        "number": 25,
+        "title": "Java基礎確認：for文 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-026",
+        "number": 26,
+        "title": "Java基礎確認：配列 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-027",
+        "number": 27,
+        "title": "Java基礎確認：メソッド #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-028",
+        "number": 28,
+        "title": "Java基礎確認：クラス #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p1-029",
+        "number": 29,
+        "title": "Java基礎確認：String #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p1-030",
+        "number": 30,
+        "title": "Java基礎確認：例外の入口 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p1-031",
+        "number": 31,
+        "title": "Java基礎確認：mainと出力 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-032",
+        "number": 32,
+        "title": "Java基礎確認：変数初期化 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-033",
+        "number": 33,
+        "title": "Java基礎確認：boolean #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-034",
+        "number": 34,
+        "title": "Java基礎確認：if文 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-035",
+        "number": 35,
+        "title": "Java基礎確認：for文 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p1-036",
+        "number": 36,
+        "title": "Java基礎確認：配列 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-037",
+        "number": 37,
+        "title": "Java基礎確認：メソッド #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p1-038",
+        "number": 38,
+        "title": "Java基礎確認：クラス #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p1-039",
+        "number": 39,
+        "title": "Java基礎確認：String #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p1-040",
+        "number": 40,
+        "title": "Java基礎確認：例外の入口 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      }
+    ],
+    "basic-p2": [
+      {
+        "id": "basic-p2-001",
+        "number": 1,
+        "title": "Java基礎文法：mainと出力 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-002",
+        "number": 2,
+        "title": "Java基礎文法：変数初期化 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-003",
+        "number": 3,
+        "title": "Java基礎文法：boolean #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-004",
+        "number": 4,
+        "title": "Java基礎文法：if文 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-005",
+        "number": 5,
+        "title": "Java基礎文法：for文 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-006",
+        "number": 6,
+        "title": "Java基礎文法：配列 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-007",
+        "number": 7,
+        "title": "Java基礎文法：メソッド #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-008",
+        "number": 8,
+        "title": "Java基礎文法：クラス #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p2-009",
+        "number": 9,
+        "title": "Java基礎文法：String #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p2-010",
+        "number": 10,
+        "title": "Java基礎文法：例外の入口 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p2-011",
+        "number": 11,
+        "title": "Java基礎文法：mainと出力 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-012",
+        "number": 12,
+        "title": "Java基礎文法：変数初期化 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-013",
+        "number": 13,
+        "title": "Java基礎文法：boolean #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-014",
+        "number": 14,
+        "title": "Java基礎文法：if文 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-015",
+        "number": 15,
+        "title": "Java基礎文法：for文 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-016",
+        "number": 16,
+        "title": "Java基礎文法：配列 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-017",
+        "number": 17,
+        "title": "Java基礎文法：メソッド #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-018",
+        "number": 18,
+        "title": "Java基礎文法：クラス #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p2-019",
+        "number": 19,
+        "title": "Java基礎文法：String #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p2-020",
+        "number": 20,
+        "title": "Java基礎文法：例外の入口 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p2-021",
+        "number": 21,
+        "title": "Java基礎文法：mainと出力 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-022",
+        "number": 22,
+        "title": "Java基礎文法：変数初期化 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-023",
+        "number": 23,
+        "title": "Java基礎文法：boolean #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-024",
+        "number": 24,
+        "title": "Java基礎文法：if文 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-025",
+        "number": 25,
+        "title": "Java基礎文法：for文 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-026",
+        "number": 26,
+        "title": "Java基礎文法：配列 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-027",
+        "number": 27,
+        "title": "Java基礎文法：メソッド #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-028",
+        "number": 28,
+        "title": "Java基礎文法：クラス #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p2-029",
+        "number": 29,
+        "title": "Java基礎文法：String #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p2-030",
+        "number": 30,
+        "title": "Java基礎文法：例外の入口 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "basic-p2-031",
+        "number": 31,
+        "title": "Java基礎文法：mainと出力 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-032",
+        "number": 32,
+        "title": "Java基礎文法：変数初期化 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-033",
+        "number": 33,
+        "title": "Java基礎文法：boolean #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-034",
+        "number": 34,
+        "title": "Java基礎文法：if文 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-035",
+        "number": 35,
+        "title": "Java基礎文法：for文 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "basic-p2-036",
+        "number": 36,
+        "title": "Java基礎文法：配列 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-037",
+        "number": 37,
+        "title": "Java基礎文法：メソッド #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "basic-p2-038",
+        "number": 38,
+        "title": "Java基礎文法：クラス #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "basic-p2-039",
+        "number": 39,
+        "title": "Java基礎文法：String #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "basic-p2-040",
+        "number": 40,
+        "title": "Java基礎文法：例外の入口 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      }
+    ],
+    "bronze-p3": [
+      {
+        "id": "bronze-p3-001",
+        "number": 1,
+        "title": "Bronze条件分岐・配列：mainと出力 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-002",
+        "number": 2,
+        "title": "Bronze条件分岐・配列：変数初期化 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-003",
+        "number": 3,
+        "title": "Bronze条件分岐・配列：boolean #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-004",
+        "number": 4,
+        "title": "Bronze条件分岐・配列：if文 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-005",
+        "number": 5,
+        "title": "Bronze条件分岐・配列：for文 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-006",
+        "number": 6,
+        "title": "Bronze条件分岐・配列：配列 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-007",
+        "number": 7,
+        "title": "Bronze条件分岐・配列：メソッド #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-008",
+        "number": 8,
+        "title": "Bronze条件分岐・配列：クラス #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p3-009",
+        "number": 9,
+        "title": "Bronze条件分岐・配列：String #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p3-010",
+        "number": 10,
+        "title": "Bronze条件分岐・配列：例外の入口 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p3-011",
+        "number": 11,
+        "title": "Bronze条件分岐・配列：mainと出力 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-012",
+        "number": 12,
+        "title": "Bronze条件分岐・配列：変数初期化 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-013",
+        "number": 13,
+        "title": "Bronze条件分岐・配列：boolean #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-014",
+        "number": 14,
+        "title": "Bronze条件分岐・配列：if文 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-015",
+        "number": 15,
+        "title": "Bronze条件分岐・配列：for文 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-016",
+        "number": 16,
+        "title": "Bronze条件分岐・配列：配列 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-017",
+        "number": 17,
+        "title": "Bronze条件分岐・配列：メソッド #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-018",
+        "number": 18,
+        "title": "Bronze条件分岐・配列：クラス #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p3-019",
+        "number": 19,
+        "title": "Bronze条件分岐・配列：String #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p3-020",
+        "number": 20,
+        "title": "Bronze条件分岐・配列：例外の入口 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p3-021",
+        "number": 21,
+        "title": "Bronze条件分岐・配列：mainと出力 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-022",
+        "number": 22,
+        "title": "Bronze条件分岐・配列：変数初期化 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-023",
+        "number": 23,
+        "title": "Bronze条件分岐・配列：boolean #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-024",
+        "number": 24,
+        "title": "Bronze条件分岐・配列：if文 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-025",
+        "number": 25,
+        "title": "Bronze条件分岐・配列：for文 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-026",
+        "number": 26,
+        "title": "Bronze条件分岐・配列：配列 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-027",
+        "number": 27,
+        "title": "Bronze条件分岐・配列：メソッド #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-028",
+        "number": 28,
+        "title": "Bronze条件分岐・配列：クラス #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p3-029",
+        "number": 29,
+        "title": "Bronze条件分岐・配列：String #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p3-030",
+        "number": 30,
+        "title": "Bronze条件分岐・配列：例外の入口 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p3-031",
+        "number": 31,
+        "title": "Bronze条件分岐・配列：mainと出力 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-032",
+        "number": 32,
+        "title": "Bronze条件分岐・配列：変数初期化 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-033",
+        "number": 33,
+        "title": "Bronze条件分岐・配列：boolean #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-034",
+        "number": 34,
+        "title": "Bronze条件分岐・配列：if文 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-035",
+        "number": 35,
+        "title": "Bronze条件分岐・配列：for文 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p3-036",
+        "number": 36,
+        "title": "Bronze条件分岐・配列：配列 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-037",
+        "number": 37,
+        "title": "Bronze条件分岐・配列：メソッド #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p3-038",
+        "number": 38,
+        "title": "Bronze条件分岐・配列：クラス #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p3-039",
+        "number": 39,
+        "title": "Bronze条件分岐・配列：String #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p3-040",
+        "number": 40,
+        "title": "Bronze条件分岐・配列：例外の入口 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      }
+    ],
+    "bronze-p4": [
+      {
+        "id": "bronze-p4-001",
+        "number": 1,
+        "title": "Bronze総合確認：mainと出力 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-002",
+        "number": 2,
+        "title": "Bronze総合確認：変数初期化 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-003",
+        "number": 3,
+        "title": "Bronze総合確認：boolean #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-004",
+        "number": 4,
+        "title": "Bronze総合確認：if文 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-005",
+        "number": 5,
+        "title": "Bronze総合確認：for文 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-006",
+        "number": 6,
+        "title": "Bronze総合確認：配列 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-007",
+        "number": 7,
+        "title": "Bronze総合確認：メソッド #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-008",
+        "number": 8,
+        "title": "Bronze総合確認：クラス #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p4-009",
+        "number": 9,
+        "title": "Bronze総合確認：String #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p4-010",
+        "number": 10,
+        "title": "Bronze総合確認：例外の入口 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p4-011",
+        "number": 11,
+        "title": "Bronze総合確認：mainと出力 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-012",
+        "number": 12,
+        "title": "Bronze総合確認：変数初期化 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-013",
+        "number": 13,
+        "title": "Bronze総合確認：boolean #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-014",
+        "number": 14,
+        "title": "Bronze総合確認：if文 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-015",
+        "number": 15,
+        "title": "Bronze総合確認：for文 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-016",
+        "number": 16,
+        "title": "Bronze総合確認：配列 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-017",
+        "number": 17,
+        "title": "Bronze総合確認：メソッド #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-018",
+        "number": 18,
+        "title": "Bronze総合確認：クラス #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p4-019",
+        "number": 19,
+        "title": "Bronze総合確認：String #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p4-020",
+        "number": 20,
+        "title": "Bronze総合確認：例外の入口 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p4-021",
+        "number": 21,
+        "title": "Bronze総合確認：mainと出力 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-022",
+        "number": 22,
+        "title": "Bronze総合確認：変数初期化 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-023",
+        "number": 23,
+        "title": "Bronze総合確認：boolean #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-024",
+        "number": 24,
+        "title": "Bronze総合確認：if文 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-025",
+        "number": 25,
+        "title": "Bronze総合確認：for文 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-026",
+        "number": 26,
+        "title": "Bronze総合確認：配列 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-027",
+        "number": 27,
+        "title": "Bronze総合確認：メソッド #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-028",
+        "number": 28,
+        "title": "Bronze総合確認：クラス #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p4-029",
+        "number": 29,
+        "title": "Bronze総合確認：String #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p4-030",
+        "number": 30,
+        "title": "Bronze総合確認：例外の入口 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      },
+      {
+        "id": "bronze-p4-031",
+        "number": 31,
+        "title": "Bronze総合確認：mainと出力 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Java\" + 1 + 2);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "Java12"
+          },
+          {
+            "key": "B",
+            "text": "Java3"
+          },
+          {
+            "key": "C",
+            "text": "12Java"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。Java3 はコードの条件と一致しません。 Cは誤りです。12Java はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-032",
+        "number": 32,
+        "title": "Bronze総合確認：変数初期化 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードについて正しい説明を選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        // System.out.println(x);\n        x = 10;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "10が表示される"
+          },
+          {
+            "key": "B",
+            "text": "0が表示される"
+          },
+          {
+            "key": "C",
+            "text": "コメントを外しても0が表示される"
+          },
+          {
+            "key": "D",
+            "text": "常にコンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。0が表示される はコードの条件と一致しません。 Cは誤りです。コメントを外しても0が表示される はコードの条件と一致しません。 Dは誤りです。常にコンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "variable",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-033",
+        "number": 33,
+        "title": "Bronze総合確認：boolean #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 70;\n        boolean pass = score >= 60;\n        System.out.println(pass);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "1"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。false はコードの条件と一致しません。 Cは誤りです。1 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "boolean",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-034",
+        "number": 34,
+        "title": "Bronze総合確認：if文 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 3;\n        if (n % 2 == 0) {\n            System.out.println(\"even\");\n        } else {\n            System.out.println(\"odd\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "even"
+          },
+          {
+            "key": "B",
+            "text": "odd"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "何も表示されない"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。even はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。何も表示されない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "if",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-035",
+        "number": 35,
+        "title": "Bronze総合確認：for文 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 3; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "6"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Cは誤りです。7 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "loop",
+          "operator"
+        ]
+      },
+      {
+        "id": "bronze-p4-036",
+        "number": 36,
+        "title": "Bronze総合確認：配列 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] nums = new int[3];\n        nums[1] = 5;\n        System.out.println(nums[0] + nums[1] + nums.length);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。5 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "array",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-037",
+        "number": 37,
+        "title": "Bronze総合確認：メソッド #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    static int twice(int x) {\n        return x * 2;\n    }\n    public static void main(String[] args) {\n        System.out.println(twice(4));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "4"
+          },
+          {
+            "key": "B",
+            "text": "8"
+          },
+          {
+            "key": "C",
+            "text": "16"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。4 はコードの条件と一致しません。 Cは誤りです。16 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "method",
+          "output"
+        ]
+      },
+      {
+        "id": "bronze-p4-038",
+        "number": 38,
+        "title": "Bronze総合確認：クラス #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "basic",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Item {\n    int price = 100;\n}\npublic class Main {\n    public static void main(String[] args) {\n        Item item = new Item();\n        item.price += 50;\n        System.out.println(item.price);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "100"
+          },
+          {
+            "key": "B",
+            "text": "150"
+          },
+          {
+            "key": "C",
+            "text": "50"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。100 はコードの条件と一致しません。 Cは誤りです。50 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "class",
+          "field"
+        ]
+      },
+      {
+        "id": "bronze-p4-039",
+        "number": 39,
+        "title": "Bronze総合確認：String #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"abc\";\n        s.toUpperCase();\n        System.out.println(s);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "ABC"
+          },
+          {
+            "key": "B",
+            "text": "abc"
+          },
+          {
+            "key": "C",
+            "text": "null"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。ABC はコードの条件と一致しません。 Cは誤りです。null はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "string",
+          "immutability"
+        ]
+      },
+      {
+        "id": "bronze-p4-040",
+        "number": 40,
+        "title": "Bronze総合確認：例外の入口 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードを実行した結果として正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = null;\n        System.out.println(s.length());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "null"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NullPointerExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "basic",
+          "null",
+          "runtime"
+        ]
+      }
+    ],
+    "java11-p4": [
+      {
+        "id": "java11-p4-001",
+        "number": 1,
+        "title": "Java11 API・文字列 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-002",
+        "number": 2,
+        "title": "Java11 API・文字列 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-003",
+        "number": 3,
+        "title": "Java11 API・文字列 #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-004",
+        "number": 4,
+        "title": "Java11 API・文字列 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-005",
+        "number": 5,
+        "title": "Java11 API・文字列 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p4-006",
+        "number": 6,
+        "title": "Java11 API・文字列 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p4-007",
+        "number": 7,
+        "title": "Java11 API・文字列 #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p4-008",
+        "number": 8,
+        "title": "Java11 API・文字列 #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p4-009",
+        "number": 9,
+        "title": "Java11 API・文字列 #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-010",
+        "number": 10,
+        "title": "Java11 API・文字列 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p4-011",
+        "number": 11,
+        "title": "Java11 API・文字列 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p4-012",
+        "number": 12,
+        "title": "Java11 API・文字列 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-013",
+        "number": 13,
+        "title": "Java11 API・文字列 #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-014",
+        "number": 14,
+        "title": "Java11 API・文字列 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-015",
+        "number": 15,
+        "title": "Java11 API・文字列 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-016",
+        "number": 16,
+        "title": "Java11 API・文字列 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-017",
+        "number": 17,
+        "title": "Java11 API・文字列 #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p4-018",
+        "number": 18,
+        "title": "Java11 API・文字列 #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p4-019",
+        "number": 19,
+        "title": "Java11 API・文字列 #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p4-020",
+        "number": 20,
+        "title": "Java11 API・文字列 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p4-021",
+        "number": 21,
+        "title": "Java11 API・文字列 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-022",
+        "number": 22,
+        "title": "Java11 API・文字列 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p4-023",
+        "number": 23,
+        "title": "Java11 API・文字列 #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p4-024",
+        "number": 24,
+        "title": "Java11 API・文字列 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-025",
+        "number": 25,
+        "title": "Java11 API・文字列 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-026",
+        "number": 26,
+        "title": "Java11 API・文字列 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-027",
+        "number": 27,
+        "title": "Java11 API・文字列 #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-028",
+        "number": 28,
+        "title": "Java11 API・文字列 #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-029",
+        "number": 29,
+        "title": "Java11 API・文字列 #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p4-030",
+        "number": 30,
+        "title": "Java11 API・文字列 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p4-031",
+        "number": 31,
+        "title": "Java11 API・文字列 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p4-032",
+        "number": 32,
+        "title": "Java11 API・文字列 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p4-033",
+        "number": 33,
+        "title": "Java11 API・文字列 #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-034",
+        "number": 34,
+        "title": "Java11 API・文字列 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p4-035",
+        "number": 35,
+        "title": "Java11 API・文字列 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p4-036",
+        "number": 36,
+        "title": "Java11 API・文字列 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-037",
+        "number": 37,
+        "title": "Java11 API・文字列 #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-038",
+        "number": 38,
+        "title": "Java11 API・文字列 #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-039",
+        "number": 39,
+        "title": "Java11 API・文字列 #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p4-040",
+        "number": 40,
+        "title": "Java11 API・文字列 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-041",
+        "number": 41,
+        "title": "Java11 API・文字列 #41",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p4-042",
+        "number": 42,
+        "title": "Java11 API・文字列 #42",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p4-043",
+        "number": 43,
+        "title": "Java11 API・文字列 #43",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p4-044",
+        "number": 44,
+        "title": "Java11 API・文字列 #44",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p4-045",
+        "number": 45,
+        "title": "Java11 API・文字列 #45",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p4-046",
+        "number": 46,
+        "title": "Java11 API・文字列 #46",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p4-047",
+        "number": 47,
+        "title": "Java11 API・文字列 #47",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p4-048",
+        "number": 48,
+        "title": "Java11 API・文字列 #48",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-049",
+        "number": 49,
+        "title": "Java11 API・文字列 #49",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p4-050",
+        "number": 50,
+        "title": "Java11 API・文字列 #50",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      }
+    ],
+    "java11-p5": [
+      {
+        "id": "java11-p5-001",
+        "number": 1,
+        "title": "Java11 例外・継承 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-002",
+        "number": 2,
+        "title": "Java11 例外・継承 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-003",
+        "number": 3,
+        "title": "Java11 例外・継承 #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-004",
+        "number": 4,
+        "title": "Java11 例外・継承 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-005",
+        "number": 5,
+        "title": "Java11 例外・継承 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p5-006",
+        "number": 6,
+        "title": "Java11 例外・継承 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p5-007",
+        "number": 7,
+        "title": "Java11 例外・継承 #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p5-008",
+        "number": 8,
+        "title": "Java11 例外・継承 #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p5-009",
+        "number": 9,
+        "title": "Java11 例外・継承 #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-010",
+        "number": 10,
+        "title": "Java11 例外・継承 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p5-011",
+        "number": 11,
+        "title": "Java11 例外・継承 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p5-012",
+        "number": 12,
+        "title": "Java11 例外・継承 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-013",
+        "number": 13,
+        "title": "Java11 例外・継承 #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-014",
+        "number": 14,
+        "title": "Java11 例外・継承 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-015",
+        "number": 15,
+        "title": "Java11 例外・継承 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-016",
+        "number": 16,
+        "title": "Java11 例外・継承 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-017",
+        "number": 17,
+        "title": "Java11 例外・継承 #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p5-018",
+        "number": 18,
+        "title": "Java11 例外・継承 #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p5-019",
+        "number": 19,
+        "title": "Java11 例外・継承 #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p5-020",
+        "number": 20,
+        "title": "Java11 例外・継承 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p5-021",
+        "number": 21,
+        "title": "Java11 例外・継承 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-022",
+        "number": 22,
+        "title": "Java11 例外・継承 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p5-023",
+        "number": 23,
+        "title": "Java11 例外・継承 #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p5-024",
+        "number": 24,
+        "title": "Java11 例外・継承 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-025",
+        "number": 25,
+        "title": "Java11 例外・継承 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-026",
+        "number": 26,
+        "title": "Java11 例外・継承 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-027",
+        "number": 27,
+        "title": "Java11 例外・継承 #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-028",
+        "number": 28,
+        "title": "Java11 例外・継承 #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-029",
+        "number": 29,
+        "title": "Java11 例外・継承 #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p5-030",
+        "number": 30,
+        "title": "Java11 例外・継承 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p5-031",
+        "number": 31,
+        "title": "Java11 例外・継承 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p5-032",
+        "number": 32,
+        "title": "Java11 例外・継承 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p5-033",
+        "number": 33,
+        "title": "Java11 例外・継承 #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-034",
+        "number": 34,
+        "title": "Java11 例外・継承 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p5-035",
+        "number": 35,
+        "title": "Java11 例外・継承 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p5-036",
+        "number": 36,
+        "title": "Java11 例外・継承 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-037",
+        "number": 37,
+        "title": "Java11 例外・継承 #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-038",
+        "number": 38,
+        "title": "Java11 例外・継承 #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-039",
+        "number": 39,
+        "title": "Java11 例外・継承 #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int[] a = {1, 2};\n        int[] b = a;\n        b[0] = 9;\n        System.out.println(a[0]);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "9"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "array",
+          "reference"
+        ]
+      },
+      {
+        "id": "java11-p5-040",
+        "number": 40,
+        "title": "Java11 例外・継承 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x = 1;\n        System.out.println(x++ + ++x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "2"
+          },
+          {
+            "key": "B",
+            "text": "3"
+          },
+          {
+            "key": "C",
+            "text": "4"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。2 はコードの条件と一致しません。 Bは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "operator",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-041",
+        "number": 41,
+        "title": "Java11 例外・継承 #41",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { void test() { System.out.println(\"A\"); } }\nclass B extends A { void test() { System.out.println(\"B\"); } }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        a.test();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "inheritance",
+          "override"
+        ]
+      },
+      {
+        "id": "java11-p5-042",
+        "number": 42,
+        "title": "Java11 例外・継承 #42",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        try {\n            throw new RuntimeException();\n        } catch (Exception e) {\n            System.out.println(\"E\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "E"
+          },
+          {
+            "key": "B",
+            "text": "何も表示されない"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。何も表示されない はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "exception",
+          "runtime"
+        ]
+      },
+      {
+        "id": "java11-p5-043",
+        "number": 43,
+        "title": "Java11 例外・継承 #43",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"A\");\n        list.add(\"B\");\n        System.out.println(list.remove(0));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "true"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。B はコードの条件と一致しません。 Cは誤りです。true はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "arraylist",
+          "api"
+        ]
+      },
+      {
+        "id": "java11-p5-044",
+        "number": 44,
+        "title": "Java11 例外・継承 #44",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        StringBuilder sb1 = new StringBuilder(\"x\");\n        StringBuilder sb2 = new StringBuilder(\"x\");\n        System.out.println(sb1.equals(sb2));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "stringbuilder",
+          "equals"
+        ]
+      },
+      {
+        "id": "java11-p5-045",
+        "number": 45,
+        "title": "Java11 例外・継承 #45",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 2;\n        switch (n) {\n            case 1: System.out.print(\"A\");\n            case 2: System.out.print(\"B\");\n            default: System.out.print(\"C\");\n        }\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "B"
+          },
+          {
+            "key": "B",
+            "text": "BC"
+          },
+          {
+            "key": "C",
+            "text": "ABC"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。B はコードの条件と一致しません。 Cは誤りです。ABC はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "switch",
+          "output"
+        ]
+      },
+      {
+        "id": "java11-p5-046",
+        "number": 46,
+        "title": "Java11 例外・継承 #46",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class A { int v = 1; }\nclass B extends A { int v = 2; }\npublic class Main {\n    public static void main(String[] args) {\n        A a = new B();\n        System.out.println(a.v);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。2 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "field",
+          "inheritance"
+        ]
+      },
+      {
+        "id": "java11-p5-047",
+        "number": 47,
+        "title": "Java11 例外・継承 #47",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        int x;\n        if (args.length > 0) { x = 1; }\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Bは誤りです。1 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "compile",
+          "variable"
+        ]
+      },
+      {
+        "id": "java11-p5-048",
+        "number": 48,
+        "title": "Java11 例外・継承 #48",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "interface A { default void run() { System.out.println(\"A\"); } }\ninterface B { default void run() { System.out.println(\"B\"); } }\nclass C implements A, B { }\npublic class Main { public static void main(String[] args) { new C().run(); } }"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "A"
+          },
+          {
+            "key": "B",
+            "text": "B"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。A はコードの条件と一致しません。 Bは誤りです。B はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "interface",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-049",
+        "number": 49,
+        "title": "Java11 例外・継承 #49",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        var x = 10;\n        x += 2.5;\n        System.out.println(x);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "12"
+          },
+          {
+            "key": "B",
+            "text": "12.5"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。12 はコードの条件と一致しません。 Bは誤りです。12.5 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "var",
+          "compile"
+        ]
+      },
+      {
+        "id": "java11-p5-050",
+        "number": 50,
+        "title": "Java11 例外・継承 #50",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードについて正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "public class Main {\n    public static void main(String[] args) {\n        String s = \"Java\";\n        String t = new String(\"Java\");\n        System.out.println(s == t);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "true"
+          },
+          {
+            "key": "B",
+            "text": "false"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。true はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "java11",
+          "string",
+          "reference"
+        ]
+      }
+    ],
+    "gold-p5": [
+      {
+        "id": "gold-p5-001",
+        "number": 1,
+        "title": "Gold Stream応用 #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p5-002",
+        "number": 2,
+        "title": "Gold Stream応用 #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p5-003",
+        "number": 3,
+        "title": "Gold Stream応用 #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p5-004",
+        "number": 4,
+        "title": "Gold Stream応用 #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-005",
+        "number": 5,
+        "title": "Gold Stream応用 #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-006",
+        "number": 6,
+        "title": "Gold Stream応用 #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p5-007",
+        "number": 7,
+        "title": "Gold Stream応用 #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p5-008",
+        "number": 8,
+        "title": "Gold Stream応用 #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p5-009",
+        "number": 9,
+        "title": "Gold Stream応用 #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p5-010",
+        "number": 10,
+        "title": "Gold Stream応用 #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p5-011",
+        "number": 11,
+        "title": "Gold Stream応用 #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p5-012",
+        "number": 12,
+        "title": "Gold Stream応用 #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p5-013",
+        "number": 13,
+        "title": "Gold Stream応用 #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p5-014",
+        "number": 14,
+        "title": "Gold Stream応用 #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-015",
+        "number": 15,
+        "title": "Gold Stream応用 #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-016",
+        "number": 16,
+        "title": "Gold Stream応用 #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p5-017",
+        "number": 17,
+        "title": "Gold Stream応用 #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p5-018",
+        "number": 18,
+        "title": "Gold Stream応用 #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p5-019",
+        "number": 19,
+        "title": "Gold Stream応用 #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p5-020",
+        "number": 20,
+        "title": "Gold Stream応用 #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p5-021",
+        "number": 21,
+        "title": "Gold Stream応用 #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p5-022",
+        "number": 22,
+        "title": "Gold Stream応用 #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p5-023",
+        "number": 23,
+        "title": "Gold Stream応用 #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p5-024",
+        "number": 24,
+        "title": "Gold Stream応用 #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-025",
+        "number": 25,
+        "title": "Gold Stream応用 #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-026",
+        "number": 26,
+        "title": "Gold Stream応用 #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p5-027",
+        "number": 27,
+        "title": "Gold Stream応用 #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p5-028",
+        "number": 28,
+        "title": "Gold Stream応用 #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p5-029",
+        "number": 29,
+        "title": "Gold Stream応用 #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p5-030",
+        "number": 30,
+        "title": "Gold Stream応用 #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p5-031",
+        "number": 31,
+        "title": "Gold Stream応用 #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p5-032",
+        "number": 32,
+        "title": "Gold Stream応用 #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p5-033",
+        "number": 33,
+        "title": "Gold Stream応用 #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p5-034",
+        "number": 34,
+        "title": "Gold Stream応用 #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-035",
+        "number": 35,
+        "title": "Gold Stream応用 #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p5-036",
+        "number": 36,
+        "title": "Gold Stream応用 #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p5-037",
+        "number": 37,
+        "title": "Gold Stream応用 #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p5-038",
+        "number": 38,
+        "title": "Gold Stream応用 #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p5-039",
+        "number": 39,
+        "title": "Gold Stream応用 #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p5-040",
+        "number": 40,
+        "title": "Gold Stream応用 #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      }
+    ],
+    "gold-p6": [
+      {
+        "id": "gold-p6-001",
+        "number": 1,
+        "title": "Gold 並行処理・NIO #1",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p6-002",
+        "number": 2,
+        "title": "Gold 並行処理・NIO #2",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p6-003",
+        "number": 3,
+        "title": "Gold 並行処理・NIO #3",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p6-004",
+        "number": 4,
+        "title": "Gold 並行処理・NIO #4",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-005",
+        "number": 5,
+        "title": "Gold 並行処理・NIO #5",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-006",
+        "number": 6,
+        "title": "Gold 並行処理・NIO #6",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p6-007",
+        "number": 7,
+        "title": "Gold 並行処理・NIO #7",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p6-008",
+        "number": 8,
+        "title": "Gold 並行処理・NIO #8",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p6-009",
+        "number": 9,
+        "title": "Gold 並行処理・NIO #9",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p6-010",
+        "number": 10,
+        "title": "Gold 並行処理・NIO #10",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p6-011",
+        "number": 11,
+        "title": "Gold 並行処理・NIO #11",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p6-012",
+        "number": 12,
+        "title": "Gold 並行処理・NIO #12",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p6-013",
+        "number": 13,
+        "title": "Gold 並行処理・NIO #13",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p6-014",
+        "number": 14,
+        "title": "Gold 並行処理・NIO #14",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-015",
+        "number": 15,
+        "title": "Gold 並行処理・NIO #15",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-016",
+        "number": 16,
+        "title": "Gold 並行処理・NIO #16",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p6-017",
+        "number": 17,
+        "title": "Gold 並行処理・NIO #17",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p6-018",
+        "number": 18,
+        "title": "Gold 並行処理・NIO #18",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p6-019",
+        "number": 19,
+        "title": "Gold 並行処理・NIO #19",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p6-020",
+        "number": 20,
+        "title": "Gold 並行処理・NIO #20",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p6-021",
+        "number": 21,
+        "title": "Gold 並行処理・NIO #21",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p6-022",
+        "number": 22,
+        "title": "Gold 並行処理・NIO #22",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p6-023",
+        "number": 23,
+        "title": "Gold 並行処理・NIO #23",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p6-024",
+        "number": 24,
+        "title": "Gold 並行処理・NIO #24",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-025",
+        "number": 25,
+        "title": "Gold 並行処理・NIO #25",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-026",
+        "number": 26,
+        "title": "Gold 並行処理・NIO #26",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p6-027",
+        "number": 27,
+        "title": "Gold 並行処理・NIO #27",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p6-028",
+        "number": 28,
+        "title": "Gold 並行処理・NIO #28",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p6-029",
+        "number": 29,
+        "title": "Gold 並行処理・NIO #29",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p6-030",
+        "number": 30,
+        "title": "Gold 並行処理・NIO #30",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
+        ]
+      },
+      {
+        "id": "gold-p6-031",
+        "number": 31,
+        "title": "Gold 並行処理・NIO #31",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = List.of(\"a\", \"bb\", \"ccc\");\n        long count = list.stream().filter(s -> s.length() > 1).count();\n        System.out.println(count);\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "lambda"
+        ]
+      },
+      {
+        "id": "gold-p6-032",
+        "number": 32,
+        "title": "Gold 並行処理・NIO #32",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\nimport java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        var result = Stream.of(\"a\", \"b\", \"a\").collect(Collectors.groupingBy(s -> s, Collectors.counting()));\n        System.out.println(result.get(\"a\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "[a, a]"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。[a, a] はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "collectors",
+          "stream"
+        ]
+      },
+      {
+        "id": "gold-p6-033",
+        "number": 33,
+        "title": "Gold 並行処理・NIO #33",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    static void add(List<? super Integer> list) { list.add(10); }\n    public static void main(String[] args) {\n        List<Number> nums = new ArrayList<>();\n        add(nums);\n        System.out.println(nums.size());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "wildcard"
+        ]
+      },
+      {
+        "id": "gold-p6-034",
+        "number": 34,
+        "title": "Gold 並行処理・NIO #34",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Optional<String> op = Optional.ofNullable(null);\n        System.out.println(op.orElse(\"empty\"));\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "null"
+          },
+          {
+            "key": "B",
+            "text": "empty"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "NoSuchElementException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。null はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。NoSuchElementException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "optional",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-035",
+        "number": 35,
+        "title": "Gold 並行処理・NIO #35",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.time.*;\npublic class Main {\n    public static void main(String[] args) {\n        LocalDate d = LocalDate.of(2026, 1, 31);\n        System.out.println(d.plusMonths(1).getMonthValue());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "実行時例外"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Cは誤りです。3 はコードの条件と一致しません。 Dは誤りです。実行時例外 はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "datetime",
+          "api"
+        ]
+      },
+      {
+        "id": "gold-p6-036",
+        "number": 36,
+        "title": "Gold 並行処理・NIO #36",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.concurrent.*;\npublic class Main {\n    public static void main(String[] args) throws Exception {\n        ExecutorService es = Executors.newSingleThreadExecutor();\n        Future<Integer> f = es.submit(() -> 3 + 4);\n        System.out.println(f.get());\n        es.shutdown();\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "7"
+          },
+          {
+            "key": "B",
+            "text": "34"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "必ずデッドロックする"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。34 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。必ずデッドロックする はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "concurrency",
+          "executor"
+        ]
+      },
+      {
+        "id": "gold-p6-037",
+        "number": 37,
+        "title": "Gold 並行処理・NIO #37",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "standard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.nio.file.*;\npublic class Main {\n    public static void main(String[] args) {\n        Path p = Path.of(\"a\", \"b\", \"c.txt\");\n        System.out.println(p.getNameCount());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "コンパイルエラー"
+          }
+        ],
+        "answer": [
+          "C"
+        ],
+        "explanation": {
+          "summary": "正解はCです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：C",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。1 はコードの条件と一致しません。 Bは誤りです。2 はコードの条件と一致しません。 Dは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "nio",
+          "path"
+        ]
+      },
+      {
+        "id": "gold-p6-038",
+        "number": 38,
+        "title": "Gold 並行処理・NIO #38",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "import java.util.stream.*;\npublic class Main {\n    public static void main(String[] args) {\n        Stream<Integer> s = Stream.of(1,2,3);\n        s.count();\n        System.out.println(s.count());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "3"
+          },
+          {
+            "key": "B",
+            "text": "0"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "IllegalStateExceptionが発生する"
+          }
+        ],
+        "answer": [
+          "D"
+        ],
+        "explanation": {
+          "summary": "正解はDです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：D",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。3 はコードの条件と一致しません。 Bは誤りです。0 はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "stream",
+          "runtime"
+        ]
+      },
+      {
+        "id": "gold-p6-039",
+        "number": 39,
+        "title": "Gold 並行処理・NIO #39",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "class Box<T> {\n    T value;\n    Box(T value) { this.value = value; }\n}\npublic class Main {\n    public static void main(String[] args) {\n        Box<String> b = new Box<>(\"x\");\n        System.out.println(b.value.toUpperCase());\n    }\n}"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "x"
+          },
+          {
+            "key": "B",
+            "text": "X"
+          },
+          {
+            "key": "C",
+            "text": "コンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "ClassCastException"
+          }
+        ],
+        "answer": [
+          "B"
+        ],
+        "explanation": {
+          "summary": "正解はBです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：B",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Aは誤りです。x はコードの条件と一致しません。 Cは誤りです。コンパイルエラー はコードの条件と一致しません。 Dは誤りです。ClassCastException はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "generics",
+          "class"
+        ]
+      },
+      {
+        "id": "gold-p6-040",
+        "number": 40,
+        "title": "Gold 並行処理・NIO #40",
+        "type": "single",
+        "selectCount": 1,
+        "difficulty": "hard",
+        "prompt": "次のコードまたは宣言について正しいものを選びなさい。",
+        "codeBlocks": [
+          {
+            "title": "コード",
+            "code": "module app.main {\n    requires java.sql;\n}\n"
+          }
+        ],
+        "options": [
+          {
+            "key": "A",
+            "text": "java.sqlモジュールへの依存を宣言している"
+          },
+          {
+            "key": "B",
+            "text": "java.baseを明示的にrequiresしないとコンパイルできない"
+          },
+          {
+            "key": "C",
+            "text": "exportsがないので必ずコンパイルエラー"
+          },
+          {
+            "key": "D",
+            "text": "module-info.javaにはrequiresを書けない"
+          }
+        ],
+        "answer": [
+          "A"
+        ],
+        "explanation": {
+          "summary": "正解はAです。コードの宣言・型・実行順を追うとこの結果になります。",
+          "points": [
+            "正解：A",
+            "正解になる理由：コードの宣言・型・実行順を追うとこの結果になります。",
+            "誤答選択肢が誤りである理由：Bは誤りです。java.baseを明示的にrequiresしないとコンパイルできない はコードの条件と一致しません。 Cは誤りです。exportsがないので必ずコンパイルエラー はコードの条件と一致しません。 Dは誤りです。module-info.javaにはrequiresを書けない はコードの条件と一致しません。",
+            "関連知識：問題の種類に応じて、型、スコープ、API仕様、例外条件を分けて確認します。",
+            "試験での注意：選択肢を見る前に、コンパイル可否、実行時例外、出力の順に自分で結論を出すと誤答が減ります。"
+          ]
+        },
+        "source": "公開向けAI生成オリジナル問題",
+        "tags": [
+          "gold",
+          "module",
+          "compile"
         ]
       }
     ]
