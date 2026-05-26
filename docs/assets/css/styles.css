@@ -880,3 +880,40 @@ body.is-exam-page .ad-slot.ad-visible,
 .long-article .course-grid { margin: 18px 0 28px; }
 .portal-section .study-table code { white-space: nowrap; }
 .course-card.mini strong { font-size: 1.08rem; }
+
+
+/* Final layout repair: stable course pages and course-aware sidebar */
+.layout {
+  width: min(100%, 1320px) !important;
+  margin: 0 auto !important;
+  grid-template-columns: 232px minmax(0, 900px) 140px !important;
+  justify-content: center !important;
+  align-items: start !important;
+}
+.main { min-width: 0 !important; padding: 28px 0 !important; max-width: none !important; }
+.sidebar { width: 232px !important; min-width: 232px !important; }
+.sidebar-open { display: none !important; }
+body.sidebar-collapsed .sidebar-open[aria-hidden="false"] { display: inline-flex !important; }
+body:not(.sidebar-collapsed) .sidebar-open, .sidebar-open[aria-hidden="true"] { display: none !important; }
+.sidebar-toggle { margin-left: auto; width: 32px; height: 32px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+.sidebar-top { display: flex; align-items: center; gap: 10px; }
+.sidebar-top .brand { margin: 0; flex: 1; }
+.nav-section > div { padding: 8px 6px 10px; }
+.nav-section:not([open]) > div { display: none !important; }
+.nav-link small { display:none !important; }
+.nav-link { gap: 0 !important; }
+.layout::after { min-height: 380px !important; opacity: .45 !important; }
+body.is-practice-page .layout, body.is-exam-page .layout { grid-template-columns: 232px minmax(0, 940px) !important; max-width: 1196px !important; }
+body.is-practice-page .layout::after, body.is-exam-page .layout::after { display: none !important; }
+.primary-actions-panel.home-entry-panel, .exam-collection.exam-center-preview { display: block !important; }
+.home-ad { margin: 16px 0 !important; }
+@media (max-width: 1180px) {
+  .layout, body.is-practice-page .layout, body.is-exam-page .layout { width: min(100% - 24px, 1060px) !important; grid-template-columns: 220px minmax(0, 1fr) !important; gap: 16px !important; }
+  .sidebar { width: 220px !important; min-width: 220px !important; }
+  .main { padding: 18px 0 !important; }
+}
+@media (max-width: 860px) {
+  .layout, body.is-practice-page .layout, body.is-exam-page .layout { display: block !important; width: 100% !important; }
+  .sidebar { width: 100% !important; min-width: 0 !important; }
+  .main { padding: 14px !important; }
+}

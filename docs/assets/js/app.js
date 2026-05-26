@@ -314,15 +314,56 @@
   function renderNav() {
     const nav = document.getElementById("unitNav");
     if (!nav) return;
-    const normalUnits = DATA.units.filter(u => u.mode !== "exam");
-    const exams = DATA.units.filter(u => u.mode === "exam");
     const activePath = window.CURRENT_PAGE || location.pathname.split('/').pop() || "index.html";
-    const examPages = ["exam.html", "exam-aftercare.html", "exam-quality.html", "exam-strategy.html"];
-    const examActive = isExamUnit() || examPages.includes(activePath);
+    const path = location.pathname;
     const countFor = u => (DATA.questions[u.id] || []).length || u.fixedCount || 0;
     const link = (href, label, active, meta="") => `<a class="nav-link${active ? " active" : ""}" href="${escapeHtml(pageHref(href))}"><span>${escapeHtml(label)}</span>${meta ? `<small>${escapeHtml(meta)}</small>` : ""}</a>`;
-    const normalLinks = normalUnits.map(u => link(u.page, u.title, u.id === unitId, `${countFor(u)}問`)).join("");
-    const examLinks = link("exam.html", "実践模試センター", examActive && activePath === "exam.html") + exams.map(u => link(u.page, u.title, u.id === unitId, `${countFor(u) || 60}問・${u.timeLimitMinutes || 90}分`)).join("");
+    const direct = (href, label, active=false, meta="") => `<a class="nav-link${active ? " active" : ""}" href="${escapeHtml((window.APP_ROOT || "") + href)}"><span>${escapeHtml(label)}</span>${meta ? `<small>${escapeHtml(meta)}</small>` : ""}</a>`;
+    const lessonLinks = (base, prefix, titles) => titles.map((t, i) => {
+      const n = String(i + 1).padStart(2, "0");
+      return direct(`${base}/lessons/${n}.html`, t, path.includes(`${base}/lessons/${n}.html`));
+    }).join("");
+    const javaBasicTitles = [
+      "コンピュータと機械語", "OS・JDK・JVM", "ソースコードから実行まで", "mainメソッド", "変数と型",
+      "数値型と文字型", "文字列", "条件分岐", "繰り返し", "配列とコレクション",
+      "クラスとオブジェクト", "static", "コンストラクタ", "継承", "interface", "例外処理", "エラー分類", "開発環境", "デバッグ", "学習の進め方",
+      "ビット・バイト・2進数", "文字コードとUnicode", "メモリ・スタック・ヒープ", "javac・javaコマンド", "package・import・classpath",
+      "IDEとビルド", "エラーメッセージ", "アルゴリズム入門", "オブジェクト指向設計", "標準ライブラリ",
+      "ジェネリクス入門", "ラムダ式入門", "ファイル入出力", "テストと確認", "次の学習道筋",
+      "命令を実行するとは", "バイトコードとJVM", "値・参照・オブジェクト", "式の評価順", "スコープと寿命",
+      "メソッド呼び出し", "オーバーロード入門", "配列をメモリ図で理解", "コレクション入門", "APIドキュメント",
+      "エラーの種類", "標準入出力", "パッケージ設計", "ビルドツール", "テストコード",
+      "null", "可変長引数", "var", "record", "ロードマップ"
+    ];
+    const bronzeTitles = ["全体像", "データ型", "条件分岐・ループ", "クラスとオブジェクト", "配列", "直前確認"];
+    const java11Titles = ["全体像", "型と演算子", "String", "配列とList", "クラス", "継承", "例外", "Java17との差分"];
+    const goldTitles = ["全体像", "ラムダ式", "Stream API", "ジェネリクス", "I/O", "モジュール", "並行処理", "総合確認"];
+    const courseUnits = (course, exam=false) => DATA.units.filter(u => (u.course || "java17") === course && (exam ? u.mode === "exam" : u.mode !== "exam"));
+    const unitLinks = (course, exam=false) => courseUnits(course, exam).map(u => link(u.page, u.title, u.id === unitId, exam ? `${countFor(u) || 60}問・${u.timeLimitMinutes || 90}分` : `${countFor(u)}問`)).join("");
+    const activeCourse = (() => {
+      if (path.includes('/courses/java-basic/') || activePath.startsWith('java-basic')) return 'basic';
+      if (path.includes('/courses/bronze/') || activePath.startsWith('bronze')) return 'bronze';
+      if (path.includes('/courses/java11-silver/') || activePath.startsWith('java11')) return 'java11';
+      if (path.includes('/courses/java17-silver/') || activePath.startsWith('practice') || activePath === 'exam.html') return 'java17';
+      if (path.includes('/courses/gold/') || activePath.startsWith('gold')) return 'gold';
+      if (path.includes('/articles/') || activePath.startsWith('article') || ["methods.html","glossary.html","cheatsheet.html","before-exam.html","weak-guides.html"].includes(activePath)) return 'articles';
+      if (path.includes('/app/') || ["dashboard.html","mode.html","search.html","random.html","notes.html","settings.html","sync.html","mistake-reasons.html"].includes(activePath)) return 'app';
+      return 'portal';
+    })();
+    const courseHome = {
+      basic: direct('courses/java-basic/index.html', 'Java基礎トップ', activePath === 'java-basic.html'),
+      bronze: direct('courses/bronze/index.html', 'Bronzeトップ', activePath === 'bronze.html'),
+      java11: direct('courses/java11-silver/index.html', 'Java11 Silverトップ', activePath === 'java11silver.html'),
+      java17: direct('courses/java17-silver/index.html', 'Java17 Silverトップ', activePath === 'java17silver.html'),
+      gold: direct('courses/gold/index.html', 'Goldトップ', activePath === 'gold.html')
+    };
+    const commonCourseLinks = `<details class="nav-section"><summary>他のコース</summary><div>
+      ${direct('courses/java-basic/index.html','1からわかるJava基礎')}
+      ${direct('courses/bronze/index.html','Java Bronze')}
+      ${direct('courses/java11-silver/index.html','Java11 Silver')}
+      ${direct('courses/java17-silver/index.html','Java17 Silver')}
+      ${direct('courses/gold/index.html','Java Gold')}
+    </div></details>`;
     const reviewLinks = [
       link("review-wrong.html", "間違えた問題", reviewMode === "wrong"),
       link("review-marked.html", "見直し問題", reviewMode === "marked"),
@@ -330,46 +371,50 @@
       link("dashboard.html", "弱点分析", activePath === "dashboard.html"),
       link("mistake-reasons.html", "間違えた理由", activePath === "mistake-reasons.html")
     ].join("");
-    const toolsLinks = [
-      link("tag-index.html", "タグ別演習", !!tagFilter || activePath === "tag-index.html"),
-      link("random.html", "ランダム出題", randomMode),
-      link("search.html", "問題検索", activePath === "search.html"),
-      link("notes.html", "学習メモ", activePath === "notes.html")
-    ].join("");
+    const toolLinks = [link("tag-index.html", "タグ別演習", !!tagFilter), link("search.html", "問題検索", activePath === "search.html"), link("random.html", "ランダム出題", randomMode), link("notes.html", "学習メモ", activePath === "notes.html")].join("");
     const articleLinks = [
-      link("articles.html", "学習記事", activePath === "articles.html"),
-      link("article-reference.html", "参照比較", activePath === "article-reference.html"),
-      link("article-pitfalls.html", "細かい違い", activePath === "article-pitfalls.html"),
-      link("methods.html", "メソッド表", activePath === "methods.html"),
-      link("article-compile-errors.html", "コンパイルエラー原因", activePath === "article-compile-errors.html"),
-      link("before-exam.html", "直前チェック", activePath === "before-exam.html"),
-      link("weak-guides.html", "弱点ミニ解説", activePath === "weak-guides.html")
+      direct('articles/index.html','記事一覧', activePath === 'articles.html'),
+      direct('articles/compile-errors/index.html','コンパイルエラー原因', activePath === 'article-compile-errors.html'),
+      direct('articles/reference/index.html','参照比較', activePath === 'article-reference.html'),
+      direct('articles/string/index.html','String', activePath === 'article-string.html'),
+      direct('articles/methods/index.html','メソッド表', activePath === 'methods.html'),
+      direct('articles/before-exam/index.html','直前チェック', activePath === 'before-exam.html')
     ].join("");
-    const planningLinks = [
-      link("mode.html", "学習モード", activePath === "mode.html"),
-      link("learning-path.html", "ロードマップ", activePath === "learning-path.html"),
-      link("quality-map.html", "品質マップ", activePath === "quality-map.html")
-    ].join("");
-    const settingsLinks = [
-      link("settings.html", "設定", activePath === "settings.html"),
-      link("sync.html", "学習履歴の移行", activePath === "sync.html"),
-      link("public-check.html", "公開前チェック", activePath === "public-check.html"),
-      link("ads-guide.html", "広告配置ガイド", activePath === "ads-guide.html")
-    ].join("");
-    const activeNormal = !!unitId && !isExamUnit();
-    const activeReview = !!reviewMode || ["dashboard.html", "mistake-reasons.html"].includes(activePath);
-    const activeTools = !!tagFilter || !!randomMode || ["tag-index.html", "search.html", "notes.html"].includes(activePath);
-    const activeArticles = ["articles.html", "article-reference.html", "article-pitfalls.html", "methods.html", "before-exam.html", "weak-guides.html", "article-types.html", "article-string.html", "article-class-design.html", "article-inheritance.html", "article-exception.html", "article-operators-control.html", "article-compile-errors.html", "cheatsheet.html", "glossary.html"].includes(activePath);
-    const activePlanning = ["mode.html", "learning-path.html", "quality-map.html"].includes(activePath);
-    const activeSettings = ["settings.html", "sync.html", "public-check.html", "ads-guide.html"].includes(activePath);
-    const openAttr = (active) => active ? " open" : "";
-    nav.innerHTML = `<details class="nav-section"${openAttr(activeNormal)}><summary>通常演習</summary><div>${normalLinks}</div></details>
-      <details class="nav-section"${openAttr(examActive)}><summary>実践模試</summary><div>${examLinks}</div></details>
-      <details class="nav-section"${openAttr(activeReview)}><summary>復習・分析</summary><div>${reviewLinks}</div></details>
-      <details class="nav-section"${openAttr(activeTools)}><summary>演習ツール</summary><div>${toolsLinks}</div></details>
-      <details class="nav-section"${openAttr(activeArticles)}><summary>学習記事</summary><div>${articleLinks}</div></details>
-      <details class="nav-section"${openAttr(activePlanning)}><summary>学習計画</summary><div>${planningLinks}</div></details>
-      <details class="nav-section"${openAttr(activeSettings)}><summary>設定・データ管理</summary><div>${settingsLinks}</div></details>`;
+    const settingsLinks = [link("settings.html", "設定", activePath === "settings.html"), link("sync.html", "学習履歴の移行", activePath === "sync.html"), link("public-check.html", "公開前チェック", activePath === "public-check.html")].join("");
+    const section = (title, body, open=true) => `<details class="nav-section"${open ? " open" : ""}><summary>${escapeHtml(title)}</summary><div>${body}</div></details>`;
+    let html = '';
+    if (activeCourse === 'basic') {
+      html += section('Java基礎', courseHome.basic + lessonLinks('courses/java-basic','java-basic',javaBasicTitles), true) + commonCourseLinks + section('学習記事', articleLinks, false);
+    } else if (activeCourse === 'bronze') {
+      html += section('Bronze', courseHome.bronze + lessonLinks('courses/bronze','bronze',bronzeTitles), true)
+        + section('Bronze演習', unitLinks('bronze', false), !!unitId && unitById(unitId)?.course === 'bronze')
+        + section('Bronze模試', unitLinks('bronze', true), isExamUnit() && unitById(unitId)?.course === 'bronze')
+        + commonCourseLinks;
+    } else if (activeCourse === 'java11') {
+      html += section('Java11 Silver', courseHome.java11 + lessonLinks('courses/java11-silver','java11',java11Titles), true)
+        + section('Java11演習', unitLinks('java11', false), !!unitId && unitById(unitId)?.course === 'java11')
+        + section('Java11模試', unitLinks('java11', true), isExamUnit() && unitById(unitId)?.course === 'java11')
+        + commonCourseLinks;
+    } else if (activeCourse === 'java17') {
+      html += section('Java17 Silver', courseHome.java17 + unitLinks('java17', false), true)
+        + section('実践模試', link('exam.html','模試センター', activePath === 'exam.html') + unitLinks('java17', true), isExamUnit() || activePath === 'exam.html')
+        + section('復習・分析', reviewLinks, !!reviewMode || ["dashboard.html","mistake-reasons.html"].includes(activePath))
+        + section('演習ツール', toolLinks, !!tagFilter || randomMode || ["search.html","notes.html"].includes(activePath))
+        + commonCourseLinks;
+    } else if (activeCourse === 'gold') {
+      html += section('Java Gold', courseHome.gold + lessonLinks('courses/gold','gold',goldTitles), true)
+        + section('Gold演習', unitLinks('gold', false), !!unitId && unitById(unitId)?.course === 'gold')
+        + section('Gold模試', unitLinks('gold', true), isExamUnit() && unitById(unitId)?.course === 'gold')
+        + commonCourseLinks;
+    } else if (activeCourse === 'articles') {
+      html += section('学習記事', articleLinks, true) + commonCourseLinks + section('復習・分析', reviewLinks, false);
+    } else if (activeCourse === 'app') {
+      html += section('復習・分析', reviewLinks, true) + section('演習ツール', toolLinks, true) + section('設定・データ管理', settingsLinks, activePath === 'settings.html' || activePath === 'sync.html') + commonCourseLinks;
+    } else {
+      html += section('コース選択', `${direct('courses/java-basic/index.html','1からわかるJava基礎')}${direct('courses/bronze/index.html','Java Bronze')}${direct('courses/java11-silver/index.html','Java11 Silver')}${direct('courses/java17-silver/index.html','Java17 Silver')}${direct('courses/gold/index.html','Java Gold')}`, true)
+        + section('学習記事', articleLinks, false) + section('設定・データ管理', settingsLinks, false);
+    }
+    nav.innerHTML = html;
   }
 
   function unitCardHtml(u, labelOverride) {
