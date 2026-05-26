@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Silver頻出用語を、問題を解く判定に使える形で詳しく解説。">
+  <title>Java Silver単語集 詳細版｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=progress-noexam-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/sync.html">履歴移行</a><a class="small" href="../../app/tags/index.html">タグ別演習</a><a class="small" href="../reference/index.html">参照比較</a><a class="small" href="../pitfalls/index.html">細かい違い</a><a class="small" href="../methods/index.html">メソッド表</a><a class="small" href="index.html">単語集</a><a class="small" href="../cheatsheet/index.html">解き方</a></div>
+    </aside>
+    <main id="mainContent" class="main">
+      <section class="content-page article-body wide-article">
+        
+<h1>Java Silver単語集 詳細版</h1>
+<p class="lead">用語は暗記だけでなく、問題を解くときの判定に使える形で覚えます。</p>
+        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<dl class="glossary-list"><dt>同一性</dt><dd>同じオブジェクトを参照しているかという概念。参照型の==は同一性を見る。</dd><dt>同値性</dt><dd>値や内容が等しいかという概念。equals()で表現することが多いが、実装次第。</dd><dt>参照のコピー</dt><dd>参照型変数を代入したとき、オブジェクトではなく参照がコピーされること。</dd><dt>文字列プール</dt><dd>同じ文字列リテラルを共有する領域。Stringの==問題で重要。</dd><dt>不変オブジェクト</dt><dd>生成後に内部状態が変わらないオブジェクト。Stringが代表。</dd><dt>可変オブジェクト</dt><dd>生成後に内部状態を変更できるオブジェクト。StringBuilderが代表。</dd><dt>数値昇格</dt><dd>byteやshortなどが演算時にintへ昇格すること。</dd><dt>暗黙の型変換</dt><dd>キャストなしで安全に変換できる型変換。intからlongなど。</dd><dt>明示的キャスト</dt><dd>データ欠損の可能性がある変換をプログラマが明示すること。</dd><dt>ローカル変数型推論</dt><dd>varにより右辺からローカル変数の型を推論する仕組み。</dd><dt>オーバーロード</dt><dd>同じ名前で引数リストが異なるメソッドを定義すること。</dd><dt>オーバーライド</dt><dd>継承したメソッドをサブクラスで再定義すること。</dd><dt>ポリモーフィズム</dt><dd>サブクラスのインスタンスをスーパークラス型で扱える性質。</dd><dt>フィールド隠蔽</dt><dd>サブクラスで同名フィールドを定義したとき、フィールドは変数の型で決まること。</dd><dt>defaultメソッド</dt><dd>インタフェースに実装を持たせるメソッド。競合時は実装クラスで解決が必要。</dd><dt>sealed class</dt><dd>継承できるクラスを限定するクラス。直接サブクラス側にも修飾が必要。</dd><dt>record</dt><dd>データ保持用クラスを簡潔に宣言する構文。アクセサやequalsが自動生成される。</dd><dt>checked例外</dt><dd>コンパイラが処理を要求する例外。catchまたはthrowsが必要。</dd><dt>unchecked例外</dt><dd>RuntimeException系。コンパイラによる処理義務はない。</dd><dt>短絡評価</dt><dd>&&や||で右辺評価が省略されること。副作用がある式では結果が変わる。</dd><dt>到達不能コード</dt><dd>絶対に実行されないとコンパイラが判断するコード。コンパイルエラーになる。</dd></dl>
+<h2>用語を覚えるだけで終わらせない</h2>
+<p>例えば「ポリモーフィズム」を覚えるだけでは不十分です。問題では「変数の型で呼べるメソッドが決まり、実行されるメソッドは実体の型で決まる」という判定に使えなければ意味がありません。</p>
+
+      <section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/index.html">タグ別演習へ</a><a class="btn" href="../../app/review/wrong.html">間違えた問題だけ復習</a></div></section>
+        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
+        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+      </footer>
+    </main>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="glossary.html";</script><script src="../../data/questions.js"></script>
+  <script src="../../assets/js/app.js?v=progress-noexam-20260526"></script>
+  <script src="../../pwa.js"></script>
+</body>
+</html>

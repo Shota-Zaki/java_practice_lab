@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Silver頻出のクラス、フィールド、ローカル変数、this、super、static、recordを詳しく解説。">
+  <title>Java Silverのクラス設計・static・recordの要点</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=progress-noexam-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/sync.html">履歴移行</a><a class="small" href="../../app/tags/index.html">タグ別演習</a><a class="small" href="../reference/index.html">参照比較</a><a class="small" href="../pitfalls/index.html">細かい違い</a><a class="small" href="../methods/index.html">メソッド表</a><a class="small" href="../glossary/index.html">単語集</a><a class="small" href="../cheatsheet/index.html">解き方</a></div>
+    </aside>
+    <main id="mainContent" class="main">
+      <section class="content-page article-body wide-article">
+        
+<h1>Java Silverのクラス設計・static・recordの要点</h1>
+<p class="lead">クラス問題では、フィールド、ローカル変数、コンストラクタ、<code>this</code>、<code>super</code>、<code>static</code>の区別が重要です。</p>
+        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>1. フィールドとローカル変数</h2>
+<pre><code>class Sample {
+    private String value;
+
+    public void setValue(String value) {
+        value = &quot;Hello, &quot; + value; // ローカル変数を書き換えているだけ
+    }
+}</code></pre>
+<p>引数名とフィールド名が同じ場合、メソッド内で単に <code>value</code> と書くとローカル変数が優先されます。フィールドを指すには <code>this.value</code> が必要です。</p>
+<pre><code>public void setValue(String value) {
+    this.value = &quot;Hello, &quot; + value; // フィールドを書き換える
+}</code></pre>
+
+<h2>2. コンストラクタ</h2>
+<p>コンストラクタはインスタンス生成時に実行されます。戻り値型を書きません。クラス名と同じ名前でなければ、ただのメソッドです。</p>
+<pre><code>class Sample {
+    Sample() { }        // コンストラクタ
+    void Sample() { }   // メソッド。コンストラクタではない
+}</code></pre>
+
+<h2>3. <code>this()</code> と <code>super()</code></h2>
+<table class="study-table"><tr><th>構文</th><th>意味</th><th>制約</th></tr><tr><td><code>this(...)</code></td><td>同じクラスの別コンストラクタを呼ぶ</td><td>コンストラクタの先頭行のみ</td></tr><tr><td><code>super(...)</code></td><td>スーパークラスのコンストラクタを呼ぶ</td><td>コンストラクタの先頭行のみ</td></tr></table>
+<p><code>this()</code> と <code>super()</code> は同じコンストラクタ内で両方書けません。どちらも先頭行にしか置けないためです。</p>
+
+<h2>4. staticの基本</h2>
+<p><code>static</code> はクラスに属するメンバです。インスタンスに属するフィールドやメソッドへ、staticメソッドから直接アクセスすることはできません。</p>
+<pre><code>class Sample {
+    int value;
+    static void test() {
+        value++; // NG: staticからインスタンスフィールドへ直接アクセス不可
+    }
+}</code></pre>
+<p>アクセスしたいなら、インスタンスを作って参照を通してアクセスします。</p>
+<pre><code>static void test() {
+    Sample s = new Sample();
+    s.value++;
+}</code></pre>
+
+<h2>5. アクセス修飾子</h2>
+<table class="study-table"><tr><th>修飾子</th><th>同じクラス</th><th>同じパッケージ</th><th>サブクラス</th><th>どこからでも</th></tr><tr><td><code>private</code></td><td>OK</td><td>NG</td><td>NG</td><td>NG</td></tr><tr><td>なし</td><td>OK</td><td>OK</td><td>同じパッケージならOK</td><td>NG</td></tr><tr><td><code>protected</code></td><td>OK</td><td>OK</td><td>条件付きでOK</td><td>NG</td></tr><tr><td><code>public</code></td><td>OK</td><td>OK</td><td>OK</td><td>OK</td></tr></table>
+
+<h2>6. recordの基本</h2>
+<p><code>record</code> はデータ保持用のクラスを簡潔に書く構文です。コンポーネントに対応するフィールド、アクセサ、コンストラクタ、<code>equals</code>、<code>hashCode</code>、<code>toString</code> が自動生成されます。</p>
+<pre><code>public record Item(String name, int price) { }
+
+Item item = new Item(&quot;Book&quot;, 1000);
+System.out.println(item.name());  // getName() ではない
+System.out.println(item.price());</code></pre>
+<table class="study-table"><tr><th>注意</th><th>説明</th></tr><tr><td>アクセサ名</td><td><code>name()</code>。<code>getName()</code>ではない。</td></tr><tr><td>フィールド</td><td>暗黙的に <code>private final</code>。</td></tr><tr><td>引数なしコンストラクタ</td><td>自動では作られない。</td></tr><tr><td>値比較</td><td>コンポーネント値で<code>equals()</code>が自動実装される。</td></tr></table>
+
+      <section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/class.html">クラス設計を練習する</a><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a><a class="btn" href="../../app/tags/compile.html">コンパイル可否を練習する</a></div></section>
+        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
+        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+      </footer>
+    </main>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-class-design.html";</script><script src="../../data/questions.js"></script>
+  <script src="../../assets/js/app.js?v=progress-noexam-20260526"></script>
+  <script src="../../pwa.js"></script>
+</body>
+</html>
