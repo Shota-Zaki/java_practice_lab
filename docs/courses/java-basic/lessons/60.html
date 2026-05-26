@@ -1,6 +1,45 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="publicクラスとファイル名のルールを理解します。"><title>Javaファイルとクラス名の関係｜Java Practice Lab</title><meta name="theme-color" content="#2563eb"><link rel="manifest" href="../../../manifest.webmanifest"><link rel="stylesheet" href="../../../assets/css/styles.css?v=docs-content-03-20260526"></head><body><a class="skip-link" href="#mainContent">本文へ移動</a><div class="layout"><aside class="sidebar" id="siteSidebar"><div class="sidebar-top"><p class="brand"><a href="../../../index.html">Java Practice Lab</a></p></div><nav class="nav-list"><details class="nav-section" open><summary>コース</summary><div><a class="nav-link" href="../../../courses/java-basic/index.html">1からわかるJava基礎</a><a class="nav-link" href="../../../courses/bronze/index.html">Java Bronze</a><a class="nav-link" href="../../../courses/java11-silver/index.html">Java11 Silver</a><a class="nav-link" href="../../../courses/java17-silver/index.html">Java17 Silver</a><a class="nav-link" href="../../../courses/gold/index.html">Java Gold</a></div></details><details class="nav-section" open><summary>基礎解説</summary><div><a class="nav-link" href="../../../courses/java-basic/index.html">基礎解説トップ</a><a class="nav-link" href="../../../articles/index.html">学習記事</a></div></details></nav></aside><main id="mainContent" class="main"><article class="article-page"><h1>Javaファイルとクラス名の関係</h1><p class="lead">publicクラスとファイル名のルールを理解します。</p><h2>publicクラスはファイル名と一致する</h2><p>public class Sampleがあるなら、ファイル名はSample.javaでなければなりません。これはJava Silverでも頻出です。</p><h2>publicでないクラスは同じファイルに書ける</h2><p>1つのファイルに複数のクラスを書くことはできます。ただしpublicクラスは最大1つです。</p><h2>実行対象はmainを持つクラス</h2><p>コンパイルできることと実行できることは別です。mainメソッドを持つクラスをjavaコマンドで指定します。</p><h2>小さな例</h2><pre><code>// Sample.java
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="publicクラスとファイル名のルールを理解します。">
+  <title>Javaファイルとクラス名の関係｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=layout-unified-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../../articles/index.html">学習記事</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<article class="article-page"><h1>Javaファイルとクラス名の関係</h1><p class="lead">publicクラスとファイル名のルールを理解します。</p><h2>publicクラスはファイル名と一致する</h2><p>public class Sampleがあるなら、ファイル名はSample.javaでなければなりません。これはJava Silverでも頻出です。</p><h2>publicでないクラスは同じファイルに書ける</h2><p>1つのファイルに複数のクラスを書くことはできます。ただしpublicクラスは最大1つです。</p><h2>実行対象はmainを持つクラス</h2><p>コンパイルできることと実行できることは別です。mainメソッドを持つクラスをjavaコマンドで指定します。</p><h2>小さな例</h2><pre><code>// Sample.java
 public class Sample {
     public static void main(String[] args) {}
 }
 
-class Helper {}</code></pre><h2>確認ポイント</h2><ul><li>publicクラス名とファイル名は一致</li><li>publicクラスは1ファイルに最大1つ</li><li>実行にはmainが必要</li></ul><p><a class="btn secondary" href="../index.html">基礎解説一覧へ戻る</a></p></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer></main><aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside></div><script>window.APP_ROOT="../../../";</script><script src="../../../pwa.js?v=docs-content-03-20260526"></script></body></html>
+class Helper {}</code></pre><h2>確認ポイント</h2><ul><li>publicクラス名とファイル名は一致</li><li>publicクラスは1ファイルに最大1つ</li><li>実行にはmainが必要</li></ul><p><a class="btn secondary" href="../index.html">基礎解説一覧へ戻る</a></p></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-60.html";</script>
+  <script src="../../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../../pwa.js?v=layout-unified-20260526"></script>
+</body>
+</html>

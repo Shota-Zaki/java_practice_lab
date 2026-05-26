@@ -1,5 +1,44 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="アルゴリズムの入口"><title>アルゴリズムの入口｜Java Practice Lab</title><meta name="theme-color" content="#2563eb"><link rel="manifest" href="../../../manifest.webmanifest"><link rel="stylesheet" href="../../../assets/css/styles.css?v=content-doc-20260526"></head><body><a class="skip-link" href="#mainContent">本文へ移動</a><div class="layout"><aside class="sidebar" id="siteSidebar"><div class="sidebar-top"><p class="brand"><a href="../../../index.html">Java Practice Lab</a></p></div><nav class="nav-list"><details class="nav-section" open><summary>コース</summary><div><a class="nav-link" href="../../../courses/java-basic/index.html">1からわかるJava基礎</a><a class="nav-link" href="../../../courses/bronze/index.html">Java Bronze</a><a class="nav-link" href="../../../courses/java11-silver/index.html">Java11 Silver</a><a class="nav-link" href="../../../courses/java17-silver/index.html">Java17 Silver</a><a class="nav-link" href="../../../courses/gold/index.html">Java Gold</a></div></details><details class="nav-section"><summary>共通</summary><div><a class="nav-link" href="../../../articles/index.html">学習記事</a><a class="nav-link" href="../../../courses/java17-silver/exams/index.html">Java17模試センター</a><a class="nav-link" href="../../../app/dashboard.html">学習状況</a></div></details></nav></aside><main id="mainContent" class="main"><article class="article-page"><p class="breadcrumb"><a href="../index.html">1からわかるJava基礎解説</a> / Lesson 28</p><h1>アルゴリズムの入口</h1><p class="lead">Java文法だけでなく、処理の流れを順番に追う力も必要です。</p><h2>アルゴリズムとは</h2><p>アルゴリズムは、目的を達成するための手順です。Java Silverでは高度なアルゴリズムは不要ですが、ループ、条件分岐、配列走査の流れを追える必要があります。</p><pre><code>int total = 0;
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="アルゴリズムの入口">
+  <title>アルゴリズムの入口｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=layout-unified-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../../articles/index.html">学習記事</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<article class="article-page"><p class="breadcrumb"><a href="../index.html">1からわかるJava基礎解説</a> / Lesson 28</p><h1>アルゴリズムの入口</h1><p class="lead">Java文法だけでなく、処理の流れを順番に追う力も必要です。</p><h2>アルゴリズムとは</h2><p>アルゴリズムは、目的を達成するための手順です。Java Silverでは高度なアルゴリズムは不要ですが、ループ、条件分岐、配列走査の流れを追える必要があります。</p><pre><code>int total = 0;
 for (int i = 1; i &lt;= 5; i++) {
     total += i;
 }
-System.out.println(total); // 15</code></pre><h2>トレース表を作る</h2><p>出力問題が苦手なら、i、total、条件式の結果を表にして追います。頭だけで追うより、手を動かす方が正確です。</p><h2>試験での注意</h2><p>break、continue、return、throwが出ると処理の流れが大きく変わります。ループ問題では、この4つを必ず確認します。</p><div class="lesson-nav"><a class="button secondary" href="27.html">前へ</a><a class="button" href="../index.html">基礎トップへ</a><a class="button secondary" href="29.html">次へ</a></div></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer></main><aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside></div><script>window.APP_ROOT="../../../";window.CURRENT_PAGE="basic-28";</script><script src="../../../pwa.js"></script></body></html>
+System.out.println(total); // 15</code></pre><h2>トレース表を作る</h2><p>出力問題が苦手なら、i、total、条件式の結果を表にして追います。頭だけで追うより、手を動かす方が正確です。</p><h2>試験での注意</h2><p>break、continue、return、throwが出ると処理の流れが大きく変わります。ループ問題では、この4つを必ず確認します。</p><div class="lesson-nav"><a class="button secondary" href="27.html">前へ</a><a class="button" href="../index.html">基礎トップへ</a><a class="button secondary" href="29.html">次へ</a></div></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-28.html";</script>
+  <script src="../../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../../pwa.js?v=layout-unified-20260526"></script>
+</body>
+</html>
