@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="前置後置インクリメント、短絡評価、switch、ループ、break、continue、到達不能コードを詳しく解説。">
+  <title>Javaの++iとi++、短絡評価、switch問題の解き方</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=progress-noexam-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/sync.html">履歴移行</a><a class="small" href="../../app/tags/index.html">タグ別演習</a><a class="small" href="../reference/index.html">参照比較</a><a class="small" href="../pitfalls/index.html">細かい違い</a><a class="small" href="../methods/index.html">メソッド表</a><a class="small" href="../glossary/index.html">単語集</a><a class="small" href="../cheatsheet/index.html">解き方</a></div>
+    </aside>
+    <main id="mainContent" class="main">
+      <section class="content-page article-body wide-article">
+        
+<h1>Javaの++iとi++、短絡評価、switch問題の解き方</h1>
+<p class="lead">出力問題は、評価順を雑に見ると外します。前置/後置インクリメント、短絡評価、switch、break/continue、ループ条件を機械的に追います。</p>
+        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>1. <code>++num</code> と <code>num++</code></h2>
+<table class="study-table"><tr><th>書き方</th><th>意味</th><th>式の値</th></tr><tr><td><code>++num</code></td><td>先に増やす</td><td>増えた後の値</td></tr><tr><td><code>num++</code></td><td>後で増やす</td><td>増える前の値</td></tr></table>
+<pre><code>int num = 0;
+System.out.println(num++ + num + &quot;,&quot; + ++num + num);
+// num++ は 0 を使ってから num が 1
+// 0 + 1 = 1
+// 文字列連結後、++num で 2
+// 結果: 1,22</code></pre>
+<div class="warning-box">単独文の <code>num++;</code> と <code>++num;</code> はどちらも最終値は同じです。違いが出るのは、式の中で値を使うときです。</div>
+
+<h2>2. <code>&&</code> と <code>&</code>、<code>||</code> と <code>|</code></h2>
+<table class="study-table"><tr><th>演算子</th><th>短絡評価</th><th>右辺評価</th></tr><tr><td><code>&&</code></td><td>あり</td><td>左辺がfalseなら右辺は評価しない</td></tr><tr><td><code>&</code></td><td>なし</td><td>左辺に関係なく右辺も評価する</td></tr><tr><td><code>||</code></td><td>あり</td><td>左辺がtrueなら右辺は評価しない</td></tr><tr><td><code>|</code></td><td>なし</td><td>左辺に関係なく右辺も評価する</td></tr></table>
+<pre><code>static boolean a() { System.out.print(&quot;A&quot;); return false; }
+static boolean b() { System.out.print(&quot;B&quot;); return true; }
+
+if (a() &amp;&amp; b()) { } // Aだけ表示。b()は呼ばれない
+if (a() &amp; b())  { } // ABが表示。b()も呼ばれる</code></pre>
+
+<h2>3. switch文とswitch式</h2>
+<table class="study-table"><tr><th>項目</th><th>switch文</th><th>switch式</th></tr><tr><td>値を返すか</td><td>返さない</td><td>返す</td></tr><tr><td>フォールスルー</td><td><code>case:</code>形式では起こる</td><td><code>-></code>では起こらない</td></tr><tr><td><code>yield</code></td><td>通常使わない</td><td>ブロックで値を返すときに使う</td></tr><tr><td>網羅性</td><td>値を返さないので緩い</td><td>すべての経路で値が必要</td></tr></table>
+<pre><code>int value = 2;
+String result = switch (value) {
+    case 1 -&gt; &quot;A&quot;;
+    case 2 -&gt; &quot;B&quot;;
+    default -&gt; &quot;C&quot;;
+};</code></pre>
+
+<h2>4. ループの抜け方</h2>
+<table class="study-table"><tr><th>構文</th><th>意味</th><th>注意</th></tr><tr><td><code>break</code></td><td>一番内側のswitchまたはループを抜ける</td><td>switch内のbreakはループではなくswitchを抜ける</td></tr><tr><td><code>continue</code></td><td>現在の反復の残りをスキップして次へ</td><td>後続コードが実行されない</td></tr><tr><td><code>return</code></td><td>メソッドを終了</td><td><code>finally</code>があれば先に実行される</td></tr></table>
+
+<h2>5. do-whileの特徴</h2>
+<p><code>do-while</code> は条件判定が後ろにあるため、最低1回は実行されます。</p>
+<pre><code>int i = 10;
+do {
+    System.out.println(i);
+    i++;
+} while (i &lt; 5);
+// 10が1回表示される</code></pre>
+
+<h2>6. 到達不能コード</h2>
+<p><code>continue</code> や <code>return</code> の直後に通常文を書くと、コンパイラが「絶対に実行されない」と判断してコンパイルエラーになることがあります。</p>
+<pre><code>for (int i = 0; i &lt; 3; i++) {
+    continue;
+    System.out.println(i); // 到達不能コードでコンパイルエラー
+}</code></pre>
+
+      <section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/operator.html">演算子を練習する</a><a class="btn" href="../../app/tags/control.html">制御構文を練習する</a><a class="btn" href="../../app/tags/output.html">出力トレースを練習する</a></div></section>
+        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
+        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+      </footer>
+    </main>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-operators-control.html";</script><script src="../../data/questions.js"></script>
+  <script src="../../assets/js/app.js?v=progress-noexam-20260526"></script>
+  <script src="../../pwa.js"></script>
+</body>
+</html>

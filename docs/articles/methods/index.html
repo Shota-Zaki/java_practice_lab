@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Silver頻出メソッドの戻り値、破壊的変更、例外条件、落とし穴を詳しく整理。">
+  <title>頻出メソッドリスト 詳細版｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=progress-noexam-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/sync.html">履歴移行</a><a class="small" href="../../app/tags/index.html">タグ別演習</a><a class="small" href="../reference/index.html">参照比較</a><a class="small" href="../pitfalls/index.html">細かい違い</a><a class="small" href="index.html">メソッド表</a><a class="small" href="../glossary/index.html">単語集</a><a class="small" href="../cheatsheet/index.html">解き方</a></div>
+    </aside>
+    <main id="mainContent" class="main">
+      <section class="content-page article-body wide-article">
+        
+<h1>頻出メソッドリスト 詳細版</h1>
+<p class="lead">メソッド問題は、戻り値、元オブジェクトを変更するか、例外条件、添字の範囲を確認します。</p>
+        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>String</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>charAt(int)</code></td><td><code>char</code></td><td>指定位置の文字</td><td>0始まり。範囲外で例外。</td></tr>
+<tr><td><code>indexOf(String)</code></td><td><code>int</code></td><td>最初に見つかった位置</td><td>見つからないと<code>-1</code>。</td></tr>
+<tr><td><code>substring(int,int)</code></td><td><code>String</code></td><td>begin以上end未満</td><td>endの文字は含まない。</td></tr>
+<tr><td><code>replace(char,char)</code></td><td><code>String</code></td><td>置換後の新文字列</td><td>元のStringは変わらない。</td></tr>
+<tr><td><code>concat(String)</code></td><td><code>String</code></td><td>連結後の新文字列</td><td>戻り値を受け取らないと捨てる。</td></tr>
+<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>内容比較</td><td><code>==</code>とは違う。</td></tr>
+<tr><td><code>intern()</code></td><td><code>String</code></td><td>文字列プール上の参照</td><td>参照比較問題で頻出。</td></tr>
+</table>
+<h2>StringBuilder</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>append(...)</code></td><td><code>StringBuilder</code></td><td>末尾追加</td><td>自分自身を変更する。</td></tr>
+<tr><td><code>insert(int,...)</code></td><td><code>StringBuilder</code></td><td>指定位置に挿入</td><td>範囲外で例外。</td></tr>
+<tr><td><code>delete(int,int)</code></td><td><code>StringBuilder</code></td><td>begin以上end未満を削除</td><td>Stringのsubstringと同じくend未満。</td></tr>
+<tr><td><code>reverse()</code></td><td><code>StringBuilder</code></td><td>反転</td><td>元のBuilderが変わる。</td></tr>
+<tr><td><code>toString()</code></td><td><code>String</code></td><td>String化</td><td>内容比較したいときに使う。</td></tr>
+</table>
+<h2>ArrayList / List</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>add(E)</code></td><td><code>boolean</code></td><td>末尾追加</td><td>通常true。</td></tr>
+<tr><td><code>add(int,E)</code></td><td><code>void</code></td><td>指定位置に挿入</td><td>置換ではなく挿入。</td></tr>
+<tr><td><code>set(int,E)</code></td><td><code>E</code></td><td>指定位置を置換</td><td>古い値を返す。</td></tr>
+<tr><td><code>remove(int)</code></td><td><code>E</code></td><td>インデックス削除</td><td><code>remove(1)</code>は値1ではなく位置1。</td></tr>
+<tr><td><code>remove(Object)</code></td><td><code>boolean</code></td><td>一致する要素を削除</td><td><code>Integer.valueOf(1)</code>で値削除。</td></tr>
+<tr><td><code>contains(Object)</code></td><td><code>boolean</code></td><td>含むか確認</td><td><code>equals()</code>で比較。</td></tr>
+<tr><td><code>size()</code></td><td><code>int</code></td><td>要素数</td><td>配列の<code>length</code>と混同しない。</td></tr>
+</table>
+<h2>Arrays / Object / ラッパー</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>要点</th><th>注意</th></tr>
+<tr><td><code>Arrays.asList(array)</code></td><td>配列をList風に扱う</td><td>固定サイズ。add/removeは不可。</td></tr>
+<tr><td><code>Arrays.equals(a,b)</code></td><td>一次元配列の中身比較</td><td>多次元なら<code>deepEquals</code>。</td></tr>
+<tr><td><code>Objects.equals(a,b)</code></td><td>null安全なequals</td><td>null比較で便利。</td></tr>
+<tr><td><code>Integer.parseInt(String)</code></td><td>文字列をintへ変換</td><td>不正文字列で<code>NumberFormatException</code>。</td></tr>
+<tr><td><code>valueOf</code></td><td>ラッパー型へ変換</td><td>オートボクシングとの違いに注意。</td></tr>
+</table>
+
+      <section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/string.html">String問題を解く</a><a class="btn" href="../../app/tags/array.html">配列・List問題を解く</a><a class="btn" href="../../app/tags/exception.html">例外問題を解く</a></div></section>
+        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
+      </section>
+      <footer class="site-footer">
+        <div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
+        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+      </footer>
+    </main>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="methods.html";</script><script src="../../data/questions.js"></script>
+  <script src="../../assets/js/app.js?v=progress-noexam-20260526"></script>
+  <script src="../../pwa.js"></script>
+</body>
+</html>
