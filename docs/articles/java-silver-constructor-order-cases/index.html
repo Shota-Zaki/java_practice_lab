@@ -1,0 +1,4 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>コンストラクタ呼び出し順の頻出パターン</title><link rel='stylesheet' href='../../assets/content.css'></head><body><main class='wrap'><div class='nav'><a href='../../index.html'>トップ</a><a href='../../courses/java-basic/index.html'>Java基礎</a><a href='../../articles/index.html'>学習記事</a></div><article class='card'><h1>コンストラクタ呼び出し順の頻出パターン</h1><p class="lead">試験対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>結論</h2>子クラスのインスタンス生成でも、親クラスのコンストラクタが先に実行されます。<h2>例</h2><pre><code>class A { A(){System.out.print("A");} }
+class B extends A { B(){System.out.print("B");} }
+new B(); // AB</code></pre><h2>エラー例</h2><pre><code>class A { A(int x){} }
+class B extends A { B(){} } // super()が呼べずエラー</code></pre><div class='nav'><a href='../index.html'>記事一覧へ</a></div></article></main></body></html>

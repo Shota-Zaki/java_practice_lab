@@ -1,0 +1,4 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Java GoldのCollectors入門</title><link rel='stylesheet' href='../../assets/content.css'></head><body><main class='wrap'><div class='nav'><a href='../../index.html'>トップ</a><a href='../../courses/java-basic/index.html'>Java基礎</a><a href='../../articles/index.html'>学習記事</a></div><article class='card'><h1>Java GoldのCollectors入門</h1><p class="lead">試験対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>目的</h2>Streamの結果をListやMapに集めるために<code>Collectors</code>を使います。<h2>Listへ集める</h2><pre><code>List&lt;String&gt; r = list.stream()
+  .filter(s -&gt; s.length() &gt; 2)
+  .collect(Collectors.toList());</code></pre><h2>groupingBy</h2><pre><code>Map&lt;Integer,List&lt;String&gt;&gt; m = list.stream()
+  .collect(Collectors.groupingBy(String::length));</code></pre><div class='nav'><a href='../index.html'>記事一覧へ</a></div></article></main></body></html>
