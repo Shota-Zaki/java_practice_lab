@@ -7,7 +7,7 @@
   <title>模試復習室｜Java Practice Lab</title>
   <meta name="theme-color" content="#2563eb">
   <link rel="manifest" href="../../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../../assets/css/styles.css?v=sidebar-course-fix-20260526">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=layout-unified-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -21,14 +21,15 @@
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
       <div class="footer-links" style="margin-top:18px">
         <a class="small" href="../../../articles/index.html">学習記事</a>
-        <a class="small" href="quality.html">模試品質監査</a>
-        <a class="small" href="aftercare.html">模試復習室</a>
-        <a class="small" href="../../../app/dashboard.html">弱点分析</a>
-        <a class="small" href="../../../app/search.html">問題検索</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
       </div>
     </aside>
     <main id="mainContent" class="main">
-      <section class="hero"><h1>模試復習室</h1><p>実践模試A/B/C/D/C/Dの結果をもとに、不正解・未回答・見直し・自信低めの問題へ直接戻るためのページです。</p><div class="hero-actions"><a class="btn primary" href="a.html">実践模試Aへ</a><a class="btn" href="b.html">実践模試Bへ</a><a class="btn" href="c.html">実践模試Cへ</a><a class="btn" href="d.html">実践模試Dへ</a><a class="btn" href="quality.html">品質監査を見る</a></div></section><section class="panel"><h2>復習対象</h2><div id="examAftercareRoot" class="search-results"></div></section><script>window.APP_ROOT="../../../";window.CURRENT_PAGE="exam-aftercare.html";</script><script>
+
+<section class="hero"><h1>模試復習室</h1><p>実践模試A/B/C/D/C/Dの結果をもとに、不正解・未回答・見直し・自信低めの問題へ直接戻るためのページです。</p><div class="hero-actions"><a class="btn primary" href="a.html">実践模試Aへ</a><a class="btn" href="b.html">実践模試Bへ</a><a class="btn" href="c.html">実践模試Cへ</a><a class="btn" href="d.html">実践模試Dへ</a><a class="btn" href="quality.html">品質監査を見る</a></div></section><section class="panel"><h2>復習対象</h2><div class="search-results" id="examAftercareRoot"></div></section><script>window.APP_ROOT="../../../";window.CURRENT_PAGE="exam-aftercare.html";</script><script>
 (function(){
   const root=document.getElementById('examAftercareRoot');
   const DATA=window.JAVA_STUDY_DATA;
@@ -58,16 +59,19 @@
   root.innerHTML=rows.length?rows.join(''):'<p class="notice">模試A/B/C/Dの復習対象はまだありません。まず採点まで完了してください。</p>';
 })();
 </script>
-      <footer class="site-footer">
-        <div class="footer-links">
-          <a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="quality.html">Exam Quality</a><a href="aftercare.html">Exam Review</a><a href="../../../app/dashboard.html">Dashboard</a><a href="../../../app/notes.html">Notes</a><a href="../../../app/settings.html">Settings</a><a href="../../../app/sync.html">Sync</a><a href="../../../site/about.html">About</a><a href="../../../site/contact.html">Contact</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a>
-        </div>
-        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-      </footer>
+<footer class="site-footer">
+<div class="footer-links">
+<a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="quality.html">Exam Quality</a><a href="aftercare.html">Exam Review</a><a href="../../../app/dashboard.html">Dashboard</a><a href="../../../app/notes.html">Notes</a><a href="../../../app/settings.html">Settings</a><a href="../../../app/sync.html">Sync</a><a href="../../../site/about.html">About</a><a href="../../../site/contact.html">Contact</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a>
+</div>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</footer>
+
     </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script src="../../../data/questions.js"></script>
-  <script src="../../../assets/js/app.js?v=sidebar-course-fix-20260526"></script>
-  <script src="../../../pwa.js"></script>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="exam-aftercare.html";</script>
+  <script src="../../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../../pwa.js?v=layout-unified-20260526"></script>
 </body>
 </html>

@@ -7,47 +7,41 @@
   <title>模試A/B/C/D 品質監査｜Java Practice Lab</title>
   <meta name="theme-color" content="#2563eb">
   <link rel="manifest" href="../../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../../assets/css/styles.css?v=sidebar-course-fix-20260526">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=layout-unified-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div class="layout">
-    <aside class="sidebar"><p class="brand"><a href="../../../index.html">Java Practice Lab</a></p><nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav><div class="footer-links" style="margin-top:18px"><a class="small" href="../../../articles/index.html">学習記事</a><a class="small" href="quality.html">模試品質監査</a><a class="small" href="aftercare.html">模試復習室</a><a class="small" href="../../../app/dashboard.html">弱点分析</a><a class="small" href="../../../app/search.html">問題検索</a></div></aside>
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../../articles/index.html">学習記事</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
     <main id="mainContent" class="main">
-      <section class="hero"><h1>模試A/B/C/D 品質監査</h1><p>60問・90分の実践模試4本について、難易度・複数選択・タグ分布・構造チェックを確認するページです。</p><p class="notice">問題文は公開向けオリジナルです。模試C/Dは、A/B後の追加演習として使えるように追加しました。</p><div class="hero-actions"><a class="btn" href="a.html">模試A</a><a class="btn" href="b.html">模試B</a><a class="btn primary" href="c.html">模試C</a><a class="btn primary" href="d.html">模試D</a></div></section>
-      <section class="panel"><h2>監査サマリー</h2><div id="qualitySummary" class="quality-meter"></div></section>
-      <section class="panel"><h2>模試別バランス</h2><div id="qualityTable"></div></section>
-      <section class="panel"><h2>タグ分布</h2><div id="tagDist" class="compare-grid"></div></section>
-      <section class="panel"><h2>構造チェック</h2><div id="structureCheck"></div></section>
-      <footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="quality.html">Exam Quality</a><a href="aftercare.html">Exam Review</a><a href="../../../app/dashboard.html">Dashboard</a><a href="../../../app/notes.html">Notes</a><a href="../../../app/settings.html">Settings</a><a href="../../../app/sync.html">Sync</a><a href="../../../site/about.html">About</a><a href="../../../site/contact.html">Contact</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
+
+<section class="hero"><h1>模試A/B/C/D 品質監査</h1><p>60問・90分の実践模試4本について、難易度・複数選択・タグ分布・構造チェックを確認するページです。</p><p class="notice">問題文は公開向けオリジナルです。模試C/Dは、A/B後の追加演習として使えるように追加しました。</p><div class="hero-actions"><a class="btn" href="a.html">模試A</a><a class="btn" href="b.html">模試B</a><a class="btn primary" href="c.html">模試C</a><a class="btn primary" href="d.html">模試D</a></div></section>
+<section class="panel"><h2>監査サマリー</h2><div class="quality-meter" id="qualitySummary"></div></section>
+<section class="panel"><h2>模試別バランス</h2><div id="qualityTable"></div></section>
+<section class="panel"><h2>タグ分布</h2><div class="compare-grid" id="tagDist"></div></section>
+<section class="panel"><h2>構造チェック</h2><div id="structureCheck"></div></section>
+<footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="quality.html">Exam Quality</a><a href="aftercare.html">Exam Review</a><a href="../../../app/dashboard.html">Dashboard</a><a href="../../../app/notes.html">Notes</a><a href="../../../app/settings.html">Settings</a><a href="../../../app/sync.html">Sync</a><a href="../../../site/about.html">About</a><a href="../../../site/contact.html">Contact</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
+
     </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="exam-quality.html";</script><script src="../../../data/questions.js"></script>
-  <script src="../../../assets/js/app.js?v=sidebar-course-fix-20260526"></script>
-  <script>
-(function(){
-  const DATA=window.JAVA_STUDY_DATA; const examIds=['unit07','unit08','unit10','unit11'];
-  const unitMap=Object.fromEntries(DATA.units.map(u=>[u.id,u]));
-  const tagTitle=t=>(DATA.tagDefinitions[t]?.title||t);
-  const rows=[]; const summary=[]; const tagCards=[]; const issues=[];
-  for(const uid of examIds){
-    const u=unitMap[uid]; const qs=DATA.questions[uid]||[]; const diff={basic:0,standard:0,hard:0}; let multi=0, compile=0, runtime=0; const tags={};
-    for(const q of qs){
-      diff[q.difficulty||'standard']=(diff[q.difficulty||'standard']||0)+1; if((q.answer||[]).length>1) multi++; if((q.tags||[]).includes('compile')) compile++; if((q.tags||[]).includes('runtime')) runtime++;
-      if(!q.explanation?.optionDetails || q.explanation.optionDetails.length!==q.options.length) issues.push(`${u.title} 問${q.number}: 選択肢別解説不足`);
-      for(const t of (q.tags||[])) tags[t]=(tags[t]||0)+1;
-    }
-    summary.push(`<div><strong>${qs.length}</strong><span>${u.title}</span></div><div><strong>${diff.basic||0} / ${diff.standard||0} / ${diff.hard||0}</strong><span>基礎 / 標準 / 応用</span></div><div><strong>${multi}</strong><span>複数選択</span></div><div><strong>${qs.filter(q=>q.explanation?.optionDetails).length}</strong><span>選択肢別解説つき</span></div>`);
-    rows.push(`<tr><td>${u.title}</td><td>${qs.length}</td><td>${diff.basic||0}</td><td>${diff.standard||0}</td><td>${diff.hard||0}</td><td>${qs.length-multi}</td><td>${multi}</td><td>${compile}</td><td>${runtime}</td><td class="audit-ok">OK</td></tr>`);
-    const top=Object.entries(tags).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([t,n])=>`<tr><td>${tagTitle(t)}</td><td>${n}</td></tr>`).join('');
-    tagCards.push(`<div class="compare-card"><h3>${u.title}: 頻出タグ</h3><table class="audit-table"><tbody>${top}</tbody></table></div>`);
-  }
-  document.getElementById('qualitySummary').innerHTML=summary.join('');
-  document.getElementById('qualityTable').innerHTML=`<table class="audit-table"><thead><tr><th>模試</th><th>問題数</th><th>基礎</th><th>標準</th><th>応用</th><th>単一</th><th>複数</th><th>コンパイル判定</th><th>実行時例外判定</th><th>状態</th></tr></thead><tbody>${rows.join('')}</tbody></table>`;
-  document.getElementById('tagDist').innerHTML=tagCards.join('');
-  document.getElementById('structureCheck').innerHTML=issues.length?`<ul>${issues.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<table class="audit-table"><tbody><tr><td class="audit-ok">重大な構造不整合は検出されていません。</td></tr></tbody></table>';
-})();
-  </script>
-  <script src="../../../pwa.js"></script>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="exam-quality.html";</script>
+  <script src="../../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../../pwa.js?v=layout-unified-20260526"></script>
 </body>
 </html>
