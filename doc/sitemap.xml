@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/app/dashboard.html</loc></url>
+  <url><loc>https://example.com/app/learning-path.html</loc></url>
+  <url><loc>https://example.com/app/mistake-reasons.html</loc></url>
+  <url><loc>https://example.com/app/mode.html</loc></url>
+  <url><loc>https://example.com/app/notes.html</loc></url>
+  <url><loc>https://example.com/app/quality-map.html</loc></url>
+  <url><loc>https://example.com/app/random.html</loc></url>
+  <url><loc>https://example.com/app/review/due.html</loc></url>
+  <url><loc>https://example.com/app/review/marked.html</loc></url>
+  <url><loc>https://example.com/app/review/weak.html</loc></url>
+  <url><loc>https://example.com/app/review/wrong.html</loc></url>
+  <url><loc>https://example.com/app/search.html</loc></url>
+  <url><loc>https://example.com/app/settings.html</loc></url>
+  <url><loc>https://example.com/app/sync.html</loc></url>
+  <url><loc>https://example.com/app/tags/array.html</loc></url>
+  <url><loc>https://example.com/app/tags/basic.html</loc></url>
+  <url><loc>https://example.com/app/tags/class.html</loc></url>
+  <url><loc>https://example.com/app/tags/compile.html</loc></url>
+  <url><loc>https://example.com/app/tags/control.html</loc></url>
+  <url><loc>https://example.com/app/tags/exception.html</loc></url>
+  <url><loc>https://example.com/app/tags/index.html</loc></url>
+  <url><loc>https://example.com/app/tags/inheritance.html</loc></url>
+  <url><loc>https://example.com/app/tags/operator.html</loc></url>
+  <url><loc>https://example.com/app/tags/output.html</loc></url>
+  <url><loc>https://example.com/app/tags/reference.html</loc></url>
+  <url><loc>https://example.com/app/tags/runtime.html</loc></url>
+  <url><loc>https://example.com/app/tags/string.html</loc></url>
+  <url><loc>https://example.com/app/tags/type.html</loc></url>
+  <url><loc>https://example.com/articles/before-exam/index.html</loc></url>
+  <url><loc>https://example.com/articles/cheatsheet/index.html</loc></url>
+  <url><loc>https://example.com/articles/class-design/index.html</loc></url>
+  <url><loc>https://example.com/articles/compile-errors/index.html</loc></url>
+  <url><loc>https://example.com/articles/exam-strategy/index.html</loc></url>
+  <url><loc>https://example.com/articles/exception/index.html</loc></url>
+  <url><loc>https://example.com/articles/glossary/index.html</loc></url>
+  <url><loc>https://example.com/articles/index.html</loc></url>
+  <url><loc>https://example.com/articles/inheritance/index.html</loc></url>
+  <url><loc>https://example.com/articles/methods/index.html</loc></url>
+  <url><loc>https://example.com/articles/mistake-patterns/index.html</loc></url>
+  <url><loc>https://example.com/articles/operators-control/index.html</loc></url>
+  <url><loc>https://example.com/articles/pitfalls/index.html</loc></url>
+  <url><loc>https://example.com/articles/reference/index.html</loc></url>
+  <url><loc>https://example.com/articles/string/index.html</loc></url>
+  <url><loc>https://example.com/articles/study-plan/index.html</loc></url>
+  <url><loc>https://example.com/articles/types/index.html</loc></url>
+  <url><loc>https://example.com/articles/weak-guides/index.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/index.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/01.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/02.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/03.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/04.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/05.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/lessons/06.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/practice/basic-syntax.html</loc></url>
+  <url><loc>https://example.com/courses/bronze/practice/oop-basic.html</loc></url>
+  <url><loc>https://example.com/courses/gold/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/gold/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/gold/index.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/01.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/02.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/03.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/04.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/05.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/06.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/07.html</loc></url>
+  <url><loc>https://example.com/courses/gold/lessons/08.html</loc></url>
+  <url><loc>https://example.com/courses/gold/practice/generics-collections.html</loc></url>
+  <url><loc>https://example.com/courses/gold/practice/io-concurrency.html</loc></url>
+  <url><loc>https://example.com/courses/gold/practice/lambda-stream.html</loc></url>
+  <url><loc>https://example.com/courses/gold/practice/module-final.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/index.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/01.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/02.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/03.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/04.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/05.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/06.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/07.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/08.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/09.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/10.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/11.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/12.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/13.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/14.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/15.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/16.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/17.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/18.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/19.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/20.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/index.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/01.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/02.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/03.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/04.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/05.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/06.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/07.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/lessons/08.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/basic-syntax.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/final-check.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/oop.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/aftercare.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/c.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/d.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/index.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/exams/quality.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/index.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/class-design.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/compile-check.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/exception.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/inheritance.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/java-basic.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/operator-control.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/random.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/reference-api.html</loc></url>
+  <url><loc>https://example.com/courses/java17-silver/units/type-string-array.html</loc></url>
+  <url><loc>https://example.com/index.html</loc></url>
+  <url><loc>https://example.com/site/about.html</loc></url>
+  <url><loc>https://example.com/site/ads-guide.html</loc></url>
+  <url><loc>https://example.com/site/contact.html</loc></url>
+  <url><loc>https://example.com/site/offline.html</loc></url>
+  <url><loc>https://example.com/site/privacy.html</loc></url>
+  <url><loc>https://example.com/site/public-check.html</loc></url>
+  <url><loc>https://example.com/site/terms.html</loc></url>
+<url><loc>./courses/java-basic/lessons/21.html</loc></url>
+<url><loc>./courses/java-basic/lessons/22.html</loc></url>
+<url><loc>./courses/java-basic/lessons/23.html</loc></url>
+<url><loc>./courses/java-basic/lessons/24.html</loc></url>
+<url><loc>./courses/java-basic/lessons/25.html</loc></url>
+<url><loc>./courses/java-basic/lessons/26.html</loc></url>
+<url><loc>./courses/java-basic/lessons/27.html</loc></url>
+<url><loc>./courses/java-basic/lessons/28.html</loc></url>
+<url><loc>./courses/java-basic/lessons/29.html</loc></url>
+<url><loc>./courses/java-basic/lessons/30.html</loc></url>
+<url><loc>./courses/java-basic/lessons/31.html</loc></url>
+<url><loc>./courses/java-basic/lessons/32.html</loc></url>
+<url><loc>./courses/java-basic/lessons/33.html</loc></url>
+<url><loc>./courses/java-basic/lessons/34.html</loc></url>
+<url><loc>./courses/java-basic/lessons/35.html</loc></url>
+<url><loc>./articles/runtime-errors/index.html</loc></url>
+<url><loc>./articles/java-command/index.html</loc></url>
+<url><loc>./articles/memory-model-beginner/index.html</loc></url>
+<url><loc>./articles/api-reading/index.html</loc></url>
+<url><loc>./articles/oop-compile-errors/index.html</loc></url>
+<url><loc>./articles/study-order/index.html</loc></url>
+<url><loc>./articles/silver-output-problems/index.html</loc></url>
+</urlset>
