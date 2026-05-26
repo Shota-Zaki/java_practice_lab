@@ -3,45 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="フォールスルー、yield、戻り値を整理します。">
-  <title>Java Silverのswitch文とswitch式の違い｜Java Practice Lab</title>
-  <meta name="theme-color" content="#2563eb">
-  <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
+  <meta name="description" content="switch文・switch式・yield・フォールスルーを整理します。">
+  <title>Java Silverのswitch文とswitch式｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div class="layout">
     <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
     <aside class="sidebar" id="siteSidebar">
-      <div class="sidebar-top">
-        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
-        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
-      </div>
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px">
-        <a class="small" href="../../articles/index.html">学習記事</a>
-        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
-        <a class="small" href="../../articles/reference/index.html">参照比較</a>
-        <a class="small" href="../../site/about.html">このサイト</a>
-        <a class="small" href="../../site/privacy.html">Privacy</a>
-      </div>
     </aside>
     <main id="mainContent" class="main">
-<article class="article-page"><h1>Java Silverのswitch文とswitch式の違い</h1><p class="lead">フォールスルー、yield、戻り値を整理します。</p><h2>switch文</h2><pre><code>int n = 1;
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver 頻出</p>
+        <h1>Java Silverのswitch文とswitch式</h1>
+        
+<p class="lead">switchは、文と式の違い、フォールスルー、<code>yield</code>、caseラベルの型が頻出です。</p>
+<section class="article-section"><h2>1. switch文はフォールスルーする</h2><pre><code>int n = 1;
 switch (n) {
     case 1: System.out.print("A");
-    case 2: System.out.print("B");
-} // AB</code></pre><h2>switch式</h2><pre><code>String s = switch (n) {
-    case 1 -&gt; "A";
-    default -&gt; "Z";
-};</code></pre><h2>試験注意</h2><p>switch式は値を返すため、すべての経路で値が必要です。</p><nav class="pager"><a class="btn secondary" href="../index.html">学習記事一覧へ</a></nav></article><footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../../articles/index.html">Articles</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
+    case 2: System.out.print("B"); break;
+    default: System.out.print("C");
+}</code></pre><p><code>break</code> がないため <code>case 2</code> に流れ、出力は <code>AB</code> です。</p></section>
+<section class="article-section"><h2>2. switch式は値を返す</h2><pre><code>String result = switch (n) {
+    case 1 -> "A";
+    case 2 -> "B";
+    default -> "C";
+};</code></pre><p>switch式は式なので、結果を変数へ代入できます。末尾のセミコロンも必要です。</p></section>
+<section class="article-section"><h2>3. yieldが必要なケース</h2><pre><code>String result = switch (n) {
+    case 1: yield "A";
+    default: yield "Z";
+};</code></pre><p>コロン形式のswitch式では、値を返すために <code>yield</code> を使います。</p></section>
+<section class="article-section"><h2>4. caseラベルは定数</h2><pre><code>int x = 1;
+switch (n) {
+    case x: break; // コンパイルエラー
+}</code></pre><p><code>case</code> にはコンパイル時定数が必要です。<code>final int x = 1;</code> なら使える場合があります。</p></section>
+<section class="article-section"><h2>5. nullの扱い</h2><pre><code>String s = null;
+switch (s) {
+    case "A": System.out.println("A");
+}</code></pre><p>Java Silverの範囲では、<code>null</code> をswitch対象にすると実行時例外になる問題として出やすいです。</p></section>
+<section class="article-section"><h2>確認ポイント</h2><ul><li><code>break</code> があるか。</li><li>文なのか式なのか。</li><li><code>-></code> なのか <code>:</code> なのか。</li><li>全ケースで値を返しているか。</li><li><code>case</code> が定数か。</li></ul></section>
+
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
     </main>
-    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
-  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
-  <script src="../../pwa.js?v=layout-unified-20260526"></script>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
 </body>
 </html>

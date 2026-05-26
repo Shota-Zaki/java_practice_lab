@@ -3,106 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Java Silver頻出のString、StringBuilder、文字列プール、intern、頻出メソッドを詳しく解説。">
-  <title>Java SilverのStringとStringBuilder頻出メソッドまとめ</title>
-  <meta name="theme-color" content="#2563eb">
-  <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
+  <meta name="description" content="Stringの不変性、文字列プール、StringBuilderとの違いを例で整理します。">
+  <title>Java SilverのStringとStringBuilder｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div class="layout">
     <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
     <aside class="sidebar" id="siteSidebar">
-      <div class="sidebar-top">
-        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
-        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
-      </div>
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px">
-        <a class="small" href="../../articles/index.html">学習記事</a>
-        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
-        <a class="small" href="../../articles/reference/index.html">参照比較</a>
-        <a class="small" href="../../site/about.html">このサイト</a>
-        <a class="small" href="../../site/privacy.html">Privacy</a>
-      </div>
     </aside>
     <main id="mainContent" class="main">
-
-<section class="content-page article-body wide-article">
-<h1>Java SilverのStringとStringBuilder頻出メソッドまとめ</h1>
-<p class="lead">文字列問題では、まず「変更されるのか」「戻り値を受け取っているのか」を確認します。<code>String</code> は不変、<code>StringBuilder</code> は可変です。</p>
-<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
-<h2>1. Stringは不変</h2>
-<pre><code>String s = "abcde";
-s.replace('c', 'x');
-s.substring(2, 4);
-System.out.println(s); // abcde</code></pre>
-<p><code>replace</code> や <code>substring</code> は元の文字列を変更しません。変更後の新しい <code>String</code> を返します。戻り値を受け取らなければ結果は捨てられます。</p>
-<pre><code>s = s.replace('c', 'x'); // abxde
-s = s.substring(2, 4);    // xd</code></pre>
-<h2>2. StringBuilderは可変</h2>
-<pre><code>StringBuilder sb = new StringBuilder("abc");
-sb.append("d");
-sb.insert(0, "X");
-sb.delete(1, 2);
-System.out.println(sb); // Xbcd</code></pre>
-<p><code>StringBuilder</code> の多くのメソッドは自分自身を変更して、同じインスタンスへの参照を返します。</p>
-<h2>3. 文字列プールとintern()</h2>
-<pre><code>String a = "Java";
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver 頻出</p>
+        <h1>Java SilverのStringとStringBuilder</h1>
+        
+<p class="lead">String問題は「不変性」「戻り値」「文字列プール」「StringBuilderとの違い」を分けて読むと安定します。</p>
+<section class="article-section"><h2>1. Stringは不変</h2><pre><code>String s = "abc";
+s.replace('b', 'x');
+System.out.println(s); // abc</code></pre><p><code>replace</code> は新しい文字列を返します。元の <code>s</code> は変わりません。</p><pre><code>s = s.replace('b', 'x'); // axc</code></pre></section>
+<section class="article-section"><h2>2. substringのendは含まない</h2><pre><code>String s = "abcdef";
+System.out.println(s.substring(2, 5)); // cde</code></pre><p>開始位置は含み、終了位置は含みません。添字2は <code>c</code>、5の手前までです。</p></section>
+<section class="article-section"><h2>3. concatも戻り値を受け取る</h2><pre><code>String s = "A";
+s.concat("B");
+System.out.println(s); // A</code></pre><p><code>concat</code> も元の文字列を変更しません。</p></section>
+<section class="article-section"><h2>4. +演算子の左から評価</h2><pre><code>System.out.println(1 + 2 + "A" + 3 + 4); // 3A34</code></pre><p>文字列が出るまでは数値加算、文字列が出た後は文字列連結です。</p></section>
+<section class="article-section"><h2>5. internと文字列プール</h2><pre><code>String a = new String("Java");
 String b = "Java";
-String c = new String("Java");
-String d = c.intern();
+System.out.println(a == b);          // false
+System.out.println(a.intern() == b); // true</code></pre><p><code>intern()</code> の戻り値はプール上の参照です。</p></section>
+<section class="article-section"><h2>6. StringBuilderは可変</h2><pre><code>StringBuilder sb = new StringBuilder("A");
+sb.append("B");
+System.out.println(sb); // AB</code></pre><p><code>StringBuilder</code> の多くのメソッドは同じオブジェクトを変更します。</p></section>
+<section class="article-section"><h2>7. StringBuilderのinsert/delete</h2><pre><code>StringBuilder sb = new StringBuilder("abcd");
+sb.insert(2, "X");   // abXcd
+sb.delete(1, 3);      // acd ではなく、現在の文字列から範囲削除</code></pre><p>連続して操作する問題では、毎回現在の状態を書き換えて追います。</p></section>
+<section class="article-section"><h2>8. StringBuilder.equalsは内容比較ではない</h2><pre><code>var a = new StringBuilder("A");
+var b = new StringBuilder("A");
+System.out.println(a.equals(b)); // false</code></pre><p>内容比較したい場合は <code>a.toString().equals(b.toString())</code> とします。</p></section>
+<section class="article-section"><h2>9. indexOf</h2><pre><code>String s = "abcabc";
+System.out.println(s.indexOf("bc"));    // 1
+System.out.println(s.indexOf("bc", 2)); // 4</code></pre><p>見つからなければ <code>-1</code> です。第2引数は検索開始位置です。</p></section>
+<section class="article-section"><h2>10. isBlankとisEmpty</h2><pre><code>System.out.println("".isEmpty());      // true
+System.out.println("   ".isEmpty());   // false
+System.out.println("   ".isBlank());   // true</code></pre><p><code>isEmpty()</code> は長さ0だけ、<code>isBlank()</code> は空白のみも対象です。</p></section>
+<section class="article-section"><h2>試験での注意</h2><ul><li>戻り値を受け取っていない <code>replace</code> / <code>substring</code> / <code>concat</code> は元の文字列を変えない。</li><li><code>StringBuilder</code> は変わるが、<code>equals()</code> は内容比較ではない。</li><li><code>==</code> が出たら文字列プールと <code>new</code> の有無を見る。</li></ul></section>
 
-System.out.println(a == b); // true
-System.out.println(a == c); // false
-System.out.println(a == d); // true</code></pre>
-<p>文字列リテラルは文字列プールで共有されます。<code>new String("Java")</code> は別インスタンスを作ります。<code>intern()</code> はプール上の同じ内容の文字列参照を返します。</p>
-<h2>4. 頻出Stringメソッド</h2>
-<table class="study-table method-table">
-<tr><th>メソッド</th><th>戻り値</th><th>注意</th></tr>
-<tr><td><code>length()</code></td><td><code>int</code></td><td>文字数。配列の <code>length</code> と違い、メソッド。</td></tr>
-<tr><td><code>charAt(index)</code></td><td><code>char</code></td><td>0始まり。範囲外は <code>StringIndexOutOfBoundsException</code>。</td></tr>
-<tr><td><code>indexOf(str)</code></td><td><code>int</code></td><td>見つからない場合は <code>-1</code>。</td></tr>
-<tr><td><code>substring(begin, end)</code></td><td><code>String</code></td><td>endは含まない。</td></tr>
-<tr><td><code>replace(old, new)</code></td><td><code>String</code></td><td>元の文字列は変わらない。</td></tr>
-<tr><td><code>equals</code></td><td><code>boolean</code></td><td>内容比較。<code>==</code>は参照比較。</td></tr>
-<tr><td><code>equalsIgnoreCase</code></td><td><code>boolean</code></td><td>大文字小文字を無視して比較。</td></tr>
-<tr><td><code>isEmpty()</code></td><td><code>boolean</code></td><td>長さ0かどうか。</td></tr>
-<tr><td><code>isBlank()</code></td><td><code>boolean</code></td><td>空白だけでもtrue。</td></tr>
-<tr><td><code>strip()</code></td><td><code>String</code></td><td>前後の空白を除去。<code>trim()</code>との違いも問われうる。</td></tr>
-</table>
-<h2>5. <code>length</code> と <code>length()</code></h2>
-<table class="study-table"><tr><th>対象</th><th>書き方</th><th>理由</th></tr><tr><td>配列</td><td><code>array.length</code></td><td>フィールド</td></tr><tr><td>String</td><td><code>str.length()</code></td><td>メソッド</td></tr><tr><td>ArrayList</td><td><code>list.size()</code></td><td>メソッド</td></tr></table>
-<h2>6. StringBuilderの比較に注意</h2>
-<pre><code>StringBuilder a = new StringBuilder("A");
-StringBuilder b = new StringBuilder("A");
-System.out.println(a == b);      // false
-System.out.println(a.equals(b)); // false
-System.out.println(a.toString().equals(b.toString())); // true</code></pre>
-<p><code>StringBuilder</code> は <code>String</code> のような内容比較の <code>equals()</code> を期待してはいけません。内容比較したいなら <code>toString()</code> してから比較します。</p>
-<h2>7. テキストブロックの基本</h2>
-<p>Java Silverではテキストブロックの改行やインデントも狙われます。<code>"""</code> で始まり、開始区切りの直後には改行が必要です。</p>
-<pre><code>String text = """
-    A
-    B
-    """;</code></pre>
-<p>末尾の改行が含まれるか、インデントがどの程度取り除かれるかを問う細かい問題もあります。迷ったら実際の文字列に改行が含まれている前提で追います。</p>
-<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/string.html">Stringを練習する</a><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a><a class="btn" href="../methods/index.html">頻出メソッドを見る</a></div></section>
-<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
-</section>
-<footer class="site-footer">
-<div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
-<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-</footer>
-
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
     </main>
-    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-string.html";</script>
-  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
-  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
-  <script src="../../pwa.js?v=layout-unified-20260526"></script>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
 </body>
 </html>

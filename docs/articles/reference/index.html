@@ -3,147 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Java Silverで頻出の参照比較、==、equals、String、配列、record、参照コピーを詳しく解説。">
-  <title>Java Silverで間違えやすい == と equals の違い｜参照比較完全整理</title>
-  <meta name="theme-color" content="#2563eb">
-  <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
+  <meta name="description" content="==、equals、new、String、配列、record、参照コピーを丁寧に整理します。">
+  <title>参照の同一性と同値比較｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div class="layout">
     <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
     <aside class="sidebar" id="siteSidebar">
-      <div class="sidebar-top">
-        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
-        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
-      </div>
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px">
-        <a class="small" href="../../articles/index.html">学習記事</a>
-        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
-        <a class="small" href="../../articles/reference/index.html">参照比較</a>
-        <a class="small" href="../../site/about.html">このサイト</a>
-        <a class="small" href="../../site/privacy.html">Privacy</a>
-      </div>
     </aside>
     <main id="mainContent" class="main">
-
-<section class="content-page article-body wide-article">
-<h1>Java Silverで間違えやすい == と equals の違い</h1>
-<p class="lead"><code>==</code> と <code>equals()</code> の違いは、Java Silverで最重要です。値が同じに見えても、参照先が違えば <code>==</code> は <code>false</code> になります。逆に、<code>equals()</code> はクラスがどう実装しているかで結果が変わります。</p>
-<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
-<h2>1. 参照変数とオブジェクトは別物</h2>
-<p>参照型変数は、オブジェクトそのものを持っているわけではありません。オブジェクトの場所を指す情報、つまり参照を持っています。まずここを間違えると、比較問題はほぼ崩れます。</p>
-<pre><code>Sample s1 = new Sample(10); // 新しいSampleオブジェクトAを作り、s1が参照する
-Sample s2 = s1;             // s2はs1と同じオブジェクトAを参照する
-s1 = new Sample(10);        // 新しいSampleオブジェクトBを作り、s1だけ参照先を変える
-System.out.println(s1 == s2); // false</code></pre>
-<table class="study-table detail-table">
-<tr><th>行</th><th>状態</th><th>重要点</th></tr>
-<tr><td><code>new Sample(10)</code></td><td>ヒープに新しいインスタンスが作られる</td><td><code>num</code>が同じでも、<code>new</code>すれば別インスタンス。</td></tr>
-<tr><td><code>Sample s2 = s1</code></td><td>参照のコピー</td><td>オブジェクトをコピーしていない。同じものを見る変数が2つになるだけ。</td></tr>
-<tr><td><code>s1 = new Sample(10)</code></td><td><code>s1</code>の参照先だけ変更</td><td><code>s2</code>は古いオブジェクトAを見続ける。</td></tr>
-<tr><td><code>s1 == s2</code></td><td>参照先が同じか確認</td><td>中身の<code>num</code>は見ない。参照が違うので<code>false</code>。</td></tr>
-</table>
-<div class="warning-box">危険な理解：<strong>「中の値が同じなら同じオブジェクト」</strong>。これは誤りです。<code>new</code>を2回使ったら、基本的に別オブジェクトです。</div>
-<h2>2. <code>==</code> は何を比較するか</h2>
-<table class="study-table">
-<tr><th>対象</th><th><code>==</code> の意味</th><th>例</th></tr>
-<tr><td>基本データ型</td><td>値そのものを比較</td><td><code>10 == 10</code> は <code>true</code></td></tr>
-<tr><td>参照型</td><td>同じインスタンスを参照しているか比較</td><td><code>new Sample(10) == new Sample(10)</code> は <code>false</code></td></tr>
-<tr><td><code>null</code></td><td>参照先がないか比較</td><td><code>obj == null</code> はよく使う</td></tr>
-</table>
-<pre><code>int a = 10;
-int b = 10;
-System.out.println(a == b); // true: 基本データ型は値比較
-
-Sample x = new Sample(10);
-Sample y = new Sample(10);
-System.out.println(x == y); // false: 参照型は同一性比較</code></pre>
-<h2>3. <code>equals()</code> はクラス次第</h2>
-<p><code>equals()</code> は「中身が同じか」を見るメソッドだと思われがちですが、それは半分だけ正しいです。正確には、<strong>そのクラスが <code>equals()</code> をどう実装しているか</strong>で決まります。</p>
-<table class="study-table">
-<tr><th>クラス</th><th><code>equals()</code> の傾向</th><th>注意</th></tr>
-<tr><td>自作クラスで未オーバーライド</td><td><code>Object.equals()</code> のまま。実質 <code>==</code></td><td>フィールド値が同じでも <code>false</code></td></tr>
-<tr><td><code>String</code></td><td>文字列の内容を比較</td><td><code>new String("A").equals("A")</code> は <code>true</code></td></tr>
-<tr><td><code>StringBuilder</code></td><td>基本的に同一性比較</td><td>内容が同じでも別インスタンスなら <code>false</code></td></tr>
-<tr><td>配列</td><td><code>equals()</code> は基本的に同一性比較</td><td>中身比較は <code>Arrays.equals()</code></td></tr>
-<tr><td><code>record</code></td><td>コンポーネント値で比較する <code>equals()</code> が自動生成</td><td>recordは値比較に近い感覚で扱える</td></tr>
-</table>
-<h2>4. 自作クラスで値比較したい場合</h2>
-<p>自作クラスで「<code>num</code> が同じなら同じ」と判断したいなら、<code>equals()</code> と <code>hashCode()</code> を実装します。</p>
-<pre><code>import java.util.Objects;
-
-public class Sample {
-    private final int num;
-
-    public Sample(int num) {
-        this.num = num;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Sample other)) return false;
-        return this.num == other.num;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(num);
-    }
-}</code></pre>
-<p>この実装をすると、<code>new Sample(10).equals(new Sample(10))</code> は <code>true</code> になります。ただし、<code>==</code> は相変わらず <code>false</code> です。ここを混同してはいけません。</p>
-<h2>5. Stringで特に注意すること</h2>
-<pre><code>String a = "Java";
-String b = "Java";
-String c = new String("Java");
-
-System.out.println(a == b);      // true  文字列リテラルはプールされる
-System.out.println(a == c);      // false newで別インスタンス
-System.out.println(a.equals(c)); // true  文字内容は同じ</code></pre>
-<p><code>String</code> は文字列プールがあるため、<code>==</code> がたまたま <code>true</code> になる場面があります。しかし、試験では「だから文字列比較は <code>==</code> でよい」と考えた瞬間に落とされます。文字列の内容比較は <code>equals()</code> です。</p>
-<h2>6. 配列の比較</h2>
-<pre><code>int[] a = {1, 2, 3};
-int[] b = {1, 2, 3};
-
-System.out.println(a == b);              // false
-System.out.println(a.equals(b));         // false
-System.out.println(Arrays.equals(a, b)); // true</code></pre>
-<p>配列の <code>equals()</code> は、中身比較ではありません。一次元配列の中身比較は <code>Arrays.equals()</code>、多次元配列なら <code>Arrays.deepEquals()</code> を使います。</p>
-<h2>7. メソッド引数は参照のコピー</h2>
-<p>メソッドにオブジェクトを渡すと、参照そのものがコピーされます。メソッド内で参照先オブジェクトのフィールドを書き換えると呼び出し元にも影響します。しかし、引数変数に別オブジェクトを再代入しても、呼び出し元の変数は変わりません。</p>
-<pre><code>static void changeValue(Sample s) {
-    s.num = 20;          // 参照先の中身を変更するので外側にも影響する
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver 最重要</p>
+        <h1>参照の同一性と同値比較</h1>
+        
+<p class="lead">参照比較はJava Silverで最も間違えやすい分野の一つです。<code>==</code> は「同じものを指しているか」、<code>equals()</code> は「同じ内容とみなすか」を確認するためのものです。ただし、<code>equals()</code> の挙動はクラスによって変わります。</p>
+<section class="article-section"><h2>1. 参照変数とオブジェクトは別物</h2><pre><code>Sample s1 = new Sample(10);
+Sample s2 = s1;
+s1 = new Sample(10);
+System.out.println(s1 == s2); // false</code></pre><p><code>s2 = s1</code> の時点では同じオブジェクトを見ています。しかし、その後 <code>s1</code> に新しいオブジェクトを代入したため、<code>s1</code> と <code>s2</code> は別のオブジェクトを参照します。</p></section>
+<section class="article-section"><h2>2. == は中身を見ない</h2><pre><code>class Sample {
+    int num;
+    Sample(int num) { this.num = num; }
 }
+Sample a = new Sample(10);
+Sample b = new Sample(10);
+System.out.println(a == b); // false</code></pre><p><code>num</code> が同じでも、<code>new</code> が2回あればオブジェクトは2つです。</p></section>
+<section class="article-section"><h2>3. equalsをオーバーライドしない自作クラス</h2><pre><code>Sample a = new Sample(10);
+Sample b = new Sample(10);
+System.out.println(a.equals(b)); // false</code></pre><p>自作クラスで <code>equals()</code> をオーバーライドしなければ、基本的には <code>Object.equals()</code> の参照比較です。</p></section>
+<section class="article-section"><h2>4. Stringはequalsで内容比較</h2><pre><code>String a = new String("Java");
+String b = "Java";
+System.out.println(a == b);      // false
+System.out.println(a.equals(b)); // true</code></pre><p><code>String.equals()</code> は文字列内容を比較します。<code>==</code> は参照比較なので一致しません。</p></section>
+<section class="article-section"><h2>5. 文字列リテラルと文字列プール</h2><pre><code>String a = "Java";
+String b = "Java";
+System.out.println(a == b); // true</code></pre><p>文字列リテラルは文字列プール上の同じインスタンスを共有するため、参照が一致することがあります。</p></section>
+<section class="article-section"><h2>6. intern()</h2><pre><code>String a = new String("Java");
+String b = a.intern();
+String c = "Java";
+System.out.println(b == c); // true</code></pre><p><code>intern()</code> は文字列プール上の参照を返します。<code>a</code> 自身がプールに移動するわけではありません。</p></section>
+<section class="article-section"><h2>7. StringBuilderのequalsは内容比較ではない</h2><pre><code>StringBuilder a = new StringBuilder("Java");
+StringBuilder b = new StringBuilder("Java");
+System.out.println(a.equals(b)); // false</code></pre><p><code>StringBuilder</code> は <code>equals()</code> を内容比較としてオーバーライドしていません。内容を比較したいなら <code>toString()</code> して比較します。</p></section>
+<section class="article-section"><h2>8. 配列のequals</h2><pre><code>int[] a = {1, 2};
+int[] b = {1, 2};
+System.out.println(a.equals(b)); // false</code></pre><p>配列の <code>equals()</code> も参照比較です。中身を比較するなら <code>java.util.Arrays.equals(a, b)</code> を使います。</p></section>
+<section class="article-section"><h2>9. 配列cloneは浅いコピー</h2><pre><code>char[][] a = {{'A'}, {'B'}};
+char[][] b = a.clone();
+System.out.println(a == b);       // false
+System.out.println(a[0] == b[0]); // true</code></pre><p>外側の配列はコピーされますが、内側の配列は同じ参照を共有します。</p></section>
+<section class="article-section"><h2>10. recordのequals</h2><pre><code>record Point(int x, int y) {}
+System.out.println(new Point(1, 2).equals(new Point(1, 2))); // true</code></pre><p>recordはコンポーネントを使った <code>equals()</code>、<code>hashCode()</code>、<code>toString()</code> を自動生成します。</p></section>
+<section class="article-section"><h2>11. メソッド引数は参照のコピー</h2><pre><code>static void change(StringBuilder sb) {
+    sb.append("B");
+}
+StringBuilder s = new StringBuilder("A");
+change(s);
+System.out.println(s); // AB</code></pre><p>参照のコピーが渡されます。同じオブジェクトを操作すれば呼び出し元にも影響します。</p><pre><code>static void replace(StringBuilder sb) {
+    sb = new StringBuilder("X");
+}</code></pre><p>一方で、仮引数に新しいオブジェクトを代入しても、呼び出し元の変数が差し替わるわけではありません。</p></section>
+<section class="article-section"><h2>覚えるべき判断</h2><ul><li><code>new</code> が何回出たかを見る。</li><li><code>==</code> は参照比較。</li><li><code>equals()</code> はクラスごとの実装を見る。</li><li><code>String</code>、ラッパー、recordは内容比較の問題になりやすい。</li><li>配列と <code>StringBuilder</code> は内容比較にならない点に注意。</li></ul></section>
 
-static void reassign(Sample s) {
-    s = new Sample(30);  // 引数変数の参照先を変えるだけ。外側の変数は変わらない
-}</code></pre>
-<h2>8. 判定チェックリスト</h2>
-<ol class="step-list">
-<li><strong>比較対象は基本型か参照型か。</strong> 基本型なら値比較、参照型なら参照比較。</li>
-<li><strong><code>new</code> が何回出てくるか。</strong> <code>new</code> が複数回なら別インスタンスの可能性が高い。</li>
-<li><strong>代入は参照コピーか。</strong> <code>s2 = s1</code> は同じオブジェクトを見るだけ。</li>
-<li><strong><code>equals()</code> がオーバーライドされているか。</strong> 自作クラス未実装なら実質 <code>==</code>。</li>
-<li><strong>String、record、配列は特別扱い。</strong> Stringは内容比較、recordは自動equals、配列はArrays系。</li>
-</ol>
-<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a><a class="btn" href="../../app/tags/string.html">String比較を練習する</a><a class="btn" href="../../app/tags/array.html">配列比較を練習する</a></div></section>
-<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
-</section>
-<footer class="site-footer">
-<div class="footer-links"><a href="../index.html">記事一覧</a><a href="index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
-<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-</footer>
-
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
     </main>
-    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-reference.html";</script>
-  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
-  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
-  <script src="../../pwa.js?v=layout-unified-20260526"></script>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
 </body>
 </html>
