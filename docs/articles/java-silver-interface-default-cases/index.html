@@ -1,5 +1,44 @@
-<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>interface defaultメソッドの衝突パターン</title><link rel='stylesheet' href='../../assets/content.css'></head><body><main class='wrap'><div class='nav'><a href='../../index.html'>トップ</a><a href='../../courses/java-basic/index.html'>Java基礎</a><a href='../../articles/index.html'>学習記事</a></div><article class='card'><h1>interface defaultメソッドの衝突パターン</h1><p class="lead">試験対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>結論</h2>同じシグネチャのdefaultメソッドを複数継承すると、実装クラスで解決が必要です。<h2>例</h2><pre><code>interface A { default void run(){} }
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java学習サイト">
+  <title>interface defaultメソッドの衝突パターン</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../articles/index.html">学習記事</a>
+        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../site/about.html">このサイト</a>
+        <a class="small" href="../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<div class="nav"><a href="../../index.html">トップ</a><a href="../../courses/java-basic/index.html">Java基礎</a><a href="../../articles/index.html">学習記事</a></div><article class="card"><h1>interface defaultメソッドの衝突パターン</h1><p class="lead">試験対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>結論</h2>同じシグネチャのdefaultメソッドを複数継承すると、実装クラスで解決が必要です。<h2>例</h2><pre><code>interface A { default void run(){} }
 interface B { default void run(){} }
 class C implements A, B {
   public void run(){ A.super.run(); }
-}</code></pre><h2>注意</h2><p><code>super.run()</code>ではなく、<code>A.super.run()</code>の形で呼びます。</p><div class='nav'><a href='../index.html'>記事一覧へ</a></div></article></main></body></html>
+}</code></pre><h2>注意</h2><p><code>super.run()</code>ではなく、<code>A.super.run()</code>の形で呼びます。</p><div class="nav"><a href="../index.html">記事一覧へ</a></div></article>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../pwa.js?v=layout-unified-20260526"></script>
+</body>
+</html>

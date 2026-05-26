@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Java Silverで間違えやすい原因をパターン別に整理したページ。">
-  <meta name="theme-color" content="#2563eb">
   <title>誤答パターン集｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
   <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=sidebar-course-fix-20260526">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -19,13 +19,19 @@
         <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
       </div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/learning-path.html">ロードマップ</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/quality-map.html">品質マップ</a><a class="small" href="../../app/search.html">問題検索</a><a class="small" href="../../app/settings.html">設定</a></div>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../articles/index.html">学習記事</a>
+        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../site/about.html">このサイト</a>
+        <a class="small" href="../../site/privacy.html">Privacy</a>
+      </div>
     </aside>
     <main id="mainContent" class="main">
-      
+
 <section class="hero"><h1>誤答パターン集</h1><p>点数が伸びない原因は、知識不足よりも判定の癖にあることが多いです。</p>
-        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div></section>
-        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
 <section class="content-page article-body">
 <h2>1. 出力を追う前にコンパイルエラーを見落とす</h2><p>ローカル変数未初期化、staticからインスタンスフィールド参照、戻り値型違い、アクセス修飾子の弱体化は、実行前に落ちます。</p>
 <h2>2. 参照比較を値比較だと思う</h2><p>`==` は参照の同一性です。自作クラスで `equals()` をオーバーライドしていない場合も、通常は同一性比較になります。</p>
@@ -34,13 +40,14 @@
 <h2>5. catch順序を軽く見る</h2><p>先に広い例外型を書くと、後続の狭い例外型が到達不能になります。</p>
 <div class="practice-tools"><a class="btn primary" href="../../app/review/wrong.html">間違えた問題を復習</a><a class="btn" href="../reference/index.html">参照比較を読む</a><a class="btn" href="../string/index.html">Stringを読む</a></div>
 </section>
+<footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../app/learning-path.html">Roadmap</a><a href="../../app/dashboard.html">Dashboard</a><a href="../../app/quality-map.html">Quality</a><a href="../../app/sync.html">Sync</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
 
-      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../app/learning-path.html">Roadmap</a><a href="../../app/dashboard.html">Dashboard</a><a href="../../app/quality-map.html">Quality</a><a href="../../app/sync.html">Sync</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer>
     </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="mistake-patterns.html";</script><script src="../../data/questions.js"></script>
-  <script src="../../assets/js/app.js?v=sidebar-course-fix-20260526"></script>
-  <script src="../../pwa.js"></script>
-  
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="mistake-patterns.html";</script>
+  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../pwa.js?v=layout-unified-20260526"></script>
 </body>
 </html>

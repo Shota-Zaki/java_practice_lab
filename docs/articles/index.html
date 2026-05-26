@@ -1,1 +1,40 @@
-<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>学習記事一覧</title><link rel='stylesheet' href='../assets/content.css'></head><body><main class='wrap'><div class='nav'><a href='../index.html'>トップ</a><a href='../courses/java-basic/index.html'>Java基礎</a><a href='../courses/java17-silver/index.html'>Java17 Silver</a><a href='../courses/gold/index.html'>Java Gold</a></div><article class='card'><h1>学習記事一覧</h1><p class='lead'>記事をコース別・目的別に整理しました。Java17 Silverの一覧にGold専用記事が混ざらないよう分離しています。</p></article><section class='card'><h2>Java Silver 共通</h2><div class='grid'><div class='box'><a href='java-silver-compile-vs-runtime/index.html'>コンパイルエラーと実行時例外の分け方</a><p>「いつ失敗するか」を切り分けるための記事。</p></div><div class='box'><a href='java-silver-method-resolution/index.html'>メソッド呼び出し解決まとめ</a><p>オーバーロード・型変換・nullを整理。</p></div><div class='box'><a href='java-silver-object-equality-cases/index.html'>同一性・同値性で落ちるパターン</a><p>== / equals / record / Stringを整理。</p></div><div class='box'><a href='java-silver-array-list-difference/index.html'>配列とArrayListの違い</a><p>配列・ArrayList・固定長・removeの注意点。</p></div><div class='box'><a href='java-silver-constructor-order-cases/index.html'>コンストラクタ呼び出し順</a><p>this() / super() / 初期化順を確認。</p></div><div class='box'><a href='java-silver-interface-default-cases/index.html'>defaultメソッドの衝突パターン</a><p>interface多重実装の注意点。</p></div><div class='box'><a href='java-silver-switch-yield-cases/index.html'>switch文・switch式・yield</a><p>文と式の違い、yield、フォールスルー。</p></div></div></section><section class='card'><h2>Java17 Silver</h2><div class='grid'><div class='box'><a href='java-silver-sealed-record-review/index.html'>sealedとrecordのJava17 Silver頻出整理</a><p>Java17 Silverで見るsealed / recordの基本。</p></div></div></section><section class='card'><h2>Java Gold</h2><div class='grid'><div class='box'><a href='java-gold-optional-first/index.html'>Optional入門</a><p>Goldで扱うOptionalの入口。</p></div><div class='box'><a href='java-gold-collector-first/index.html'>Collectors入門</a><p>Stream終端処理とcollectの入口。</p></div></div></section><section class='card'><h2>学習補助</h2><div class='grid'><div class='box'><a href='java-learning-roadmap-after-silver/index.html'>Silver合格後に何を学ぶべきか</a><p>Silver後のBronze/Gold/実務学習の整理。</p></div><div class='box'><a href='java-debug-printing-tips/index.html'>デバッグ出力で確認するポイント</a><p>System.out.printlnで挙動を確認する方法。</p></div></div></section></main></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java学習サイト">
+  <title>学習記事一覧</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=layout-unified-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../articles/index.html">学習記事</a>
+        <a class="small" href="../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../site/about.html">このサイト</a>
+        <a class="small" href="../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<div class="nav"><a href="../index.html">トップ</a><a href="../courses/java-basic/index.html">Java基礎</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Java Gold</a></div><article class="card"><h1>学習記事一覧</h1><p class="lead">記事をコース別・目的別に整理しました。Java17 Silverの一覧にGold専用記事が混ざらないよう分離しています。</p></article><section class="card"><h2>Java Silver 共通</h2><div class="grid"><div class="box"><a href="java-silver-compile-vs-runtime/index.html">コンパイルエラーと実行時例外の分け方</a><p>「いつ失敗するか」を切り分けるための記事。</p></div><div class="box"><a href="java-silver-method-resolution/index.html">メソッド呼び出し解決まとめ</a><p>オーバーロード・型変換・nullを整理。</p></div><div class="box"><a href="java-silver-object-equality-cases/index.html">同一性・同値性で落ちるパターン</a><p>== / equals / record / Stringを整理。</p></div><div class="box"><a href="java-silver-array-list-difference/index.html">配列とArrayListの違い</a><p>配列・ArrayList・固定長・removeの注意点。</p></div><div class="box"><a href="java-silver-constructor-order-cases/index.html">コンストラクタ呼び出し順</a><p>this() / super() / 初期化順を確認。</p></div><div class="box"><a href="java-silver-interface-default-cases/index.html">defaultメソッドの衝突パターン</a><p>interface多重実装の注意点。</p></div><div class="box"><a href="java-silver-switch-yield-cases/index.html">switch文・switch式・yield</a><p>文と式の違い、yield、フォールスルー。</p></div></div></section><section class="card"><h2>Java17 Silver</h2><div class="grid"><div class="box"><a href="java-silver-sealed-record-review/index.html">sealedとrecordのJava17 Silver頻出整理</a><p>Java17 Silverで見るsealed / recordの基本。</p></div></div></section><section class="card"><h2>Java Gold</h2><div class="grid"><div class="box"><a href="java-gold-optional-first/index.html">Optional入門</a><p>Goldで扱うOptionalの入口。</p></div><div class="box"><a href="java-gold-collector-first/index.html">Collectors入門</a><p>Stream終端処理とcollectの入口。</p></div></div></section><section class="card"><h2>学習補助</h2><div class="grid"><div class="box"><a href="java-learning-roadmap-after-silver/index.html">Silver合格後に何を学ぶべきか</a><p>Silver後のBronze/Gold/実務学習の整理。</p></div><div class="box"><a href="java-debug-printing-tips/index.html">デバッグ出力で確認するポイント</a><p>System.out.printlnで挙動を確認する方法。</p></div></div></section>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../";window.CURRENT_PAGE="articles.html";</script>
+  <script src="../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../pwa.js?v=layout-unified-20260526"></script>
+</body>
+</html>

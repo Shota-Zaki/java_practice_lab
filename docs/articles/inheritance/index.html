@@ -7,7 +7,7 @@
   <title>Java Silverの継承・オーバーライド・フィールド隠蔽</title>
   <meta name="theme-color" content="#2563eb">
   <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=sidebar-course-fix-20260526">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -19,20 +19,25 @@
         <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
       </div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px"><a class="small" href="../index.html">学習記事</a><a class="small" href="../../app/dashboard.html">弱点分析</a><a class="small" href="../../app/sync.html">履歴移行</a><a class="small" href="../../app/tags/index.html">タグ別演習</a><a class="small" href="../reference/index.html">参照比較</a><a class="small" href="../pitfalls/index.html">細かい違い</a><a class="small" href="../methods/index.html">メソッド表</a><a class="small" href="../glossary/index.html">単語集</a><a class="small" href="../cheatsheet/index.html">解き方</a></div>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../articles/index.html">学習記事</a>
+        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../site/about.html">このサイト</a>
+        <a class="small" href="../../site/privacy.html">Privacy</a>
+      </div>
     </aside>
     <main id="mainContent" class="main">
-      <section class="content-page article-body wide-article">
-        
+
+<section class="content-page article-body wide-article">
 <h1>Java Silverの継承・オーバーライド・フィールド隠蔽</h1>
 <p class="lead">継承問題は「変数の型」と「実体の型」を分けて考えます。フィールドは変数の型、オーバーライドメソッドは実体の型で決まる、という区別が重要です。</p>
-        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
 <div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
 <h2>1. ポリモーフィズムの基本</h2>
 <pre><code>A a = new B();
 a.method(); // BでオーバーライドされていればBのmethodが動く</code></pre>
 <p>変数の型が <code>A</code> でも、実体が <code>B</code> なら、オーバーライドされたメソッドは <code>B</code> 側が実行されます。</p>
-
 <h2>2. フィールドはオーバーライドされない</h2>
 <pre><code>class A { int data = 10; int getData() { return data; } }
 class B extends A { int data = 20; int getData() { return data; } }
@@ -40,48 +45,45 @@ A a = new B();
 System.out.println(a.data);     // 10: フィールドは変数の型Aで決まる
 System.out.println(a.getData());// 20: メソッドは実体Bで決まる</code></pre>
 <div class="warning-box">ここは頻出です。フィールドは隠蔽、メソッドはオーバーライド。混ぜて考えると失点します。</div>
-
 <h2>3. オーバーライドの条件</h2>
 <table class="study-table"><tr><th>条件</th><th>説明</th></tr><tr><td>メソッド名・引数が同じ</td><td>シグネチャが一致する</td></tr><tr><td>戻り値型が同じか共変戻り値</td><td>サブタイプを返せる場合がある</td></tr><tr><td>アクセス修飾子を狭くしない</td><td><code>public</code>を<code>protected</code>にするのはNG</td></tr><tr><td>checked例外を広げない</td><td>親より広いchecked例外は宣言できない</td></tr></table>
-
 <h2>4. オーバーロードとの違い</h2>
 <p>オーバーロードは同じメソッド名で引数が違うものです。戻り値だけ違ってもオーバーロードにはなりません。</p>
 <pre><code>void test(int x) {}
 void test(String x) {} // OK: 引数が違う
 int test(int x) { return x; } // NG: 戻り値だけ違う</code></pre>
-
 <h2>5. interfaceの抽象メソッド</h2>
 <p>インタフェースの抽象メソッドは暗黙的に <code>public abstract</code> です。実装クラスでは <code>public</code> で実装する必要があります。</p>
 <pre><code>interface A { void run(); }
 class B implements A {
     public void run() {} // publicが必要
 }</code></pre>
-
 <h2>6. defaultメソッドの競合</h2>
 <p>複数のインタフェースから同じシグネチャのdefaultメソッドを継承すると、実装クラス側で明示的にオーバーライドする必要があります。</p>
-<pre><code>interface A { default void hello() { System.out.println(&quot;A&quot;); } }
-interface B { default void hello() { System.out.println(&quot;B&quot;); } }
+<pre><code>interface A { default void hello() { System.out.println("A"); } }
+interface B { default void hello() { System.out.println("B"); } }
 class C implements A, B {
     public void hello() {
         A.super.hello();
     }
 }</code></pre>
-
 <h2>7. sealed / non-sealed / final</h2>
 <table class="study-table"><tr><th>修飾子</th><th>意味</th></tr><tr><td><code>sealed</code></td><td>継承・実装できるクラスを制限する</td></tr><tr><td><code>permits</code></td><td>許可するサブクラスを列挙する</td></tr><tr><td><code>final</code></td><td>それ以上継承させない</td></tr><tr><td><code>non-sealed</code></td><td>制限を解除して通常の継承可能クラスに戻す</td></tr></table>
 <p>sealedクラスの直接サブクラスは、<code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言する必要があります。</p>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/inheritance.html">継承を練習する</a><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a><a class="btn" href="../../app/tags/compile.html">コンパイル可否を練習する</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<footer class="site-footer">
+<div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</footer>
 
-      <section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/inheritance.html">継承を練習する</a><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a><a class="btn" href="../../app/tags/compile.html">コンパイル可否を練習する</a></div></section>
-        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
-      </section>
-      <footer class="site-footer">
-        <div class="footer-links"><a href="../index.html">記事一覧</a><a href="../reference/index.html">参照比較</a><a href="../types/index.html">型・配列</a><a href="../string/index.html">文字列</a><a href="../methods/index.html">メソッド表</a><a href="../glossary/index.html">単語集</a><a href="../cheatsheet/index.html">解き方</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div>
-        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-      </footer>
     </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-inheritance.html";</script><script src="../../data/questions.js"></script>
-  <script src="../../assets/js/app.js?v=sidebar-course-fix-20260526"></script>
-  <script src="../../pwa.js"></script>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-inheritance.html";</script>
+  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../pwa.js?v=layout-unified-20260526"></script>
 </body>
 </html>

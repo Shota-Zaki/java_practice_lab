@@ -5,35 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Java Silverで頻出するコンパイルエラーの原因を、短いコード例と修正例で整理します。">
   <title>Java Silverでコンパイルエラーになる原因まとめ｜Java Practice Lab</title>
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=sidebar-course-fix-20260526">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=layout-unified-20260526">
 </head>
 <body>
   <a class="skip-link" href="#mainContent">本文へ移動</a>
   <div class="layout">
     <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
     <aside class="sidebar" id="siteSidebar">
-      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
       <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../articles/index.html">学習記事</a>
+        <a class="small" href="../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../site/about.html">このサイト</a>
+        <a class="small" href="../../site/privacy.html">Privacy</a>
+      </div>
     </aside>
     <main id="mainContent" class="main">
-      <article class="content-page long-article">
-        <p class="eyebrow">Java Silver 頻出</p>
-        <h1>コンパイルエラーになる原因まとめ</h1>
-        <p>Java Silverでは、出力を追わせるように見せて、実際にはコンパイルで止まる問題が多いです。ここでは頻出原因を「何がダメか」「どう直すか」に分けて確認します。</p>
-        <div class="ad-slot ad-visible article-top-ad" aria-label="広告枠"><span>記事本文上部</span></div>
-        <div class="toc-box">
-          <strong>まず疑う場所</strong>
-          <ol>
-            <li>ローカル変数の未初期化</li>
-            <li>static文脈からインスタンスメンバー参照</li>
-            <li>アクセス修飾子の弱体化</li>
-            <li>戻り値型・引数・例外宣言の不一致</li>
-            <li>型変換・数値昇格・ジェネリクスの不一致</li>
-            <li>到達不能コード、catch順序、コンストラクタ規則</li>
-          </ol>
-        </div>
 
-        <section class="article-section"><h2>1. ローカル変数を初期化せずに使う</h2>
+<article class="content-page long-article">
+<p class="eyebrow">Java Silver 頻出</p>
+<h1>コンパイルエラーになる原因まとめ</h1>
+<p>Java Silverでは、出力を追わせるように見せて、実際にはコンパイルで止まる問題が多いです。ここでは頻出原因を「何がダメか」「どう直すか」に分けて確認します。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="toc-box">
+<strong>まず疑う場所</strong>
+<ol>
+<li>ローカル変数の未初期化</li>
+<li>static文脈からインスタンスメンバー参照</li>
+<li>アクセス修飾子の弱体化</li>
+<li>戻り値型・引数・例外宣言の不一致</li>
+<li>型変換・数値昇格・ジェネリクスの不一致</li>
+<li>到達不能コード、catch順序、コンストラクタ規則</li>
+</ol>
+</div>
+<section class="article-section"><h2>1. ローカル変数を初期化せずに使う</h2>
 <pre><code>public class Main {
     public static void main(String[] args) {
         int x;
@@ -43,8 +55,7 @@
 <p>ローカル変数にはデフォルト値が入りません。フィールドの <code>int</code> は <code>0</code> になりますが、メソッド内のローカル変数は明示的な初期化が必要です。</p>
 <pre><code>int x = 0;
 System.out.println(x);</code></pre></section>
-
-        <section class="article-section"><h2>2. staticメソッドからインスタンスフィールドを直接使う</h2>
+<section class="article-section"><h2>2. staticメソッドからインスタンスフィールドを直接使う</h2>
 <pre><code>public class Main {
     int count = 10;
     public static void main(String[] args) {
@@ -54,8 +65,7 @@ System.out.println(x);</code></pre></section>
 <p><code>main</code> は <code>static</code> なので、インスタンスなしで実行されます。インスタンスフィールドを使うならオブジェクトを作ります。</p>
 <pre><code>Main m = new Main();
 System.out.println(m.count);</code></pre></section>
-
-        <section class="article-section"><h2>3. オーバーライドでアクセス修飾子を弱くする</h2>
+<section class="article-section"><h2>3. オーバーライドでアクセス修飾子を弱くする</h2>
 <pre><code>class A {
     protected void test() {}
 }
@@ -66,16 +76,14 @@ class B extends A {
 <pre><code>class B extends A {
     protected void test() {}
 }</code></pre></section>
-        <div class="ad-slot ad-visible article-mid-ad article-inline-ad" aria-label="広告枠"><span>記事本文中</span></div>
-
-        <section class="article-section"><h2>4. 戻り値型だけ違うメソッドはオーバーロードにならない</h2>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+<section class="article-section"><h2>4. 戻り値型だけ違うメソッドはオーバーロードにならない</h2>
 <pre><code>class Sample {
     int calc() { return 1; }
     long calc() { return 2L; } // コンパイルエラー
 }</code></pre>
 <p>メソッド識別では戻り値型だけでは区別できません。引数リストが同じなら重複定義です。</p></section>
-
-        <section class="article-section"><h2>5. interface実装メソッドをpublicにしていない</h2>
+<section class="article-section"><h2>5. interface実装メソッドをpublicにしていない</h2>
 <pre><code>interface Task {
     void run();
 }
@@ -86,8 +94,7 @@ class Job implements Task {
 <pre><code>class Job implements Task {
     public void run() {}
 }</code></pre></section>
-
-        <section class="article-section"><h2>6. checked例外を処理していない</h2>
+<section class="article-section"><h2>6. checked例外を処理していない</h2>
 <pre><code>class Main {
     static void risky() throws Exception {}
     public static void main(String[] args) {
@@ -98,47 +105,40 @@ class Job implements Task {
 <pre><code>public static void main(String[] args) throws Exception {
     risky();
 }</code></pre></section>
-
-        <section class="article-section"><h2>7. catchの順序が広い型から狭い型になっている</h2>
+<section class="article-section"><h2>7. catchの順序が広い型から狭い型になっている</h2>
 <pre><code>try {
     throw new java.io.IOException();
 } catch (Exception e) {
 } catch (java.io.IOException e) { // コンパイルエラー
 }</code></pre>
 <p>先に <code>Exception</code> で捕まえると、後続の <code>IOException</code> は到達不能です。狭い型から広い型へ並べます。</p></section>
-
-        <section class="article-section"><h2>8. 到達不能コード</h2>
+<section class="article-section"><h2>8. 到達不能コード</h2>
 <pre><code>while (true) {
     break;
     System.out.println("X"); // コンパイルエラー
 }</code></pre>
 <p><code>break</code>、<code>return</code>、<code>throw</code> の後で絶対に実行されない文は到達不能コードです。</p></section>
-
-        <section class="article-section"><h2>9. varをフィールド・引数・戻り値に使う</h2>
+<section class="article-section"><h2>9. varをフィールド・引数・戻り値に使う</h2>
 <pre><code>class Sample {
     var value = 10; // コンパイルエラー
 }</code></pre>
 <p><code>var</code> はローカル変数の型推論だけで使えます。フィールド、メソッド引数、戻り値型には使えません。</p></section>
-
-        <section class="article-section"><h2>10. varの初期化式がない、またはnullだけ</h2>
+<section class="article-section"><h2>10. varの初期化式がない、またはnullだけ</h2>
 <pre><code>var a;        // コンパイルエラー
 var b = null; // コンパイルエラー</code></pre>
 <p><code>var</code> は初期化式から型を推論するため、型を決められない宣言は不可です。</p></section>
-
-        <section class="article-section"><h2>11. byte / short / char の演算結果をそのまま代入する</h2>
+<section class="article-section"><h2>11. byte / short / char の演算結果をそのまま代入する</h2>
 <pre><code>byte a = 1;
 byte b = 2;
 byte c = a + b; // コンパイルエラー</code></pre>
 <p><code>byte</code> や <code>short</code> は演算時に <code>int</code> へ昇格します。必要ならキャストします。</p>
 <pre><code>byte c = (byte)(a + b);</code></pre></section>
-
-        <section class="article-section"><h2>12. 通常代入と複合代入の違い</h2>
+<section class="article-section"><h2>12. 通常代入と複合代入の違い</h2>
 <pre><code>byte b = 1;
 b = b + 1; // コンパイルエラー
 b += 1;    // OK</code></pre>
 <p><code>b + 1</code> は <code>int</code> です。一方 <code>+=</code> は暗黙のキャストを含みます。この差は頻出です。</p></section>
-
-        <section class="article-section"><h2>13. コンストラクタのthis() / super() が先頭にない</h2>
+<section class="article-section"><h2>13. コンストラクタのthis() / super() が先頭にない</h2>
 <pre><code>class A {
     A(int x) {}
 }
@@ -149,8 +149,7 @@ class B extends A {
     }
 }</code></pre>
 <p><code>this(...)</code> または <code>super(...)</code> は、コンストラクタ本体の先頭文でなければいけません。</p></section>
-
-        <section class="article-section"><h2>14. 親クラスに引数なしコンストラクタがない</h2>
+<section class="article-section"><h2>14. 親クラスに引数なしコンストラクタがない</h2>
 <pre><code>class A {
     A(int x) {}
 }
@@ -158,16 +157,14 @@ class B extends A {
     B() {} // コンパイルエラー
 }</code></pre>
 <p>明示しない場合、子コンストラクタの先頭に <code>super()</code> が補われます。しかし親に <code>A()</code> がないのでエラーです。</p></section>
-
-        <section class="article-section"><h2>15. recordのコンポーネントは再代入できない</h2>
+<section class="article-section"><h2>15. recordのコンポーネントは再代入できない</h2>
 <pre><code>record Item(String name) {
     public void change() {
         name = "A"; // コンパイルエラー
     }
 }</code></pre>
 <p>recordのコンポーネントは実質 <code>private final</code> フィールドです。アクセサは <code>name()</code> で、<code>getName()</code> は自動生成されません。</p></section>
-
-        <section class="article-section"><h2>16. defaultメソッドの競合</h2>
+<section class="article-section"><h2>16. defaultメソッドの競合</h2>
 <pre><code>interface A { default void test() {} }
 interface B { default void test() {} }
 class C implements A, B {} // コンパイルエラー</code></pre>
@@ -175,31 +172,32 @@ class C implements A, B {} // コンパイルエラー</code></pre>
 <pre><code>class C implements A, B {
     public void test() { A.super.test(); }
 }</code></pre></section>
-
-        <section class="article-section"><h2>17. sealedの継承先が final / sealed / non-sealed でない</h2>
+<section class="article-section"><h2>17. sealedの継承先が final / sealed / non-sealed でない</h2>
 <pre><code>sealed class A permits B {}
 class B extends A {} // コンパイルエラー</code></pre>
 <p>sealedクラスを直接継承するクラスは、<code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言する必要があります。</p></section>
-
-        <section class="article-section"><h2>18. 配列の宣言・生成構文ミス</h2>
+<section class="article-section"><h2>18. 配列の宣言・生成構文ミス</h2>
 <pre><code>int array = new int[2]; // コンパイルエラー
 int[] a = new int[];    // コンパイルエラー</code></pre>
 <p>配列変数は <code>int[]</code> 型です。また、<code>new int[]</code> だけでは要素数か初期化子がないため不可です。</p></section>
+<section class="article-section"><h2>試験での見抜き方</h2>
+<ul>
+<li>出力候補を追う前に、変数宣言・初期化・アクセス修飾子を見る。</li>
+<li><code>static</code>、<code>var</code>、<code>throws</code>、<code>catch</code>、<code>super()</code> はコンパイルエラーの頻出箇所。</li>
+<li>問題文が「コンパイル、実行したとき」と書いてあっても、実行まで到達するとは限らない。</li>
+<li>コードが長い問題ほど、出力追跡より先に構文・型・アクセス権を疑う。</li>
+</ul></section>
+<div class="practice-tools"><a class="btn primary" href="../../app/tags/compile.html">コンパイル判定の問題を解く</a><a class="btn" href="../mistake-patterns/index.html">誤答パターン集を見る</a><a class="btn ghost" href="../index.html">記事一覧へ戻る</a></div>
+<div aria-label="広告枠" class="ad-slot ad-visible article-bottom-ad"><span>記事本文下部</span></div>
+</article>
+<footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
 
-        <section class="article-section"><h2>試験での見抜き方</h2>
-        <ul>
-          <li>出力候補を追う前に、変数宣言・初期化・アクセス修飾子を見る。</li>
-          <li><code>static</code>、<code>var</code>、<code>throws</code>、<code>catch</code>、<code>super()</code> はコンパイルエラーの頻出箇所。</li>
-          <li>問題文が「コンパイル、実行したとき」と書いてあっても、実行まで到達するとは限らない。</li>
-          <li>コードが長い問題ほど、出力追跡より先に構文・型・アクセス権を疑う。</li>
-        </ul></section>
-
-        <div class="practice-tools"><a class="btn primary" href="../../app/tags/compile.html">コンパイル判定の問題を解く</a><a class="btn" href="../mistake-patterns/index.html">誤答パターン集を見る</a><a class="btn ghost" href="../index.html">記事一覧へ戻る</a></div>
-              <div class="ad-slot ad-visible article-bottom-ad" aria-label="広告枠"><span>記事本文下部</span></div>
-      </article>
-      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
     </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
   </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-compile-errors.html";</script><script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=sidebar-course-fix-20260526"></script><script src="../../pwa.js"></script>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-compile-errors.html";</script>
+  <script src="../../data/questions.js?v=layout-unified-20260526"></script>
+  <script src="../../assets/js/app.js?v=layout-unified-20260526"></script>
+  <script src="../../pwa.js?v=layout-unified-20260526"></script>
 </body>
 </html>
