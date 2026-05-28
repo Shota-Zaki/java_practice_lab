@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="繰り返しとbreak/continueを読む。">
+  <title>Lesson 9 for・while｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=basic-depth-clean-20260528-p14">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../../articles/index.html">学習記事</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<div class="nav"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card"><p class="meta">Java基礎 Lesson 9</p><h1>for・while</h1><p class="lead">繰り返しとbreak/continueを読む。</p><div class="box"><strong>このレッスンのゴール</strong><p>用語を暗記するだけではなく、Javaのコードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div></article>
+<section class="card"><h2>for文</h2><p>初期化、条件、更新の順で動く。ループ本体の後に更新式が実行される。</p></section>
+<section class="card"><h2>while</h2><p>条件を先に判定する。最初からfalseなら一度も実行されない。</p></section>
+<section class="card"><h2>do-while</h2><p>本体を実行してから条件判定するため、最低1回は実行される。末尾のセミコロンが必要。</p></section>
+<section class="card"><h2>breakとcontinue</h2><p>breakはループを抜ける。continueは次の反復へ進む。for文ではcontinue後に更新式へ進む。</p></section>
+<section class="card"><h2>試験での罠</h2><p>continueの後にある同一ブロック内の文は到達不能になる場合がある。到達不能コードはコンパイルエラー。</p></section>
+<section class="card"><h2>確認ポイント</h2><ul><li>言葉の定義を自分の言葉で説明できるか。</li><li>コード例のどこで値や参照が変わるか追えるか。</li><li>コンパイル前に決まることと、実行中に決まることを分けられるか。</li></ul></section>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-09.html";</script>
+  <script src="../../../data/questions.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../../../assets/js/app.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../../../pwa.js?v=basic-depth-clean-20260528-p14"></script>
+</body>
+</html>

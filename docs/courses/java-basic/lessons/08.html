@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="boolean、比較、短絡評価を読む。">
+  <title>Lesson 8 if文と条件式｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=basic-depth-clean-20260528-p14">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../../../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../../../articles/index.html">学習記事</a>
+        <a class="small" href="../../../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../../../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../../../site/about.html">このサイト</a>
+        <a class="small" href="../../../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<div class="nav"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card"><p class="meta">Java基礎 Lesson 8</p><h1>if文と条件式</h1><p class="lead">boolean、比較、短絡評価を読む。</p><div class="box"><strong>このレッスンのゴール</strong><p>用語を暗記するだけではなく、Javaのコードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div></article>
+<section class="card"><h2>ifの条件</h2><p>ifの条件式はbooleanでなければならない。C言語のように0や1を条件として扱えない。</p></section>
+<section class="card"><h2>比較演算子</h2><p>==、!=、<、>、<=、>=を使う。ただし参照型の==は同一オブジェクトかどうかを見る。</p></section>
+<section class="card"><h2>短絡評価</h2><p>&& は左がfalseなら右を評価しない。|| は左がtrueなら右を評価しない。右側に++などの副作用があると結果が変わる。</p></section>
+<section class="card"><h2>例</h2><p><pre><code>int x = 0;
+if (false && ++x > 0) { }
+System.out.println(x); // 0</code></pre></p></section>
+<section class="card"><h2>試験での罠</h2><p>& や | をbooleanに使うと、短絡しない。右側も評価される。</p></section>
+<section class="card"><h2>確認ポイント</h2><ul><li>言葉の定義を自分の言葉で説明できるか。</li><li>コード例のどこで値や参照が変わるか追えるか。</li><li>コンパイル前に決まることと、実行中に決まることを分けられるか。</li></ul></section>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-08.html";</script>
+  <script src="../../../data/questions.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../../../assets/js/app.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../../../pwa.js?v=basic-depth-clean-20260528-p14"></script>
+</body>
+</html>
