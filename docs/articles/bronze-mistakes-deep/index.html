@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Bronzeの基礎文法ミスを例付きで整理。">
+  <title>Java Bronzeで落ちやすい基礎ミス｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-12-20260526">
+</head>
+<body data-section="articles">
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+    </aside>
+    <main id="mainContent" class="main">
+      <article class="content-page long-article">
+        <p class="eyebrow">品質強化記事</p>
+        <h1>Java Bronzeで落ちやすい基礎ミス</h1>
+        <p class="lead">Bronzeは難しいAPIより、基礎文法の読み違いで落ちます。ここではBronzeで間違いやすい基礎を、短いコードで確認します。</p>
+<section class="article-section"><h2>代入と比較を混ぜない</h2><pre><code>int x = 10;
+if (x = 20) { } // コンパイルエラー。intはbooleanではない
+if (x == 20) { } // 比較</code></pre><p>Javaの <code>if</code> 条件は <code>boolean</code> だけです。C言語のように数値を条件にできません。</p></section>
+<section class="article-section"><h2>配列の範囲</h2><pre><code>int[] nums = {10, 20, 30};
+System.out.println(nums[0]); // 10
+System.out.println(nums[3]); // 実行時例外</code></pre><p>配列の添字は0から始まります。<code>length</code> は要素数であり、最後の添字ではありません。</p></section>
+<section class="article-section"><h2>メソッドの戻り値</h2><pre><code>int add(int a, int b) {
+    return a + b;
+}
+void print() {
+    System.out.println(&quot;A&quot;);
+}</code></pre><p><code>void</code> は値を返しません。<code>return 値;</code> を書くとコンパイルエラーです。</p></section>
+      </article>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot ad-visible"><span>広告スペース</span></div></aside>
+  </div>
+  <script src="../../assets/js/app.js?v=quality-12-20260526"></script>
+</body>
+</html>

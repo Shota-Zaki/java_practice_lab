@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Silverの出力・コンパイル・例外問題を精度高く読むための実戦的な考え方。">
+  <title>Java Silverのコード読解で落ちない読み方｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-12-20260526">
+</head>
+<body data-section="articles">
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+    </aside>
+    <main id="mainContent" class="main">
+      <article class="content-page long-article">
+        <p class="eyebrow">品質強化記事</p>
+        <h1>Java Silverのコード読解で落ちない読み方</h1>
+        <p class="lead">Java Silver系の問題は、コードを上から漫然と読むと落ちます。ここでは、問題文の種類ごとに「どの情報を信用し、どこを疑うか」を整理します。固定の判定手順ではなく、実際の問題で使える読み方にしています。</p>
+<div class="toc-box"><strong>このページで扱うこと</strong><ol><li>出力問題に見えてコンパイルエラーになる例</li><li>実行時例外とコンパイルエラーの切り分け</li><li>参照型と実体型の読み分け</li><li>選択肢を消す順番</li></ol></div>
+<section class="article-section"><h2>出力を追う前に、宣言と代入を疑う</h2><pre><code>public class Main {
+    public static void main(String[] args) {
+        int a;
+        int b = 10;
+        if (b &gt; 0) {
+            a = b;
+        }
+        System.out.println(a);
+    }
+}</code></pre><p>このコードはコンパイルできます。<code>b > 0</code> がコンパイル時定数ではないので迷いやすいですが、Javaの到達可能性・初期化判定は単純な実行結果の推測とは一致しません。対して、次はエラーです。</p><pre><code>int a;
+if (args.length &gt; 0) {
+    a = 10;
+}
+System.out.println(a); // 未初期化の可能性</code></pre><p>ポイントは「実行したら代入されそう」ではなく、コンパイラが全経路で代入済みと判断できるかです。</p></section>
+<section class="article-section"><h2>参照型変数は「変数の型」と「実体の型」を分ける</h2><pre><code>class A { int x = 10; void print(){ System.out.println(&quot;A&quot;); } }
+class B extends A { int x = 20; void print(){ System.out.println(&quot;B&quot;); } }
+A obj = new B();
+System.out.println(obj.x); // 10
+obj.print();               // B</code></pre><p>フィールドは変数の型で決まり、メソッドは実体の型で動的ディスパッチされます。ここを混ぜると、継承問題の半分以上を落とします。</p></section>
+<section class="article-section"><h2>選択肢の消し方</h2><p>選択肢に「コンパイルエラー」「実行時例外」「出力結果」が並んでいる場合、出力候補を計算する前に、型・アクセス・例外・到達可能性を確認します。出力を最後まで追ってからコンパイルエラーに気付くのは時間の浪費です。</p></section>
+<section class="article-section"><h2>よくある誤答の原因</h2><ul><li><code>String</code> の不変性を忘れる</li><li><code>==</code> を値比較だと思う</li><li><code>static</code> からインスタンスメンバーを呼ぶ</li><li>ローカル変数にデフォルト値が入ると思う</li><li>親型変数から子クラス固有メソッドを呼べると思う</li></ul></section>
+      </article>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot ad-visible"><span>広告スペース</span></div></aside>
+  </div>
+  <script src="../../assets/js/app.js?v=quality-12-20260526"></script>
+</body>
+</html>

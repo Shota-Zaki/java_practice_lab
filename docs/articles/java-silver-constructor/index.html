@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="super、this、親コンストラクタ、初期化順を整理します。">
+  <title>Java Silverのコンストラクタで落ちるパターン｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+    </aside>
+    <main id="mainContent" class="main">
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver 頻出</p>
+        <h1>Java Silverのコンストラクタで落ちるパターン</h1>
+        
+<p class="lead">コンストラクタ問題は、呼び出し順、<code>this()</code> / <code>super()</code>、フィールド初期化、親コンストラクタの有無を確認します。</p>
+<section class="article-section"><h2>1. 親から先に実行される</h2><pre><code>class A { A() { System.out.print("A"); } }
+class B extends A { B() { System.out.print("B"); } }
+new B(); // AB</code></pre><p>子オブジェクトを作るときでも、先に親部分が初期化されます。</p></section>
+<section class="article-section"><h2>2. super()は暗黙に入る</h2><pre><code>class A { A() { System.out.print("A"); } }
+class B extends A { B() { System.out.print("B"); } }</code></pre><p><code>B()</code> の先頭には暗黙に <code>super()</code> が入ります。</p></section>
+<section class="article-section"><h2>3. 親に引数なしコンストラクタがない</h2><pre><code>class A { A(int x) {} }
+class B extends A { B() {} } // コンパイルエラー</code></pre><p>暗黙の <code>super()</code> が呼べないためです。<code>super(1)</code> のように明示します。</p></section>
+<section class="article-section"><h2>4. this()とsuper()は同時に書けない</h2><pre><code>B() {
+    this(1);
+    super(); // コンパイルエラー
+}</code></pre><p>どちらも先頭文でなければならないため、同じコンストラクタ内で両方は書けません。</p></section>
+<section class="article-section"><h2>5. フィールド初期化とコンストラクタ</h2><pre><code>class Sample {
+    int x = 10;
+    Sample() { x = 20; }
+}</code></pre><p>フィールド初期化の後にコンストラクタ本体が実行されます。最終的な <code>x</code> は <code>20</code> です。</p></section>
+<section class="article-section"><h2>確認ポイント</h2><ul><li>親に引数なしコンストラクタがあるか。</li><li><code>this()</code> / <code>super()</code> が先頭か。</li><li>出力順は親から子。</li><li>フィールド初期化よりコンストラクタ本体が後。</li></ul></section>
+
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
+    </main>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
+</body>
+</html>

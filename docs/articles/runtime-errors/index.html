@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="実行時例外の原因と、コンパイルエラーとの違いを例で整理します。">
+  <title>Java Silverの実行時例外まとめ｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+    </aside>
+    <main id="mainContent" class="main">
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver 頻出</p>
+        <h1>Java Silverの実行時例外まとめ</h1>
+        
+<p class="lead">実行時例外は、コンパイルは通るが実行中に止まる問題です。Java Silverでは「コンパイルエラー」「実行時例外」「正常出力」を混ぜて出されるため、例外の発生タイミングを正確に読む必要があります。</p>
+<div class="toc-box"><strong>頻出の実行時例外</strong><ul><li>NullPointerException</li><li>ArrayIndexOutOfBoundsException</li><li>ClassCastException</li><li>NumberFormatException</li><li>ArithmeticException</li><li>UnsupportedOperationException</li></ul></div>
+<section class="article-section"><h2>1. NullPointerException</h2><pre><code>String s = null;
+System.out.println(s.length()); // 実行時例外</code></pre><p>参照変数が <code>null</code> の状態でインスタンスメソッドやフィールドにアクセスすると発生します。</p><p><strong>例外にならない例：</strong><code>System.out.println(s);</code> は文字列 <code>null</code> を表示するだけです。</p></section>
+<section class="article-section"><h2>2. 配列の範囲外アクセス</h2><pre><code>int[] a = {10, 20};
+System.out.println(a[2]); // 実行時例外</code></pre><p>配列の添字は0から始まります。要素数2なら有効な添字は <code>0</code> と <code>1</code> です。</p></section>
+<section class="article-section"><h2>3. ClassCastException</h2><pre><code>Object obj = "Java";
+Integer n = (Integer) obj; // 実行時例外</code></pre><p>コンパイル上はキャスト可能でも、実体がその型でなければ実行時に失敗します。</p><pre><code>if (obj instanceof Integer n) {
+    System.out.println(n + 1);
+}</code></pre></section>
+<section class="article-section"><h2>4. NumberFormatException</h2><pre><code>int n = Integer.parseInt("10A"); // 実行時例外</code></pre><p>文字列が整数として解釈できない場合に発生します。コマンドライン引数問題で頻出です。</p></section>
+<section class="article-section"><h2>5. ArithmeticException</h2><pre><code>int x = 10 / 0; // 実行時例外</code></pre><p>整数のゼロ除算は例外です。一方、浮動小数点数では <code>Infinity</code> になるケースがあります。</p><pre><code>System.out.println(10.0 / 0); // Infinity</code></pre></section>
+<section class="article-section"><h2>6. UnsupportedOperationException</h2><pre><code>List&lt;String&gt; list = java.util.List.of("A", "B");
+list.add("C"); // 実行時例外</code></pre><p><code>List.of()</code> の戻り値は変更不可です。<code>add</code>、<code>remove</code>、<code>set</code> などが失敗します。</p></section>
+<section class="article-section"><h2>7. Arrays.asListの罠</h2><pre><code>List&lt;String&gt; list = java.util.Arrays.asList("A", "B");
+list.set(0, "X"); // OK
+list.add("C");    // 実行時例外</code></pre><p><code>Arrays.asList</code> は固定長リストです。要素の置換はできますが、サイズ変更はできません。</p></section>
+<section class="article-section"><h2>8. StringBuilderと範囲指定</h2><pre><code>StringBuilder sb = new StringBuilder("abc");
+sb.delete(1, 10); // 実行時例外</code></pre><p>APIによって範囲外の扱いが異なります。<code>String.substring</code> や <code>StringBuilder</code> の操作は、開始・終了位置に注意します。</p></section>
+<section class="article-section"><h2>9. try-catchで捕まる型</h2><pre><code>try {
+    int[] a = new int[1];
+    System.out.println(a[3]);
+} catch (NullPointerException e) {
+    System.out.println("NPE");
+}</code></pre><p>この例で発生するのは <code>ArrayIndexOutOfBoundsException</code> です。catchの型が違うため捕まりません。</p></section>
+<section class="article-section"><h2>10. finallyは例外があっても実行される</h2><pre><code>try {
+    throw new RuntimeException();
+} finally {
+    System.out.println("finally");
+}</code></pre><p>例外は消えませんが、<code>finally</code> は実行されます。出力問題では、例外で止まる前に何が表示されたかを確認します。</p></section>
+<section class="article-section"><h2>見分け方</h2><ul><li>構文と型に問題がなければ、次に <code>null</code>、添字、キャスト、parse、変更不可コレクションを見る。</li><li>例外がcatchされるかは、実際に発生する例外型とcatchの型で判断する。</li><li>finallyやtry-with-resourcesは、例外発生後にも出力を追加する可能性がある。</li></ul></section>
+
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
+    </main>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
+</body>
+</html>

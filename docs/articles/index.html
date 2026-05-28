@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java基礎、Silver、Java17 Silver、Goldを混ぜずに整理した記事一覧です。">
+  <title>学習記事一覧｜Java Practice Lab</title>
+  <meta name="theme-color" content="#2563eb">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=basic-depth-clean-20260528-p14">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top">
+        <p class="brand"><a href="../index.html">Java Practice Lab</a></p>
+        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
+      </div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+      <div class="footer-links" style="margin-top:18px">
+        <a class="small" href="../articles/index.html">学習記事</a>
+        <a class="small" href="../articles/compile-errors/index.html">コンパイルエラー</a>
+        <a class="small" href="../articles/reference/index.html">参照比較</a>
+        <a class="small" href="../site/about.html">このサイト</a>
+        <a class="small" href="../site/privacy.html">Privacy</a>
+      </div>
+    </aside>
+    <main id="mainContent" class="main">
+<div class="nav"><a href="../index.html">トップ</a><a href="../courses/java-basic/index.html">Java基礎</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Java Gold</a></div>
+<article class="card"><h1>学習記事一覧</h1><p class="lead">記事はコース別に分離しています。Java基礎、Java Silver共通、Java17 Silver専用、Java Gold専用を混ぜずに読めるようにしました。</p></article>
+<section class="card"><h2>Java基礎</h2><div class="grid">
+<div class="box"><a href="basic-learning-depth/index.html">Java基礎を薄くしないための学び方</a><p>基礎を1つずつ濃く学ぶための読み方。</p></div>
+<div class="box"><a href="course-scope/index.html">Java基礎・Silver・Goldの範囲整理</a><p>どのコースで何を扱うべきか。</p></div>
+<div class="box"><a href="java-command/index.html">javac・javaコマンドで詰まる原因</a><p>コンパイルと実行の違いを整理。</p></div>
+<div class="box"><a href="memory-model-beginner/index.html">参照・メモリ・代入の基本</a><p>値と参照を基礎から確認。</p></div>
+<div class="box"><a href="api-reading/index.html">Java API仕様の読み方</a><p>標準ライブラリを調べる入口。</p></div>
+</div></section>
+<section class="card"><h2>Java Silver共通</h2><div class="grid">
+<div class="box"><a href="compile-errors/index.html">コンパイルエラー原因まとめ</a><p>原因、例、修正方針を確認。</p></div>
+<div class="box"><a href="runtime-errors/index.html">実行時例外の原因まとめ</a><p>NPE、範囲外、キャスト、parse失敗など。</p></div>
+<div class="box"><a href="java-silver-code-reading/index.html">Java Silverコード読解</a><p>出力・例外・コンパイル可否を読み分ける。</p></div>
+<div class="box"><a href="reference/index.html">参照の同一性と同値比較</a><p>== / equals / record / String。</p></div>
+<div class="box"><a href="string/index.html">StringとStringBuilder</a><p>不変性、戻り値、文字列プール。</p></div>
+<div class="box"><a href="java-silver-method-resolution/index.html">メソッド呼び出し解決</a><p>オーバーロード、型変換、null。</p></div>
+<div class="box"><a href="java-silver-array-list-difference/index.html">配列とArrayListの違い</a><p>固定長、remove、List.of。</p></div>
+<div class="box"><a href="java-silver-switch-yield-cases/index.html">switch文・switch式・yield</a><p>フォールスルーとyield。</p></div>
+</div></section>
+<section class="card"><h2>Java17 Silver専用</h2><div class="grid">
+<div class="box"><a href="java17-specific-precision/index.html">Java17 Silver固有論点の精密整理</a><p>record、sealed、instanceofパターン変数。</p></div>
+<div class="box"><a href="java-silver-sealed-record-review/index.html">sealedとrecordの頻出整理</a><p>Java17 Silverの範囲に限定。</p></div>
+</div></section>
+<section class="card"><h2>Java Gold専用</h2><div class="grid">
+<div class="box"><a href="java-gold-type-flow/index.html">Goldの型の流れ</a><p>Stream、ジェネリクス、Optionalを型で読む。</p></div>
+<div class="box"><a href="java-gold-stream-first/index.html">Stream API入門</a><p>中間操作、終端操作、遅延評価。</p></div>
+<div class="box"><a href="java-gold-generics-first/index.html">ジェネリクス入門</a><p>extends / super / PECS。</p></div>
+<div class="box"><a href="java-gold-optional-first/index.html">Optional入門</a><p>Optionalを値の有無として扱う。</p></div>
+<div class="box"><a href="java-gold-collector-first/index.html">Collectors入門</a><p>groupingByなどをGold側で扱う。</p></div>
+</div></section>
+    </main>
+    <aside class="right-rail-ad" aria-label="広告枠"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../";window.CURRENT_PAGE="articles.html";</script>
+  <script src="../data/questions.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../assets/js/app.js?v=basic-depth-clean-20260528-p14"></script>
+  <script src="../pwa.js?v=basic-depth-clean-20260528-p14"></script>
+</body>
+</html>

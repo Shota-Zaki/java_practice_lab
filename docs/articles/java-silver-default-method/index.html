@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="interfaceのdefaultメソッド競合、クラス優先、recordとの衝突を整理します。">
+  <title>defaultメソッド競合の整理｜Java Practice Lab</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=quality-11-20260526">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">本文へ移動</a>
+  <div class="layout">
+    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
+    <aside class="sidebar" id="siteSidebar">
+      <div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p><button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button></div>
+      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
+    </aside>
+    <main id="mainContent" class="main">
+      <article class="content-page long-article">
+        <p class="eyebrow">Java Silver / Java17</p>
+        <h1>defaultメソッド競合の整理</h1>
+        
+<p class="lead">defaultメソッドは、interfaceに実装を持たせる仕組みです。Java Silverでは「競合したときにどうなるか」が狙われます。</p>
+<section class="article-section"><h2>1. 1つだけなら継承される</h2><pre><code>interface A { default void test() { System.out.println("A"); } }
+class B implements A {}
+new B().test(); // A</code></pre><p>実装クラスがメソッドを持たなければ、defaultメソッドが使われます。</p></section>
+<section class="article-section"><h2>2. 複数interfaceで同じdefault</h2><pre><code>interface A { default void test() {} }
+interface B { default void test() {} }
+class C implements A, B {} // コンパイルエラー</code></pre><p>どちらを使うか決められないため、クラス側で実装する必要があります。</p></section>
+<section class="article-section"><h2>3. 解決方法</h2><pre><code>class C implements A, B {
+    public void test() {
+        A.super.test();
+    }
+}</code></pre><p><code>インタフェース名.super.メソッド名()</code> で特定のdefault実装を呼べます。</p></section>
+<section class="article-section"><h2>4. クラスのメソッドが優先</h2><pre><code>class Base { public void test() { System.out.println("Base"); } }
+interface A { default void test() { System.out.println("A"); } }
+class Child extends Base implements A {}</code></pre><p>クラス継承のメソッドがinterfaceのdefaultメソッドより優先されます。</p></section>
+<section class="article-section"><h2>5. recordとの衝突</h2><pre><code>interface A { default void name() {} }
+record User(String name) implements A {} // 戻り値不一致ならエラー</code></pre><p>recordは <code>String name()</code> のようなアクセサを自動生成します。同名メソッドの戻り値が衝突する場合があります。</p></section>
+
+        <div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+      </article>
+      <footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../index.html">Articles</a><a href="../../courses/java17-silver/exams/index.html">Exam</a><a href="../../site/privacy.html">Privacy</a></div><p>© Java Practice Lab.</p></footer>
+    </main>
+    <aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside>
+  </div>
+  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+  <script src="../../data/questions.js"></script><script src="../../assets/js/app.js?v=quality-11-20260526"></script><script src="../../pwa.js?v=quality-11-20260526"></script>
+</body>
+</html>
