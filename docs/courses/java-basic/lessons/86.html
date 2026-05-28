@@ -1,5 +1,0 @@
-<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Lesson 86 メソッド呼び出しは「型」と「実体」を分けて読む</title><link rel='stylesheet' href='../../../assets/content.css'></head><body><main class='wrap'><div class='nav'><a href='../../../index.html'>トップ</a><a href='../../../courses/java-basic/index.html'>Java基礎</a><a href='../../../articles/index.html'>学習記事</a></div><article class='card'><h1>Lesson 86 メソッド呼び出しは「型」と「実体」を分けて読む</h1><p class='lead'>継承問題では、変数の型と実際のオブジェクトの型を分けて考えます。</p><div class='toc'><a href='#s1'>オーバーライド</a><a href='#s2'>フィールドは多態的ではない</a><a href='#s3'>注意</a></div><h2 id='s1'>オーバーライド</h2><pre><code>A a = new B();
-a.method();</code></pre><p>インスタンスメソッドがオーバーライドされていれば、実体である<code>B</code>側が呼ばれます。</p><h2 id='s2'>フィールドは多態的ではない</h2><pre><code>class A { int x = 1; }
-class B extends A { int x = 2; }
-A a = new B();
-System.out.println(a.x); // 1</code></pre><h2 id='s3'>注意</h2><p>メソッドは実体、フィールドは参照変数の型。この区別はSilverで非常に重要です。</p><div class='nav'><a href='85.html'>前へ</a><a href='../index.html'>一覧へ</a><a href='87.html'>次へ</a></div></article></main></body></html>

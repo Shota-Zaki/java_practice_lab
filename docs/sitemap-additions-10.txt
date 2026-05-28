@@ -1,9 +1,0 @@
-/docs/courses/bronze/practice/class-method.html
-/docs/courses/bronze/practice/pitfall-check.html
-/docs/courses/java11-silver/practice/package-command.html
-/docs/courses/java11-silver/practice/compile-check.html
-/docs/courses/java11-silver/practice/output-mix.html
-/docs/courses/gold/practice/lambda-optional.html
-/docs/courses/gold/practice/stream-collectors.html
-/docs/courses/gold/practice/nio-datetime.html
-/docs/courses/gold/practice/gold-api-mix.html
