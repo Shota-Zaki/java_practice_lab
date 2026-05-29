@@ -5,6 +5,8 @@
   Object.assign(PAGE_PATHS, EXTRA_PAGE_PATHS_HEADER_CARDS);
   const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold/practice/nio-concurrency-module-extra.html"};
   Object.assign(PAGE_PATHS, JAVA11_GOLD_MORE_PAGE_PATHS);
+  const EXTRA_ADDED_PAGE_PATHS = {"java11-practice-13.html":"courses/java11-silver/practice/comprehensive-extra.html","java11-exam-c.html":"courses/java11-silver/exams/c.html","gold11-practice-15.html":"courses/gold11/practice/comprehensive-extra.html","gold11-exam-c.html":"courses/gold11/exams/c.html","gold17-practice-15.html":"courses/gold17/practice/comprehensive-extra.html","gold17-exam-c.html":"courses/gold17/exams/c.html"};
+  Object.assign(PAGE_PATHS, EXTRA_ADDED_PAGE_PATHS);
   const GOLD_SPLIT_PAGE_PATHS = {"gold11.html":"courses/gold11/index.html","gold17.html":"courses/gold17/index.html","gold-hub.html":"courses/gold/index.html"};
   Object.assign(PAGE_PATHS, GOLD_SPLIT_PAGE_PATHS);
   function pageHref(page) {
@@ -397,7 +399,7 @@
   "java17-silver-record-details": "recordを丁寧に整理",
   "java17-silver-sealed-permits": "sealedとpermits",
   "java17-silver-switch-expression-yield": "switch式とyield",
-  "java17-specific-precision": "Java17 Silver追加部分を正確に読む",
+  "java17-specific-precision": "record・sealed・switch式の整理",
   "memory-model-beginner": "参照・メモリ・代入の基本",
   "methods": "頻出メソッドリスト 詳細版",
   "mistake-patterns": "誤答パターン集",
@@ -791,7 +793,7 @@
         + section('実践模試', link('exam.html','模試センター', activePath === 'exam.html') + unitLinks('java17', true), isExamUnit() || activePath === 'exam.html')
         + section('復習・分析', reviewLinks, !!reviewMode || ["dashboard.html","mistake-reasons.html"].includes(activePath))
         + section('演習ツール', toolLinks, !!tagFilter || randomMode || ["search.html","notes.html"].includes(activePath))
-        + section('学習記事', direct('courses/java17-silver/articles.html','Java17 Silver記事', activePath === 'java17-articles.html') + direct('articles/compile-errors/index.html','コンパイルエラー') + direct('articles/reference/index.html','参照比較') + direct('articles/java17-specific-precision/index.html','Java17追加部分論点'), activePath === 'java17-articles.html')
+        + section('学習記事', direct('courses/java17-silver/articles.html','Java17 Silver記事', activePath === 'java17-articles.html') + direct('articles/compile-errors/index.html','コンパイルエラー') + direct('articles/reference/index.html','参照比較') + direct('articles/java17-specific-precision/index.html','record・sealed・switch式'), activePath === 'java17-articles.html')
         + silverCourseLinks;
     } else if (activeCourse === 'gold11') {
       html += section('Java Gold SE 11', courseHome.gold11 + unitLinks('gold11', false), true)
@@ -1098,14 +1100,11 @@
       <p><strong>あなたの回答:</strong> ${selected.length ? escapeHtml(selected.join("・")) : "未回答"}</p>
       <p><strong>正解:</strong> ${escapeHtml(answerText)}</p>
       <p><strong>自信度:</strong> ${escapeHtml(confidenceLabel(confidence))}${noteText ? ` ／ <strong>メモあり</strong>` : ""}</p>
-      <p class="first-look"><strong>まず見るべきポイント:</strong> ${escapeHtml(firstLookPoint(q))}</p>
       <p>${escapeHtml(q.explanation.summary)}</p>
       ${q.explanation.points ? `<ul>${q.explanation.points.map(p => `<li>${escapeHtml(p)}</li>`).join("")}</ul>` : ""}
       ${q.explanation.optionDetails ? `<details class="option-detail-box" open><summary>選択肢別の確認</summary><ul>${q.explanation.optionDetails.map(p => `<li>${escapeHtml(p)}</li>`).join("")}</ul></details>` : ""}
-      ${q.examFocus ? `<p class="exam-focus"><strong>復習焦点:</strong> ${escapeHtml(q.examFocus)}</p>` : ""}
       ${!isCorrect ? mistakeReasonPickerHtml(q.id) : ""}
-      ${relatedLinksHtml(q)}
-      <div class="source-note">${escapeHtml(q.source)}</div>`;
+      ${relatedLinksHtml(q)}`;
     bindMistakeReasonBox(card, q.id);
     if (persist) {
       const progress = readProgress();
@@ -1457,56 +1456,10 @@
   }
 
 
-  function practiceQualityGuideHtml(unit) {
-    const id = unit?.id || unitId || "";
-    const title = escapeHtml(unit?.title || "この演習");
-    let course = "Java17 Silver";
-    let focus = [
-      "最初にコンパイル可否を見る。record、sealed、switch式、instanceofパターン変数は構文条件を雑にしない。",
-      "次に実行時例外の可能性を見る。null、配列範囲外、キャスト、parse失敗を疑う。",
-      "最後に出力を追う。参照型、Stringの不変性、オーバーライド、例外の流れを1行ずつ確定する。"
-    ];
-    if (id.startsWith("bronze-")) {
-      course = "Bronze";
-      focus = [
-        "用語と構文の形を先に確認する。main、変数、if、for、配列、クラスの最小単位を曖昧にしない。",
-        "出力問題は、変数の値がどの行で変わるかを紙に書く。暗算で飛ばすと単純な問題ほど落とす。",
-        "コンパイルエラーと実行時例外を混同しない。文法・型が成立しないなら実行すらされない。"
-      ];
-    } else if (id.startsWith("java11-")) {
-      course = "Java11 Silver";
-      focus = [
-        "対象範囲に限定して読む。record、sealed、switch式、instanceofパターン変数はここでは前提にしない。",
-        "var、StringBuilder、ArrayList、例外、継承は、使える場所・戻り値・副作用・参照型を分ける。",
-        "オーバーロードはコンパイル時、オーバーライドは実行時の実体で決まる。この区別を崩さない。"
-      ];
-    } else if (/^gold(11|17)-/.test(id) || id.startsWith("gold-")) {
-      course = "Gold";
-      focus = [
-        "API名を知っているだけでは足りない。ラムダの対象型、Streamの中間/終端操作、戻り値型を先に読む。",
-        "ジェネリクスは代入互換性を厳密に見る。List<Sub>をList<Super>のように扱わない。",
-        "NIO、並行処理、Optional、Collectorsは、処理の実行タイミングと結果型をセットで確認する。"
-      ];
-    }
-    return `<h2>${course}：このセットの解き方</h2>
-      <p><strong>${title}</strong>は、正解記号を覚えるページではありません。解答後に「なぜ他の選択肢が消えるか」まで確認することで効果が出ます。</p>
-      <div class="guide-grid">
-        <div class="guide-box"><strong>1. 先に分類</strong><span>出力結果・コンパイルエラー・実行時例外のどれを問われているかを先に固定します。</span></div>
-        <div class="guide-box"><strong>2. 根拠を行で持つ</strong><span>正解の根拠を「何行目で確定したか」で説明できる状態にします。</span></div>
-        <div class="guide-box"><strong>3. 誤答を潰す</strong><span>最低1つは誤答選択肢を選び、なぜ違うかを自分の言葉で確認します。</span></div>
-      </div>
-      <ul>${focus.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`;
-  }
+  function practiceQualityGuideHtml(unit) { return ""; }
   function renderPracticeQualityGuide(unit) {
     const slot = document.querySelector("[data-quality-guide]");
-    if (!slot) return;
-    if (unit?.mode === "exam") {
-      slot.innerHTML = "";
-      slot.classList.add("is-hidden");
-      return;
-    }
-    slot.classList.remove("is-hidden");
-    slot.innerHTML = practiceQualityGuideHtml(unit);
+    if (slot) { slot.innerHTML = ""; slot.classList.add("is-hidden"); }
   }
 
   function renderUnit() {
@@ -2012,5 +1965,36 @@
     </tbody></table><p class="notice">収益化するなら、問題ページより記事ページを主な流入・広告配置先にする方が安全です。</p>`;
   }
 
-  document.addEventListener("DOMContentLoaded", () => { applySettings(); renderNav(); renderIndex(); renderHomeStats(); renderCourseStats(); renderCourseDashboard(); renderDashboard(); renderQualityMapPage(); renderLearningPathPage(); renderNotesPage(); renderSettingsPage(); renderSearchPage(); renderModePage(); renderMistakeReasonsPage(); renderWeakGuidePage(); renderBeforeExamPage(); renderAdsGuidePage(); renderSyncPage(); renderUnit(); bindToolbar(); bindKeyboardShortcuts(); });
+
+  function activateSiteHeader() {
+    const nav = document.querySelector(".site-nav");
+    if (!nav) return;
+    const path = location.pathname.replace(/\\/g, "/");
+    const map = [
+      ["/courses/java-basic/", "courses/java-basic/index.html"],
+      ["/courses/bronze/", "courses/bronze/index.html"],
+      ["/courses/java11-silver/", "courses/java11-silver/index.html"],
+      ["/courses/java17-silver/", "courses/java17-silver/index.html"],
+      ["/courses/gold11/", "courses/gold11/index.html"],
+      ["/courses/gold17/", "courses/gold17/index.html"],
+      ["/articles/", "articles/index.html"],
+      ["/app/dashboard", "app/dashboard.html"],
+      ["/app/search", "app/search.html"],
+      ["/app/settings", "app/settings.html"],
+    ];
+    let key = "index.html";
+    for (const [needle, target] of map) {
+      if (path.includes(needle)) { key = target; break; }
+    }
+    if (/\/docs\/$|\/docs\/index\.html$|\/index\.html$/.test(path) && !path.includes("/courses/") && !path.includes("/articles/") && !path.includes("/app/")) key = "index.html";
+    nav.querySelectorAll("a").forEach(a => {
+      const href = a.getAttribute("href") || "";
+      const normalized = href.replace(/^\.\.\//g, "").replace(/^\.\//, "");
+      const active = key === "index.html" ? a.classList.contains("nav-home-button") : normalized.endsWith(key);
+      a.classList.toggle("is-active", active);
+      if (active) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => { applySettings(); activateSiteHeader(); renderNav(); renderIndex(); renderHomeStats(); renderCourseStats(); renderCourseDashboard(); renderDashboard(); renderQualityMapPage(); renderLearningPathPage(); renderNotesPage(); renderSettingsPage(); renderSearchPage(); renderModePage(); renderMistakeReasonsPage(); renderWeakGuidePage(); renderBeforeExamPage(); renderAdsGuidePage(); renderSyncPage(); renderUnit(); bindToolbar(); bindKeyboardShortcuts(); });
 })();
