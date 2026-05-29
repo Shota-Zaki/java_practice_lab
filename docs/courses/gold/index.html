@@ -8,14 +8,14 @@
 <title>Java Gold 対策｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout course-home" data-course="gold">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
 <header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -24,8 +24,8 @@
 <div>
 <p class="eyebrow">Java Gold / 上位資格</p>
 <h1>Java Gold 対策</h1>
-<p class="lead">ラムダ、Stream、Optional、Collectors、ジェネリクス、I/O、NIO.2、並行処理、モジュールをGold側に分離して学習します。</p>
-<p class="notice">GoldはSilverと切り離します。Stream、Optional、Collectors、高度ジェネリクス、並行処理は基礎やSilverに戻さない方が学習効率が良いです。</p>
+<p class="lead">ラムダ、Stream、Optional、Collectors、ジェネリクス、I/O、NIO.2、並行処理、モジュールを発展範囲として学習します。</p>
+<p class="notice">このコースは基礎文法とは切り離します。Stream、Optional、Collectors、高度ジェネリクス、並行処理は基礎文法とは分けた方が学習効率が良いです。</p>
 <div class="hero-actions">
 <a class="btn primary" href="practice/lambda-stream.html">通常演習を始める</a>
 <a class="btn" href="exams/a.html">Gold模試へ</a>
@@ -36,7 +36,10 @@
 <span>通常演習 → 不正解復習 → 模試 → 弱点タグ補強</span>
 </div>
 </section>
-<div class="ad-slot course-ad"><span>コース上部広告</span></div>
+<div class="ad-slot course-ad"><span>コース上部広告</span></div><section class="panel course-dashboard-panel" id="practiceList">
+<div class="section-head-row"><h2>Gold ダッシュボード</h2><span class="inline-note">通常演習の進捗を見ながら、この画面から演習を開始できます。</span></div>
+<div data-course="gold" id="courseDashboardRoot"></div>
+</section>
 <section class="panel course-menu-panel">
 <h2>学習メニュー</h2>
 <div class="course-menu-grid">
@@ -46,42 +49,18 @@
 <a class="course-menu-card" href="../../articles/index.html"><strong>学習記事</strong><span>つまずいた論点を文章で確認</span></a>
 </div>
 </section>
-<section class="panel course-progress-panel">
-<div class="section-head-row"><h2>今日の進捗</h2><a class="btn ghost" href="../../app/dashboard.html">詳細分析</a></div>
-<div data-course="gold" id="courseStatsRoot"></div>
-</section>
-<section class="panel course-dashboard-panel">
-<div class="section-head-row"><h2>Gold ダッシュボード</h2><span class="inline-note">通常演習・復習・模試をこの画面から回します。</span></div>
-<div data-course="gold" id="courseDashboardRoot"></div>
+
+
+
+
+
+<section class="panel added-practice-panel">
+<div class="section-head-row"><h2>追加演習セット</h2><span class="inline-note">発展論点を整理した追加問題です。</span></div>
+<p>このコースの内容に合わせて、通常演習を追加しました。ダッシュボードと通常演習一覧にも自動で反映されます。</p>
+<div class="chip-row"><a class="mini-chip" href="practice/stream-optional-extra.html">Stream・Optional追加</a><a class="mini-chip" href="practice/collectors-map-extra.html">Collectors・Map追加</a><a class="mini-chip" href="practice/generics-functional-extra.html">ジェネリクス・関数型追加</a><a class="mini-chip" href="practice/nio-concurrency-module-extra.html">NIO・並行・モジュール追加</a></div>
 </section>
 
-<section class="panel next-action-panel">
-<h2>次にやること</h2>
-<p>Goldでは、まず通常演習を20問解いて弱点データを作ります。その後、このページのダッシュボードで不正解・見直し・今日の復習・模試へ進んでください。</p>
-<div class="practice-tools">
-<a class="btn primary" href="practice/lambda-stream.html">通常演習へ</a>
-<a class="btn" href="../../app/review/due.html">今日の復習</a>
-<a class="btn" href="../../app/review/wrong.html">不正解復習</a>
-</div>
-</section>
-<section class="panel course-quality-panel">
-<h2>演習の質を上げる読み方</h2>
-<p>Goldは暗記では処理できません。ラムダ式の対象型、Streamの実行タイミング、ジェネリクスの代入互換性、NIOや並行処理のAPI仕様を、コードの型の流れとして読む必要があります。</p>
-<div class="quality-steps"><div><strong>対象型を読む</strong><p>ラムダ・メソッド参照は、代入先や引数の関数型インタフェースで形が決まる。</p></div><div><strong>戻り値型を追う</strong><p>Stream、Optional、Collectorsは途中の型がずれると答えがずれる。</p></div><div><strong>実行タイミングを見る</strong><p>遅延評価、close、Future.get、Files操作など、いつ実行されるかを確認。</p></div></div>
-<p><a class="btn" href="../../articles/java-gold-api-decision-tree/index.html">Gold API判定記事へ</a></p>
-</section>
 
-<section class="panel article-route-panel" id="articlePracticeRoute">
-<div class="section-head-row"><h2>記事から演習へ進むルート</h2><a class="btn ghost" href="../../app/article-practice-map.html">全コース対応表</a></div>
-<p>記事で論点を確認したら、同じレベルの演習へ移動してください。別レベルの知識を混ぜると、判定基準が崩れます。</p>
-<div class="route-step-grid"><div class="route-step-card"><span class="bridge-level">Gold</span><strong><a href="../../articles/java-gold-api-decision-tree/index.html">Gold APIの読み方</a></strong><p>Java Gold API判定ツリー：型・実行タイミング・戻り値で読む</p><div class="chip-row"><a class="mini-chip" href="../../courses/gold/practice/gold-api-mix.html">Gold総合API</a></div></div><div class="route-step-card"><span class="bridge-level">Gold</span><strong><a href="../../articles/java-gold-stream-deep/index.html">Streamを確認</a></strong><p>Java GoldのStream APIを丁寧に読む</p><div class="chip-row"><a class="mini-chip" href="../../courses/gold/practice/stream-advanced.html">Stream応用</a><a class="mini-chip" href="../../courses/gold/practice/stream-collectors.html">Stream・Collectors</a></div></div><div class="route-step-card"><span class="bridge-level">Gold</span><strong><a href="../../articles/java-gold-generics-deep/index.html">ジェネリクスを確認</a></strong><p>Java Goldのジェネリクスとワイルドカード</p><div class="chip-row"><a class="mini-chip" href="../../courses/gold/practice/generics-collections.html">ジェネリクス・コレクション</a></div></div><div class="route-step-card"><span class="bridge-level">Gold</span><strong><a href="../../articles/java-gold-concurrency-basic/index.html">並行処理・NIOを確認</a></strong><p>Java Goldの並行処理入門</p><div class="chip-row"><a class="mini-chip" href="../../courses/gold/practice/concurrency-nio.html">並行処理・NIO</a><a class="mini-chip" href="../../courses/gold/practice/io-concurrency.html">I/O・並行処理</a></div></div></div>
-</section>
-<section class="panel" id="practiceList">
-<div class="section-head-row"><h2>通常演習</h2><span class="inline-note">模試は通常進捗に含めません。</span></div>
-<div class="unit-grid compact-unit-grid tag-style-grid" data-course="gold" id="unitGrid"></div></section>
-<section class="panel" id="examList">
-<div class="section-head-row"><h2>実践模試</h2><span class="inline-note">制限時間を意識して解く枠です。</span></div>
-<div class="unit-grid compact-unit-grid exam-card-grid" data-course="gold" id="examGrid"></div></section>
 <section class="panel">
 <h2>関連する学習記事</h2>
 <div class="card-grid compact-card-grid"><a class="article-card rich-card" href="../../articles/java-gold-stream-first/index.html"><strong>Streamの基本</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java-gold-optional-first/index.html"><strong>Optionalの基本</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java-gold-generics-deep/index.html"><strong>高度ジェネリクス</strong><span>関連解説を読む</span></a></div>
@@ -95,10 +74,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="gold.html";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

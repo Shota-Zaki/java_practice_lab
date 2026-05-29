@@ -8,13 +8,13 @@
 <title>Lesson 5 変数・値・型｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -68,7 +68,7 @@ boolean d;</code></pre><p>メソッド内のローカル変数なら、どれも
 }</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>コンパイルできない。</p><p><code>s</code>は参照型なので<code>null</code>を代入できる。問題は<code>x</code>。ローカル変数<code>x</code>は初期化されないまま使われているため、コンパイルエラーになる。</p></details></section>
 <section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
 <p>このLessonの中心は、<strong>変数を「値が入る箱」とだけ覚えない</strong>ことです。箱という比喩は入口としては使えますが、Javaを読むときはそこで止まると危険です。プリミティブ型の変数には値そのものが入り、参照型の変数にはオブジェクトそのものではなく参照が入ります。</p>
-<div class="table-scroll"><table class="study-table"><thead><tr><th>見る対象</th><th>確認すること</th><th>判断</th></tr></thead><tbody><tr><td>宣言</td><td><code>int n;</code> / <code>String s;</code></td><td>変数名と型が決まる。まだ使える値があるとは限らない。</td></tr><tr><td>初期化</td><td><code>n = 10;</code> / <code>s = "Java";</code></td><td>その変数を読んでよい状態になる。</td></tr><tr><td>再代入</td><td><code>n = 20;</code> / <code>s = "Silver";</code></td><td>変数が保持する値、または参照が差し替わる。</td></tr><tr><td>使用</td><td><code>System.out.println(n);</code></td><td>ここまでに必ず初期化されている必要がある。</td></tr></tbody></table></div>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>見る対象</th><th>確認すること</th><th>判断</th></tr></thead><tbody><tr><td>宣言</td><td><code>int n;</code> / <code>String s;</code></td><td>変数名と型が決まる。まだ使える値があるとは限らない。</td></tr><tr><td>初期化</td><td><code>n = 10;</code> / <code>s = "Java";</code></td><td>その変数を読んでよい状態になる。</td></tr><tr><td>再代入</td><td><code>n = 20;</code> / <code>s = "Java";</code></td><td>変数が保持する値、または参照が差し替わる。</td></tr><tr><td>使用</td><td><code>System.out.println(n);</code></td><td>ここまでに必ず初期化されている必要がある。</td></tr></tbody></table></div>
 <p>特にローカル変数は、宣言しただけでは使えません。フィールドには型ごとの初期値がありますが、ローカル変数には自動初期化がありません。この差を曖昧にしたまま進むと、後のメソッド、コンストラクタ、クラスの問題で毎回つまずきます。</p>
 <pre><code>public class Sample {
     int field; // フィールド。intの初期値0が入る
@@ -91,10 +91,9 @@ boolean d;</code></pre><p>メソッド内のローカル変数なら、どれも
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-05.html";</script>
-<script src="../../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

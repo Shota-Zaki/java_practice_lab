@@ -8,13 +8,13 @@
 <title>Lesson 6 数値型と型変換｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -47,7 +47,7 @@ byte c = 10 + 20;  // OK。定数式として30と判断できる
 // byte d = a + b; // コンパイルエラー。byte同士の計算結果はint</code></pre>
 <p><code>a + b</code>は、値としては30になりそうでも、式の型は<code>int</code>です。<code>byte</code>や<code>short</code>は、計算時に<code>int</code>へ昇格する、と覚えてください。これは暗記ではなく、Javaが小さい整数型の計算を安全に扱うための基本ルールです。</p>
 <div class="table-scroll"><table class="study-table"><thead><tr><th>コード</th><th>見るポイント</th><th>結果</th></tr></thead><tbody><tr><td><code>short s = 100;</code></td><td>整数リテラルが範囲内</td><td>OK</td></tr><tr><td><code>short s = 100000;</code></td><td>shortの範囲外</td><td>コンパイルエラー</td></tr><tr><td><code>int i = 10L;</code></td><td>longをintに入れようとしている</td><td>コンパイルエラー</td></tr><tr><td><code>float f = 1.0;</code></td><td>小数リテラルは基本double</td><td>コンパイルエラー</td></tr><tr><td><code>float f = 1.0F;</code></td><td>Fでfloatリテラルにしている</td><td>OK</td></tr></tbody></table></div>
-<div class="mistake-callout"><strong>試験でも実務でも危ない読み方</strong><p>「右辺の答えが小さいから入る」と読むのは危険です。リテラルなのか、変数を含む式なのか、式の型は何かを順番に見てください。</p></div>
+<div class="mistake-callout"><strong>問題でも実務でも危ない読み方</strong><p>「右辺の答えが小さいから入る」と読むのは危険です。リテラルなのか、変数を含む式なのか、式の型は何かを順番に見てください。</p></div>
 </section>
 <section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>数値型と型変換を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="05.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="07.html">次のLesson →</a></div></section>
 </main>
@@ -59,10 +59,9 @@ byte c = 10 + 20;  // OK。定数式として30と判断できる
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-06.html";</script>
-<script src="../../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

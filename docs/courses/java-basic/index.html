@@ -4,17 +4,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Java基礎を24本に整理し、1本ずつ詳しく学べる入口です。" name="description"/>
+<meta content="Javaを始める準備と24本の基礎解説を、1本ずつ詳しく学べる入口です。" name="description"/>
 <title>1からわかるJava基礎解説｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -24,18 +24,19 @@
 <div>
 <p class="eyebrow">Java Basic</p>
 <h1>1からわかるJava基礎解説</h1>
-<p class="lead">Java基礎は、最初に必要な内容へ絞った解説コースです。コンピュータの仕組み、JDK/JVM、型、参照、制御構文、クラス、例外を順番に理解します。高度なAPIや発展論点には進まず、コードを読むための土台を固めます。</p>
-<div class="portal-button-row"><a class="btn primary" href="lessons/01.html">Lesson 1から始める</a><a class="btn" href="../bronze/index.html">Bronzeへ進む</a><a class="btn ghost" href="../../articles/index.html">学習記事を見る</a></div>
+<p class="lead">Java基礎は、最初に必要な内容へ絞った解説コースです。始める準備、コンピュータの仕組み、JDK/JVM、型、参照、制御構文、クラス、例外を順番に理解します。高度なAPIや発展論点には進まず、コードを読むための土台を固めます。</p>
+<div class="portal-button-row"><a class="btn primary" href="lessons/00.html">始める準備から始める</a><a class="btn" href="lessons/01.html">Lesson 1へ進む</a><a class="btn" href="../bronze/index.html">Bronzeへ進む</a><a class="btn ghost" href="../../articles/index.html">学習記事を見る</a></div>
 </div>
-<div class="course-hero-side"><strong>基礎コースの方針</strong><span>演習を増やすより、1ページごとの理解密度を優先。悪い例、修正例、読み方、ミニ課題を入れています。</span></div>
+<div class="course-hero-side"><strong>最初に準備するもの</strong><span>JDK、エディタ、作業フォルダ、ターミナル確認。ここを固めてからLesson 1へ進みます。</span></div>
 </article>
-<section class="card lesson-index-intro"><h2>今回の改善方針</h2>
-<p>各Lessonは、量を削らずに「なぜそうなるか」を説明する補講を追加しています。特に、混同しやすい境界線、コードを読む手順、よくある誤解、答えを言語化する確認問題を増やしました。</p>
+<section class="card lesson-index-intro"><h2>基礎解説の使い方</h2>
+<p>各Lessonは、量を削らずに「なぜそうなるか」を説明しています。特に、混同しやすい境界線、コードを読む手順、よくある誤解、答えを言語化する確認問題を入れています。</p>
 <p>読み方は単純です。まず既存の説明で全体像を掴み、次に「丁寧な補講」で自分の理解が曖昧な部分を潰してください。説明できない用語が残っているなら、問題演習へ急ぐより該当Lessonを読み直した方が効率的です。</p>
 </section>
 <section class="card flow-map-section"><h2>Lesson 1〜24の読み方マップ</h2>
 <p>基礎コース全体を、単発の用語集ではなく「実行の仕組み」から「コード読解」までつながる流れとして読めるように整理しました。焦って問題演習へ進むより、どのLessonが何の土台になるかを意識した方が理解が残ります。</p>
 <div class="table-scroll"><table class="study-table"><thead><tr><th>範囲</th><th>主題</th><th>ここで説明できるようにすること</th></tr></thead><tbody>
+<tr><td>始める準備</td><td>開発環境</td><td>JDK、エディタ、作業フォルダ、<code>java -version</code>、<code>javac -version</code>。</td></tr>
 <tr><td>Lesson 1〜4</td><td>Javaが動く入口</td><td>ソースコード、JDK、JVM、<code>main</code>、コマンドライン引数。</td></tr>
 <tr><td>Lesson 5〜7</td><td>型・値・String</td><td>変数に何が入るか、値と参照、Stringの不変性。</td></tr>
 <tr><td>Lesson 8〜10</td><td>制御構文・配列</td><td>条件評価、ループ順序、配列の添字と参照コピー。</td></tr>
@@ -45,9 +46,13 @@
 </tbody></table></div>
 </section>
 <section class="card lesson-index-intro"><h2>学び方</h2>
-<ol class="step-list"><li>Lesson 1〜4で、Javaがどう動くかを掴む。</li><li>Lesson 5〜11で、型・値・参照・メソッドを固める。</li><li>Lesson 12〜18で、クラス、static、継承、interface、例外を読む。</li><li>Lesson 19〜24で、ファイル、読解手順、メモリ、ターミナル操作を補強する。</li></ol>
+<ol class="step-list"><li>始める準備で、JDK・エディタ・作業フォルダを整える。</li><li>Lesson 1〜4で、Javaがどう動くかを掴む。</li><li>Lesson 5〜11で、型・値・参照・メソッドを固める。</li><li>Lesson 12〜18で、クラス、static、継承、interface、例外を読む。</li><li>Lesson 19〜24で、ファイル、読解手順、メモリ、ターミナル操作を補強する。</li></ol>
 </section>
-<section class="card"><div class="section-head-row"><h2>必修レッスン</h2><span class="inline-note">全24本。各ページに悪い例・修正例・ミニ課題を追加済み。</span></div><div class="course-grid lesson-index-grid"><a class="course-card lesson-index-card" href="lessons/01.html">
+<section class="card"><div class="section-head-row"><h2>必修レッスン</h2><span class="inline-note">始める準備 + 全24本。各ページに悪い例・修正例・ミニ課題を追加済み。</span></div><div class="course-grid lesson-index-grid"><a class="course-card lesson-index-card setup-path-card" href="lessons/00.html">
+<span class="meta">準備</span>
+<h3>始める準備</h3>
+<p>JDK、エディタ、作業フォルダ、最初のコンパイルと実行確認を済ませる。</p>
+</a><a class="course-card lesson-index-card" href="lessons/01.html">
 <span class="meta">Lesson 1</span>
 <h3>コンピュータと機械語</h3>
 <p>Javaを書く前に、コンピュータが実際には何を実行しているのかを掴む。</p>
@@ -147,14 +152,9 @@
 <section class="card basic-synthesis-section"><h2>基礎コースで最終的にできるようにすること</h2>
 <p>24本を読み終えた時点で目指す状態は、用語を知っていることではありません。短いコードを見て、次の順番で説明できることです。</p>
 <ol class="step-list"><li>このコードはコンパイルできるか。</li><li>実行はどのクラスの<code>main</code>から始まるか。</li><li>変数には値そのものが入っているのか、参照が入っているのか。</li><li>条件分岐・繰り返し・メソッド呼び出しで、制御がどこへ移るか。</li><li>出力、例外、終了状態がどうなるか。</li></ol>
-<p>ここまでを自分の言葉で説明できれば、BronzeやSilverの演習に進んだとき、単なる暗記ではなく理由付きで選択肢を切れるようになります。</p>
+<p>ここまでを自分の言葉で説明できれば、BronzeやJavaの演習に進んだとき、単なる暗記ではなく理由付きで選択肢を切れるようになります。</p>
 </section><section class="card"><h2>次に進む目安</h2><p>Lesson 1〜18を読んで、ローカル変数とフィールドの違い、Stringの不変性、配列の添字、static、コンストラクタ、例外の分類を説明できるなら、BronzeまたはJava17 Silverの通常演習へ進んでよいです。説明できない項目が残るなら、問題数を増やすより該当Lessonを読み直した方が速いです。</p></section>
 
-<section class="panel article-route-panel" id="articlePracticeRoute">
-<div class="section-head-row"><h2>記事から演習へ進むルート</h2><a class="btn ghost" href="../../app/article-practice-map.html">全コース対応表</a></div>
-<p>記事で論点を確認したら、同じレベルの演習へ移動してください。別レベルの知識を混ぜると、判定基準が崩れます。</p>
-<div class="route-step-grid"><div class="route-step-card"><span class="bridge-level">Java基礎</span><strong><a href="../../articles/java-command/index.html">コンパイルと実行を読む</a></strong><p>javac・javaコマンドで詰まる原因</p><div class="chip-row"><a class="mini-chip" href="../../courses/java-basic/practice/foundation.html">Java基礎 確認問題</a></div></div><div class="route-step-card"><span class="bridge-level">Java基礎</span><strong><a href="../../articles/memory-model-beginner/index.html">値と参照を読む</a></strong><p>参照・メモリ・代入の基本</p><div class="chip-row"><a class="mini-chip" href="../../courses/java-basic/practice/syntax.html">Java基礎 文法問題</a></div></div></div>
-</section>
 </main>
 </div>
 <footer class="site-footer global-footer">
@@ -164,10 +164,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="java-basic.html";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>
