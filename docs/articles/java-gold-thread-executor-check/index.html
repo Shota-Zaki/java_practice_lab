@@ -5,58 +5,33 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="ExecutorServiceの開始、結果取得、終了処理を整理する。" name="description"/>
-<title>Java GoldのExecutorService注意点｜Java Practice Lab</title>
+<title>ExecutorService注意点｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-<div class="nav"><a href="../../index.html">トップ</a><a href="../index.html">コース</a><a href="../../articles/index.html">学習記事</a></div>
-<article class="card article-page">
-<h1>Java GoldのExecutorService注意点</h1>
-<p class="lead">ExecutorServiceの開始、結果取得、終了処理を整理する。</p>
-<h2>shutdownを忘れない</h2><p>タスク送信後はshutdownで終了を指示します。Future#getは結果が出るまで待つ可能性があります。</p>
-
-
-<section class="article-readiness" aria-labelledby="readiness-java-gold-thread-executor-check">
-  <div class="readiness-head">
-    <p class="eyebrow">演習前チェック</p>
-    <h2 id="readiness-java-gold-thread-executor-check">この記事を演習で使える知識に変える</h2>
-    <p><strong>対象レベル：</strong>Gold。Goldでは、構文暗記よりもAPIの戻り値型、遅延実行、型推論、例外、リソース管理まで含めて判定します。Silverレベルの文法確認で止まると、ここでは足りません。</p>
-  </div>
-  <div class="readiness-grid">
-    <section class="readiness-box">
-      <h3>本文で必ず押さえること</h3>
-      <ul><li>用語を覚えるだけでなく、コード上でどの判断に使う知識かを確認する。</li><li>先にコンパイル可否、次に実行時の流れ、最後に出力を考える。</li><li>自信がない箇所は、変数の型と値を紙に分けて書く。</li></ul>
-    </section>
-    <section class="readiness-box">
-      <h3>この後の演習で見るポイント</h3>
-      <ul><li>本文の例を少し変えても同じ判断ができるか確認する。</li><li>選択肢を消去するときは、なぜ誤りかを言葉で説明する。</li><li>関連する演習では、正解番号ではなく判断根拠を残す。</li></ul>
-    </section>
-    <section class="readiness-box danger">
-      <h3>ここで落ちる典型ミス</h3>
-      <ul><li>用語の意味だけ覚えて、コード読解に接続しない。</li><li>「なんとなく見たことがある」で選択肢を選ぶ。</li><li>解説を読んだあとに、自力で再判定しない。</li></ul>
-    </section>
-  </div>
-  <div class="readiness-mini-task">
-    <h3>演習前の小課題</h3>
-    <p>本文のコード例を1行だけ変更し、コンパイル可否・実行時の流れ・出力をもう一度判定してください。</p>
-  </div>
-</section>
-
-<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
-<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
-<div class="bridge-grid"><a class="bridge-card" href="../../courses/gold/practice/concurrency-nio.html"><span class="bridge-level">Gold</span><strong>並行処理・NIO</strong><small>Executor、Future、Path、Files、Date and Timeを確認</small></a><a class="bridge-card" href="../../courses/gold/practice/io-concurrency.html"><span class="bridge-level">Gold</span><strong>I/O・並行処理</strong><small>I/O、NIO.2、Executorを確認</small></a></div>
-<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
-</section>
+<article class="content-page long-article gold-deep-article">
+<h1>ExecutorServiceとFutureの判定</h1>
+<p class="lead">Futureは「いつか終わる処理の結果」です。get、cancel、isDoneの意味を区別します。</p>
+<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+<section class="article-section"><h2>Future.getは待つ</h2><p><code>get()</code>は結果が出るまで待機します。タスク内で例外が起きた場合、<code>ExecutionException</code>として受け取ります。</p></section>
+<pre class="article-code"><code>Future&lt;String&gt; f = executor.submit(() -&gt; &quot;done&quot;);
+String result = f.get(); // 終了まで待つ</code></pre>
+<table class="study-table ref-table"><thead><tr><th>メソッド</th><th>意味</th><th>誤解しやすい点</th></tr></thead><tbody><tr><td><code>isDone()</code></td><td>完了しているか</td><td>結果を取り出すわけではない。</td></tr><tr><td><code>cancel(true)</code></td><td>キャンセルを試みる</td><td>必ず停止できるとは限らない。</td></tr><tr><td><code>isCancelled()</code></td><td>キャンセルされたか</td><td>正常完了とは別。</td></tr><tr><td><code>get(timeout, unit)</code></td><td>時間制限つきで待つ</td><td>時間切れならTimeoutException。</td></tr></tbody></table>
+<section class="article-section"><h2>CallableとRunnable</h2><p><code>Callable</code>は値を返し、例外を投げられます。<code>Runnable</code>は戻り値がありません。</p></section>
+<pre class="article-code"><code>Callable&lt;Integer&gt; c = () -&gt; 100;
+Runnable r = () -&gt; System.out.println(&quot;run&quot;);</code></pre>
+<div class="bad-good"><div><strong>悪い判断</strong><p>submitした直後に必ずタスクが完了していると思う。</p></div><div><strong>良い判断</strong><p>完了確認、getによる待機、shutdownの意味を分ける。</p></div></div>
+<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
 </article>
 </main>
 </div>
@@ -67,10 +42,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

@@ -5,87 +5,278 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Stringの不変性、文字列プール、StringBuilderとの違いを例で整理します。" name="description"/>
-<title>Java SilverのStringとStringBuilder｜Java Practice Lab</title>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<title>StringとStringBuilder｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
-<main class="main" id="mainContent">
-<article class="content-page long-article">
-<p class="eyebrow">Java Silver 頻出</p>
-<h1>Java SilverのStringとStringBuilder</h1>
+<main class="main" id="mainContent"><section class="content-page article-body wide-article upgraded-article">
+<h1>StringとStringBuilder</h1>
 <p class="lead">String問題は「不変性」「戻り値」「文字列プール」「StringBuilderとの違い」を分けて読むと安定します。</p>
-<section class="article-section"><h2>1. Stringは不変</h2><pre><code>String s = "abc";
-s.replace('b', 'x');
-System.out.println(s); // abc</code></pre><p><code>replace</code> は新しい文字列を返します。元の <code>s</code> は変わりません。</p><pre><code>s = s.replace('b', 'x'); // axc</code></pre></section>
-<section class="article-section"><h2>2. substringのendは含まない</h2><pre><code>String s = "abcdef";
-System.out.println(s.substring(2, 5)); // cde</code></pre><p>開始位置は含み、終了位置は含みません。添字2は <code>c</code>、5の手前までです。</p></section>
-<section class="article-section"><h2>3. concatも戻り値を受け取る</h2><pre><code>String s = "A";
-s.concat("B");
-System.out.println(s); // A</code></pre><p><code>concat</code> も元の文字列を変更しません。</p></section>
-<section class="article-section"><h2>4. +演算子の左から評価</h2><pre><code>System.out.println(1 + 2 + "A" + 3 + 4); // 3A34</code></pre><p>文字列が出るまでは数値加算、文字列が出た後は文字列連結です。</p></section>
-<section class="article-section"><h2>5. internと文字列プール</h2><pre><code>String a = new String("Java");
-String b = "Java";
-System.out.println(a == b);          // false
-System.out.println(a.intern() == b); // true</code></pre><p><code>intern()</code> の戻り値はプール上の参照です。</p></section>
-<section class="article-section"><h2>6. StringBuilderは可変</h2><pre><code>StringBuilder sb = new StringBuilder("A");
-sb.append("B");
-System.out.println(sb); // AB</code></pre><p><code>StringBuilder</code> の多くのメソッドは同じオブジェクトを変更します。</p></section>
-<section class="article-section"><h2>7. StringBuilderのinsert/delete</h2><pre><code>StringBuilder sb = new StringBuilder("abcd");
-sb.insert(2, "X");   // abXcd
-sb.delete(1, 3);      // acd ではなく、現在の文字列から範囲削除</code></pre><p>連続して操作する問題では、毎回現在の状態を書き換えて追います。</p></section>
-<section class="article-section"><h2>8. StringBuilder.equalsは内容比較ではない</h2><pre><code>var a = new StringBuilder("A");
-var b = new StringBuilder("A");
-System.out.println(a.equals(b)); // false</code></pre><p>内容比較したい場合は <code>a.toString().equals(b.toString())</code> とします。</p></section>
-<section class="article-section"><h2>9. indexOf</h2><pre><code>String s = "abcabc";
-System.out.println(s.indexOf("bc"));    // 1
-System.out.println(s.indexOf("bc", 2)); // 4</code></pre><p>見つからなければ <code>-1</code> です。第2引数は検索開始位置です。</p></section>
-<section class="article-section"><h2>10. isBlankとisEmpty</h2><pre><code>System.out.println("".isEmpty());      // true
-System.out.println("   ".isEmpty());   // false
-System.out.println("   ".isBlank());   // true</code></pre><p><code>isEmpty()</code> は長さ0だけ、<code>isBlank()</code> は空白のみも対象です。</p></section>
-<section class="article-section"><h2>試験での注意</h2><ul><li>戻り値を受け取っていない <code>replace</code> / <code>substring</code> / <code>concat</code> は元の文字列を変えない。</li><li><code>StringBuilder</code> は変わるが、<code>equals()</code> は内容比較ではない。</li><li><code>==</code> が出たら文字列プールと <code>new</code> の有無を見る。</li></ul></section>
-<div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
-
-
-<section class="article-readiness" aria-labelledby="readiness-string">
-  <div class="readiness-head">
-    <p class="eyebrow">演習前チェック</p>
-    <h2 id="readiness-string">この記事を演習で使える知識に変える</h2>
-    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
-  </div>
-  <div class="readiness-grid">
-    <section class="readiness-box">
-      <h3>本文で必ず押さえること</h3>
-      <ul><li>値そのものを見るのか、参照先を見るのかを分ける。</li><li>Stringは変更されるのではなく、新しい文字列が作られる場面が多い。</li><li>配列・ArrayList・StringBuilderは、同じ変数名でも参照先と中身の変化を分けて追う。</li></ul>
-    </section>
-    <section class="readiness-box">
-      <h3>この後の演習で見るポイント</h3>
-      <ul><li>==なら参照比較、equalsなら内容比較を疑う。</li><li>メソッド呼び出し後に戻り値を受け取っているか確認する。</li><li>nullを使う前にメソッド呼び出しが発生していないか確認する。</li></ul>
-    </section>
-    <section class="readiness-box danger">
-      <h3>ここで落ちる典型ミス</h3>
-      <ul><li>Stringのreplaceやsubstringで元の文字列が変わると思い込む。</li><li>配列変数の代入を「コピー」と誤解する。コピーされるのは参照であり、配列本体ではない。</li><li>ArrayListのremoveで、引数がインデックスなのか要素なのかを見落とす。</li></ul>
-    </section>
-  </div>
-  <div class="readiness-mini-task">
-    <h3>演習前の小課題</h3>
-    <p>String s = &quot;abc&quot;; s.substring(1); System.out.println(s); の出力を、Stringの不変性と戻り値の扱いから説明してください。</p>
-  </div>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">学習記事一覧</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a></div>
+<section class="article-section article-opening-summary">
+<h2>最初に固定する読み方</h2>
+<div class="article-callout strong"><strong>結論を急がない。</strong> まずコンパイルできるか、次に実行時に止まるか、最後に出力を追います。出力だけを先に追うと、型・アクセス・例外で簡単に崩れます。</div>
+<ol class="article-list priority-list">
+<li><strong>宣言を見る。</strong> 型、修飾子、継承関係、メソッドシグネチャを先に確定します。</li>
+<li><strong>代入できるかを見る。</strong> 右辺の型・値・参照先が左辺に入るかを判断します。</li>
+<li><strong>呼び出せるかを見る。</strong> 変数の宣言型から、その場で見えるメンバだけを呼べます。</li>
+<li><strong>実体で動くものを分ける。</strong> オーバーライドされたインスタンスメソッドは実体、フィールドやstaticは別規則です。</li>
+<li><strong>副作用を表にする。</strong> 代入、インクリメント、可変オブジェクト、例外で状態が変わる箇所を書き出します。</li>
+</ol>
 </section>
+<section class="article-section">
+<h2>この単元の結論</h2>
+<div class="article-card">
+<p>文字列問題は、次の5点だけでかなり解けます。</p>
+<ol class="article-list">
+<li><strong>Stringは不変。</strong> メソッドは元の文字列を変更せず、新しい文字列を返す。</li>
+<li><strong>StringBuilderは可変。</strong> <code>append</code> や <code>reverse</code> は同じオブジェクトを変更する。</li>
+<li><strong><code>==</code> は参照比較。</strong> 文字列の内容比較は <code>equals</code>。</li>
+<li><strong>文字列リテラルはプールを使う。</strong> <code>new String</code> は別インスタンス。</li>
+<li><strong>メソッドの戻り値と範囲を確認。</strong> <code>substring</code> はend未満、<code>indexOf</code> は見つからなければ-1。</li>
+</ol>
+</div>
+</section><section class="article-section">
+<h2>Stringは不変</h2>
+<p><code>String</code> は一度作られると中身を変更できません。<code>toUpperCase</code>、<code>replace</code>、<code>trim</code>、<code>substring</code> などは、変更後の新しい <code>String</code> を返します。</p>
+<pre class="article-code"><code>String s = " Java ";
+s.trim();
+s.replace("J", "j");
+System.out.println(s); // " Java "</code></pre>
+<p>戻り値を受け取ると、変数が新しい文字列を参照するようになります。</p>
+<pre class="article-code"><code>String s = " Java ";
+s = s.trim();
+s = s.replace("J", "j");
+System.out.println(s); // "java"</code></pre>
+<div class="article-callout warn">判断: Stringメソッドを見たら、まず「戻り値を受け取っているか」を確認します。受け取っていないなら、元の文字列は変わりません。</div>
+</section><section class="article-section">
+<h2>文字列リテラルと文字列プール</h2>
+<p>文字列リテラルは、同じ内容なら文字列プール上の同じインスタンスを参照します。</p>
+<pre class="article-code"><code>String a = "abc";
+String b = "abc";
+System.out.println(a == b);      // true
+System.out.println(a.equals(b)); // true</code></pre>
+<p>一方、<code>new String("abc")</code> は新しいインスタンスを作ります。内容は同じでも参照先は別です。</p>
+<pre class="article-code"><code>String a = "abc";
+String b = new String("abc");
+System.out.println(a == b);      // false
+System.out.println(a.equals(b)); // true</code></pre>
+</section><section class="article-section">
+<h2>コンパイル時定数の結合</h2>
+<p>文字列リテラル同士の結合や、コンパイル時定数だけの結合は、コンパイル時に1つの文字列として扱われます。</p>
+<pre class="article-code"><code>String a = "ab";
+String b = "a" + "b";
+System.out.println(a == b); // true</code></pre>
+<p><code>final</code> で初期化されたコンパイル時定数も同様です。</p>
+<pre class="article-code"><code>final String x = "a";
+final String y = "b";
+String z = x + y;
+System.out.println(z == "ab"); // true</code></pre>
+<p>ただし、通常の変数が絡むと実行時の文字列連結になり、文字列プールの同一参照とは限りません。</p>
+<pre class="article-code"><code>String x = "a";
+String y = "b";
+String z = x + y;
+System.out.println(z == "ab"); // false
+System.out.println(z.equals("ab")); // true</code></pre>
+</section><section class="article-section">
+<h2>internの判断</h2>
+<p><code>intern()</code> は、文字列プール上の同じ内容の <code>String</code> への参照を返します。<code>==</code> と絡めて出されやすいです。</p>
+<pre class="article-code"><code>String a = new String("sample");
+String b = a;
+String c = a.intern();
+String d = "sample";
 
-<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
-<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
-<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/api-string.html"><span class="bridge-level">Java11 Silver</span><strong>API・文字列</strong><small>String・StringBuilder・ArrayList・参照比較を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/reference-api.html"><span class="bridge-level">Java17 Silver</span><strong>参照・API</strong><small>参照比較、StringBuilder、ArrayList、API判定を確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/control-array.html"><span class="bridge-level">Bronze</span><strong>条件分岐・配列</strong><small>if・switch・for・配列・Stringの基本を確認</small></a></div>
-<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+System.out.println(a == b); // true: 同じ参照をコピーしただけ
+System.out.println(a == c); // false: aはnewで作ったインスタンス
+System.out.println(c == d); // true: どちらも文字列プール上の参照</code></pre>
+<p>読む順番は、<strong>newで作ったもの</strong>、<strong>参照コピーしたもの</strong>、<strong>internでプール参照になったもの</strong>を分けることです。</p>
+</section><section class="article-section">
+<h2>== と equals</h2>
+<p><code>==</code> は、参照型では「同じインスタンスを参照しているか」を比較します。文字列の内容比較は <code>equals</code> を使います。</p>
+<pre class="article-code"><code>String a = new String("A");
+String b = new String("A");
+
+System.out.println(a == b);      // false
+System.out.println(a.equals(b)); // true</code></pre>
+<p><code>equals</code> はメソッドなので、左辺が <code>null</code> なら <code>NullPointerException</code> です。</p>
+<pre class="article-code"><code>String s = null;
+// s.equals("A");      // NullPointerException
+System.out.println("A".equals(s)); // false</code></pre>
+</section><section class="article-section">
+<h2>nullと文字列連結</h2>
+<p><code>+</code> による文字列連結では、<code>null</code> は文字列 <code>"null"</code> として扱われます。</p>
+<pre class="article-code"><code>String s = null;
+System.out.println(s + "x"); // nullx</code></pre>
+<p>しかし、<code>null</code> 参照に対してメソッドを呼ぶと <code>NullPointerException</code> です。</p>
+<pre class="article-code"><code>String s = null;
+// System.out.println(s.concat("x")); // NullPointerException</code></pre>
+<p>また、<code>concat</code> に <code>null</code> を渡すのも危険です。</p>
+<pre class="article-code"><code>String s = "A";
+// System.out.println(s.concat(null)); // NullPointerException</code></pre>
+</section><section class="article-section">
+<h2>+演算子は左から評価される</h2>
+<p><code>+</code> は、数値加算と文字列連結の両方で使われます。途中で文字列が出たら、それ以降は文字列連結として進みます。</p>
+<pre class="article-code"><code>System.out.println(1 + 2 + "A"); // 3A
+System.out.println("A" + 1 + 2); // A12
+System.out.println("A" + (1 + 2)); // A3</code></pre>
+<div class="article-callout">判断: <code>+</code> が並んでいる問題は、左から順に「今は数値加算か、文字列連結か」を追います。</div>
+</section><section class="article-section">
+<h2>Stringの頻出メソッド</h2>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>ひっかけ</th></tr></thead>
+<tbody>
+<tr><td><code>length()</code></td><td><code>int</code></td><td>文字数</td><td>配列の <code>length</code> はフィールド。Stringはメソッド</td></tr>
+<tr><td><code>charAt(i)</code></td><td><code>char</code></td><td>0始まりで1文字取得</td><td>範囲外は実行時例外</td></tr>
+<tr><td><code>substring(begin)</code></td><td><code>String</code></td><td>beginから末尾まで</td><td>beginの文字は含む</td></tr>
+<tr><td><code>substring(begin,end)</code></td><td><code>String</code></td><td>begin以上end未満</td><td>endの文字は含まない</td></tr>
+<tr><td><code>indexOf(x)</code></td><td><code>int</code></td><td>最初に見つかった位置</td><td>見つからなければ-1。0は「先頭で見つかった」</td></tr>
+<tr><td><code>replace(a,b)</code></td><td><code>String</code></td><td>置換後の新しい文字列</td><td>元のStringは変わらない</td></tr>
+<tr><td><code>trim()</code></td><td><code>String</code></td><td>前後の空白除去</td><td>戻り値を受け取らないと意味がない</td></tr>
+<tr><td><code>concat(s)</code></td><td><code>String</code></td><td>文字列連結</td><td>引数nullはNPE</td></tr>
+<tr><td><code>equals(s)</code></td><td><code>boolean</code></td><td>内容比較</td><td>左辺nullはNPE</td></tr>
+<tr><td><code>equalsIgnoreCase(s)</code></td><td><code>boolean</code></td><td>大文字小文字を無視</td><td>左辺nullはNPE</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>substringの境界</h2>
+<p><code>substring(begin, end)</code> は、<strong>begin以上、end未満</strong>です。end位置の文字は含みません。</p>
+<pre class="article-code"><code>String s = "abcdef";
+System.out.println(s.substring(1, 4)); // bcd
+System.out.println(s.substring(1, 1)); // 空文字
+System.out.println(s.substring(4));    // ef</code></pre>
+<p>不正な範囲は実行時例外です。</p>
+<pre class="article-code"><code>String s = "abc";
+// s.substring(-1);    // StringIndexOutOfBoundsException
+// s.substring(2, 1);  // StringIndexOutOfBoundsException
+// s.substring(4);     // StringIndexOutOfBoundsException</code></pre>
+</section><section class="article-section">
+<h2>StringBuilderは可変</h2>
+<p><code>StringBuilder</code> は、文字列を効率よく組み立てるための可変オブジェクトです。<code>append</code>、<code>insert</code>、<code>delete</code>、<code>reverse</code> などは自身を変更します。</p>
+<pre class="article-code"><code>StringBuilder sb = new StringBuilder("ab");
+sb.append("c");
+System.out.println(sb); // abc</code></pre>
+<p>多くの変更系メソッドは、自分自身への参照を返します。そのためメソッドチェーンできます。</p>
+<pre class="article-code"><code>StringBuilder sb = new StringBuilder("a");
+StringBuilder r = sb.append("b").append("c");
+
+System.out.println(sb);     // abc
+System.out.println(r);      // abc
+System.out.println(sb == r); // true</code></pre>
+</section><section class="article-section">
+<h2>StringBuilderの頻出メソッド</h2>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド</th><th>戻り値</th><th>動作</th><th>注意点</th></tr></thead>
+<tbody>
+<tr><td><code>append(x)</code></td><td><code>StringBuilder</code></td><td>末尾に追加</td><td>自身を変更する</td></tr>
+<tr><td><code>insert(i, x)</code></td><td><code>StringBuilder</code></td><td>指定位置に挿入</td><td>位置は0始まり</td></tr>
+<tr><td><code>delete(start,end)</code></td><td><code>StringBuilder</code></td><td>start以上end未満を削除</td><td>endは含まない</td></tr>
+<tr><td><code>deleteCharAt(i)</code></td><td><code>StringBuilder</code></td><td>1文字削除</td><td>範囲外は実行時例外</td></tr>
+<tr><td><code>replace(start,end,s)</code></td><td><code>StringBuilder</code></td><td>範囲を置換</td><td>Stringのreplaceとは引数が違う</td></tr>
+<tr><td><code>reverse()</code></td><td><code>StringBuilder</code></td><td>反転</td><td>自身を変更する</td></tr>
+<tr><td><code>substring(start,end)</code></td><td><code>String</code></td><td>一部取得</td><td>StringBuilder自体は変更しない</td></tr>
+<tr><td><code>toString()</code></td><td><code>String</code></td><td>Stringへ変換</td><td>内容比較でよく使う</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>StringBuilderのsubstringは変更しない</h2>
+<p><code>StringBuilder</code> は可変ですが、すべてのメソッドが自身を変更するわけではありません。<code>substring</code> は <code>String</code> を返すだけで、元の <code>StringBuilder</code> は変わりません。</p>
+<pre class="article-code"><code>StringBuilder sb = new StringBuilder("abcdef");
+String s = sb.substring(1, 3);
+
+System.out.println(s);  // bc
+System.out.println(sb); // abcdef</code></pre>
+</section><section class="article-section">
+<h2>StringBuilderのequalsは内容比較ではない</h2>
+<p><code>String</code> の <code>equals</code> は内容比較ですが、<code>StringBuilder</code> は <code>equals</code> を内容比較としてオーバーライドしていません。基本的に参照比較として考えます。</p>
+<pre class="article-code"><code>StringBuilder a = new StringBuilder("abc");
+StringBuilder b = new StringBuilder("abc");
+
+System.out.println(a == b);      // false
+System.out.println(a.equals(b)); // false
+System.out.println(a.toString().equals(b.toString())); // true</code></pre>
+<p><code>StringBuilder</code> と <code>String</code> を <code>equals</code> で比較しても、同じ内容とは判定されません。</p>
+<pre class="article-code"><code>StringBuilder sb = new StringBuilder("abc");
+String s = "abc";
+
+System.out.println(sb.equals(s));        // false
+System.out.println(sb.toString().equals(s)); // true</code></pre>
+</section><section class="article-section">
+<h2>参照コピーと可変オブジェクト</h2>
+<p><code>StringBuilder</code> は可変なので、同じインスタンスを複数の変数で参照していると、一方から変更した結果が他方からも見えます。</p>
+<pre class="article-code"><code>StringBuilder a = new StringBuilder("A");
+StringBuilder b = a;
+
+b.append("B");
+System.out.println(a); // AB
+System.out.println(b); // AB
+System.out.println(a == b); // true</code></pre>
+<p>これは <code>String</code> と対照的です。<code>String</code> は不変なので、変更系に見える処理は新しい文字列を返します。</p>
+</section><section class="article-section">
+<h2>StringとStringBuilderのコンストラクタ</h2>
+<table class="ref-table study-table">
+<thead><tr><th>コード</th><th>意味</th><th>注意点</th></tr></thead>
+<tbody>
+<tr><td><code>new StringBuilder()</code></td><td>空のBuilderを作る</td><td>内容は空文字</td></tr>
+<tr><td><code>new StringBuilder("abc")</code></td><td>abcを持つBuilderを作る</td><td>Stringとは別型</td></tr>
+<tr><td><code>new StringBuilder(10)</code></td><td>容量10のBuilderを作る</td><td>文字列"10"ではない</td></tr>
+<tr><td><code>new String("abc")</code></td><td>新しいStringを作る</td><td>リテラルとは別参照</td></tr>
+</tbody>
+</table>
+<pre class="article-code"><code>StringBuilder sb = new StringBuilder(10);
+System.out.println(sb.length()); // 0</code></pre>
+</section><section class="article-section">
+<h2>問題での判断順</h2>
+<ol class="article-list">
+<li><strong>型を見る。</strong> <code>String</code> か <code>StringBuilder</code> かで挙動が違う。</li>
+<li><strong>変更系メソッドの戻り値を受け取っているか。</strong> Stringなら特に重要。</li>
+<li><strong><code>==</code> か <code>equals</code> かを見る。</strong> <code>==</code> は参照比較。</li>
+<li><strong>リテラル・new・intern・コンパイル時定数を分ける。</strong> 文字列プールの問題で必要。</li>
+<li><strong>メソッドの境界を確認する。</strong> <code>substring</code>、<code>charAt</code>、<code>delete</code> の範囲に注意。</li>
+<li><strong>nullがメソッド呼び出し側にないかを見る。</strong> 左辺nullならNPE。</li>
+</ol>
+</section><section class="article-section">
+<h2>典型ひっかけ</h2>
+<table class="ref-table study-table">
+<thead><tr><th>コード/状況</th><th>結果</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td><code>s.trim();</code> だけ</td><td>元のStringは変わらない</td><td>Stringは不変。戻り値を捨てている</td></tr>
+<tr><td><code>"a" + "b" == "ab"</code></td><td>true</td><td>コンパイル時に結合される</td></tr>
+<tr><td><code>new String("ab") == "ab"</code></td><td>false</td><td>newで別インスタンス</td></tr>
+<tr><td><code>new String("ab").intern() == "ab"</code></td><td>true</td><td>internはプール参照を返す</td></tr>
+<tr><td><code>String s=null; s + "x"</code></td><td><code>"nullx"</code></td><td>文字列連結ではnullが文字列化される</td></tr>
+<tr><td><code>String s=null; s.equals("x")</code></td><td>NPE</td><td>null参照からメソッド呼び出し</td></tr>
+<tr><td><code>StringBuilder a,b; b=a; b.append("x")</code></td><td>a側も変わる</td><td>同じ可変オブジェクトを参照</td></tr>
+<tr><td><code>new StringBuilder("a").equals(new StringBuilder("a"))</code></td><td>false</td><td>StringBuilderのequalsは内容比較ではない</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>ミニ演習</h2>
+<details class="article-card"><summary><strong>Q1. <code>String s="abc"; s.toUpperCase(); System.out.println(s);</code></strong></summary><p><code>abc</code> です。<code>toUpperCase()</code> の戻り値を受け取っていないため、元の <code>String</code> は変わりません。</p></details>
+<details class="article-card"><summary><strong>Q2. <code>String a="a"; String b="b"; System.out.println(a + b == "ab");</code></strong></summary><p><code>false</code> です。通常の変数を使った連結は実行時の文字列連結であり、リテラル <code>"ab"</code> と同じ参照とは限りません。内容比較なら <code>equals</code> を使います。</p></details>
+<details class="article-card"><summary><strong>Q3. <code>StringBuilder sb = new StringBuilder("abc"); String x = sb.substring(1); System.out.println(sb);</code></strong></summary><p><code>abc</code> です。<code>StringBuilder.substring</code> は <code>String</code> を返すだけで、元のBuilderを変更しません。</p></details>
+<details class="article-card"><summary><strong>Q4. <code>new StringBuilder("x").equals(new StringBuilder("x"))</code> は？</strong></summary><p><code>false</code> です。<code>StringBuilder</code> の <code>equals</code> は内容比較として考えてはいけません。内容比較するなら <code>toString()</code> 後に比較します。</p></details>
+<p class="inline-note article-callout">次に読む: <a href="../reference/index.html">同一性・同値性</a> / 関連: <a href="../types/index.html">var・スコープ</a> / <a href="../java-silver-array-list-difference/index.html">配列・List</a></p>
 </section>
-</article>
-</main>
+<section class="article-section final-check-section">
+<h2>最後に自分で確認すること</h2>
+<div class="article-card">
+<p>この記事を読み終えたら、次の3点を口頭で説明できるか確認します。説明できない場合は、まだ「読んだだけ」で、コードに適用できる状態ではありません。</p>
+<ul class="article-list">
+<li>この単元で最初に見るべき場所はどこか。</li>
+<li>コンパイルエラー、実行時例外、正常出力をどの順番で分けるか。</li>
+<li>自分が間違えやすい引っかけは、型・参照・戻り値・アクセス・例外のどれか。</li>
+</ul>
+</div>
+</section>
+</section></main>
 </div>
 <footer class="site-footer global-footer">
 <div class="site-footer-inner">
@@ -94,8 +285,7 @@ System.out.println("   ".isBlank());   // true</code></pre><p><code>isEmpty()</c
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script><script src="../../assets/js/app.js?v=header-footer-top-20260529"></script><script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script><script src="../../assets/js/app.js?v=start-prep-20260529"></script><script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

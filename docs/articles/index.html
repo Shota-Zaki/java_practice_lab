@@ -8,48 +8,52 @@
 <title>学習記事一覧｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../manifest.webmanifest" rel="manifest"/>
-<link href="../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
-<body class="header-layout">
+<body class="header-layout articles-index-page">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../index.html">Java学習ポータルトップ</a><a href="../courses/java-basic/index.html">基礎</a><a href="../courses/bronze/index.html">Bronze</a><a href="../courses/java11-silver/index.html">Java11 Silver</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Gold</a><a href="../articles/index.html">記事</a><a href="../app/dashboard.html">ダッシュボード</a><a href="../app/search.html">検索</a><a href="../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../index.html">Java学習ポータルトップ</a><a href="../courses/java-basic/index.html">基礎</a><a href="../courses/bronze/index.html">Bronze</a><a href="../courses/java11-silver/index.html">Java11 Silver</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Gold</a><a href="../articles/index.html">学習記事</a><a href="../app/dashboard.html">ダッシュボード</a><a href="../app/search.html">検索</a><a href="../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-<div class="nav"><a href="../index.html">トップ</a><a href="../courses/java-basic/index.html">Java基礎</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Java Gold</a></div>
-<article class="card"><h1>学習記事一覧</h1><p class="lead">基礎から試験対策まで、必要な記事を目的別に確認できます。</p></article><section class="card article-readiness-index"><h2>記事を読んだあとの使い方</h2><p>各記事に「演習前チェック」を追加しました。読むだけで終わらせず、対象レベル、演習で見るポイント、落ちる典型ミス、小課題を確認してから演習へ進めます。</p><div class="readiness-route-grid"><div><strong>Bronze</strong><p>値・条件分岐・配列・Stringの基本に限定して、文の実行順序を確認します。</p></div><div><strong>Java11 Silver</strong><p>Java11範囲だけで、コンパイル可否・例外・出力を切り分けます。</p></div><div><strong>Java17 Silver</strong><p>record、sealed、switch式、instanceofパターン変数をSilver範囲で確認します。</p></div><div><strong>Gold</strong><p>Stream、Optional、Collectors、ジェネリクス、NIO、並行処理、モジュールをAPI中心に確認します。</p></div></div></section>
-<section class="card article-map-cta" id="articlePracticeMapCta"><h2>記事から演習へ進む対応表</h2><p>記事を読んだ直後に、同じレベルの演習へ移動できるように整理しました。Bronze、Java11 Silver、Java17 Silver、Goldを混ぜずに進めます。</p><p><a class="btn primary" href="../app/article-practice-map.html">記事→演習対応表を見る</a></p></section>
-<section class="card"><h2>Java基礎</h2><div class="grid">
+<div class="nav"><a href="../index.html">トップ</a><a href="../courses/java-basic/index.html">Java基礎</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Gold</a></div>
+<article class="card"><h1>学習記事一覧</h1><p class="lead">基礎から学習対策まで、必要な記事を目的別に確認できます。</p><section class="article-section foundation-index-note"><h2>基礎概念を強化</h2><p>継承、interface、override、実行ルール、型、変数、リテラル、static、コンストラクタ、キャスト、例外処理は、用語の意味とコード上の判定手順をセットで確認できるように更新しました。</p></section></article>
+<div class="article-topic-grid"><section class="card"><h2>Java基礎</h2><div class="grid">
 <div class="box"><a href="java-command/index.html">javac・javaコマンドで詰まる原因</a><p>コンパイルと実行の違いを整理。</p></div>
 <div class="box"><a href="memory-model-beginner/index.html">参照・メモリ・代入の基本</a><p>値と参照を基礎から確認。</p></div>
 <div class="box"><a href="api-reading/index.html">Java API仕様の読み方</a><p>標準ライブラリを調べる入口。</p></div>
-</div></section>
-<section class="card"><h2>Bronze</h2><div class="grid"><div class="box"><a href="bronze-precision-training/index.html">Bronze演習の読み方</a><p>基本問題を雑に解かないための確認手順。</p></div></div></section>
-<section class="card"><h2>Java Silver共通</h2><div class="grid">
+</div></section><section class="card"><h2>Bronze</h2><div class="grid"><div class="box"><a href="bronze-precision-training/index.html">演習の読み方</a><p>基本問題を雑に解かないための確認手順。</p></div></div></section><section class="card"><h2>Java共通</h2><div class="grid">
 <div class="box"><a href="compile-errors/index.html">コンパイルエラー原因まとめ</a><p>原因、例、修正方法を確認。</p></div>
 <div class="box"><a href="runtime-errors/index.html">実行時例外の原因まとめ</a><p>NPE、範囲外、キャスト、parse失敗など。</p></div>
-<div class="box"><a href="java-silver-code-reading/index.html">Java Silverコード読解</a><p>出力・例外・コンパイル可否を読み分ける。</p></div>
+<div class="box"><a href="java-silver-code-reading/index.html">コード読解</a><p>出力・例外・コンパイル可否を読み分ける。</p></div>
 <div class="box"><a href="reference/index.html">参照の同一性と同値比較</a><p>== / equals / record / String。</p></div>
 <div class="box"><a href="string/index.html">StringとStringBuilder</a><p>不変性、戻り値、文字列プール。</p></div>
 <div class="box"><a href="java-silver-method-resolution/index.html">メソッド呼び出し解決</a><p>オーバーロード、型変換、null。</p></div>
 <div class="box"><a href="java-silver-array-list-difference/index.html">配列とArrayListの違い</a><p>固定長、remove、List.of。</p></div>
 <div class="box"><a href="java-silver-switch-yield-cases/index.html">switch文・switch式・yield</a><p>フォールスルーとyield。</p></div>
-</div></section>
-<section class="card"><h2>Java11 Silver専用</h2><div class="grid"><div class="box"><a href="java11-silver-reading-flow/index.html">Java11 Silverコード読解フロー</a><p>Java11範囲でコンパイル・例外・出力を切り分ける。</p></div></div></section>
-<section class="card"><h2>Java17 Silver専用</h2><div class="grid"><div class="box"><a href="java17-silver-boundary-map/index.html">Java17 Silverの範囲境界</a><p>Java11・Java17・Goldを混ぜずに整理。</p></div>
-<div class="box"><a href="java17-specific-precision/index.html">Java17 Silver固有論点の精密整理</a><p>record、sealed、instanceofパターン変数。</p></div>
-<div class="box"><a href="java-silver-sealed-record-review/index.html">sealedとrecordの頻出整理</a><p>Java17 Silverの範囲に限定。</p></div>
-</div></section>
-<section class="card"><h2>Java Gold専用</h2><div class="grid"><div class="box"><a href="java-gold-api-decision-tree/index.html">Gold API判定ツリー</a><p>型・実行タイミング・戻り値でAPI問題を読む。</p></div>
-<div class="box"><a href="java-gold-type-flow/index.html">Goldの型の流れ</a><p>Stream、ジェネリクス、Optionalを型で読む。</p></div>
-<div class="box"><a href="java-gold-stream-first/index.html">Stream API入門</a><p>中間操作、終端操作、遅延評価。</p></div>
-<div class="box"><a href="java-gold-generics-first/index.html">ジェネリクス入門</a><p>extends / super / PECS。</p></div>
-<div class="box"><a href="java-gold-optional-first/index.html">Optional入門</a><p>Optionalを値の有無として扱う。</p></div>
-<div class="box"><a href="java-gold-collector-first/index.html">Collectors入門</a><p>groupingByなどをGold側で扱う。</p></div>
-</div></section>
+</div></section><section class="card"><h2>Java11 Silver</h2><div class="grid"><div class="box"><a href="java11-silver-var-string/index.html">varとString</a><p>型推論、文字列不変性、戻り値の扱いを確認。</p></div><div class="box"><a href="java11-silver-stringbuilder-arraylist/index.html">StringBuilderとArrayList</a><p>可変オブジェクトとコレクション操作を整理。</p></div><div class="box"><a href="java11-silver-exception-finally/index.html">例外処理とfinally</a><p>例外発生時の制御フローを確認。</p></div><div class="box"><a href="java11-silver-polymorphism-field/index.html">ポリモーフィズムとフィールド隠蔽</a><p>参照型・実体型・フィールド参照を分ける。</p></div><div class="box"><a href="java11-silver-precision/index.html">頻出差分と注意点</a><p>落ちやすい文法差分を確認。</p></div></div></section><section class="card"><h2>Java17 Silver追加部分</h2><div class="grid"><div class="box"><a href="java17-specific-precision/index.html">追加部分の精密整理</a><p>record、sealed、instanceofパターン変数。</p></div><div class="box"><a href="java17-silver-record-details/index.html">recordを丁寧に整理</a><p>コンパクトコンストラクタとアクセサを確認。</p></div><div class="box"><a href="java17-silver-sealed-permits/index.html">sealedとpermits</a><p>sealed / final / non-sealed の関係を確認。</p></div><div class="box"><a href="java17-silver-switch-expression-yield/index.html">switch式とyield</a><p>文と式、戻り値、yieldを分ける。</p></div><div class="box"><a href="java17-silver-pattern-matching-instanceof/index.html">instanceofパターン変数</a><p>型判定後に使える変数の範囲を確認。</p></div><div class="box"><a href="java-silver-sealed-record-review/index.html">sealedとrecordの頻出整理</a><p>recordとsealedをまとめて復習。</p></div></div></section><section class="card"><h2>Java Gold</h2><div class="grid">
+<div class="box"><a href="java-gold-api-decision-tree/index.html">API判定ツリー</a><p>型・実行タイミング・戻り値・例外でAPI問題を切り分ける。</p></div>
+<div class="box"><a href="java-gold-type-flow/index.html">型の流れ</a><p>Stream、Optional、ジェネリクスを式の型で追う。</p></div>
+<div class="box"><a href="java-gold-stream-first/index.html">Stream API入門</a><p>中間操作、終端操作、遅延評価の土台。</p></div>
+<div class="box"><a href="java-gold-stream-deep/index.html">Stream APIを丁寧に読む</a><p>短絡操作、reduce、collectまで掘り下げる。</p></div>
+<div class="box"><a href="java-gold-stream-pipeline/index.html">Streamパイプラインの追跡</a><p>要素がどの操作を通過するかを表で確認。</p></div>
+<div class="box"><a href="java-gold-stream-grouping/index.html">groupingByを正確に読む</a><p>分類キーと下流Collectorの戻り値を分ける。</p></div>
+<div class="box"><a href="java-gold-collector-first/index.html">Collectors入門</a><p>toMap、groupingBy、joiningの典型ミスを確認。</p></div>
+<div class="box"><a href="java-gold-optional-first/index.html">Optional入門</a><p>of、ofNullable、orElse、orElseGetを整理。</p></div>
+<div class="box"><a href="java-gold-optional-flatmap/index.html">OptionalのmapとflatMap</a><p>Optionalの入れ子を型で判断する。</p></div>
+<div class="box"><a href="java-gold-generics-first/index.html">ジェネリクス入門</a><p>型安全性と型消去の基本。</p></div>
+<div class="box"><a href="java-gold-generics-deep/index.html">ジェネリクスとワイルドカード</a><p>extends、super、PECSを読み書きで判断。</p></div>
+<div class="box"><a href="java-gold-generics-wildcard/index.html">ワイルドカード境界の判定</a><p>List&lt;?&gt;、上限境界、下限境界を比較。</p></div>
+<div class="box"><a href="java-gold-lambda-first/index.html">ラムダ式と関数型インタフェース</a><p>Predicate、Function、Consumer、Supplierの違い。</p></div>
+<div class="box"><a href="java-gold-nio-path-files/index.html">PathとFilesの基本</a><p>Path、Files、normalize、toRealPathを分ける。</p></div>
+<div class="box"><a href="java-gold-concurrency-basic/index.html">並行処理入門</a><p>ExecutorService、Future、shutdownの基本。</p></div>
+<div class="box"><a href="java-gold-thread-executor-check/index.html">ExecutorServiceとFutureの判定</a><p>get、cancel、isDone、Callableを整理。</p></div>
+<div class="box"><a href="java-gold-exception-suppressed/index.html">try-with-resourcesと抑制例外</a><p>close順と主例外・抑制例外を追う。</p></div>
+<div class="box"><a href="java-gold-module-info-check/index.html">module-info.javaの確認</a><p>requires、exports、opens、servicesを確認。</p></div>
+</div></section></div>
 </main>
 </div>
 <footer class="site-footer global-footer">
@@ -59,10 +63,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../data/questions.js?v=start-prep-20260529"></script>
+<script src="../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>
