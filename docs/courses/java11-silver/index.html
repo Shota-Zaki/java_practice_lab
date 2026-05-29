@@ -8,14 +8,14 @@
 <title>Java11 Silver 対策｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout course-home" data-course="java11">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
 <header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -24,7 +24,7 @@
 <div>
 <p class="eyebrow">Java11 Silver / OCP Java SE 11 Programmer I 相当</p>
 <h1>Java11 Silver 対策</h1>
-<p class="lead">Java11範囲の文法、API、例外、継承、パッケージ、コマンド実行を通常演習と模試で確認します。Java17固有機能は混ぜません。</p>
+<p class="lead">Java11範囲の文法、API、例外、継承、パッケージ、コマンド実行を通常演習と模試で確認します。Java17追加部分機能は混ぜません。</p>
 <p class="notice">Java11ではrecord、sealed、switch式のyield、instanceofパターンマッチングを出題軸にしません。ここを混ぜると学習範囲が崩れます。</p>
 <div class="hero-actions">
 <a class="btn primary" href="practice/basic-syntax.html">通常演習を始める</a>
@@ -36,7 +36,10 @@
 <span>通常演習 → 不正解復習 → 模試 → 弱点タグ補強</span>
 </div>
 </section>
-<div class="ad-slot course-ad"><span>コース上部広告</span></div>
+<div class="ad-slot course-ad"><span>コース上部広告</span></div><section class="panel course-dashboard-panel" id="practiceList">
+<div class="section-head-row"><h2>Java11 Silver ダッシュボード</h2><span class="inline-note">通常演習の進捗を見ながら、この画面から演習を開始できます。</span></div>
+<div data-course="java11" id="courseDashboardRoot"></div>
+</section>
 <section class="panel course-menu-panel">
 <h2>学習メニュー</h2>
 <div class="course-menu-grid">
@@ -46,42 +49,18 @@
 <a class="course-menu-card" href="../../articles/index.html"><strong>学習記事</strong><span>つまずいた論点を文章で確認</span></a>
 </div>
 </section>
-<section class="panel course-progress-panel">
-<div class="section-head-row"><h2>今日の進捗</h2><a class="btn ghost" href="../../app/dashboard.html">詳細分析</a></div>
-<div data-course="java11" id="courseStatsRoot"></div>
-</section>
-<section class="panel course-dashboard-panel">
-<div class="section-head-row"><h2>Java11 Silver ダッシュボード</h2><span class="inline-note">通常演習・復習・模試をこの画面から回します。</span></div>
-<div data-course="java11" id="courseDashboardRoot"></div>
+
+
+
+
+
+<section class="panel added-practice-panel">
+<div class="section-head-row"><h2>追加演習セット</h2><span class="inline-note">発展論点を整理した追加問題です。</span></div>
+<p>Java11 Silverの範囲に合わせて、通常演習を追加しました。ダッシュボードと通常演習一覧にも自動で反映されます。</p>
+<div class="chip-row"><a class="mini-chip" href="practice/api-boundary-extra.html">API境界追加</a><a class="mini-chip" href="practice/inheritance-exception-extra.html">継承・例外追加</a><a class="mini-chip" href="practice/compile-command-extra.html">コンパイル・コマンド追加</a><a class="mini-chip" href="practice/output-runtime-extra.html">出力・実行時判定追加</a></div>
 </section>
 
-<section class="panel next-action-panel">
-<h2>次にやること</h2>
-<p>Java11 Silverでは、まず通常演習を20問解いて弱点データを作ります。その後、このページのダッシュボードで不正解・見直し・今日の復習・模試へ進んでください。</p>
-<div class="practice-tools">
-<a class="btn primary" href="practice/basic-syntax.html">通常演習へ</a>
-<a class="btn" href="../../app/review/due.html">今日の復習</a>
-<a class="btn" href="../../app/review/wrong.html">不正解復習</a>
-</div>
-</section>
-<section class="panel course-quality-panel">
-<h2>演習の質を上げる読み方</h2>
-<p>Java11 Silverは、Java17やGoldの知識を混ぜると逆に精度が落ちます。Java11時点の文法・APIに限定して、コンパイル可否、実行時例外、出力結果の順に判定します。</p>
-<div class="quality-steps"><div><strong>varの場所を確認</strong><p>ローカル変数以外で使っていないか、null単独で推論していないかを見る。</p></div><div><strong>APIの副作用を見る</strong><p>String、StringBuilder、ArrayListで元が変わるか戻り値だけかを分ける。</p></div><div><strong>継承を2段階で読む</strong><p>参照型で呼べるか、実行時にどのメソッドが選ばれるかを分ける。</p></div></div>
-<p><a class="btn" href="../../articles/java11-silver-reading-flow/index.html">Java11 Silverの読み方記事へ</a></p>
-</section>
 
-<section class="panel article-route-panel" id="articlePracticeRoute">
-<div class="section-head-row"><h2>記事から演習へ進むルート</h2><a class="btn ghost" href="../../app/article-practice-map.html">全コース対応表</a></div>
-<p>記事で論点を確認したら、同じレベルの演習へ移動してください。別レベルの知識を混ぜると、判定基準が崩れます。</p>
-<div class="route-step-grid"><div class="route-step-card"><span class="bridge-level">Java11 Silver</span><strong><a href="../../articles/java11-silver-reading-flow/index.html">Java11範囲の読み方</a></strong><p>Java11 Silverコード読解フロー</p><div class="chip-row"><a class="mini-chip" href="../../courses/java11-silver/practice/basic-syntax.html">基本文法</a><a class="mini-chip" href="../../courses/java11-silver/practice/compile-check.html">コンパイル判定</a></div></div><div class="route-step-card"><span class="bridge-level">Java11 Silver</span><strong><a href="../../articles/java11-silver-stringbuilder-arraylist/index.html">StringBuilder / ArrayList</a></strong><p>Java11 SilverのStringBuilderとArrayList</p><div class="chip-row"><a class="mini-chip" href="../../courses/java11-silver/practice/api-string.html">API・文字列</a></div></div><div class="route-step-card"><span class="bridge-level">Java11 Silver</span><strong><a href="../../articles/java11-silver-exception-finally/index.html">例外とfinally</a></strong><p>Java11 Silverの例外処理とfinally</p><div class="chip-row"><a class="mini-chip" href="../../courses/java11-silver/practice/exception-inheritance.html">例外・継承</a></div></div><div class="route-step-card"><span class="bridge-level">Java11 Silver</span><strong><a href="../../articles/silver-output-problems/index.html">総合出力問題</a></strong><p>出力結果問題の読み方</p><div class="chip-row"><a class="mini-chip" href="../../courses/java11-silver/practice/output-mix.html">総合出力問題</a><a class="mini-chip" href="../../courses/java11-silver/practice/final-check.html">総合確認</a></div></div></div>
-</section>
-<section class="panel" id="practiceList">
-<div class="section-head-row"><h2>通常演習</h2><span class="inline-note">模試は通常進捗に含めません。</span></div>
-<div class="unit-grid compact-unit-grid tag-style-grid" data-course="java11" id="unitGrid"></div></section>
-<section class="panel" id="examList">
-<div class="section-head-row"><h2>実践模試</h2><span class="inline-note">制限時間を意識して解く枠です。</span></div>
-<div class="unit-grid compact-unit-grid exam-card-grid" data-course="java11" id="examGrid"></div></section>
 <section class="panel">
 <h2>関連する学習記事</h2>
 <div class="card-grid compact-card-grid"><a class="article-card rich-card" href="../../articles/java11-silver-precision/index.html"><strong>Java11 Silver 精度確認</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java11-silver-stringbuilder-arraylist/index.html"><strong>StringBuilder / ArrayList</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java11-silver-exception-finally/index.html"><strong>finallyと例外</strong><span>関連解説を読む</span></a></div>
@@ -95,10 +74,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="java11silver.html";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>

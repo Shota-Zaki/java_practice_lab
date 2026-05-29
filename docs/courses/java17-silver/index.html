@@ -8,14 +8,14 @@
 <title>Java17 Silver 対策｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout course-home" data-course="java17">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
 <header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -24,8 +24,8 @@
 <div>
 <p class="eyebrow">Java17 Silver / メインコース</p>
 <h1>Java17 Silver 対策</h1>
-<p class="lead">Java17 Silver範囲を、通常演習・実践模試・弱点復習で回すためのメインページです。record、sealed、switch式、instanceofパターンマッチングはJava17側に分離します。</p>
-<p class="notice">Java17 Silverはこのサイトの中心です。Java11以前の基礎に加え、Java17固有構文をSilver範囲として扱います。ただしGold論点は入れません。</p>
+<p class="lead">通常演習・実践模試・弱点復習を回すためのメインページです。record、sealed、switch式、instanceofパターンマッチングは追加部分として整理します。</p>
+<p class="notice">このコースでは、基礎文法に加えてrecord、sealed、switch式、instanceofパターンマッチングを扱います。</p>
 <div class="hero-actions">
 <a class="btn primary" href="units/java-basic.html">通常演習を始める</a>
 <a class="btn" href="exams/index.html">実践模試センター</a>
@@ -36,7 +36,7 @@
 <span>通常演習 → 不正解復習 → 模試 → 弱点タグ補強</span>
 </div>
 </section>
-<div class="ad-slot course-ad"><span>コース上部広告</span></div>
+<div class="ad-slot course-ad"><span>コース上部広告</span></div><section class="panel course-dashboard-panel" id="practiceList"><div class="section-head-row"><h2>Java17 Silver ダッシュボード</h2><span class="inline-note">通常演習の進捗を見ながら、この画面から演習を開始できます。</span></div><div data-course="java17" id="courseDashboardRoot"></div></section>
 <section class="panel course-menu-panel">
 <h2>学習メニュー</h2>
 <div class="course-menu-grid">
@@ -46,42 +46,15 @@
 <a class="course-menu-card" href="../../articles/index.html"><strong>学習記事</strong><span>つまずいた論点を文章で確認</span></a>
 </div>
 </section>
-<section class="panel course-progress-panel">
-<div class="section-head-row"><h2>今日の進捗</h2><a class="btn ghost" href="../../app/dashboard.html">詳細分析</a></div>
-<div data-course="java17" id="courseStatsRoot"></div>
-</section>
-<section class="panel next-action-panel">
-<h2>次にやること</h2>
-<p>まず通常演習を20問解いて、正答率ではなく「どの論点で止まるか」を見ます。正答率だけ追うと、たまたま当たった問題を理解済みと誤認します。</p>
-<div class="practice-tools">
-<a class="btn primary" href="units/java-basic.html">通常演習へ</a>
-<a class="btn" href="../../app/review/due.html">今日の復習</a>
-<a class="btn" href="../../app/review/wrong.html">不正解復習</a>
-</div>
-</section>
-<section class="panel course-quality-panel">
-<h2>演習の質を上げる読み方</h2>
-<p>Java17 Silverでは、Java11範囲の基礎に加えて、record、sealed、switch式、instanceofパターン変数のようなJava17寄りの構文条件を正確に確認します。GoldのStream/Collectors/高度ジェネリクスには踏み込みません。</p>
-<div class="quality-steps"><div><strong>範囲を切る</strong><p>Java11範囲、Java17固有、Gold範囲を混ぜずに読む。</p></div><div><strong>新構文は条件を見る</strong><p>record、sealed、switch式、パターン変数は成立条件を先に確認。</p></div><div><strong>出力は最後</strong><p>コンパイルと例外を通過してから、参照・継承・APIの出力を追う。</p></div></div>
-<p><a class="btn" href="../../articles/java17-silver-boundary-map/index.html">Java17 Silverの境界整理記事へ</a></p>
-</section>
 
-<section class="panel article-route-panel" id="articlePracticeRoute">
-<div class="section-head-row"><h2>記事から演習へ進むルート</h2><a class="btn ghost" href="../../app/article-practice-map.html">全コース対応表</a></div>
-<p>記事で論点を確認したら、同じレベルの演習へ移動してください。別レベルの知識を混ぜると、判定基準が崩れます。</p>
-<div class="route-step-grid"><div class="route-step-card"><span class="bridge-level">Java17 Silver</span><strong><a href="../../articles/java17-silver-boundary-map/index.html">Java17 Silverの範囲境界</a></strong><p>Java17 Silverの範囲境界：Java11・Java17・Goldを混ぜない</p><div class="chip-row"><a class="mini-chip" href="../../courses/java17-silver/units/class-design.html">クラス設計</a><a class="mini-chip" href="../../courses/java17-silver/units/inheritance.html">継承とポリモーフィズム</a></div></div><div class="route-step-card"><span class="bridge-level">Java17 Silver</span><strong><a href="../../articles/java17-silver-record-details/index.html">recordを確認</a></strong><p>Java17 Silverのrecordを丁寧に整理</p><div class="chip-row"><a class="mini-chip" href="../../courses/java17-silver/units/class-design.html">クラス設計</a></div></div><div class="route-step-card"><span class="bridge-level">Java17 Silver</span><strong><a href="../../articles/java17-silver-sealed-permits/index.html">sealedを確認</a></strong><p>Java17 Silverのsealedとpermits</p><div class="chip-row"><a class="mini-chip" href="../../courses/java17-silver/units/inheritance.html">継承とポリモーフィズム</a></div></div><div class="route-step-card"><span class="bridge-level">Java17 Silver</span><strong><a href="../../articles/java17-silver-switch-expression-yield/index.html">switch式・yieldを確認</a></strong><p>Java17 Silverのswitch式とyield</p><div class="chip-row"><a class="mini-chip" href="../../courses/java17-silver/units/operator-control.html">演算子と制御構造</a></div></div></div>
-</section>
-<section class="panel" id="practiceList">
-<div class="section-head-row"><h2>通常演習</h2><span class="inline-note">模試は通常進捗に含めません。</span></div>
-<div class="unit-grid compact-unit-grid tag-style-grid" data-course="java17" id="unitGrid"></div>
-</section>
-<section class="panel" id="examList">
-<div class="section-head-row"><h2>実践模試</h2><span class="inline-note">制限時間を意識して解く枠です。</span></div>
-<div class="unit-grid compact-unit-grid exam-card-grid" data-course="java17" id="examGrid"></div>
-</section>
+
+
+
+
+
 <section class="panel">
 <h2>関連する学習記事</h2>
-<div class="card-grid compact-card-grid"><a class="article-card rich-card" href="../../articles/java17-specific-precision/index.html"><strong>Java17固有論点の精度確認</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-record-details/index.html"><strong>recordの詳細</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-sealed-permits/index.html"><strong>sealed permits</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-switch-expression-yield/index.html"><strong>switch式とyield</strong><span>関連解説を読む</span></a></div>
+<div class="card-grid compact-card-grid"><a class="article-card rich-card" href="../../articles/java17-specific-precision/index.html"><strong>Java17追加部分論点の精度確認</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-record-details/index.html"><strong>recordの詳細</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-sealed-permits/index.html"><strong>sealed permits</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-switch-expression-yield/index.html"><strong>switch式とyield</strong><span>関連解説を読む</span></a></div>
 </section>
 </main>
 </div>
@@ -92,10 +65,9 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="java17silver.html";</script>
-<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
-<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+<script src="../../data/questions.js?v=start-prep-20260529"></script>
+<script src="../../assets/js/app.js?v=start-prep-20260529"></script>
+<script src="../../pwa.js?v=start-prep-20260529"></script>
 </body>
 </html>
