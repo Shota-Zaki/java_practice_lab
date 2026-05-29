@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="文字列がどのように扱われ、なぜ比較や変更でつまずくのかを理解する。" name="description"/>
+<title>Lesson 7 Stringの基本｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 7</p>
+<h1>Stringの基本</h1>
+<p class="lead">文字列がどのように扱われ、なぜ比較や変更でつまずくのかを理解する。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p><code>String</code>は文字列を扱う参照型で、内容は不変。メソッドで加工しても元の文字列は変わらず、新しい文字列が返る。比較では<code>==</code>と<code>equals</code>を分ける。</p></section><section class="card lesson-section"><h2>Stringは不変</h2><p><code>replace</code>、<code>substring</code>、<code>toUpperCase</code>などは、元の<code>String</code>を書き換えない。戻り値を受け取らないと、結果は捨てられる。</p><p class="code-caption">悪い読み方をしやすい例</p><pre><code>String s = "java";
+s.toUpperCase();
+System.out.println(s); // java</code></pre><p class="code-caption">戻り値を受け取る</p><pre><code>String s = "java";
+s = s.toUpperCase();
+System.out.println(s); // JAVA</code></pre></section><section class="card lesson-section"><h2>==とequals</h2><p><code>==</code>は同じオブジェクトを参照しているかを見る。<code>equals</code>は文字列の内容を比較する。文字列リテラルでは<code>==</code>がtrueになることもあるが、それを内容比較として使うのは危険。</p><pre><code>String a = new String("java");
+String b = "java";
+
+System.out.println(a == b);      // false
+System.out.println(a.equals(b)); // true</code></pre></section><section class="card lesson-section"><h2>文字列連結</h2><p><code>+</code>に<code>String</code>が混ざると文字列連結になる。左から評価されるため、数値計算と文字列連結が混ざると結果が変わる。</p><pre><code>System.out.println(1 + 2 + "A"); // 3A
+System.out.println("A" + 1 + 2); // A12</code></pre></section><section class="card lesson-section"><h2>nullとの組み合わせ</h2><p><code>String</code>変数が<code>null</code>のとき、その変数からメソッドを呼ぶと<code>NullPointerException</code>になる。内容が空の文字列<code>""</code>とは別物。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>値</th><th>意味</th><th>メソッド呼び出し</th></tr></thead><tbody><tr><td><code>null</code></td><td>何も参照していない</td><td><code>s.length()</code>で実行時例外</td></tr><tr><td><code>""</code></td><td>長さ0の文字列オブジェクト</td><td><code>s.length()</code>は0</td></tr><tr><td><code>" "</code></td><td>空白1文字の文字列</td><td><code>s.length()</code>は1</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次の出力を予測し、<code>==</code>なのか<code>equals</code>なのかを説明する。</p><pre><code>String a = "x";
+String b = "x";
+String c = new String("x");
+System.out.println(a == b);
+System.out.println(a == c);
+System.out.println(a.equals(c));</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p><code>String</code>は文字列を表す参照型。プリミティブ型ではない。変数には文字列そのものではなく、<code>String</code>オブジェクトへの参照が入る。</p><p>さらに<code>String</code>は不変。<code>concat</code>や<code>replace</code>を呼んでも、元の文字列オブジェクトが書き換わるわけではない。結果として新しい文字列が返る。返り値を受け取らないと変化しないように見える。</p><p>比較では<code>==</code>と<code>equals</code>を分ける。<code>==</code>は参照の比較、<code>equals</code>は文字列内容の比較として使う。</p><div class="principle-grid"><div class="principle-card"><strong>参照型</strong><p><code>String s</code>には<code>String</code>オブジェクトへの参照が入る。</p></div><div class="principle-card"><strong>不変</strong><p>文字列操作は元を変えず、新しい文字列を返す。</p></div><div class="principle-card"><strong>比較</strong><p>内容比較は基本<code>equals</code>。<code>==</code>は参照比較。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td><code>==</code> / <code>equals</code></td><td><code>==</code>は同じ参照か、<code>equals</code>は内容が同じか。</td><td>文字列内容を見たいなら<code>equals</code>。</td></tr><tr><td>文字列リテラル / <code>new String</code></td><td>リテラルは文字列プールが絡む。<code>new</code>は新規オブジェクト。</td><td>参照比較で差が出る。</td></tr><tr><td>変更 / 新規作成</td><td><code>String</code>は変更されず、新しい結果が作られる。</td><td>返り値を代入しているか見る。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li><code>String</code>変数が何を参照しているか見る。</li><li><code>new</code>で作ったか、リテラルかを見る。</li><li>文字列操作メソッドの返り値を代入しているか見る。</li><li>比較が<code>==</code>か<code>equals</code>かを見る。</li></ol><p class="code-caption">確認用コード</p><pre><code>String s = "Java";
+s.concat("Silver");
+System.out.println(s);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>初期値</td><td><code>s</code>は<code>"Java"</code>を参照</td><td>OK</td></tr><tr><td><code>concat</code></td><td>新しい文字列を返すが代入していない</td><td><code>s</code>は変わらない</td></tr><tr><td>出力</td><td><code>s</code>の参照先は元のまま</td><td><code>Java</code></td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>Stringは文字配列のように直接書き換わる、は違う</strong><p><code>String</code>は不変。変更したいなら返り値を受け取る。</p></div><div class="mistake-callout"><strong>文字列は常に<code>==</code>で比べればよい、は危険</strong><p>同じ内容でも別オブジェクトなら<code>==</code>はfalseになりうる。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次の出力を答え、理由を説明する。</p><p class="code-caption">確認問題</p><pre><code>String a = "ab";
+String b = new String("ab");
+System.out.println(a == b);
+System.out.println(a.equals(b));</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>1行目は<code>false</code>。<code>a</code>と<code>b</code>は同じ内容だが、参照先が同じとは限らない。<code>new String</code>で別オブジェクトを作っている。</p><p>2行目は<code>true</code>。<code>equals</code>は文字列内容を比較するため。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p><code>String</code>はよく使うので簡単に見えますが、実際には<strong>参照型・不変・文字列プール</strong>が絡みます。基礎段階では、まず「文字列操作メソッドは元を書き換えない」「内容比較は<code>equals</code>」の2点を確実にしてください。</p>
+<pre><code>String s = "abc";
+s.substring(1);
+System.out.println(s); // abc</code></pre>
+<p>このコードで<code>bc</code>が表示されると思ったなら、まだ<code>String</code>を「書き換わる箱」として見ています。<code>substring</code>は新しい文字列を返すだけです。戻り値を受け取らない限り、変数<code>s</code>の参照先は変わりません。</p>
+<pre><code>String s = "abc";
+s = s.substring(1);
+System.out.println(s); // bc</code></pre>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>比較</th><th>何を見ているか</th><th>使う場面</th></tr></thead><tbody><tr><td><code>a == b</code></td><td>同じオブジェクトを参照しているか</td><td>参照そのものを確認したいとき</td></tr><tr><td><code>a.equals(b)</code></td><td>文字列の内容が同じか</td><td>通常の文字列比較</td></tr><tr><td><code>"x".equals(a)</code></td><td>定数側から比較</td><td><code>a</code>がnullの可能性があるとき</td></tr></tbody></table></div>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p><code>==</code>がtrueになる文字列の例を見て「文字列は<code>==</code>で比較できる」と結論づけるのは間違いです。たまたま同じ参照を見ているだけの場合があります。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>Stringの基本を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="06.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="08.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-07.html";</script>
+<script src="../../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

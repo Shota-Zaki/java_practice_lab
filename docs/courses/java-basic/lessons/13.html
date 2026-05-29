@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="クラス側に属するものと、インスタンス側に属するものを切り分ける。" name="description"/>
+<title>Lesson 13 static｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 13</p>
+<h1>static</h1>
+<p class="lead">クラス側に属するものと、インスタンス側に属するものを切り分ける。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p><code>static</code>はインスタンスではなくクラス側に属するという意味。インスタンスごとに別々の値を持つフィールドと、クラス全体で共有されるstaticフィールドを分ける。</p></section><section class="card lesson-section"><h2>staticフィールド</h2><pre><code>class Counter {
+    static int total;
+    int value;
+}
+
+Counter a = new Counter();
+Counter b = new Counter();
+a.value = 1;
+b.value = 2;
+Counter.total = 100;</code></pre><p><code>value</code>はインスタンスごとに別。<code>total</code>はクラス側に1つ。</p></section><section class="card lesson-section"><h2>staticメソッド</h2><p><code>static</code>メソッドはインスタンスなしで呼べる。その代わり、インスタンスフィールドやインスタンスメソッドを直接使えない。</p><p class="code-caption">悪い例</p><pre><code>class Sample {
+    int value = 10;
+
+    static void print() {
+        System.out.println(value); // コンパイルエラー
+    }
+}</code></pre><p class="code-caption">修正例</p><pre><code>class Sample {
+    int value = 10;
+
+    static void print() {
+        Sample s = new Sample();
+        System.out.println(s.value);
+    }
+}</code></pre></section><section class="card lesson-section"><h2>呼び出し方</h2><p>staticメンバーはクラス名で呼ぶのが基本。インスタンス変数からも呼べる場合があるが、読み手を混乱させるため避けるべき。</p><pre><code>Math.max(3, 5);
+Integer.parseInt("123");
+System.out.println("OK");</code></pre></section><section class="card lesson-section"><h2>static初期化の考え方</h2><p>staticフィールドはクラスが使われるタイミングで準備される。インスタンス生成とは別軸で考える。初心者段階では、まず「staticはクラス側」「非staticはインスタンス側」と切るだけでよい。</p></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードの<code>count</code>が共有される理由を説明する。</p><pre><code>class User {
+    static int count;
+
+    User() {
+        count++;
+    }
+}
+
+new User();
+new User();
+System.out.println(User.count);</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p><code>static</code>は「インスタンスに属さず、クラス側に属する」という意味で捉える。初心者がやりがちな誤解は、staticを「便利だからどこからでも使えるもの」と考えること。これは設計を壊す。</p><p>staticメソッドからインスタンスフィールドを直接使えない理由は単純。どのインスタンスの値を使うのか決まっていないから。インスタンスを指定すれば使える。</p><p>逆に、インスタンスメソッドからstaticメンバーを使うことはできる。ただし、状態の置き場所がクラス側なのかインスタンス側なのかを意識しないと、値が共有されて予想外の動きになる。</p><div class="principle-grid"><div class="principle-card"><strong>staticフィールド</strong><p>クラスに1つ紐づく値。全インスタンスで共有される。</p></div><div class="principle-card"><strong>staticメソッド</strong><p>インスタンスなしで呼べるメソッド。</p></div><div class="principle-card"><strong>インスタンスメンバー</strong><p>各オブジェクトに紐づく値や動作。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>クラス側 / インスタンス側</td><td>staticはクラス側。非staticはインスタンス側。</td><td><code>static</code>修飾子の有無を見る。</td></tr><tr><td>共有 / 個別</td><td>staticフィールドは共有。インスタンスフィールドは個別。</td><td><code>new</code>を複数回したときに値が分かれるか。</td></tr><tr><td>直接参照 / インスタンス経由</td><td>staticから非staticを直接参照できない。</td><td>対象オブジェクトが指定されているか見る。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>メンバーに<code>static</code>が付いているか見る。</li><li>今いるメソッドがstaticかどうかを見る。</li><li>staticメソッド内で非staticを直接使っていないか確認する。</li><li>インスタンスを生成して対象を指定しているか確認する。</li><li>値が共有されるべきものか、個別に持つべきものか判断する。</li></ol><p class="code-caption">確認用コード</p><pre><code>class Counter {
+    static int total;
+    int count;
+}
+
+Counter a = new Counter();
+Counter b = new Counter();
+a.total++;
+a.count++;
+System.out.println(b.total + ":" + b.count);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>total</code></td><td>staticフィールド</td><td><code>a</code>と<code>b</code>で共有</td></tr><tr><td><code>count</code></td><td>インスタンスフィールド</td><td>各インスタンスで別</td></tr><tr><td>出力</td><td><code>b.total</code>は1、<code>b.count</code>は0</td><td><code>1:0</code></td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>staticは何でも解決する魔法、ではない</strong><p>staticにすると状態が共有される。個別状態までstaticにすると設計が破綻する。</p></div><div class="mistake-callout"><strong>インスタンスからstaticを呼べるからインスタンス所属、ではない</strong><p>書ける場合があっても、意味としてはクラス側に属する。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードがコンパイルエラーになる理由を説明する。</p><p class="code-caption">確認問題</p><pre><code>public class Main {
+    int value = 10;
+    static void print() {
+        System.out.println(value);
+    }
+}</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p><code>print</code>はstaticメソッドで、インスタンスなしで呼ばれる。</p><p><code>value</code>はインスタンスフィールドなので、どのインスタンスの<code>value</code>か決まらない。<code>Main m = new Main();</code>のように対象を作って<code>m.value</code>とする必要がある。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p><code>static</code>は「便利だから付けるもの」ではありません。<strong>インスタンスに属するのか、クラスに属するのか</strong>を切り分けるための指定です。ここが曖昧だと、なぜ<code>main</code>からフィールドを直接使えないのかが理解できません。</p>
+<pre><code>class Counter {
+    int instanceCount = 0;
+    static int classCount = 0;
+
+    void add() {
+        instanceCount++;
+        classCount++;
+    }
+}</code></pre>
+<p><code>instanceCount</code>はインスタンスごとに別々です。<code>classCount</code>はクラス側に1つです。複数の<code>Counter</code>インスタンスを作っても、<code>classCount</code>は共有されます。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>場所</th><th>使えるもの</th><th>理由</th></tr></thead><tbody><tr><td>インスタンスメソッド</td><td>インスタンスメンバ、staticメンバ</td><td>対象インスタンスがあるため</td></tr><tr><td>staticメソッド</td><td>staticメンバ</td><td>特定のインスタンスがないため</td></tr><tr><td><code>main</code></td><td>基本はstatic側</td><td><code>main</code>自体がstaticだから</td></tr></tbody></table></div>
+<pre><code>class Sample {
+    int value = 10;
+
+    static void print() {
+        // System.out.println(value); // コンパイルエラー
+        Sample s = new Sample();
+        System.out.println(s.value); // OK
+    }
+}</code></pre>
+<div class="mistake-callout"><strong>staticの判断基準</strong><p>「オブジェクトごとに違う状態か？」を先に考えてください。違うならインスタンス側、全体で1つならstatic側です。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>staticを、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="12.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="14.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-13.html";</script>
+<script src="../../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

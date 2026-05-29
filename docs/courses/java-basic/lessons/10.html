@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="固定長の入れ物としての配列、添字、初期値、参照のコピーを理解する。" name="description"/>
+<title>Lesson 10 配列｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 10</p>
+<h1>配列</h1>
+<p class="lead">固定長の入れ物としての配列、添字、初期値、参照のコピーを理解する。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p>配列は同じ型の要素をまとめて扱う固定長のオブジェクト。配列変数には配列そのものではなく参照が入る。添字は0から始まり、範囲外アクセスは実行時例外になる。</p></section><section class="card lesson-section"><h2>配列の作り方</h2><pre><code>int[] a = new int[3];
+a[0] = 10;
+a[1] = 20;
+a[2] = 30;</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>式</th><th>意味</th></tr></thead><tbody><tr><td><code>int[] a</code></td><td><code>int</code>を入れる配列への参照変数</td></tr><tr><td><code>new int[3]</code></td><td>長さ3の<code>int</code>配列を作る</td></tr><tr><td><code>a[0]</code></td><td>0番目の要素</td></tr><tr><td><code>a.length</code></td><td>配列の長さ。メソッドではなくフィールド</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>デフォルト値</h2><p>配列を<code>new</code>すると、各要素は型ごとのデフォルト値で初期化される。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>要素型</th><th>初期値</th></tr></thead><tbody><tr><td>数値型</td><td><code>0</code>または<code>0.0</code></td></tr><tr><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>char</code></td><td><code>\u0000</code></td></tr><tr><td>参照型</td><td><code>null</code></td></tr></tbody></table></div><pre><code>String[] names = new String[2];
+System.out.println(names[0]); // null</code></pre></section><section class="card lesson-section"><h2>参照のコピー</h2><p>配列変数を別の変数へ代入しても、配列の中身がコピーされるわけではない。同じ配列を指す参照がコピーされる。</p><pre><code>int[] a = {1, 2, 3};
+int[] b = a;
+b[0] = 99;
+System.out.println(a[0]); // 99</code></pre></section><section class="card lesson-section"><h2>多次元配列</h2><p>Javaの多次元配列は「配列の配列」。各行の長さを揃えなくてもよい。</p><pre><code>int[][] table = new int[2][];
+table[0] = new int[3];
+table[1] = new int[1];</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードで例外が出る行を判断する。</p><pre><code>int[] nums = new int[3];
+System.out.println(nums[2]);
+System.out.println(nums[3]);</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>配列は同じ型の値または参照をまとめて扱う固定長の入れ物。作成した後に要素数は変えられない。添字は0から始まる。</p><p>配列変数は参照型。つまり、変数には配列オブジェクトへの参照が入る。配列を別変数へ代入しても、配列本体がコピーされるわけではない。同じ配列を2つの変数で見ている状態になる。</p><p>要素の初期値も押さえる。<code>int</code>配列なら0、<code>boolean</code>配列ならfalse、参照型配列ならnull。ローカル変数そのものの未初期化とは分ける。</p><div class="principle-grid"><div class="principle-card"><strong>固定長</strong><p>配列の長さは作成時に決まる。後から伸び縮みしない。</p></div><div class="principle-card"><strong>0始まり</strong><p>最初の要素は<code>[0]</code>。最後は<code>[length - 1]</code>。</p></div><div class="principle-card"><strong>参照型</strong><p>配列変数には配列オブジェクトへの参照が入る。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>配列変数 / 配列要素</td><td>配列変数は参照。要素は中に入っている値または参照。</td><td><code>a</code>と<code>a[0]</code>を分ける。</td></tr><tr><td>長さ / 最後の添字</td><td>長さが3なら最後の添字は2。</td><td><code>length - 1</code>が最後。</td></tr><tr><td>配列コピー / 参照コピー</td><td>代入は参照コピー。中身の複製ではない。</td><td><code>b = a</code>後に片方を変更して確認。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>配列が作成されているか見る。</li><li>長さを確認する。</li><li>アクセスしている添字が<code>0</code>以上<code>length - 1</code>以下か見る。</li><li>別変数に代入されている場合、同じ配列を参照していないか確認する。</li><li>要素の型と初期値を確認する。</li></ol><p class="code-caption">確認用コード</p><pre><code>int[] a = new int[3];
+int[] b = a;
+b[0] = 10;
+System.out.println(a[0]);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>a</code></td><td>長さ3の配列を参照</td><td>要素初期値は0</td></tr><tr><td><code>b = a</code></td><td>同じ配列を参照</td><td>配列本体はコピーされない</td></tr><tr><td><code>b[0] = 10</code></td><td>同じ配列の0番を変更</td><td><code>a[0]</code>も10</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>配列の最後は<code>length</code>番、は間違い</strong><p>添字は0始まりなので最後は<code>length - 1</code>。</p></div><div class="mistake-callout"><strong><code>b = a</code>で配列が複製される、は違う</strong><p>参照がコピーされるだけ。同じ配列を指す。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードの出力を答える。</p><p class="code-caption">確認問題</p><pre><code>String[] names = new String[2];
+System.out.println(names[0]);</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>出力は<code>null</code>。</p><p><code>String</code>は参照型なので、配列要素の初期値は<code>null</code>になる。ローカル変数<code>names</code>自体は<code>new String[2]</code>で初期化済み。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>配列は「複数の値を入れるもの」ですが、Javaでは<strong>配列そのものもオブジェクト</strong>です。変数には配列オブジェクトへの参照が入ります。このため、参照をコピーすると同じ配列を2つの変数から見る状態になります。</p>
+<pre><code>int[] a = {1, 2, 3};
+int[] b = a;
+b[0] = 99;
+System.out.println(a[0]); // 99</code></pre>
+<p><code>b = a</code>は配列の中身を複製しているのではありません。参照をコピーしています。したがって、<code>a</code>と<code>b</code>は同じ配列オブジェクトを見ています。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>コード</th><th>意味</th><th>注意</th></tr></thead><tbody><tr><td><code>new int[3]</code></td><td>要素数3のint配列を作る</td><td>初期値は0</td></tr><tr><td><code>a.length</code></td><td>配列の長さ</td><td>メソッドではないので<code>()</code>不要</td></tr><tr><td><code>a[0]</code></td><td>先頭要素</td><td>添字は0から始まる</td></tr><tr><td><code>a[3]</code></td><td>4番目の要素</td><td>長さ3なら実行時例外</td></tr></tbody></table></div>
+<p>配列の長さは作った後に変えられません。要素を増やしたいなら、新しい配列を作るか、後で学ぶ<code>ArrayList</code>のようなコレクションを使います。</p>
+<div class="mistake-callout"><strong>配列で最初に疑うべき箇所</strong><p>添字が範囲内か、参照をコピーして同じ配列を見ていないか、初期値を勘違いしていないか。この3つを先に確認してください。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>配列を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="09.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="11.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-10.html";</script>
+<script src="../../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>
