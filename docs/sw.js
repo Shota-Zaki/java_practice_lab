@@ -1,4 +1,4 @@
-const CACHE_NAME = 'java-practice-lab-content-scope-cleanup-20260529';
+const CACHE_NAME = 'java-practice-lab-official-exam-specs-fix-20260529';
 const CORE_ASSETS = [
   './',
   './index.html',

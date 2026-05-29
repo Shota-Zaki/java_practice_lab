@@ -1677,3 +1677,17 @@ body.theme-dark .setup-ok { background: #052e16; color: #dcfce7; }
 @media (max-width: 680px) {
   .article-unit-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Exam official spec update */
+.practice-quality-guide.is-hidden { display: none !important; }
+body.is-practice-page .answer-actions,
+body.is-exam-page .answer-actions,
+.answer-actions {
+  bottom: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+.question-list { padding-bottom: 76px !important; }
+@media (max-width: 860px) {
+  .question-list { padding-bottom: 128px !important; }
+}

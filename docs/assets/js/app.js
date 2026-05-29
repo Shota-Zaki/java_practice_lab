@@ -5,6 +5,8 @@
   Object.assign(PAGE_PATHS, EXTRA_PAGE_PATHS_HEADER_CARDS);
   const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold/practice/nio-concurrency-module-extra.html"};
   Object.assign(PAGE_PATHS, JAVA11_GOLD_MORE_PAGE_PATHS);
+  const GOLD_SPLIT_PAGE_PATHS = {"gold11.html":"courses/gold11/index.html","gold17.html":"courses/gold17/index.html","gold-hub.html":"courses/gold/index.html"};
+  Object.assign(PAGE_PATHS, GOLD_SPLIT_PAGE_PATHS);
   function pageHref(page) {
     if (!page) return (window.APP_ROOT || "") + "index.html";
     if (/^(https?:|mailto:|#|\/\/)/.test(page)) return page;
@@ -311,6 +313,11 @@
     "java-gold-type-flow"
   ]
 };
+  // Gold split linked article aliases
+  Object.keys(LINKED_ARTICLES_BY_UNIT).filter(k => k.startsWith("gold-")).forEach(k => {
+    LINKED_ARTICLES_BY_UNIT[k.replace("gold-", "gold11-")] = LINKED_ARTICLES_BY_UNIT[k];
+    LINKED_ARTICLES_BY_UNIT[k.replace("gold-", "gold17-")] = LINKED_ARTICLES_BY_UNIT[k];
+  });
   const ARTICLE_TITLE_MAP = {
   "api-reading": "Java API仕様の読み方",
   "before-exam": "直前チェックモード",
@@ -718,6 +725,8 @@
       if (path.includes('/courses/bronze/') || activePath.startsWith('bronze')) return 'bronze';
       if (path.includes('/courses/java11-silver/') || activePath.startsWith('java11')) return 'java11';
       if (path.includes('/courses/java17-silver/') || activePath.startsWith('practice') || activePath === 'exam.html') return 'java17';
+      if (path.includes('/courses/gold11/') || activePath.startsWith('gold11')) return 'gold11';
+      if (path.includes('/courses/gold17/') || activePath.startsWith('gold17')) return 'gold17';
       if (path.includes('/courses/gold/') || activePath.startsWith('gold')) return 'gold';
       if (path.includes('/articles/') || activePath.startsWith('article') || ["methods.html","glossary.html","cheatsheet.html","before-exam.html","weak-guides.html"].includes(activePath)) return 'articles';
       if (path.includes('/app/') || ["dashboard.html","mode.html","search.html","random.html","notes.html","settings.html","sync.html","mistake-reasons.html"].includes(activePath)) return 'app';
@@ -728,14 +737,17 @@
       bronze: direct('courses/bronze/index.html', 'Bronzeトップ', activePath === 'bronze.html'),
       java11: direct('courses/java11-silver/index.html', 'Java11 Silverトップ', activePath === 'java11silver.html'),
       java17: direct('courses/java17-silver/index.html', 'Java17 Silverトップ', activePath === 'java17silver.html'),
-      gold: direct('courses/gold/index.html', 'Goldトップ', activePath === 'gold.html')
+      gold: direct('courses/gold/index.html', 'Goldコース選択', activePath === 'gold.html'),
+      gold11: direct('courses/gold11/index.html', 'Java Gold SE 11トップ', activePath === 'gold11.html'),
+      gold17: direct('courses/gold17/index.html', 'Java Gold SE 17トップ', activePath === 'gold17.html')
     };
     const commonCourseLinks = `<details class="nav-section"><summary>他のコース</summary><div>
       ${direct('courses/java-basic/index.html','1からわかるJava基礎')}
       ${direct('courses/bronze/index.html','Java Bronze')}
       ${direct('courses/java11-silver/index.html','Java11 Silver')}
       ${direct('courses/java17-silver/index.html','Java17 Silver')}
-      ${direct('courses/gold/index.html','Java Gold')}
+      ${direct('courses/gold11/index.html','Java Gold SE 11')}
+      ${direct('courses/gold17/index.html','Java Gold SE 17')}
     </div></details>`;
 
     const silverCourseLinks = `<details class="nav-section"><summary>関連コース</summary><div>
@@ -781,17 +793,24 @@
         + section('演習ツール', toolLinks, !!tagFilter || randomMode || ["search.html","notes.html"].includes(activePath))
         + section('学習記事', direct('courses/java17-silver/articles.html','Java17 Silver記事', activePath === 'java17-articles.html') + direct('articles/compile-errors/index.html','コンパイルエラー') + direct('articles/reference/index.html','参照比較') + direct('articles/java17-specific-precision/index.html','Java17追加部分論点'), activePath === 'java17-articles.html')
         + silverCourseLinks;
+    } else if (activeCourse === 'gold11') {
+      html += section('Java Gold SE 11', courseHome.gold11 + unitLinks('gold11', false), true)
+        + section('Gold SE 11模試', unitLinks('gold11', true), isExamUnit() && unitById(unitId)?.course === 'gold11')
+        + commonCourseLinks;
+    } else if (activeCourse === 'gold17') {
+      html += section('Java Gold SE 17', courseHome.gold17 + unitLinks('gold17', false), true)
+        + section('Gold SE 17模試', unitLinks('gold17', true), isExamUnit() && unitById(unitId)?.course === 'gold17')
+        + commonCourseLinks;
     } else if (activeCourse === 'gold') {
-      html += section('Java Gold', courseHome.gold + lessonLinks('courses/gold','gold',goldTitles), true)
-        + section('Gold演習', unitLinks('gold', false), !!unitId && unitById(unitId)?.course === 'gold')
-        + section('Gold模試', unitLinks('gold', true), isExamUnit() && unitById(unitId)?.course === 'gold')
+      html += section('Java Gold', courseHome.gold + direct('courses/gold11/index.html','Java Gold SE 11') + direct('courses/gold17/index.html','Java Gold SE 17'), true)
         + commonCourseLinks;
     } else if (activeCourse === 'articles') {
       html += section('学習記事', articleLinks, true) + commonCourseLinks + section('復習・分析', reviewLinks, false);
     } else if (activeCourse === 'app') {
       html += section('復習・分析', reviewLinks, true) + section('演習ツール', toolLinks, true) + section('設定・データ管理', settingsLinks, activePath === 'settings.html' || activePath === 'sync.html') + commonCourseLinks;
     } else {
-      html += section('コース選択', `${direct('courses/java-basic/index.html','1からわかるJava基礎')}${direct('courses/bronze/index.html','Java Bronze')}${direct('courses/java11-silver/index.html','Java11 Silver')}${direct('courses/java17-silver/index.html','Java17 Silver')}${direct('courses/gold/index.html','Java Gold')}`, true)
+      html += section('コース選択', `${direct('courses/java-basic/index.html','1からわかるJava基礎')}${direct('courses/bronze/index.html','Java Bronze')}${direct('courses/java11-silver/index.html','Java11 Silver')}${direct('courses/java17-silver/index.html','Java17 Silver')}${direct('courses/gold11/index.html','Java Gold SE 11')}
+      ${direct('courses/gold17/index.html','Java Gold SE 17')}`, true)
         + section('学習記事', articleLinks, false) + section('設定・データ管理', settingsLinks, false);
     }
     nav.innerHTML = html;
@@ -834,7 +853,9 @@
     const matches = (u) => {
       if (course === "bronze") return /^bronze-/.test(u.id || "");
       if (course === "java11") return /^java11-/.test(u.id || "");
-      if (course === "gold") return /^gold-/.test(u.id || "");
+      if (course === "gold11") return /^gold11-/.test(u.id || "") || u.course === "gold11";
+      if (course === "gold17") return /^gold17-/.test(u.id || "") || u.course === "gold17";
+      if (course === "gold") return /^gold(11|17)-/.test(u.id || "") || u.course === "gold11" || u.course === "gold17";
       if (course === "basic") return /^basic-/.test(u.id || "");
       if (course === "java17") return /^unit/.test(u.id || "");
       return true;
@@ -870,7 +891,7 @@
 
 
   function courseLabel(course) {
-    return ({ bronze: "Bronze", java11: "Java11 Silver", java17: "Java17 Silver", gold: "Gold", basic: "Java基礎" })[course] || "このコース";
+    return ({ bronze: "Bronze", java11: "Java11 Silver", java17: "Java17 Silver", gold: "Java Gold", gold11: "Java Gold SE 11", gold17: "Java Gold SE 17", basic: "Java基礎" })[course] || "このコース";
   }
   function courseMainHref(course) {
     const units = courseUnits(course, false).filter(u => u.mode !== "exam");
@@ -967,7 +988,9 @@
     if (summary) {
       const course = summary.dataset.course || document.body.dataset.course || null;
       const exams = (course ? courseUnits(course, true) : DATA.units).filter(u => u.mode === "exam");
-      summary.innerHTML = `<div class="stat-grid"><div class="stat-card"><strong>${exams.length}</strong><span>模試数</span></div><div class="stat-card"><strong>60問</strong><span>各模試固定</span></div><div class="stat-card"><strong>90分</strong><span>各模試制限時間</span></div></div>`;
+      const questionCounts = [...new Set(exams.map(u => `${u.fixedCount || (DATA.questions?.[u.id]?.length || 0)}問`))].join(" / ") || "-";
+      const timeLimits = [...new Set(exams.map(u => `${u.timeLimitMinutes || 90}分`))].join(" / ") || "-";
+      summary.innerHTML = `<div class="stat-grid"><div class="stat-card"><strong>${exams.length}</strong><span>模試数</span></div><div class="stat-card"><strong>${questionCounts}</strong><span>模試問題数</span></div><div class="stat-card"><strong>${timeLimits}</strong><span>制限時間</span></div></div>`;
     }
   }
 
@@ -1457,7 +1480,7 @@
         "var、StringBuilder、ArrayList、例外、継承は、使える場所・戻り値・副作用・参照型を分ける。",
         "オーバーロードはコンパイル時、オーバーライドは実行時の実体で決まる。この区別を崩さない。"
       ];
-    } else if (id.startsWith("gold-")) {
+    } else if (/^gold(11|17)-/.test(id) || id.startsWith("gold-")) {
       course = "Gold";
       focus = [
         "API名を知っているだけでは足りない。ラムダの対象型、Streamの中間/終端操作、戻り値型を先に読む。",
@@ -1477,6 +1500,12 @@
   function renderPracticeQualityGuide(unit) {
     const slot = document.querySelector("[data-quality-guide]");
     if (!slot) return;
+    if (unit?.mode === "exam") {
+      slot.innerHTML = "";
+      slot.classList.add("is-hidden");
+      return;
+    }
+    slot.classList.remove("is-hidden");
     slot.innerHTML = practiceQualityGuideHtml(unit);
   }
 
@@ -1874,7 +1903,7 @@
     const stage = answered.length < 50 ? "基礎データ作成" : wrong.length > 20 ? "弱点処理" : answered.length < 240 ? "模試準備" : "仕上げ";
     const weakRows = weak.map(([tag,v]) => `<tr><td><a href="${tagHref(tag)}">${escapeHtml(tagTitle(tag))}</a></td><td>${v.correct}/${v.answered}</td><td>${Math.round(v.correct/v.answered*100)}%</td><td>${v.wrong}</td></tr>`).join("") || `<tr><td colspan="4">まだ弱点判定に十分な回答数がありません。</td></tr>`;
     root.innerHTML = `<div class="stat-grid"><div class="stat-card"><strong>${stage}</strong><span>現在の段階</span></div><div class="stat-card"><strong>${answered.length}</strong><span>解答済み</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${low.length}</strong><span>自信低め</span></div><div class="stat-card"><strong>${questionsForDueCount()}</strong><span>復習候補</span></div></div>
-    <div class="compare-grid"><article class="compare-card"><h2>今日やるべきこと</h2><ol><li>${wrong.length ? "間違えた問題だけ復習を10〜20問処理する" : "通常演習かランダム演習を20問解く"}</li><li>${low.length ? "自信低めの問題にメモを残す" : "参照比較・String・例外の記事を読む"}</li><li>${answered.length >= 120 ? "模試を1セット90分で解く" : "タグ別演習で苦手タグを作る"}</li></ol><div class="practice-tools"><a class="btn primary" href="${pageHref('review-due.html')}">今日の復習</a><a class="btn" href="${pageHref('random.html')}">ランダム演習</a><a class="btn" href="${pageHref('practice-g.html')}">模試A</a></div></article><article class="compare-card"><h2>弱点タグ</h2><table class="mini-table"><thead><tr><th>タグ</th><th>正解</th><th>率</th><th>不正解</th></tr></thead><tbody>${weakRows}</tbody></table></article></div>`;
+    <div class="compare-grid"><article class="compare-card"><h2>今日やるべきこと</h2><ol><li>${wrong.length ? "間違えた問題だけ復習を10〜20問処理する" : "通常演習かランダム演習を20問解く"}</li><li>${low.length ? "自信低めの問題にメモを残す" : "参照比較・String・例外の記事を読む"}</li><li>${answered.length >= 120 ? "模試を1セット、本番形式の制限時間で解く" : "タグ別演習で苦手タグを作る"}</li></ol><div class="practice-tools"><a class="btn primary" href="${pageHref('review-due.html')}">今日の復習</a><a class="btn" href="${pageHref('random.html')}">ランダム演習</a><a class="btn" href="${pageHref('practice-g.html')}">模試A</a></div></article><article class="compare-card"><h2>弱点タグ</h2><table class="mini-table"><thead><tr><th>タグ</th><th>正解</th><th>率</th><th>不正解</th></tr></thead><tbody>${weakRows}</tbody></table></article></div>`;
   }
 
   function bindKeyboardShortcuts() {
@@ -1916,7 +1945,7 @@
     root.innerHTML = `<div class="mode-grid">
       <a class="mode-card" href="${pageHref('articles.html')}"><strong>初めて学ぶ</strong><span>記事で理解してから通常演習へ進みます。</span><em>記事 → 通常演習</em></a>
       <a class="mode-card" href="${pageHref('dashboard.html')}"><strong>苦手を潰す</strong><span>弱点タグと間違えた理由を確認し、タグ別演習で補強します。</span><em>弱点分析 → タグ別</em></a>
-      <a class="mode-card" href="${pageHref('exam.html')}"><strong>本番練習する</strong><span>60問・90分の模試A〜Dで時間配分と判定力を確認します。</span><em>模試A〜D</em></a>
+      <a class="mode-card" href="${pageHref('exam.html')}"><strong>本番練習する</strong><span>各模試の問題数・制限時間に合わせて、時間配分と判定力を確認します。</span><em>模試A〜D</em></a>
       <a class="mode-card" href="${pageHref('review-due.html')}"><strong>昨日のミスを復習する</strong><span>不正解・自信低め・間隔が空いた問題を優先します。</span><em>今日の復習</em></a>
       <a class="mode-card" href="${pageHref('before-exam.html')}"><strong>直前確認する</strong><span>頻出メソッド、例外、参照比較、コンパイルエラーを一気に確認します。</span><em>直前チェック</em></a>
     </div>`;
@@ -1978,7 +2007,7 @@
       <tr><td>学習記事</td><td>本文上部・中盤・末尾</td><td>検索流入向け。読む導線を壊しにくい。</td></tr>
       <tr><td>トップ</td><td>控えめに1〜2箇所</td><td>入口なので圧迫しない。</td></tr>
       <tr><td>通常演習</td><td>下部またはサイドのみ</td><td>コード読解中に割り込ませない。</td></tr>
-      <tr><td>模試中</td><td>原則なし</td><td>90分の集中を壊すと教材価値が落ちる。</td></tr>
+      <tr><td>模試中</td><td>原則なし</td><td>制限時間内で解く集中を壊すと教材価値が落ちる。</td></tr>
       <tr><td>模試結果</td><td>下部のみ可</td><td>復習導線を邪魔しない。</td></tr>
     </tbody></table><p class="notice">収益化するなら、問題ページより記事ページを主な流入・広告配置先にする方が安全です。</p>`;
   }
