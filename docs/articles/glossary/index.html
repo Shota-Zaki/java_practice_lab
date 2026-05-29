@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silver頻出用語を、問題を解く判定に使える形で詳しく解説。" name="description"/>
+<title>Java Silver単語集 詳細版｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article">
+<h1>Java Silver単語集 詳細版</h1>
+<p class="lead">用語は暗記だけでなく、問題を解くときの判定に使える形で覚えます。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<dl class="glossary-list"><dt>同一性</dt><dd>同じオブジェクトを参照しているかという概念。参照型の==は同一性を見る。</dd><dt>同値性</dt><dd>値や内容が等しいかという概念。equals()で表現することが多いが、実装次第。</dd><dt>参照のコピー</dt><dd>参照型変数を代入したとき、オブジェクトではなく参照がコピーされること。</dd><dt>文字列プール</dt><dd>同じ文字列リテラルを共有する領域。Stringの==問題で重要。</dd><dt>不変オブジェクト</dt><dd>生成後に内部状態が変わらないオブジェクト。Stringが代表。</dd><dt>可変オブジェクト</dt><dd>生成後に内部状態を変更できるオブジェクト。StringBuilderが代表。</dd><dt>数値昇格</dt><dd>byteやshortなどが演算時にintへ昇格すること。</dd><dt>暗黙の型変換</dt><dd>キャストなしで安全に変換できる型変換。intからlongなど。</dd><dt>明示的キャスト</dt><dd>データ欠損の可能性がある変換をプログラマが明示すること。</dd><dt>ローカル変数型推論</dt><dd>varにより右辺からローカル変数の型を推論する仕組み。</dd><dt>オーバーロード</dt><dd>同じ名前で引数リストが異なるメソッドを定義すること。</dd><dt>オーバーライド</dt><dd>継承したメソッドをサブクラスで再定義すること。</dd><dt>ポリモーフィズム</dt><dd>サブクラスのインスタンスをスーパークラス型で扱える性質。</dd><dt>フィールド隠蔽</dt><dd>サブクラスで同名フィールドを定義したとき、フィールドは変数の型で決まること。</dd><dt>defaultメソッド</dt><dd>インタフェースに実装を持たせるメソッド。競合時は実装クラスで解決が必要。</dd><dt>sealed class</dt><dd>継承できるクラスを限定するクラス。直接サブクラス側にも修飾が必要。</dd><dt>record</dt><dd>データ保持用クラスを簡潔に宣言する構文。アクセサやequalsが自動生成される。</dd><dt>checked例外</dt><dd>コンパイラが処理を要求する例外。catchまたはthrowsが必要。</dd><dt>unchecked例外</dt><dd>RuntimeException系。コンパイラによる処理義務はない。</dd><dt>短絡評価</dt><dd>&amp;&amp;や||で右辺評価が省略されること。副作用がある式では結果が変わる。</dd><dt>到達不能コード</dt><dd>絶対に実行されないとコンパイラが判断するコード。コンパイルエラーになる。</dd></dl>
+<h2>用語を覚えるだけで終わらせない</h2>
+<p>例えば「ポリモーフィズム」を覚えるだけでは不十分です。問題では「変数の型で呼べるメソッドが決まり、実行されるメソッドは実体の型で決まる」という判定に使えなければ意味がありません。</p>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/index.html">タグ別演習へ</a><a class="btn" href="../../app/review/wrong.html">間違えた問題だけ復習</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<section class="article-readiness" aria-labelledby="readiness-glossary">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-glossary">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>学習手順・復習設計。この記事は知識そのものより、学習方法と復習方法を整えるための内容です。間違えた理由を分類し、次の演習で同じ判断ミスを減らすことを目的にします。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>この記事は知識そのものより、学習手順の改善が目的です。</li><li>間違いを「知らなかった」で終わらせず、判断手順のどこが雑だったかに分解します。</li><li>演習の正答率だけでなく、根拠を言語化できるかを確認します。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>解いた直後に、正解理由と誤答理由を1文ずつ書く。</li><li>間違えた問題をタグで分類する。型、参照、例外、継承、APIなどに分ける。</li><li>翌日に同じ問題を見て、選択肢を見ずに判断手順を再現する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>正解した問題を復習対象から外す。偶然正解を放置すると弱点が残る。</li><li>解説を読んで納得しただけで、再現できると思い込む。</li><li>広く浅く進めすぎて、同じ型のミスを繰り返す。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>直近で間違えた問題を1つ選び、「知識不足」「読み落とし」「手順ミス」「暗記違い」のどれかに分類してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/basic-syntax.html"><span class="bridge-level">Java11 Silver</span><strong>基本文法</strong><small>Java11範囲のvar・文字列・配列・制御構文を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/random.html"><span class="bridge-level">Java17 Silver</span><strong>ランダム問題</strong><small>Java17 Silver全体の横断確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="glossary.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

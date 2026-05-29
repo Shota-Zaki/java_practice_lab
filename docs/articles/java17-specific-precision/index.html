@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="record、sealed、switch式、instanceofパターン変数を精度高く整理。" name="description"/>
+<title>Java17 Silverの追加論点を正確に読む｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout" data-section="articles">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">品質強化記事</p>
+<h1>Java17 Silverの追加論点を正確に読む</h1>
+<p class="lead">Java17 Silverでは、従来のSilver論点に加えて、record、sealed、switch式、instanceofパターン変数を正確に読む必要があります。</p>
+<section class="article-section"><h2>recordはフィールド代入クラスではない</h2><pre><code>record Item(String name, int price) {}
+var item = new Item("Pen", 100);
+System.out.println(item.name());
+// item.name = "Book"; // 不可</code></pre><p>recordのコンポーネントはprivate final相当です。アクセサは <code>getName()</code> ではなく <code>name()</code> です。</p></section>
+<section class="article-section"><h2>sealedは許可された型だけが継承できる</h2><pre><code>sealed class A permits B {}
+final class B extends A {}
+class C extends A {} // コンパイルエラー</code></pre><p>さらに、sealedクラスの直接サブクラスは <code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言する必要があります。</p></section>
+<section class="article-section"><h2>instanceofパターン変数</h2><pre><code>Object obj = "Java";
+if (obj instanceof String s) {
+    System.out.println(s.length());
+}</code></pre><p>パターン変数は条件が真の範囲でだけ使えます。否定条件や <code>else</code> 側のスコープでよく問われます。</p></section>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java17-specific-precision">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java17-specific-precision">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java17 Silver。Java17 Silverでは、Java17で扱う文法差分を確認します。ただしGold寄りのStream、Optional、Collectors、NIO、並行処理、モジュールの深掘りはここでは扱いません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>用語を覚えるだけでなく、コード上でどの判断に使う知識かを確認する。</li><li>先にコンパイル可否、次に実行時の流れ、最後に出力を考える。</li><li>自信がない箇所は、変数の型と値を紙に分けて書く。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>本文の例を少し変えても同じ判断ができるか確認する。</li><li>選択肢を消去するときは、なぜ誤りかを言葉で説明する。</li><li>関連する演習では、正解番号ではなく判断根拠を残す。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>用語の意味だけ覚えて、コード読解に接続しない。</li><li>「なんとなく見たことがある」で選択肢を選ぶ。</li><li>解説を読んだあとに、自力で再判定しない。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>本文のコード例を1行だけ変更し、コンパイル可否・実行時の流れ・出力をもう一度判定してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java17-silver/units/class-design.html"><span class="bridge-level">Java17 Silver</span><strong>クラス設計</strong><small>クラス、static、recordをJava17 Silver範囲で確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/inheritance.html"><span class="bridge-level">Java17 Silver</span><strong>継承とポリモーフィズム</strong><small>継承、interface、default、sealedを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/operator-control.html"><span class="bridge-level">Java17 Silver</span><strong>演算子と制御構造</strong><small>演算子、短絡評価、switch、ループを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/compile-check.html"><span class="bridge-level">Java17 Silver</span><strong>コンパイル判定</strong><small>Java17 Silver範囲の構文成立を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

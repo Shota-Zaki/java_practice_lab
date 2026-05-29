@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silverの出力・コンパイル・例外問題を精度高く読むための実戦的な考え方。" name="description"/>
+<title>Java Silverのコード読解で落ちない読み方｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout" data-section="articles">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">品質強化記事</p>
+<h1>Java Silverのコード読解で落ちない読み方</h1>
+<p class="lead">Java Silver系の問題は、コードを上から漫然と読むと落ちます。ここでは、問題文の種類ごとに「どの情報を信用し、どこを疑うか」を整理します。固定の判定手順ではなく、実際の問題で使える読み方にしています。</p>
+<div class="toc-box"><strong>このページで扱うこと</strong><ol><li>出力問題に見えてコンパイルエラーになる例</li><li>実行時例外とコンパイルエラーの切り分け</li><li>参照型と実体型の読み分け</li><li>選択肢を消す順番</li></ol></div>
+<section class="article-section"><h2>出力を追う前に、宣言と代入を疑う</h2><pre><code>public class Main {
+    public static void main(String[] args) {
+        int a;
+        int b = 10;
+        if (b &gt; 0) {
+            a = b;
+        }
+        System.out.println(a);
+    }
+}</code></pre><p>このコードはコンパイルできます。<code>b &gt; 0</code> がコンパイル時定数ではないので迷いやすいですが、Javaの到達可能性・初期化判定は単純な実行結果の推測とは一致しません。対して、次はエラーです。</p><pre><code>int a;
+if (args.length &gt; 0) {
+    a = 10;
+}
+System.out.println(a); // 未初期化の可能性</code></pre><p>ポイントは「実行したら代入されそう」ではなく、コンパイラが全経路で代入済みと判断できるかです。</p></section>
+<section class="article-section"><h2>参照型変数は「変数の型」と「実体の型」を分ける</h2><pre><code>class A { int x = 10; void print(){ System.out.println("A"); } }
+class B extends A { int x = 20; void print(){ System.out.println("B"); } }
+A obj = new B();
+System.out.println(obj.x); // 10
+obj.print();               // B</code></pre><p>フィールドは変数の型で決まり、メソッドは実体の型で動的ディスパッチされます。ここを混ぜると、継承問題の半分以上を落とします。</p></section>
+<section class="article-section"><h2>選択肢の消し方</h2><p>選択肢に「コンパイルエラー」「実行時例外」「出力結果」が並んでいる場合、出力候補を計算する前に、型・アクセス・例外・到達可能性を確認します。出力を最後まで追ってからコンパイルエラーに気付くのは時間の浪費です。</p></section>
+<section class="article-section"><h2>よくある誤答の原因</h2><ul><li><code>String</code> の不変性を忘れる</li><li><code>==</code> を値比較だと思う</li><li><code>static</code> からインスタンスメンバーを呼ぶ</li><li>ローカル変数にデフォルト値が入ると思う</li><li>親型変数から子クラス固有メソッドを呼べると思う</li></ul></section>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-silver-code-reading">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-silver-code-reading">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java11 / Java17 Silver共通。Silver共通範囲では、バージョン固有構文に逃げず、型、参照、制御構文、クラス、継承、例外の基本ルールだけで判定します。Java17固有の記事はJava17 Silver側に分けています。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>用語を覚えるだけでなく、コード上でどの判断に使う知識かを確認する。</li><li>先にコンパイル可否、次に実行時の流れ、最後に出力を考える。</li><li>自信がない箇所は、変数の型と値を紙に分けて書く。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>本文の例を少し変えても同じ判断ができるか確認する。</li><li>選択肢を消去するときは、なぜ誤りかを言葉で説明する。</li><li>関連する演習では、正解番号ではなく判断根拠を残す。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>用語の意味だけ覚えて、コード読解に接続しない。</li><li>「なんとなく見たことがある」で選択肢を選ぶ。</li><li>解説を読んだあとに、自力で再判定しない。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>本文のコード例を1行だけ変更し、コンパイル可否・実行時の流れ・出力をもう一度判定してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/final-check.html"><span class="bridge-level">Java11 Silver</span><strong>総合確認</strong><small>Java11 Silver範囲だけで総合確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/random.html"><span class="bridge-level">Java17 Silver</span><strong>ランダム問題</strong><small>Java17 Silver全体の横断確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

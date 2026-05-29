@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Bronze演習の読み方：基本問題を雑に解かない。Java Practice Labのオリジナル学習記事です。" name="description"/>
+<title>Bronze演習の読み方：基本問題を雑に解かない｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout"><main class="main" id="mainContent">
+<div class="nav"><a href="../../index.html">トップ</a><a href="../index.html">記事一覧</a></div>
+<article class="card article-deep-section">
+<h1>Bronze演習の読み方：基本問題を雑に解かない</h1>
+<p class="lead">Bronzeで落とす原因は、難問ではなく「基本用語」「文として成立するか」「値の変化」を飛ばすことです。</p>
+<h2>先に結論</h2><p>Bronzeでは、難しい知識よりも、コードを雑に読まないことが点数に直結します。特に、変数、型、mainメソッド、if、for、配列、クラスとインスタンスを区別できているかを見ます。</p>
+<h2>読む順番</h2><ol class="checklist"><li>文として成立するか。型、変数名、セミコロン、波かっこ、mainメソッドの形を見る。</li><li>変数の値がどこで変わるか。代入、インクリメント、if、forの実行回数を追う。</li><li>オブジェクトを作っているか。クラス名だけを見て、インスタンスが存在すると勘違いしない。</li></ol>
+<h2>悪い読み方と修正</h2><div class="bad-good"><div><strong>悪い読み方</strong><p>「見たことがある形だからA」と選ぶ。これは偶然当たりを増やすだけで、復習不能です。</p></div><div><strong>良い読み方</strong><p>「3行目でxが10、5行目でxが11、条件はtrueなので出力は11」のように、行番号と状態で説明します。</p></div></div>
+<h2>ミニ例</h2><pre class="code-lines"><code>int x = 3;
+x = x + 2;
+System.out.println(x);</code></pre><p>この場合、答えは5です。重要なのは「x + 2を計算してからxに戻す」という代入の流れを言語化できることです。</p>
+<h2>復習の基準</h2><p>正解したかより、「なぜ他の選択肢が違うか」を1つ説明できるかを基準にしてください。説明できない正解は、次の問題では再現できません。</p>
+
+
+<section class="article-readiness" aria-labelledby="readiness-bronze-precision-training">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-bronze-precision-training">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Bronze。Bronzeでは、細かい新機能よりも「文の実行順序」「変数の値」「条件式の真偽」を正確に追うことを優先します。record、sealed、Streamなどの高度な構文・APIはここでは追いません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>用語を覚えるだけでなく、コード上でどの判断に使う知識かを確認する。</li><li>先にコンパイル可否、次に実行時の流れ、最後に出力を考える。</li><li>自信がない箇所は、変数の型と値を紙に分けて書く。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>本文の例を少し変えても同じ判断ができるか確認する。</li><li>選択肢を消去するときは、なぜ誤りかを言葉で説明する。</li><li>関連する演習では、正解番号ではなく判断根拠を残す。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>用語の意味だけ覚えて、コード読解に接続しない。</li><li>「なんとなく見たことがある」で選択肢を選ぶ。</li><li>解説を読んだあとに、自力で再判定しない。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>本文のコード例を1行だけ変更し、コンパイル可否・実行時の流れ・出力をもう一度判定してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/bronze/practice/basic-syntax.html"><span class="bridge-level">Bronze</span><strong>基本文法</strong><small>main・変数・式・基本文法をBronze水準で確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/control-array.html"><span class="bridge-level">Bronze</span><strong>条件分岐・配列</strong><small>if・switch・for・配列・Stringの基本を確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/final-check.html"><span class="bridge-level">Bronze</span><strong>Bronze総合確認</strong><small>Bronze範囲の総合確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main></div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body></html>

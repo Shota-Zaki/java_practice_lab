@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="ローカル変数の未初期化、スコープ、同名変数をまとめます。" name="description"/>
+<title>Java Silverのローカル変数で間違える理由｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="article-page"><h1>Java Silverのローカル変数で間違える理由</h1><p class="lead">ローカル変数の未初期化、スコープ、同名変数をまとめます。</p><h2>未初期化はコンパイルエラー</h2><pre><code>int x;
+System.out.println(x); // コンパイルエラー</code></pre><p>フィールドにはデフォルト値がありますが、ローカル変数にはありません。</p><h2>スコープ外参照</h2><pre><code>if (true) {
+    int n = 10;
+}
+// System.out.println(n); // コンパイルエラー</code></pre><h2>対策</h2><p>ローカル変数は「宣言された場所」「代入済みか」「使う場所」をセットで確認します。</p><nav class="pager"><a class="btn secondary" href="../index.html">学習記事一覧へ</a></nav>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-silver-local-variable">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-silver-local-variable">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java11 / Java17 Silver共通。Silver共通範囲では、バージョン固有構文に逃げず、型、参照、制御構文、クラス、継承、例外の基本ルールだけで判定します。Java17固有の記事はJava17 Silver側に分けています。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>リテラルの型を先に決める。整数は基本int、浮動小数点は基本doubleとして見る。</li><li>byte・short・charは、計算に入った瞬間にintへ昇格する場面がある。</li><li>varは「型を省略する記法」ではなく、初期化式から型を確定する仕組みとして読む。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>代入の右辺を先に評価し、結果の型が左辺へ入るか確認する。</li><li>複合代入だけを例外扱いにせず、内部でキャスト相当の処理が入ると理解する。</li><li>コンパイル可否を出力結果より先に判定する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>数値が小さいからbyteへ入る、という雑な判断をしない。式になった時点で型が変わる。</li><li>varをフィールド、引数、戻り値型で使えると考えるのは誤り。</li><li>キャストを書けば常に安全、ではない。値の欠落や符号変化まで確認する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>次の3行を自分で判定します。byte b = 1; b = b + 1; b += 1; それぞれの違いを「式の型」で説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/basic-syntax.html"><span class="bridge-level">Java11 Silver</span><strong>基本文法</strong><small>Java11範囲のvar・文字列・配列・制御構文を確認</small></a><a class="bridge-card" href="../../courses/java11-silver/practice/compile-check.html"><span class="bridge-level">Java11 Silver</span><strong>コンパイル判定</strong><small>Java11範囲のコンパイル可否だけを切り分ける</small></a><a class="bridge-card" href="../../courses/java17-silver/units/type-string-array.html"><span class="bridge-level">Java17 Silver</span><strong>型・文字列・配列</strong><small>型昇格、String、配列、varを確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article></main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

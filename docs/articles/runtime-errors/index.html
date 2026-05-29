@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="実行時例外の原因と、コンパイルエラーとの違いを例で整理します。" name="description"/>
+<title>Java Silverの実行時例外まとめ｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">Java Silver 頻出</p>
+<h1>Java Silverの実行時例外まとめ</h1>
+<p class="lead">実行時例外は、コンパイルは通るが実行中に止まる問題です。Java Silverでは「コンパイルエラー」「実行時例外」「正常出力」を混ぜて出されるため、例外の発生タイミングを正確に読む必要があります。</p>
+<div class="toc-box"><strong>頻出の実行時例外</strong><ul><li>NullPointerException</li><li>ArrayIndexOutOfBoundsException</li><li>ClassCastException</li><li>NumberFormatException</li><li>ArithmeticException</li><li>UnsupportedOperationException</li></ul></div>
+<section class="article-section"><h2>1. NullPointerException</h2><pre><code>String s = null;
+System.out.println(s.length()); // 実行時例外</code></pre><p>参照変数が <code>null</code> の状態でインスタンスメソッドやフィールドにアクセスすると発生します。</p><p><strong>例外にならない例：</strong><code>System.out.println(s);</code> は文字列 <code>null</code> を表示するだけです。</p></section>
+<section class="article-section"><h2>2. 配列の範囲外アクセス</h2><pre><code>int[] a = {10, 20};
+System.out.println(a[2]); // 実行時例外</code></pre><p>配列の添字は0から始まります。要素数2なら有効な添字は <code>0</code> と <code>1</code> です。</p></section>
+<section class="article-section"><h2>3. ClassCastException</h2><pre><code>Object obj = "Java";
+Integer n = (Integer) obj; // 実行時例外</code></pre><p>コンパイル上はキャスト可能でも、実体がその型でなければ実行時に失敗します。</p><pre><code>if (obj instanceof Integer n) {
+    System.out.println(n + 1);
+}</code></pre></section>
+<section class="article-section"><h2>4. NumberFormatException</h2><pre><code>int n = Integer.parseInt("10A"); // 実行時例外</code></pre><p>文字列が整数として解釈できない場合に発生します。コマンドライン引数問題で頻出です。</p></section>
+<section class="article-section"><h2>5. ArithmeticException</h2><pre><code>int x = 10 / 0; // 実行時例外</code></pre><p>整数のゼロ除算は例外です。一方、浮動小数点数では <code>Infinity</code> になるケースがあります。</p><pre><code>System.out.println(10.0 / 0); // Infinity</code></pre></section>
+<section class="article-section"><h2>6. UnsupportedOperationException</h2><pre><code>List&lt;String&gt; list = java.util.List.of("A", "B");
+list.add("C"); // 実行時例外</code></pre><p><code>List.of()</code> の戻り値は変更不可です。<code>add</code>、<code>remove</code>、<code>set</code> などが失敗します。</p></section>
+<section class="article-section"><h2>7. Arrays.asListの罠</h2><pre><code>List&lt;String&gt; list = java.util.Arrays.asList("A", "B");
+list.set(0, "X"); // OK
+list.add("C");    // 実行時例外</code></pre><p><code>Arrays.asList</code> は固定長リストです。要素の置換はできますが、サイズ変更はできません。</p></section>
+<section class="article-section"><h2>8. StringBuilderと範囲指定</h2><pre><code>StringBuilder sb = new StringBuilder("abc");
+sb.delete(1, 10); // 実行時例外</code></pre><p>APIによって範囲外の扱いが異なります。<code>String.substring</code> や <code>StringBuilder</code> の操作は、開始・終了位置に注意します。</p></section>
+<section class="article-section"><h2>9. try-catchで捕まる型</h2><pre><code>try {
+    int[] a = new int[1];
+    System.out.println(a[3]);
+} catch (NullPointerException e) {
+    System.out.println("NPE");
+}</code></pre><p>この例で発生するのは <code>ArrayIndexOutOfBoundsException</code> です。catchの型が違うため捕まりません。</p></section>
+<section class="article-section"><h2>10. finallyは例外があっても実行される</h2><pre><code>try {
+    throw new RuntimeException();
+} finally {
+    System.out.println("finally");
+}</code></pre><p>例外は消えませんが、<code>finally</code> は実行されます。出力問題では、例外で止まる前に何が表示されたかを確認します。</p></section>
+<section class="article-section"><h2>見分け方</h2><ul><li>構文と型に問題がなければ、次に <code>null</code>、添字、キャスト、parse、変更不可コレクションを見る。</li><li>例外がcatchされるかは、実際に発生する例外型とcatchの型で判断する。</li><li>finallyやtry-with-resourcesは、例外発生後にも出力を追加する可能性がある。</li></ul></section>
+<div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+
+
+<section class="article-readiness" aria-labelledby="readiness-runtime-errors">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-runtime-errors">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>まずコンパイル時点で必要な処理が書かれているか見る。checked例外は特にここで落ちる。</li><li>try内で例外が出た行以降は実行されない。catchへ制御が移る。</li><li>finallyとtry-with-resourcesの実行順序を分ける。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>catchの順番が親子関係として正しいか確認する。</li><li>例外が発生する行を特定し、その後の行が実行されるかを判断する。</li><li>非チェック例外でも、catchされるかされないかで終了の仕方が変わる。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>Exceptionを先にcatchしてから、その下に細かい例外を書く。これは到達不能になる。</li><li>finallyがあるから例外が消えると誤解する。finallyは原則として実行されるだけ。</li><li>コンパイルエラーと実行時例外を同じ「エラー」として処理する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>try内で3行目に例外が出るコードを想定し、4行目が実行されるか、catch後にどこへ進むかを言葉で説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/output-mix.html"><span class="bridge-level">Java11 Silver</span><strong>総合出力問題</strong><small>String・配列・継承・例外の出力を総合確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/exception.html"><span class="bridge-level">Java17 Silver</span><strong>例外処理</strong><small>checked例外、catch順序、finally、try-with-resourcesを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/reference-api.html"><span class="bridge-level">Java17 Silver</span><strong>参照・API</strong><small>参照比較、StringBuilder、ArrayList、API判定を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script><script src="../../assets/js/app.js?v=header-footer-top-20260529"></script><script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

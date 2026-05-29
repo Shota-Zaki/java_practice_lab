@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="close時の例外と本体例外の関係を整理します。" name="description"/>
+<title>try-with-resourcesと抑制された例外｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="article-page"><h1>try-with-resourcesと抑制された例外</h1><p class="lead">close時の例外と本体例外の関係を整理します。</p><h2>本体とcloseの両方で例外が起こる場合</h2><p>tryブロック内で例外が発生し、さらにcloseでも例外が発生することがあります。</p><h2>本体の例外が主になる</h2><p>通常、tryブロック内の例外が主例外となり、close時の例外はsuppressedとして保持されます。</p><h2>Goldでは詳細理解が必要</h2><p>Silverでは閉じる順序が重要ですが、Goldでは抑制例外も理解しておくと強いです。</p><h2>例</h2><pre><code>catch (Exception e) {
+    for (Throwable t : e.getSuppressed()) {
+        System.out.println(t);
+    }
+}</code></pre><h2>試験・学習での注意</h2><ul><li>実行結果を見る前に、まずコンパイルできる形か確認します。</li><li>似た構文でも、型・戻り値・アクセス修飾子で結果が変わります。</li><li>暗記だけでなく、なぜその結果になるかを言語化してください。</li></ul>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-gold-exception-suppressed">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-gold-exception-suppressed">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Gold。Goldでは、構文暗記よりもAPIの戻り値型、遅延実行、型推論、例外、リソース管理まで含めて判定します。Silverレベルの文法確認で止まると、ここでは足りません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>まずコンパイル時点で必要な処理が書かれているか見る。checked例外は特にここで落ちる。</li><li>try内で例外が出た行以降は実行されない。catchへ制御が移る。</li><li>finallyとtry-with-resourcesの実行順序を分ける。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>catchの順番が親子関係として正しいか確認する。</li><li>例外が発生する行を特定し、その後の行が実行されるかを判断する。</li><li>非チェック例外でも、catchされるかされないかで終了の仕方が変わる。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>Exceptionを先にcatchしてから、その下に細かい例外を書く。これは到達不能になる。</li><li>finallyがあるから例外が消えると誤解する。finallyは原則として実行されるだけ。</li><li>コンパイルエラーと実行時例外を同じ「エラー」として処理する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>try内で3行目に例外が出るコードを想定し、4行目が実行されるか、catch後にどこへ進むかを言葉で説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/gold/practice/io-concurrency.html"><span class="bridge-level">Gold</span><strong>I/O・並行処理</strong><small>I/O、NIO.2、Executorを確認</small></a><a class="bridge-card" href="../../courses/gold/practice/gold-api-mix.html"><span class="bridge-level">Gold</span><strong>Gold総合API</strong><small>ジェネリクス、Stream、並行処理、モジュールを横断確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+<p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></article></main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

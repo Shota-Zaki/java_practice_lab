@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="permits, final, sealed, non-sealedを整理します。" name="description"/>
+<title>sealedクラス・interfaceの頻出ルール｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="article-page"><h1>sealedクラス・interfaceの頻出ルール</h1><p class="lead">permits, final, sealed, non-sealedを整理します。</p><h2>直接サブクラスの制約</h2><p>sealedクラスの直接サブクラスは、<code>final</code>、<code>sealed</code>、<code>non-sealed</code>のいずれかを指定します。</p><pre><code>sealed class A permits B {}
+final class B extends A {}</code></pre><h2>permits外は不可</h2><pre><code>sealed class A permits B {}
+final class C extends A {} // コンパイルエラー</code></pre><h2>試験注意</h2><p>sealed問題は、許可されたクラスか、直接サブクラスの修飾子が適切かを確認します。</p><nav class="pager"><a class="btn secondary" href="../index.html">学習記事一覧へ</a></nav>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-silver-sealed">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-silver-sealed">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java17 Silver。Java17 Silverでは、Java17で扱う文法差分を確認します。ただしGold寄りのStream、Optional、Collectors、NIO、並行処理、モジュールの深掘りはここでは扱いません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>変数の型と、実際のインスタンスの型を分ける。</li><li>フィールド参照は変数の型、オーバーライドメソッド呼び出しは実体の型が効く。</li><li>interfaceのメソッド・フィールドは暗黙の修飾子を意識する。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>代入が上向き変換か、下向きキャストかを確認する。</li><li>キャストはコンパイル可否と実行時可否を分けて判定する。</li><li>sealedではpermitsと、継承先のfinal/sealed/non-sealedを必ず確認する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>親型変数だから親のメソッドだけが実行される、と誤解する。オーバーライドは実体側。</li><li>キャストを書けば必ず安全に変換できると考える。実体が対応していなければ実行時例外になる。</li><li>interfaceの抽象メソッドがpackage-privateになると思い込む。基本はpublic。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>Parent p = new Child(); の1行を見たら、変数型Parentと実体Childを分け、フィールド・メソッド・キャストの3つで判断してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java17-silver/units/inheritance.html"><span class="bridge-level">Java17 Silver</span><strong>継承とポリモーフィズム</strong><small>継承、interface、default、sealedを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/compile-check.html"><span class="bridge-level">Java17 Silver</span><strong>コンパイル判定</strong><small>Java17 Silver範囲の構文成立を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article></main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

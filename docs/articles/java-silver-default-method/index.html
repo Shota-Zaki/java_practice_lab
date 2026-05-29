@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="interfaceのdefaultメソッド競合、クラス優先、recordとの衝突を整理します。" name="description"/>
+<title>defaultメソッド競合の整理｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">Java Silver / Java17</p>
+<h1>defaultメソッド競合の整理</h1>
+<p class="lead">defaultメソッドは、interfaceに実装を持たせる仕組みです。Java Silverでは「競合したときにどうなるか」が狙われます。</p>
+<section class="article-section"><h2>1. 1つだけなら継承される</h2><pre><code>interface A { default void test() { System.out.println("A"); } }
+class B implements A {}
+new B().test(); // A</code></pre><p>実装クラスがメソッドを持たなければ、defaultメソッドが使われます。</p></section>
+<section class="article-section"><h2>2. 複数interfaceで同じdefault</h2><pre><code>interface A { default void test() {} }
+interface B { default void test() {} }
+class C implements A, B {} // コンパイルエラー</code></pre><p>どちらを使うか決められないため、クラス側で実装する必要があります。</p></section>
+<section class="article-section"><h2>3. 解決方法</h2><pre><code>class C implements A, B {
+    public void test() {
+        A.super.test();
+    }
+}</code></pre><p><code>インタフェース名.super.メソッド名()</code> で特定のdefault実装を呼べます。</p></section>
+<section class="article-section"><h2>4. クラスのメソッドが優先</h2><pre><code>class Base { public void test() { System.out.println("Base"); } }
+interface A { default void test() { System.out.println("A"); } }
+class Child extends Base implements A {}</code></pre><p>クラス継承のメソッドがinterfaceのdefaultメソッドより優先されます。</p></section>
+<section class="article-section"><h2>5. recordとの衝突</h2><pre><code>interface A { default void name() {} }
+record User(String name) implements A {} // 戻り値不一致ならエラー</code></pre><p>recordは <code>String name()</code> のようなアクセサを自動生成します。同名メソッドの戻り値が衝突する場合があります。</p></section>
+<div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-silver-default-method">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-silver-default-method">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java11 / Java17 Silver共通。Silver共通範囲では、バージョン固有構文に逃げず、型、参照、制御構文、クラス、継承、例外の基本ルールだけで判定します。Java17固有の記事はJava17 Silver側に分けています。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>インスタンスに属するものと、クラスに属するstaticなものを分ける。</li><li>コンストラクタは戻り値型を書かない。メソッドと見た目が似ていても別物。</li><li>オーバーロードはコンパイル時に引数型で決まる。実行時のオーバーライドとは分ける。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>呼び出し元の変数型、引数型、アクセス修飾子を順に確認する。</li><li>thisとsuperが何を指しているかを明確にする。</li><li>コンストラクタチェーンでは、最初にどのコンストラクタへ制御が移るかを見る。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>staticメソッドからインスタンスフィールドへ直接触れると思い込む。</li><li>privateメンバが継承先から自由に使えると考える。</li><li>同名メソッドを見てすぐオーバーライドと判断する。引数が違えばオーバーロード。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>同じ名前のメソッドが複数あるコードでは、先に「候補メソッド一覧」を作り、引数型でどれが選ばれるかを判定してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/oop.html"><span class="bridge-level">Java11 Silver</span><strong>オブジェクト指向</strong><small>Java11範囲のクラス・継承・interfaceを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/inheritance.html"><span class="bridge-level">Java17 Silver</span><strong>継承とポリモーフィズム</strong><small>継承、interface、default、sealedを確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script><script src="../../assets/js/app.js?v=header-footer-top-20260529"></script><script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

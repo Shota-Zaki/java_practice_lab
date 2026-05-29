@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silver頻出のchecked例外、catch順序、finally、try-with-resources、throwとthrowsを詳しく解説。" name="description"/>
+<title>Java Silverのtry-catch-finallyと例外処理完全整理</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article">
+<h1>Java Silverのtry-catch-finallyと例外処理完全整理</h1>
+<p class="lead">例外処理は、コンパイル時にチェックされるか、実行時にどこで止まるか、catchの順序、finallyの実行タイミングを整理すれば解けます。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>1. checked例外とunchecked例外</h2>
+<table class="study-table"><tr><th>分類</th><th>代表例</th><th>処理義務</th></tr><tr><td>checked例外</td><td><code>Exception</code>, <code>IOException</code></td><td>catchするかthrows宣言が必要</td></tr><tr><td>unchecked例外</td><td><code>RuntimeException</code>系</td><td>処理義務なし</td></tr><tr><td>Error</td><td><code>StackOverflowError</code>など</td><td>通常処理対象ではない</td></tr></table>
+<h2>2. catchの順序</h2>
+<p>catchは上から評価されます。親クラスを先に書くと、子クラスのcatchに到達できなくなります。</p>
+<pre><code>try {
+    // ...
+} catch (Exception e) {
+    // ここで大半を捕まえる
+} catch (IOException e) { // NG: 到達不能
+}</code></pre>
+<p>正しくは特定の例外から一般的な例外へ並べます。</p>
+<h2>3. finallyの実行</h2>
+<p><code>finally</code> は、try/catchを抜ける前に実行されます。<code>return</code> があっても、原則としてfinallyが先に実行されます。</p>
+<pre><code>static int test() {
+    try {
+        return 1;
+    } finally {
+        System.out.println("finally");
+    }
+}</code></pre>
+<h2>4. try-with-resources</h2>
+<p>try-with-resourcesでは、tryブロックを抜けるときにリソースの <code>close()</code> が自動で呼ばれます。複数リソースは後に宣言したものから閉じられます。</p>
+<pre><code>try (A a = new A(); B b = new B()) {
+    System.out.println("try");
+}
+// close順は b -&gt; a</code></pre>
+<table class="study-table"><tr><th>順番</th><th>処理</th></tr><tr><td>1</td><td>tryブロック実行</td></tr><tr><td>2</td><td>リソースのclose</td></tr><tr><td>3</td><td>catch</td></tr><tr><td>4</td><td>finally</td></tr></table>
+<h2>5. throw と throws</h2>
+<table class="study-table"><tr><th>構文</th><th>意味</th></tr><tr><td><code>throw</code></td><td>例外オブジェクトを実際に投げる</td></tr><tr><td><code>throws</code></td><td>メソッドが例外を投げる可能性を宣言する</td></tr></table>
+<pre><code>void test() throws IOException {
+    throw new IOException();
+}</code></pre>
+<h2>6. NullPointerExceptionの典型</h2>
+<pre><code>String s = null;
+s.equals("A"); // NullPointerException
+"A".equals(s); // false。例外は出ない</code></pre>
+<p>比較では、定数文字列を左に置くとNPEを避けられます。ただし試験では、どちらが左辺かを必ず確認します。</p>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/exception.html">例外を練習する</a><a class="btn" href="../../app/tags/runtime.html">実行時例外を練習する</a><a class="btn" href="../../app/tags/compile.html">コンパイル可否を練習する</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<section class="article-readiness" aria-labelledby="readiness-exception">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-exception">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>変数の型と、実際のインスタンスの型を分ける。</li><li>フィールド参照は変数の型、オーバーライドメソッド呼び出しは実体の型が効く。</li><li>interfaceのメソッド・フィールドは暗黙の修飾子を意識する。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>代入が上向き変換か、下向きキャストかを確認する。</li><li>キャストはコンパイル可否と実行時可否を分けて判定する。</li><li>sealedではpermitsと、継承先のfinal/sealed/non-sealedを必ず確認する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>親型変数だから親のメソッドだけが実行される、と誤解する。オーバーライドは実体側。</li><li>キャストを書けば必ず安全に変換できると考える。実体が対応していなければ実行時例外になる。</li><li>interfaceの抽象メソッドがpackage-privateになると思い込む。基本はpublic。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>Parent p = new Child(); の1行を見たら、変数型Parentと実体Childを分け、フィールド・メソッド・キャストの3つで判断してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/exception-inheritance.html"><span class="bridge-level">Java11 Silver</span><strong>例外・継承</strong><small>例外、継承、interface、オーバーロードを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/exception.html"><span class="bridge-level">Java17 Silver</span><strong>例外処理</strong><small>checked例外、catch順序、finally、try-with-resourcesを確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-exception.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

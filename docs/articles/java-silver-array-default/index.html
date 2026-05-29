@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="配列生成時の初期値、参照型配列のnull、NullPointerExceptionを整理します。" name="description"/>
+<title>Java Silverの配列デフォルト値とnull｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="article-page"><h1>Java Silverの配列デフォルト値とnull</h1><p class="lead">配列生成時の初期値、参照型配列のnull、NullPointerExceptionを整理します。</p><h2>配列要素はデフォルト値を持つ</h2><p>new int[3]の要素は0、new boolean[3]の要素はfalseです。</p><h2>参照型配列の要素はnull</h2><p>new String[3]の各要素はnullです。要素に対してメソッドを呼ぶとNullPointerExceptionになります。</p><h2>配列変数自体のnullと要素のnullを分ける</h2><p>arrayがnullなのか、array[0]がnullなのかを分けて読む必要があります。</p><h2>例</h2><pre><code>String[] a = new String[2];
+System.out.println(a[0]); // null
+// a[0].length(); // NullPointerException</code></pre><h2>試験・学習での注意</h2><ul><li>実行結果を見る前に、まずコンパイルできる形か確認します。</li><li>似た構文でも、型・戻り値・アクセス修飾子で結果が変わります。</li><li>暗記だけでなく、なぜその結果になるかを言語化してください。</li></ul>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-silver-array-default">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-silver-array-default">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java11 / Java17 Silver共通。Silver共通範囲では、バージョン固有構文に逃げず、型、参照、制御構文、クラス、継承、例外の基本ルールだけで判定します。Java17固有の記事はJava17 Silver側に分けています。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>値そのものを見るのか、参照先を見るのかを分ける。</li><li>Stringは変更されるのではなく、新しい文字列が作られる場面が多い。</li><li>配列・ArrayList・StringBuilderは、同じ変数名でも参照先と中身の変化を分けて追う。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>==なら参照比較、equalsなら内容比較を疑う。</li><li>メソッド呼び出し後に戻り値を受け取っているか確認する。</li><li>nullを使う前にメソッド呼び出しが発生していないか確認する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>Stringのreplaceやsubstringで元の文字列が変わると思い込む。</li><li>配列変数の代入を「コピー」と誤解する。コピーされるのは参照であり、配列本体ではない。</li><li>ArrayListのremoveで、引数がインデックスなのか要素なのかを見落とす。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>String s = &quot;abc&quot;; s.substring(1); System.out.println(s); の出力を、Stringの不変性と戻り値の扱いから説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/api-string.html"><span class="bridge-level">Java11 Silver</span><strong>API・文字列</strong><small>String・StringBuilder・ArrayList・参照比較を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/type-string-array.html"><span class="bridge-level">Java17 Silver</span><strong>型・文字列・配列</strong><small>型昇格、String、配列、varを確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+<p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></article></main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

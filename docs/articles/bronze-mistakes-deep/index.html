@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Bronzeの基礎文法ミスを例付きで整理。" name="description"/>
+<title>Java Bronzeで落ちやすい基礎ミス｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout" data-section="articles">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">品質強化記事</p>
+<h1>Java Bronzeで落ちやすい基礎ミス</h1>
+<p class="lead">Bronzeは難しいAPIより、基礎文法の読み違いで落ちます。ここではBronzeで間違いやすい基礎を、短いコードで確認します。</p>
+<section class="article-section"><h2>代入と比較を混ぜない</h2><pre><code>int x = 10;
+if (x = 20) { } // コンパイルエラー。intはbooleanではない
+if (x == 20) { } // 比較</code></pre><p>Javaの <code>if</code> 条件は <code>boolean</code> だけです。C言語のように数値を条件にできません。</p></section>
+<section class="article-section"><h2>配列の範囲</h2><pre><code>int[] nums = {10, 20, 30};
+System.out.println(nums[0]); // 10
+System.out.println(nums[3]); // 実行時例外</code></pre><p>配列の添字は0から始まります。<code>length</code> は要素数であり、最後の添字ではありません。</p></section>
+<section class="article-section"><h2>メソッドの戻り値</h2><pre><code>int add(int a, int b) {
+    return a + b;
+}
+void print() {
+    System.out.println("A");
+}</code></pre><p><code>void</code> は値を返しません。<code>return 値;</code> を書くとコンパイルエラーです。</p></section>
+
+
+<section class="article-readiness" aria-labelledby="readiness-bronze-mistakes-deep">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-bronze-mistakes-deep">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Bronze。Bronzeでは、細かい新機能よりも「文の実行順序」「変数の値」「条件式の真偽」を正確に追うことを優先します。record、sealed、Streamなどの高度な構文・APIはここでは追いません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>この記事は知識そのものより、学習手順の改善が目的です。</li><li>間違いを「知らなかった」で終わらせず、判断手順のどこが雑だったかに分解します。</li><li>演習の正答率だけでなく、根拠を言語化できるかを確認します。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>解いた直後に、正解理由と誤答理由を1文ずつ書く。</li><li>間違えた問題をタグで分類する。型、参照、例外、継承、APIなどに分ける。</li><li>翌日に同じ問題を見て、選択肢を見ずに判断手順を再現する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>正解した問題を復習対象から外す。偶然正解を放置すると弱点が残る。</li><li>解説を読んで納得しただけで、再現できると思い込む。</li><li>広く浅く進めすぎて、同じ型のミスを繰り返す。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>直近で間違えた問題を1つ選び、「知識不足」「読み落とし」「手順ミス」「暗記違い」のどれかに分類してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/bronze/practice/pitfall-check.html"><span class="bridge-level">Bronze</span><strong>Bronze総合ひっかけ</strong><small>Bronzeで落ちやすいコンパイル可否・出力を確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/final-check.html"><span class="bridge-level">Bronze</span><strong>Bronze総合確認</strong><small>Bronze範囲の総合確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

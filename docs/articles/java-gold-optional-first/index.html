@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java学習サイト" name="description"/>
+<title>Java Goldに入る前のOptional入門</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<div class="nav"><a href="../../index.html">トップ</a><a href="../../courses/java-basic/index.html">Java基礎</a><a href="../../articles/index.html">学習記事</a></div><article class="card"><h1>Java Goldに入る前のOptional入門</h1><p class="lead">試験対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>目的</h2><code>Optional</code>は「値があるかもしれないし、ないかもしれない」を表現する型です。<h2>基本</h2><pre><code>Optional&lt;String&gt; o = Optional.of("A");
+o.ifPresent(System.out::println);</code></pre><h2>注意</h2><p><code>Optional.get()</code>を無条件に呼ぶ使い方は避けます。値がなければ例外になります。</p><div class="nav"><a href="../index.html">記事一覧へ</a></div>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-gold-optional-first">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-gold-optional-first">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Gold。Goldでは、構文暗記よりもAPIの戻り値型、遅延実行、型推論、例外、リソース管理まで含めて判定します。Silverレベルの文法確認で止まると、ここでは足りません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>APIの名前だけでなく、戻り値型を追う。Goldではここを外すと連鎖的に崩れる。</li><li>Streamは終端操作が来るまで処理が実行されない。</li><li>ラムダ・ジェネリクス・Optionalは、型がどこで確定するかを読む。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>中間操作と終端操作を分ける。</li><li>Optionalは値がある場合と空の場合の分岐を確認する。</li><li>ジェネリクスでは読み取り専用寄りか、追加できるかをワイルドカードから判断する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>mapとflatMapを同じものとして扱う。</li><li>Collectorsの戻り値のコレクション型やMapのキーを確認しない。</li><li>parallelやExecutorを「速くなる機能」とだけ覚え、実行順序や終了処理を見落とす。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>Streamの問題では、まず「元データ→中間操作→終端操作」の3列で表を作り、各段階の型を書いてください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/gold/practice/lambda-optional.html"><span class="bridge-level">Gold</span><strong>ラムダ・Optional</strong><small>関数型インタフェース、Optional、メソッド参照を確認</small></a><a class="bridge-card" href="../../courses/gold/practice/generics-collections.html"><span class="bridge-level">Gold</span><strong>ジェネリクス・コレクション</strong><small>ジェネリクス、Optional、Map、コレクションAPIを確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

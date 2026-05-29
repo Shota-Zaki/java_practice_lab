@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Stream、ジェネリクス、Optionalの型の流れをコード例で整理。" name="description"/>
+<title>Java Goldの型の流れを読む｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout" data-section="articles">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">品質強化記事</p>
+<h1>Java Goldの型の流れを読む</h1>
+<p class="lead">GoldはAPI暗記だけでは通りません。ジェネリクス、ラムダ、Streamは「型がどう流れるか」を追う必要があります。</p>
+<section class="article-section"><h2>Streamは終端操作まで動かない</h2><pre><code>var list = java.util.List.of("A", "BB", "CCC");
+var stream = list.stream()
+    .filter(s -&gt; s.length() &gt; 1)
+    .map(String::length);
+System.out.println("X");
+System.out.println(stream.count());</code></pre><p><code>filter</code> や <code>map</code> は中間操作です。<code>count</code> のような終端操作で初めて評価されます。</p></section>
+<section class="article-section"><h2>PECSを実用的に覚える</h2><pre><code>void read(java.util.List&lt;? extends Number&gt; list) {
+    Number n = list.get(0);
+    // list.add(1); // 不可
+}
+void write(java.util.List&lt;? super Integer&gt; list) {
+    list.add(1);
+    Object o = list.get(0);
+}</code></pre><p><code>extends</code> は読む側、<code>super</code> は書く側と覚えると実戦で使えます。ただし、完全に「読むだけ」「書くだけ」ではなく、取り出し型・追加可能型の制限として理解します。</p></section>
+<section class="article-section"><h2>Optionalをnull代わりに雑に使わない</h2><pre><code>java.util.Optional&lt;String&gt; opt = java.util.Optional.ofNullable(null);
+System.out.println(opt.orElse("empty"));</code></pre><p><code>Optional.of(null)</code> は <code>NullPointerException</code> です。nullの可能性があるなら <code>ofNullable</code> を使います。</p></section>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java-gold-type-flow">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java-gold-type-flow">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Gold。Goldでは、構文暗記よりもAPIの戻り値型、遅延実行、型推論、例外、リソース管理まで含めて判定します。Silverレベルの文法確認で止まると、ここでは足りません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>リテラルの型を先に決める。整数は基本int、浮動小数点は基本doubleとして見る。</li><li>byte・short・charは、計算に入った瞬間にintへ昇格する場面がある。</li><li>varは「型を省略する記法」ではなく、初期化式から型を確定する仕組みとして読む。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>代入の右辺を先に評価し、結果の型が左辺へ入るか確認する。</li><li>複合代入だけを例外扱いにせず、内部でキャスト相当の処理が入ると理解する。</li><li>コンパイル可否を出力結果より先に判定する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>数値が小さいからbyteへ入る、という雑な判断をしない。式になった時点で型が変わる。</li><li>varをフィールド、引数、戻り値型で使えると考えるのは誤り。</li><li>キャストを書けば常に安全、ではない。値の欠落や符号変化まで確認する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>次の3行を自分で判定します。byte b = 1; b = b + 1; b += 1; それぞれの違いを「式の型」で説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/gold/practice/generics-collections.html"><span class="bridge-level">Gold</span><strong>ジェネリクス・コレクション</strong><small>ジェネリクス、Optional、Map、コレクションAPIを確認</small></a><a class="bridge-card" href="../../courses/gold/practice/lambda-stream.html"><span class="bridge-level">Gold</span><strong>ラムダ・Stream</strong><small>ラムダ、関数型インタフェース、Stream APIを確認</small></a><a class="bridge-card" href="../../courses/gold/practice/gold-api-mix.html"><span class="bridge-level">Gold</span><strong>Gold総合API</strong><small>ジェネリクス、Stream、並行処理、モジュールを横断確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

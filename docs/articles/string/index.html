@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Stringの不変性、文字列プール、StringBuilderとの違いを例で整理します。" name="description"/>
+<title>Java SilverのStringとStringBuilder｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article">
+<p class="eyebrow">Java Silver 頻出</p>
+<h1>Java SilverのStringとStringBuilder</h1>
+<p class="lead">String問題は「不変性」「戻り値」「文字列プール」「StringBuilderとの違い」を分けて読むと安定します。</p>
+<section class="article-section"><h2>1. Stringは不変</h2><pre><code>String s = "abc";
+s.replace('b', 'x');
+System.out.println(s); // abc</code></pre><p><code>replace</code> は新しい文字列を返します。元の <code>s</code> は変わりません。</p><pre><code>s = s.replace('b', 'x'); // axc</code></pre></section>
+<section class="article-section"><h2>2. substringのendは含まない</h2><pre><code>String s = "abcdef";
+System.out.println(s.substring(2, 5)); // cde</code></pre><p>開始位置は含み、終了位置は含みません。添字2は <code>c</code>、5の手前までです。</p></section>
+<section class="article-section"><h2>3. concatも戻り値を受け取る</h2><pre><code>String s = "A";
+s.concat("B");
+System.out.println(s); // A</code></pre><p><code>concat</code> も元の文字列を変更しません。</p></section>
+<section class="article-section"><h2>4. +演算子の左から評価</h2><pre><code>System.out.println(1 + 2 + "A" + 3 + 4); // 3A34</code></pre><p>文字列が出るまでは数値加算、文字列が出た後は文字列連結です。</p></section>
+<section class="article-section"><h2>5. internと文字列プール</h2><pre><code>String a = new String("Java");
+String b = "Java";
+System.out.println(a == b);          // false
+System.out.println(a.intern() == b); // true</code></pre><p><code>intern()</code> の戻り値はプール上の参照です。</p></section>
+<section class="article-section"><h2>6. StringBuilderは可変</h2><pre><code>StringBuilder sb = new StringBuilder("A");
+sb.append("B");
+System.out.println(sb); // AB</code></pre><p><code>StringBuilder</code> の多くのメソッドは同じオブジェクトを変更します。</p></section>
+<section class="article-section"><h2>7. StringBuilderのinsert/delete</h2><pre><code>StringBuilder sb = new StringBuilder("abcd");
+sb.insert(2, "X");   // abXcd
+sb.delete(1, 3);      // acd ではなく、現在の文字列から範囲削除</code></pre><p>連続して操作する問題では、毎回現在の状態を書き換えて追います。</p></section>
+<section class="article-section"><h2>8. StringBuilder.equalsは内容比較ではない</h2><pre><code>var a = new StringBuilder("A");
+var b = new StringBuilder("A");
+System.out.println(a.equals(b)); // false</code></pre><p>内容比較したい場合は <code>a.toString().equals(b.toString())</code> とします。</p></section>
+<section class="article-section"><h2>9. indexOf</h2><pre><code>String s = "abcabc";
+System.out.println(s.indexOf("bc"));    // 1
+System.out.println(s.indexOf("bc", 2)); // 4</code></pre><p>見つからなければ <code>-1</code> です。第2引数は検索開始位置です。</p></section>
+<section class="article-section"><h2>10. isBlankとisEmpty</h2><pre><code>System.out.println("".isEmpty());      // true
+System.out.println("   ".isEmpty());   // false
+System.out.println("   ".isBlank());   // true</code></pre><p><code>isEmpty()</code> は長さ0だけ、<code>isBlank()</code> は空白のみも対象です。</p></section>
+<section class="article-section"><h2>試験での注意</h2><ul><li>戻り値を受け取っていない <code>replace</code> / <code>substring</code> / <code>concat</code> は元の文字列を変えない。</li><li><code>StringBuilder</code> は変わるが、<code>equals()</code> は内容比較ではない。</li><li><code>==</code> が出たら文字列プールと <code>new</code> の有無を見る。</li></ul></section>
+<div class="practice-tools"><a class="btn primary" href="../../app/search.html">関連問題を検索する</a><a class="btn" href="../index.html">記事一覧へ戻る</a><a class="btn ghost" href="../../index.html">トップへ戻る</a></div>
+
+
+<section class="article-readiness" aria-labelledby="readiness-string">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-string">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>値そのものを見るのか、参照先を見るのかを分ける。</li><li>Stringは変更されるのではなく、新しい文字列が作られる場面が多い。</li><li>配列・ArrayList・StringBuilderは、同じ変数名でも参照先と中身の変化を分けて追う。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>==なら参照比較、equalsなら内容比較を疑う。</li><li>メソッド呼び出し後に戻り値を受け取っているか確認する。</li><li>nullを使う前にメソッド呼び出しが発生していないか確認する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>Stringのreplaceやsubstringで元の文字列が変わると思い込む。</li><li>配列変数の代入を「コピー」と誤解する。コピーされるのは参照であり、配列本体ではない。</li><li>ArrayListのremoveで、引数がインデックスなのか要素なのかを見落とす。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>String s = &quot;abc&quot;; s.substring(1); System.out.println(s); の出力を、Stringの不変性と戻り値の扱いから説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/api-string.html"><span class="bridge-level">Java11 Silver</span><strong>API・文字列</strong><small>String・StringBuilder・ArrayList・参照比較を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/reference-api.html"><span class="bridge-level">Java17 Silver</span><strong>参照・API</strong><small>参照比較、StringBuilder、ArrayList、API判定を確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/control-array.html"><span class="bridge-level">Bronze</span><strong>条件分岐・配列</strong><small>if・switch・for・配列・Stringの基本を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script><script src="../../assets/js/app.js?v=header-footer-top-20260529"></script><script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="switch文とswitch式の違い、yieldの使いどころを整理する。" name="description"/>
+<title>Java17 Silverのswitch式とyield｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<div class="nav"><a href="../../index.html">トップ</a><a href="../index.html">コース</a><a href="../../articles/index.html">学習記事</a></div>
+<article class="card article-page">
+<h1>Java17 Silverのswitch式とyield</h1>
+<p class="lead">switch文とswitch式の違い、yieldの使いどころを整理する。</p>
+<h2>switch式は値を返す</h2><pre><code>String result = switch (num) {
+    case 1 -&gt; "one";
+    default -&gt; "other";
+};</code></pre><h2>yield</h2><p>ブロック形式で値を返すときにyieldを使います。</p>
+
+
+<section class="article-readiness" aria-labelledby="readiness-java17-silver-switch-expression-yield">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-java17-silver-switch-expression-yield">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java17 Silver。Java17 Silverでは、Java17で扱う文法差分を確認します。ただしGold寄りのStream、Optional、Collectors、NIO、並行処理、モジュールの深掘りはここでは扱いません。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>演算子の優先順位だけでなく、左から評価される部分と短絡評価を分ける。</li><li>if、for、whileは「条件判定→本体→更新」の順番を紙に書くとミスが減る。</li><li>switch文とswitch式は、値を返すかどうか、break/yieldの役割が違う。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>条件式の左辺で結果が確定するか確認する。</li><li>ループは初期値、条件、更新後の値を1周ずつ表にする。</li><li>switchはフォールスルーの有無と、defaultの位置を確認する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>&amp;&amp;と&amp;、||と|を同じものとして扱う。</li><li>後置インクリメントを、式の中でもすぐ増えた値として使ってしまう。</li><li>switch式でyieldが必要な場所と不要な場所を混同する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>a++ + ++a のような式は暗算で処理しないでください。評価された値と、変数に残る値を別々に書いて判定します。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java17-silver/units/operator-control.html"><span class="bridge-level">Java17 Silver</span><strong>演算子と制御構造</strong><small>演算子、短絡評価、switch、ループを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/compile-check.html"><span class="bridge-level">Java17 Silver</span><strong>コンパイル判定</strong><small>Java17 Silver範囲の構文成立を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

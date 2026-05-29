@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silver頻出メソッドの戻り値、破壊的変更、例外条件、落とし穴を詳しく整理。" name="description"/>
+<title>頻出メソッドリスト 詳細版｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article">
+<h1>頻出メソッドリスト 詳細版</h1>
+<p class="lead">メソッド問題は、戻り値、元オブジェクトを変更するか、例外条件、添字の範囲を確認します。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>String</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>charAt(int)</code></td><td><code>char</code></td><td>指定位置の文字</td><td>0始まり。範囲外で例外。</td></tr>
+<tr><td><code>indexOf(String)</code></td><td><code>int</code></td><td>最初に見つかった位置</td><td>見つからないと<code>-1</code>。</td></tr>
+<tr><td><code>substring(int,int)</code></td><td><code>String</code></td><td>begin以上end未満</td><td>endの文字は含まない。</td></tr>
+<tr><td><code>replace(char,char)</code></td><td><code>String</code></td><td>置換後の新文字列</td><td>元のStringは変わらない。</td></tr>
+<tr><td><code>concat(String)</code></td><td><code>String</code></td><td>連結後の新文字列</td><td>戻り値を受け取らないと捨てる。</td></tr>
+<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>内容比較</td><td><code>==</code>とは違う。</td></tr>
+<tr><td><code>intern()</code></td><td><code>String</code></td><td>文字列プール上の参照</td><td>参照比較問題で頻出。</td></tr>
+</table>
+<h2>StringBuilder</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>append(...)</code></td><td><code>StringBuilder</code></td><td>末尾追加</td><td>自分自身を変更する。</td></tr>
+<tr><td><code>insert(int,...)</code></td><td><code>StringBuilder</code></td><td>指定位置に挿入</td><td>範囲外で例外。</td></tr>
+<tr><td><code>delete(int,int)</code></td><td><code>StringBuilder</code></td><td>begin以上end未満を削除</td><td>Stringのsubstringと同じくend未満。</td></tr>
+<tr><td><code>reverse()</code></td><td><code>StringBuilder</code></td><td>反転</td><td>元のBuilderが変わる。</td></tr>
+<tr><td><code>toString()</code></td><td><code>String</code></td><td>String化</td><td>内容比較したいときに使う。</td></tr>
+</table>
+<h2>ArrayList / List</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>落とし穴</th></tr>
+<tr><td><code>add(E)</code></td><td><code>boolean</code></td><td>末尾追加</td><td>通常true。</td></tr>
+<tr><td><code>add(int,E)</code></td><td><code>void</code></td><td>指定位置に挿入</td><td>置換ではなく挿入。</td></tr>
+<tr><td><code>set(int,E)</code></td><td><code>E</code></td><td>指定位置を置換</td><td>古い値を返す。</td></tr>
+<tr><td><code>remove(int)</code></td><td><code>E</code></td><td>インデックス削除</td><td><code>remove(1)</code>は値1ではなく位置1。</td></tr>
+<tr><td><code>remove(Object)</code></td><td><code>boolean</code></td><td>一致する要素を削除</td><td><code>Integer.valueOf(1)</code>で値削除。</td></tr>
+<tr><td><code>contains(Object)</code></td><td><code>boolean</code></td><td>含むか確認</td><td><code>equals()</code>で比較。</td></tr>
+<tr><td><code>size()</code></td><td><code>int</code></td><td>要素数</td><td>配列の<code>length</code>と混同しない。</td></tr>
+</table>
+<h2>Arrays / Object / ラッパー</h2>
+<table class="study-table method-table"><tr><th>メソッド</th><th>要点</th><th>注意</th></tr>
+<tr><td><code>Arrays.asList(array)</code></td><td>配列をList風に扱う</td><td>固定サイズ。add/removeは不可。</td></tr>
+<tr><td><code>Arrays.equals(a,b)</code></td><td>一次元配列の中身比較</td><td>多次元なら<code>deepEquals</code>。</td></tr>
+<tr><td><code>Objects.equals(a,b)</code></td><td>null安全なequals</td><td>null比較で便利。</td></tr>
+<tr><td><code>Integer.parseInt(String)</code></td><td>文字列をintへ変換</td><td>不正文字列で<code>NumberFormatException</code>。</td></tr>
+<tr><td><code>valueOf</code></td><td>ラッパー型へ変換</td><td>オートボクシングとの違いに注意。</td></tr>
+</table>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/string.html">String問題を解く</a><a class="btn" href="../../app/tags/array.html">配列・List問題を解く</a><a class="btn" href="../../app/tags/exception.html">例外問題を解く</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<section class="article-readiness" aria-labelledby="readiness-methods">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-methods">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>インスタンスに属するものと、クラスに属するstaticなものを分ける。</li><li>コンストラクタは戻り値型を書かない。メソッドと見た目が似ていても別物。</li><li>オーバーロードはコンパイル時に引数型で決まる。実行時のオーバーライドとは分ける。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>呼び出し元の変数型、引数型、アクセス修飾子を順に確認する。</li><li>thisとsuperが何を指しているかを明確にする。</li><li>コンストラクタチェーンでは、最初にどのコンストラクタへ制御が移るかを見る。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>staticメソッドからインスタンスフィールドへ直接触れると思い込む。</li><li>privateメンバが継承先から自由に使えると考える。</li><li>同名メソッドを見てすぐオーバーライドと判断する。引数が違えばオーバーロード。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>同じ名前のメソッドが複数あるコードでは、先に「候補メソッド一覧」を作り、引数型でどれが選ばれるかを判定してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/api-string.html"><span class="bridge-level">Java11 Silver</span><strong>API・文字列</strong><small>String・StringBuilder・ArrayList・参照比較を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/reference-api.html"><span class="bridge-level">Java17 Silver</span><strong>参照・API</strong><small>参照比較、StringBuilder、ArrayList、API判定を確認</small></a><a class="bridge-card" href="../../courses/gold/practice/gold-api-mix.html"><span class="bridge-level">Gold</span><strong>Gold総合API</strong><small>ジェネリクス、Stream、並行処理、モジュールを横断確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="methods.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

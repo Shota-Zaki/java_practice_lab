@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silver頻出の型変換、数値昇格、var、配列、デフォルト値を詳しく解説。" name="description"/>
+<title>Java Silverの型変換・var・配列でコンパイルエラーになる例</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article">
+<h1>Java Silverの型変換・var・配列でコンパイルエラーになる例</h1>
+<p class="lead">型の問題は、見た目よりも機械的です。代入できるか、暗黙変換か、キャストが必要か、ローカル変数型推論が使える場所か、配列の形が正しいかを順に見ます。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<h2>1. 基本データ型の分類</h2>
+<table class="study-table">
+<tr><th>分類</th><th>型</th><th>試験での注意</th></tr>
+<tr><td>整数</td><td><code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code></td><td>整数リテラルは原則 <code>int</code>。<code>long</code> は <code>L</code> を付ける。</td></tr>
+<tr><td>浮動小数点</td><td><code>float</code>, <code>double</code></td><td>小数リテラルは原則 <code>double</code>。<code>float</code> は <code>F</code> が必要。</td></tr>
+<tr><td>文字</td><td><code>char</code></td><td>数値としても扱えるが、文字列ではない。</td></tr>
+<tr><td>真偽</td><td><code>boolean</code></td><td>数値と互換性なし。<code>if (1)</code> は不可。</td></tr>
+</table>
+<h2>2. 暗黙の型変換とキャスト</h2>
+<p>小さい範囲の値を大きい範囲の型へ入れる場合は暗黙変換できます。逆方向はデータ欠損の可能性があるためキャストが必要です。</p>
+<pre><code>int i = 10;
+long l = i;       // OK: int -&gt; long
+float f = l;      // OK: long -&gt; float。ただし精度には注意
+
+long x = 10L;
+int y = x;        // NG: long -&gt; int は暗黙変換不可
+int z = (int) x;  // OK: 明示的キャスト</code></pre>
+<div class="warning-box"><strong>落とし穴。</strong> <code>byte</code>や<code>short</code>同士の演算結果は基本的に<code>int</code>になります。<code>byte b = 1; b = b + 1;</code> はコンパイルエラーです。</div>
+<pre><code>byte b = 1;
+b = b + 1;     // NG: b + 1 は int
+b += 1;        // OK: 複合代入は暗黙のキャストを含む</code></pre>
+<h2>3. リテラルの読み方</h2>
+<table class="study-table">
+<tr><th>表記</th><th>意味</th><th>例</th></tr>
+<tr><td><code>10</code></td><td>intリテラル</td><td><code>int a = 10;</code></td></tr>
+<tr><td><code>10L</code></td><td>longリテラル</td><td><code>long a = 10L;</code></td></tr>
+<tr><td><code>10.0</code></td><td>doubleリテラル</td><td><code>double d = 10.0;</code></td></tr>
+<tr><td><code>10.0F</code></td><td>floatリテラル</td><td><code>float f = 10.0F;</code></td></tr>
+<tr><td><code>0b1010</code></td><td>2進数の整数リテラル</td><td>値は10</td></tr>
+<tr><td><code>0xFF</code></td><td>16進数の整数リテラル</td><td>値は255</td></tr>
+</table>
+<h2>4. <code>var</code> の使える場所・使えない場所</h2>
+<p><code>var</code> は型をなくす機能ではありません。右辺からローカル変数の型を推論するだけです。</p>
+<table class="study-table">
+<tr><th>場所</th><th>可否</th><th>理由</th></tr>
+<tr><td>メソッド内のローカル変数</td><td>OK</td><td>右辺から型が決まる</td></tr>
+<tr><td>拡張for文の変数</td><td>OK</td><td>配列・Iterableの要素型から推論</td></tr>
+<tr><td>フィールド</td><td>NG</td><td>ローカル変数ではない</td></tr>
+<tr><td>メソッド引数</td><td>NG</td><td>引数の型は明示する必要がある</td></tr>
+<tr><td>戻り値型</td><td>NG</td><td>メソッドシグネチャに使えない</td></tr>
+<tr><td><code>null</code> 初期化</td><td>NG</td><td>型を推論できない</td></tr>
+</table>
+<pre><code>var list = new ArrayList&lt;String&gt;(); // OK: ArrayList&lt;String&gt;
+var n = 10;                         // OK: int
+var x = null;                       // NG: 型を推論できない
+private var value = 10;             // NG: フィールドでは使えない</code></pre>
+<h2>5. 配列の宣言・生成・初期化</h2>
+<table class="study-table">
+<tr><th>コード</th><th>可否</th><th>理由</th></tr>
+<tr><td><code>int[] a = new int[3];</code></td><td>OK</td><td>3要素の配列を生成</td></tr>
+<tr><td><code>int[] a = {1,2};</code></td><td>NG</td><td>一次元配列に二次元初期化子</td></tr>
+<tr><td><code>int[] a = (1, 2, 3);</code></td><td>OK</td><td>宣言と同時なら省略初期化可</td></tr>
+<tr><td><code>int[] a; a = (1, 2, 3);</code></td><td>NG</td><td>宣言後は <code>new int[]</code> が必要</td></tr>
+<tr><td><code>a = new int[]{1,2};</code></td><td>NG</td><td>次元が合わない</td></tr>
+</table>
+<pre><code>int[][] array = new int[2][];
+array[0] = new int[] {1, 2, 3};
+array[1] = new int[] {4, 5};
+// 二次元配列は内側の長さが揃っていなくてもよい</code></pre>
+<h2>6. デフォルト値</h2>
+<p>フィールドと配列要素にはデフォルト値があります。ローカル変数にはありません。</p>
+<table class="study-table"><tr><th>型</th><th>デフォルト値</th></tr><tr><td>整数型</td><td><code>0</code></td></tr><tr><td>浮動小数点型</td><td><code>0.0</code></td></tr><tr><td><code>char</code></td><td><code>\u0000</code></td></tr><tr><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td>参照型</td><td><code>null</code></td></tr></table>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/type.html">型変換を練習する</a><a class="btn" href="../../app/tags/operator.html">演算子を練習する</a><a class="btn" href="../../app/tags/array.html">配列を練習する</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<section class="article-readiness" aria-labelledby="readiness-types">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-types">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>Java基礎〜Silver共通。この範囲は、基礎理解とSilverの読解をつなぐ部分です。まず「コンパイルできるか」「実行時にどこまで進むか」「出力は何か」の順で考えます。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>リテラルの型を先に決める。整数は基本int、浮動小数点は基本doubleとして見る。</li><li>byte・short・charは、計算に入った瞬間にintへ昇格する場面がある。</li><li>varは「型を省略する記法」ではなく、初期化式から型を確定する仕組みとして読む。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>代入の右辺を先に評価し、結果の型が左辺へ入るか確認する。</li><li>複合代入だけを例外扱いにせず、内部でキャスト相当の処理が入ると理解する。</li><li>コンパイル可否を出力結果より先に判定する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>数値が小さいからbyteへ入る、という雑な判断をしない。式になった時点で型が変わる。</li><li>varをフィールド、引数、戻り値型で使えると考えるのは誤り。</li><li>キャストを書けば常に安全、ではない。値の欠落や符号変化まで確認する。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>次の3行を自分で判定します。byte b = 1; b = b + 1; b += 1; それぞれの違いを「式の型」で説明してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/basic-syntax.html"><span class="bridge-level">Java11 Silver</span><strong>基本文法</strong><small>Java11範囲のvar・文字列・配列・制御構文を確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/type-string-array.html"><span class="bridge-level">Java17 Silver</span><strong>型・文字列・配列</strong><small>型昇格、String、配列、varを確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/compile-check.html"><span class="bridge-level">Java17 Silver</span><strong>コンパイル判定</strong><small>Java17 Silver範囲の構文成立を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-types.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>

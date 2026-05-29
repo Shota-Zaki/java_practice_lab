@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silverで頻出の細かい違い、==とequals、++、短絡評価、remove、switch、例外などを詳しく整理。" name="description"/>
+<title>Java Silver頻出ひっかけパターン総まとめ</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=header-footer-top-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article">
+<h1>Java Silver頻出ひっかけパターン総まとめ</h1>
+<p class="lead">試験で落ちるのは、派手な論点よりも小さな違いです。似た構文を横並びで整理します。</p>
+<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
+<div class="article-nav"><a class="btn" href="../index.html">記事一覧</a><a class="btn" href="../reference/index.html">参照比較</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a><a class="btn" href="../glossary/index.html">単語集</a><a class="btn" href="../cheatsheet/index.html">解き方</a></div>
+<table class="study-table detail-table">
+<tr><th>比較</th><th>正しい理解</th><th>危険な誤解</th></tr>
+<tr><td><code>==</code> / <code>equals()</code></td><td><code>==</code>は参照同一性。<code>equals()</code>は実装次第。</td><td>中身が同じなら<code>==</code>もtrue。</td></tr>
+<tr><td><code>++x</code> / <code>x++</code></td><td>前置は増やしてから使う。後置は使ってから増やす。</td><td>どちらも常に同じ。</td></tr>
+<tr><td><code>&amp;&amp;</code> / <code>&amp;</code></td><td><code>&amp;&amp;</code>は短絡評価。<code>&amp;</code>は右辺も評価。</td><td>booleanでは完全に同じ。</td></tr>
+<tr><td><code>String</code> / <code>StringBuilder</code></td><td>Stringは不変。StringBuilderは可変。</td><td>replaceやappendはどちらも元を変える。</td></tr>
+<tr><td><code>length</code> / <code>length()</code> / <code>size()</code></td><td>配列は<code>length</code>、Stringは<code>length()</code>、Listは<code>size()</code>。</td><td>全部<code>length()</code>。</td></tr>
+<tr><td><code>ArrayList.remove(1)</code> / <code>remove(Integer.valueOf(1))</code></td><td>前者はインデックス削除、後者は要素削除。</td><td>どちらも値1を削除。</td></tr>
+<tr><td><code>List.of()</code> / <code>Arrays.asList()</code></td><td><code>List.of</code>はnull不可・変更不可。<code>Arrays.asList</code>は固定サイズ。</td><td>どちらも普通のArrayList。</td></tr>
+<tr><td>オーバーロード / オーバーライド</td><td>オーバーロードは引数違い。オーバーライドは親メソッドの再定義。</td><td>戻り値だけ違えばオーバーロード。</td></tr>
+<tr><td>フィールド / メソッド</td><td>フィールドは変数の型、オーバーライドメソッドは実体の型。</td><td>どちらも実体の型。</td></tr>
+<tr><td><code>this()</code> / <code>super()</code></td><td>どちらもコンストラクタ先頭行のみ。</td><td>途中で自由に呼べる。</td></tr>
+<tr><td>switch文 / switch式</td><td>式は値を返す。<code>-&gt;</code>はフォールスルーなし。</td><td>switchならすべてbreakが必要。</td></tr>
+<tr><td>checked / unchecked</td><td>checkedは処理義務あり。RuntimeException系は処理義務なし。</td><td>例外は全部catch必須。</td></tr>
+</table>
+<h2>見直し時の問い</h2>
+<ol class="step-list"><li>これは値比較か、参照比較か。</li><li>このメソッドは元のオブジェクトを変えるか、新しい値を返すだけか。</li><li>この変数はフィールドか、ローカル変数か。</li><li>この呼び出しはオーバーロードか、オーバーライドか。</li><li>この例外はコンパイル時に処理を要求されるか。</li></ol>
+<section class="related-practice"><h2>この記事のあとに解く問題</h2><p>読んで終わりにせず、同じ論点の問題をすぐ解いて定着させてください。</p><div class="article-nav"><a class="btn" href="../../app/tags/compile.html">頻出ひっかけを練習する</a><a class="btn" href="../../app/tags/operator.html">演算子を練習する</a><a class="btn" href="../../app/tags/reference.html">参照比較を練習する</a></div></section>
+<div aria-label="広告枠" class="ad-slot ad-visible article-mid-ad article-inline-ad"><span>記事本文中</span></div>
+</section>
+<section class="article-readiness" aria-labelledby="readiness-pitfalls">
+  <div class="readiness-head">
+    <p class="eyebrow">演習前チェック</p>
+    <h2 id="readiness-pitfalls">この記事を演習で使える知識に変える</h2>
+    <p><strong>対象レベル：</strong>学習手順・復習設計。この記事は知識そのものより、学習方法と復習方法を整えるための内容です。間違えた理由を分類し、次の演習で同じ判断ミスを減らすことを目的にします。</p>
+  </div>
+  <div class="readiness-grid">
+    <section class="readiness-box">
+      <h3>本文で必ず押さえること</h3>
+      <ul><li>この記事は知識そのものより、学習手順の改善が目的です。</li><li>間違いを「知らなかった」で終わらせず、判断手順のどこが雑だったかに分解します。</li><li>演習の正答率だけでなく、根拠を言語化できるかを確認します。</li></ul>
+    </section>
+    <section class="readiness-box">
+      <h3>この後の演習で見るポイント</h3>
+      <ul><li>解いた直後に、正解理由と誤答理由を1文ずつ書く。</li><li>間違えた問題をタグで分類する。型、参照、例外、継承、APIなどに分ける。</li><li>翌日に同じ問題を見て、選択肢を見ずに判断手順を再現する。</li></ul>
+    </section>
+    <section class="readiness-box danger">
+      <h3>ここで落ちる典型ミス</h3>
+      <ul><li>正解した問題を復習対象から外す。偶然正解を放置すると弱点が残る。</li><li>解説を読んで納得しただけで、再現できると思い込む。</li><li>広く浅く進めすぎて、同じ型のミスを繰り返す。</li></ul>
+    </section>
+  </div>
+  <div class="readiness-mini-task">
+    <h3>演習前の小課題</h3>
+    <p>直近で間違えた問題を1つ選び、「知識不足」「読み落とし」「手順ミス」「暗記違い」のどれかに分類してください。</p>
+  </div>
+</section>
+
+<section aria-labelledby="afterArticlePractice" class="article-practice-bridge">
+<div class="bridge-head"><p class="eyebrow">記事 → 演習</p><h2 id="afterArticlePractice">この記事を読んだあとに解く演習</h2><p>読んだだけでは定着しません。自分のレベルに合う演習を1つ選び、正解理由と誤答理由まで確認してください。</p></div>
+<div class="bridge-grid"><a class="bridge-card" href="../../courses/java11-silver/practice/output-mix.html"><span class="bridge-level">Java11 Silver</span><strong>総合出力問題</strong><small>String・配列・継承・例外の出力を総合確認</small></a><a class="bridge-card" href="../../courses/java17-silver/units/random.html"><span class="bridge-level">Java17 Silver</span><strong>ランダム問題</strong><small>Java17 Silver全体の横断確認</small></a><a class="bridge-card" href="../../courses/bronze/practice/pitfall-check.html"><span class="bridge-level">Bronze</span><strong>Bronze総合ひっかけ</strong><small>Bronzeで落ちやすいコンパイル可否・出力を確認</small></a></div>
+<p class="bridge-note">Java11 SilverはJava17固有構文を混ぜず、Java17 SilverはGold APIを混ぜず、GoldはAPI・型・実行タイミングを中心に確認します。</p>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-pitfalls.html";</script>
+<script src="../../data/questions.js?v=header-footer-top-20260529"></script>
+<script src="../../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../../pwa.js?v=header-footer-top-20260529"></script>
+</body>
+</html>
