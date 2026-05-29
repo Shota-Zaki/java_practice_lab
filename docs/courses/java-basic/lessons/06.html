@@ -8,7 +8,7 @@
 <title>Lesson 6 数値型と型変換｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>数値型と型変換</h1>
 <p class="lead">数値の範囲、リテラル、型変換、計算時の型の変化を整理する。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>数値型は「入る範囲」と「計算したときの型」を分けて考える。特に<code>byte</code>、<code>short</code>、<code>char</code>は、計算時に<code>int</code>へ昇格しやすい。ここを知らないと、見た目は小さい数なのにコンパイルエラーになる理由が説明できない。</p></section><section class="card lesson-section"><h2>代表的な数値型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>型</th><th>大まかな役割</th><th>注意点</th></tr></thead><tbody><tr><td><code>byte</code></td><td>小さい整数</td><td>計算時は<code>int</code>になりやすい</td></tr><tr><td><code>short</code></td><td>小さい整数</td><td>リテラル代入と計算結果代入を分ける</td></tr><tr><td><code>int</code></td><td>整数の基本</td><td>整数リテラルの基本型</td></tr><tr><td><code>long</code></td><td>大きい整数</td><td><code>L</code>を付けることがある</td></tr><tr><td><code>float</code></td><td>単精度小数</td><td><code>F</code>を付けないと小数リテラルは基本<code>double</code></td></tr><tr><td><code>double</code></td><td>小数の基本</td><td>小数リテラルの基本型</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>リテラル代入と計算結果代入は違う</h2><p><code>byte b = 10;</code>は通る。10が<code>byte</code>の範囲内で、定数として明らかだから。しかし<code>byte c = b + 1;</code>は通らない。<code>b + 1</code>の計算結果は<code>int</code>として扱われるから。</p><p class="code-caption">悪い例</p><pre><code>byte b = 10;
+</article><section class="card lesson-section"><h2>代表的な数値型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>型</th><th>大まかな役割</th><th>注意点</th></tr></thead><tbody><tr><td><code>byte</code></td><td>小さい整数</td><td>計算時は<code>int</code>になりやすい</td></tr><tr><td><code>short</code></td><td>小さい整数</td><td>リテラル代入と計算結果代入を分ける</td></tr><tr><td><code>int</code></td><td>整数の基本</td><td>整数リテラルの基本型</td></tr><tr><td><code>long</code></td><td>大きい整数</td><td><code>L</code>を付けることがある</td></tr><tr><td><code>float</code></td><td>単精度小数</td><td><code>F</code>を付けないと小数リテラルは基本<code>double</code></td></tr><tr><td><code>double</code></td><td>小数の基本</td><td>小数リテラルの基本型</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>リテラル代入と計算結果代入は違う</h2><p><code>byte b = 10;</code>は通る。10が<code>byte</code>の範囲内で、定数として明らかだから。しかし<code>byte c = b + 1;</code>は通らない。<code>b + 1</code>の計算結果は<code>int</code>として扱われるから。</p><p class="code-caption">悪い例</p><pre><code>byte b = 10;
 byte c = b + 1; // コンパイルエラー</code></pre><p class="code-caption">修正例</p><pre><code>byte b = 10;
 byte c = (byte) (b + 1); // 明示的にキャスト</code></pre></section><section class="card lesson-section"><h2>複合代入は暗黙のキャストを含む</h2><p><code>+=</code>などの複合代入は、単純な<code>+</code>とは挙動が違う。<code>x += 1</code>は、計算後に左辺の型へ戻す処理を含む。</p><p class="code-caption">通常の加算</p><pre><code>byte x = 1;
 x = x + 1; // コンパイルエラー</code></pre><p class="code-caption">複合代入</p><pre><code>byte x = 1;
@@ -60,8 +60,8 @@ byte c = 10 + 20;  // OK。定数式として30と判断できる
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-06.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

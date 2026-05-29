@@ -8,7 +8,7 @@
 <title>Lesson 4 mainメソッド｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,9 +25,7 @@
 <h1>mainメソッド</h1>
 <p class="lead">Javaプログラムの入口であるmainを、丸暗記ではなく条件として理解する。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p><code>main</code>メソッドは、Javaアプリケーションの入口としてJVMが最初に探すメソッド。基本形は<code>public static void main(String[] args)</code>。丸暗記ではなく、各部品の意味を分解して覚える。</p><p class="code-caption">mainメソッドの基本形</p><pre><code>public static void main(String[] args) {
-    // ここから処理が始まる
-}</code></pre></section><section class="card lesson-section"><h2>mainを分解する</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>部分</th><th>意味</th><th>なぜ必要か</th></tr></thead><tbody><tr><td><code>public</code></td><td>外部から呼び出せる</td><td>JVMがクラス外から呼び出すため</td></tr><tr><td><code>static</code></td><td>インスタンスなしで呼べる</td><td>プログラム開始前にオブジェクトを作らなくてよいため</td></tr><tr><td><code>void</code></td><td>戻り値なし</td><td>入口メソッドとして戻り値を返さない</td></tr><tr><td><code>main</code></td><td>決められた名前</td><td>JVMがこの名前を探す</td></tr><tr><td><code>String[] args</code></td><td>コマンドライン引数</td><td>起動時に渡した文字列を受け取る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>argsの読み方</h2><p><code>args</code>は配列。<code>java Main apple banana</code>と実行すると、<code>args[0]</code>が<code>"apple"</code>、<code>args[1]</code>が<code>"banana"</code>になる。<code>Main</code>自体は<code>args</code>には入らない。</p><p class="code-caption">java Main apple で実行すると apple</p><pre><code>public class Main {
+</article><section class="card lesson-section"><h2>mainを分解する</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>部分</th><th>意味</th><th>なぜ必要か</th></tr></thead><tbody><tr><td><code>public</code></td><td>外部から呼び出せる</td><td>JVMがクラス外から呼び出すため</td></tr><tr><td><code>static</code></td><td>インスタンスなしで呼べる</td><td>プログラム開始前にオブジェクトを作らなくてよいため</td></tr><tr><td><code>void</code></td><td>戻り値なし</td><td>入口メソッドとして戻り値を返さない</td></tr><tr><td><code>main</code></td><td>決められた名前</td><td>JVMがこの名前を探す</td></tr><tr><td><code>String[] args</code></td><td>コマンドライン引数</td><td>起動時に渡した文字列を受け取る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>argsの読み方</h2><p><code>args</code>は配列。<code>java Main apple banana</code>と実行すると、<code>args[0]</code>が<code>"apple"</code>、<code>args[1]</code>が<code>"banana"</code>になる。<code>Main</code>自体は<code>args</code>には入らない。</p><p class="code-caption">java Main apple で実行すると apple</p><pre><code>public class Main {
     public static void main(String[] args) {
         System.out.println(args[0]);
     }
@@ -79,8 +77,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-04.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

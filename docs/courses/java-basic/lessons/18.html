@@ -8,7 +8,7 @@
 <title>Lesson 18 コンパイルエラーと実行時例外｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>コンパイルエラーと実行時例外</h1>
 <p class="lead">失敗が「実行前」なのか「実行中」なのかで原因を切り分ける。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>Javaコードを読むときは、最初に「コンパイルできるか」を判定する。コンパイルできないコードに出力結果は存在しない。コンパイルできる場合だけ、実行中の値を追い、実行時例外や出力を考える。</p></section><section class="card lesson-section"><h2>コンパイルエラーの典型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>原因</th><th>例</th><th>なぜ実行前に分かるか</th></tr></thead><tbody><tr><td>文法ミス</td><td><code>int a = ;</code></td><td>文の形が成立していない</td></tr><tr><td>型不一致</td><td><code>int a = "x";</code></td><td>代入できない型だと分かる</td></tr><tr><td>未初期化ローカル変数</td><td><code>int x; println(x);</code></td><td>値が入っていない経路が分かる</td></tr><tr><td>到達不能コード</td><td><code>return; println();</code></td><td>絶対に実行されないと分かる</td></tr><tr><td>checked例外未処理</td><td><code>throws</code>も<code>catch</code>もない</td><td>処理強制のルールに反する</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>実行時例外の典型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>例外</th><th>起きる状況</th></tr></thead><tbody><tr><td><code>NullPointerException</code></td><td><code>null</code>参照からメソッドやフィールドを使う</td></tr><tr><td><code>ArrayIndexOutOfBoundsException</code></td><td>配列の範囲外の添字を使う</td></tr><tr><td><code>NumberFormatException</code></td><td>数値に変換できない文字列を変換する</td></tr><tr><td><code>ClassCastException</code></td><td>実体に合わない型へキャストする</td></tr><tr><td><code>ArithmeticException</code></td><td>整数の0除算など</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>同じように見えても違う</h2><p class="code-caption">値がないことをコンパイラが判断できる</p><pre><code>int x;
+</article><section class="card lesson-section"><h2>コンパイルエラーの典型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>原因</th><th>例</th><th>なぜ実行前に分かるか</th></tr></thead><tbody><tr><td>文法ミス</td><td><code>int a = ;</code></td><td>文の形が成立していない</td></tr><tr><td>型不一致</td><td><code>int a = "x";</code></td><td>代入できない型だと分かる</td></tr><tr><td>未初期化ローカル変数</td><td><code>int x; println(x);</code></td><td>値が入っていない経路が分かる</td></tr><tr><td>到達不能コード</td><td><code>return; println();</code></td><td>絶対に実行されないと分かる</td></tr><tr><td>checked例外未処理</td><td><code>throws</code>も<code>catch</code>もない</td><td>処理強制のルールに反する</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>実行時例外の典型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>例外</th><th>起きる状況</th></tr></thead><tbody><tr><td><code>NullPointerException</code></td><td><code>null</code>参照からメソッドやフィールドを使う</td></tr><tr><td><code>ArrayIndexOutOfBoundsException</code></td><td>配列の範囲外の添字を使う</td></tr><tr><td><code>NumberFormatException</code></td><td>数値に変換できない文字列を変換する</td></tr><tr><td><code>ClassCastException</code></td><td>実体に合わない型へキャストする</td></tr><tr><td><code>ArithmeticException</code></td><td>整数の0除算など</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>同じように見えても違う</h2><p class="code-caption">値がないことをコンパイラが判断できる</p><pre><code>int x;
 System.out.println(x); // コンパイルエラー</code></pre><p class="code-caption">型としてはStringなのでコンパイルはできる</p><pre><code>String s = null;
 System.out.println(s.length()); // 実行時例外</code></pre></section><section class="card lesson-section"><h2>判定手順</h2><ol><li>宣言されていない名前を使っていないか。</li><li>型が合っているか。</li><li>アクセスできるか。</li><li>ローカル変数は初期化済みか。</li><li>checked例外を処理しているか。</li><li>ここまで通るなら、実行時の値を追う。</li></ol></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次の各行を、コンパイルエラー・実行時例外・正常実行に分類する。</p><pre><code>int a = "1";
 String s = null; s.length();
@@ -61,8 +61,8 @@ System.out.println(t.length()); // NullPointerException</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-18.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

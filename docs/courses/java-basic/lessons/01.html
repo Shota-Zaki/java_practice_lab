@@ -8,7 +8,7 @@
 <title>Lesson 1 コンピュータと機械語｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>コンピュータと機械語</h1>
 <p class="lead">Javaを書く前に、コンピュータが実際には何を実行しているのかを掴む。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>コンピュータは最終的に、CPUが理解できる低レベルな命令を実行している。Javaのソースコードは人間が読み書きしやすい形であり、CPUがそのまま読むわけではない。Javaでは、ソースコードを<code>javac</code>でバイトコードへ変換し、JVMがそれを実行する。</p><div class="lesson-note"><strong>ここを曖昧にすると</strong><p>「コードを書いた時点」「コンパイルした時点」「実行して値が決まる時点」を混同する。Javaのつまずきの多くは、この混同から始まる。</p></div></section><section class="card lesson-section"><h2>機械語を難しく考えすぎない</h2><p>機械語は、足し算する、値を比較する、メモリから値を読む、条件によって次に進む場所を変える、という単純な命令の集合だと考えればよい。Javaの<code>if</code>、<code>for</code>、メソッド呼び出しも、最終的にはこうした単純な処理の組み合わせとして実行される。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>人間が見るもの</th><th>機械側で起きること</th><th>学習上の意味</th></tr></thead><tbody><tr><td><code>int a = 10;</code></td><td>値を入れる領域を用意し、10を保持する</td><td>変数は「名前付きの場所」として考える</td></tr><tr><td><code>if (a &gt; 5)</code></td><td>値を比較し、条件により進む先を変える</td><td>分岐は「条件判定＋ジャンプ」と見る</td></tr><tr><td><code>method()</code></td><td>別の処理単位へ移動し、終わったら戻る</td><td>メソッドは処理のまとまり</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>Javaの場合の実行イメージ</h2><p class="code-caption">人間が書くソースコード</p><pre><code>public class Main {
+</article><section class="card lesson-section"><h2>機械語を難しく考えすぎない</h2><p>機械語は、足し算する、値を比較する、メモリから値を読む、条件によって次に進む場所を変える、という単純な命令の集合だと考えればよい。Javaの<code>if</code>、<code>for</code>、メソッド呼び出しも、最終的にはこうした単純な処理の組み合わせとして実行される。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>人間が見るもの</th><th>機械側で起きること</th><th>学習上の意味</th></tr></thead><tbody><tr><td><code>int a = 10;</code></td><td>値を入れる領域を用意し、10を保持する</td><td>変数は「名前付きの場所」として考える</td></tr><tr><td><code>if (a &gt; 5)</code></td><td>値を比較し、条件により進む先を変える</td><td>分岐は「条件判定＋ジャンプ」と見る</td></tr><tr><td><code>method()</code></td><td>別の処理単位へ移動し、終わったら戻る</td><td>メソッドは処理のまとまり</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>Javaの場合の実行イメージ</h2><p class="code-caption">人間が書くソースコード</p><pre><code>public class Main {
     public static void main(String[] args) {
         System.out.println("Hello");
     }
@@ -53,8 +53,8 @@ System.out.println(y);</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-01.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

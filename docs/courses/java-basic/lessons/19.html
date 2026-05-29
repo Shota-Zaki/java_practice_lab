@@ -8,7 +8,7 @@
 <title>Lesson 19 Javaファイルとクラス名｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>Javaファイルとクラス名</h1>
 <p class="lead">ファイル名、publicクラス、トップレベルクラス、実行クラスを混同しない。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>Javaでは、publicなトップレベルクラスがある場合、ファイル名はそのクラス名と一致しなければならない。1つのファイルに複数のトップレベルクラスを書けるが、publicにできるのは最大1つ。</p></section><section class="card lesson-section"><h2>トップレベルクラス</h2><p>他のクラスの内側ではなく、ファイル直下に書かれたクラスをトップレベルクラスと呼ぶ。</p><p class="code-caption">どちらもトップレベルクラス</p><pre><code>class A { }
+</article><section class="card lesson-section"><h2>トップレベルクラス</h2><p>他のクラスの内側ではなく、ファイル直下に書かれたクラスをトップレベルクラスと呼ぶ。</p><p class="code-caption">どちらもトップレベルクラス</p><pre><code>class A { }
 class B { }</code></pre></section><section class="card lesson-section"><h2>publicクラスとファイル名</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>ファイル内容</th><th>ファイル名</th><th>結果</th></tr></thead><tbody><tr><td><code>public class Main { }</code></td><td><code>Main.java</code></td><td>OK</td></tr><tr><td><code>public class Main { }</code></td><td><code>Sample.java</code></td><td>コンパイルエラー</td></tr><tr><td><code>class Main { }</code></td><td><code>Sample.java</code></td><td>OK</td></tr><tr><td><code>public class A { } public class B { }</code></td><td>どちらでも不可</td><td>publicトップレベルクラスが複数あるためエラー</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>実行するクラス名</h2><p><code>java</code>コマンドで指定するのは、ファイル名ではなくクラス名。<code>main</code>メソッドを持つクラスが複数あれば、それぞれ実行できる。</p><p class="code-caption">A.javaでなくても、publicがなければ保存名の自由度がある</p><pre><code>class A {
     public static void main(String[] args) {
         System.out.println("A");
@@ -77,8 +77,8 @@ class B {
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-19.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

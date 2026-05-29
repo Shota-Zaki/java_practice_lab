@@ -8,7 +8,7 @@
 <title>Lesson 10 配列｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>配列</h1>
 <p class="lead">固定長の入れ物としての配列、添字、初期値、参照のコピーを理解する。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>配列は同じ型の要素をまとめて扱う固定長のオブジェクト。配列変数には配列そのものではなく参照が入る。添字は0から始まり、範囲外アクセスは実行時例外になる。</p></section><section class="card lesson-section"><h2>配列の作り方</h2><pre><code>int[] a = new int[3];
+</article><section class="card lesson-section"><h2>配列の作り方</h2><pre><code>int[] a = new int[3];
 a[0] = 10;
 a[1] = 20;
 a[2] = 30;</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>式</th><th>意味</th></tr></thead><tbody><tr><td><code>int[] a</code></td><td><code>int</code>を入れる配列への参照変数</td></tr><tr><td><code>new int[3]</code></td><td>長さ3の<code>int</code>配列を作る</td></tr><tr><td><code>a[0]</code></td><td>0番目の要素</td></tr><tr><td><code>a.length</code></td><td>配列の長さ。メソッドではなくフィールド</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>デフォルト値</h2><p>配列を<code>new</code>すると、各要素は型ごとのデフォルト値で初期化される。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>要素型</th><th>初期値</th></tr></thead><tbody><tr><td>数値型</td><td><code>0</code>または<code>0.0</code></td></tr><tr><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>char</code></td><td><code>\u0000</code></td></tr><tr><td>参照型</td><td><code>null</code></td></tr></tbody></table></div><pre><code>String[] names = new String[2];
@@ -63,8 +63,8 @@ System.out.println(a[0]); // 99</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-10.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

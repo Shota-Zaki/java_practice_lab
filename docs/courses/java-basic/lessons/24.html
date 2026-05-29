@@ -8,7 +8,7 @@
 <title>Lesson 24 ターミナル・javac・java｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -25,7 +25,7 @@
 <h1>ターミナル・javac・java</h1>
 <p class="lead">手元でJavaをコンパイル・実行し、エラーを読めるようにする。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>ターミナルは、文字でPCへ命令する画面。Java学習では、<code>cd</code>で作業フォルダへ移動し、<code>javac</code>でコンパイルし、<code>java</code>で実行する流れを自分でできることが重要。エラー文を読まずに勘で直すのは効率が悪い。</p></section><section class="card lesson-section"><h2>最小コマンドセット</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>コマンド</th><th>意味</th></tr></thead><tbody><tr><td><code>pwd</code> / <code>cd</code></td><td>現在地確認・フォルダ移動。Windows PowerShellでは<code>pwd</code>も使える</td></tr><tr><td><code>dir</code> / <code>ls</code></td><td>ファイル一覧を見る</td></tr><tr><td><code>javac Main.java</code></td><td>ソースコードをコンパイルする</td></tr><tr><td><code>java Main</code></td><td>クラス名を指定して実行する</td></tr><tr><td><code>java -version</code></td><td>Java実行環境のバージョン確認</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>基本の作業手順</h2><ol><li>作業用フォルダを作る。</li><li><code>Main.java</code>を保存する。</li><li>ターミナルでそのフォルダへ移動する。</li><li><code>javac Main.java</code>を実行する。</li><li><code>Main.class</code>ができたか確認する。</li><li><code>java Main</code>を実行する。</li></ol><p class="code-caption">Windows PowerShellの例</p><pre><code>cd C:\Users\shota\Desktop\java-work
+</article><section class="card lesson-section"><h2>最小コマンドセット</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>コマンド</th><th>意味</th></tr></thead><tbody><tr><td><code>pwd</code> / <code>cd</code></td><td>現在地確認・フォルダ移動。Windows PowerShellでは<code>pwd</code>も使える</td></tr><tr><td><code>dir</code> / <code>ls</code></td><td>ファイル一覧を見る</td></tr><tr><td><code>javac Main.java</code></td><td>ソースコードをコンパイルする</td></tr><tr><td><code>java Main</code></td><td>クラス名を指定して実行する</td></tr><tr><td><code>java -version</code></td><td>Java実行環境のバージョン確認</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>基本の作業手順</h2><ol><li>作業用フォルダを作る。</li><li><code>Main.java</code>を保存する。</li><li>ターミナルでそのフォルダへ移動する。</li><li><code>javac Main.java</code>を実行する。</li><li><code>Main.class</code>ができたか確認する。</li><li><code>java Main</code>を実行する。</li></ol><p class="code-caption">Windows PowerShellの例</p><pre><code>cd C:\Users\shota\Desktop\java-work
 dir
 javac Main.java
 java Main</code></pre></section><section class="card lesson-section"><h2>よくあるエラーの読み方</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>エラーの雰囲気</th><th>主な原因</th></tr></thead><tbody><tr><td><code>javac</code>が認識されない</td><td>JDK未インストール、またはPATH設定の問題</td></tr><tr><td><code>file not found</code></td><td>今いるフォルダとファイルの場所が違う</td></tr><tr><td><code>class Main is public, should be declared...</code></td><td>publicクラス名とファイル名が不一致</td></tr><tr><td><code>Could not find or load main class</code></td><td>実行する場所、クラス名、パッケージ指定のどれかが違う</td></tr><tr><td><code>main method not found</code></td><td>mainメソッドの形が入口として認識されない</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>ファイル名と実行名を分ける</h2><pre><code>javac Main.java  // ファイル名を指定
@@ -53,8 +53,8 @@ java Main</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-24.html";</script>
-<script src="../../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>
