@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Goldの総合確認で見るべき論点を整理します。" name="description"/>
+<title>Java Practice Lab｜Java Gold：総合確認</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="portal-hero">
+<p class="eyebrow">Java Gold</p>
+<h1>Java Gold：総合確認</h1>
+<p>ラムダ式、Stream、ジェネリクス、NIO、並行処理、モジュールの要点をまとめます。</p>
+<div class="portal-button-row"><a class="btn" href="../../../index.html">ポータルへ戻る</a><a class="btn primary" href="../index.html">Goldトップ</a></div>
+</section>
+<div class="ad-slot ad-visible article-top-ad"><span>学習記事上部</span></div>
+<section class="portal-section content-page article-body wide-article long-article">
+<h2>総合確認で見るポイント</h2><ul><li>ラムダ式では、対象型となる関数型インタフェースを先に確認する</li><li>Streamでは、中間操作と終端操作、戻り値の型を追う</li><li>ジェネリクスでは、読み取り中心か書き込み中心かを分ける</li><li>NIOでは、PathとFilesの役割、IOExceptionの扱いを見る</li><li>並行処理では、タスクの実行順を決めつけない</li><li>モジュールでは、requires、exports、opensの役割を区別する</li></ul><h2>確認例</h2><pre><code>List&lt;String&gt; list = List.of("a", "bb", "ccc");
+Map&lt;Integer, List&lt;String&gt;&gt; m = list.stream()
+    .collect(Collectors.groupingBy(String::length));</code></pre><p>このコードでは、要素を文字列長で分類します。戻り値はMapで、キーはInteger、値はList&lt;String&gt;です。</p><h2>復習の優先順位</h2><p>まずラムダ式とStreamの型の流れを固め、次にジェネリクス、NIO、並行処理、モジュールへ進むと安定します。</p>
+</section>
+<div class="ad-slot ad-visible article-bottom-ad"><span>学習記事下部</span></div>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="gold-08.html";</script>
+<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

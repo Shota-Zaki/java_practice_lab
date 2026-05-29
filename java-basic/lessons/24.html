@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="手元でJavaをコンパイル・実行し、エラーを読めるようにする。" name="description"/>
+<title>Lesson 24 ターミナル・javac・java｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 24</p>
+<h1>ターミナル・javac・java</h1>
+<p class="lead">手元でJavaをコンパイル・実行し、エラーを読めるようにする。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p>ターミナルは、文字でPCへ命令する画面。Java学習では、<code>cd</code>で作業フォルダへ移動し、<code>javac</code>でコンパイルし、<code>java</code>で実行する流れを自分でできることが重要。エラー文を読まずに勘で直すのは効率が悪い。</p></section><section class="card lesson-section"><h2>最小コマンドセット</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>コマンド</th><th>意味</th></tr></thead><tbody><tr><td><code>pwd</code> / <code>cd</code></td><td>現在地確認・フォルダ移動。Windows PowerShellでは<code>pwd</code>も使える</td></tr><tr><td><code>dir</code> / <code>ls</code></td><td>ファイル一覧を見る</td></tr><tr><td><code>javac Main.java</code></td><td>ソースコードをコンパイルする</td></tr><tr><td><code>java Main</code></td><td>クラス名を指定して実行する</td></tr><tr><td><code>java -version</code></td><td>Java実行環境のバージョン確認</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>基本の作業手順</h2><ol><li>作業用フォルダを作る。</li><li><code>Main.java</code>を保存する。</li><li>ターミナルでそのフォルダへ移動する。</li><li><code>javac Main.java</code>を実行する。</li><li><code>Main.class</code>ができたか確認する。</li><li><code>java Main</code>を実行する。</li></ol><p class="code-caption">Windows PowerShellの例</p><pre><code>cd C:\Users\shota\Desktop\java-work
+dir
+javac Main.java
+java Main</code></pre></section><section class="card lesson-section"><h2>よくあるエラーの読み方</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>エラーの雰囲気</th><th>主な原因</th></tr></thead><tbody><tr><td><code>javac</code>が認識されない</td><td>JDK未インストール、またはPATH設定の問題</td></tr><tr><td><code>file not found</code></td><td>今いるフォルダとファイルの場所が違う</td></tr><tr><td><code>class Main is public, should be declared...</code></td><td>publicクラス名とファイル名が不一致</td></tr><tr><td><code>Could not find or load main class</code></td><td>実行する場所、クラス名、パッケージ指定のどれかが違う</td></tr><tr><td><code>main method not found</code></td><td>mainメソッドの形が入口として認識されない</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>ファイル名と実行名を分ける</h2><pre><code>javac Main.java  // ファイル名を指定
+java Main        // クラス名を指定。拡張子は付けない</code></pre><div class="lesson-note"><strong>雑に覚えない</strong><p><code>javac</code>はファイルを対象にする。<code>java</code>はクラスを対象にする。この違いが分かれば、かなりのエラーを自分で切り分けられる。</p></div></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>わざと<code>java Main.class</code>を実行し、どんなエラーになるか確認する。その後<code>java Main</code>で直す。エラー文を読む練習が目的。</p></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>ターミナル操作はJava学習の地味な壁。エディタでコードを書けても、保存場所、現在のフォルダ、コンパイルコマンド、実行コマンドが分からなければ自力で確認できない。</p><p>最小限覚えるのは、<code>cd</code>でフォルダ移動、<code>dir</code>で中身確認、<code>javac</code>でコンパイル、<code>java</code>で実行。この4つで学習用の検証はかなり進められる。</p><p>エラーが出たら、英語を全部読む必要はない。まずファイル名、行番号、エラー種別を見る。<code>cannot find symbol</code>なら名前の誤りやスコープ、<code>; expected</code>なら記号や文法を疑う。</p><div class="principle-grid"><div class="principle-card"><strong>現在地</strong><p>ターミナルには現在操作しているフォルダがある。</p></div><div class="principle-card"><strong>コンパイル</strong><p><code>javac ファイル名.java</code>で<code>.class</code>を作る。</p></div><div class="principle-card"><strong>実行</strong><p><code>java クラス名</code>でmainを実行する。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td><code>cd</code> / <code>dir</code></td><td><code>cd</code>は移動、<code>dir</code>は一覧表示。</td><td>現在地を変えるのか、確認するのか。</td></tr><tr><td><code>javac</code> / <code>java</code></td><td>前者はコンパイル、後者は実行。</td><td>ファイル名かクラス名か。</td></tr><tr><td>エラーメッセージ / 出力</td><td>エラーは失敗の説明。出力はプログラムが表示した結果。</td><td>誰が出した文字かを区別する。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>ソースファイルを保存したフォルダを確認する。</li><li>ターミナルでそのフォルダへ<code>cd</code>する。</li><li><code>dir</code>で<code>.java</code>ファイルがあるか確認する。</li><li><code>javac Main.java</code>でコンパイルする。</li><li><code>java Main</code>で実行する。</li><li>失敗したら、行番号とエラー文の先頭を読む。</li></ol><p class="code-caption">確認用コード</p><pre><code>cd C:\Users\shota\Desktop\java-study
+dir
+javac Main.java
+java Main</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>cd</code></td><td>作業フォルダへ移動</td><td>保存場所と一致させる</td></tr><tr><td><code>javac</code></td><td><code>Main.java</code>をコンパイル</td><td><code>Main.class</code>生成</td></tr><tr><td><code>java</code></td><td><code>Main</code>クラスを実行</td><td>出力または実行時例外が出る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>保存場所と別フォルダで実行する</strong><p>ターミナルの現在地が違えば、ファイルが見つからない。まず<code>dir</code>で確認する。</p></div><div class="mistake-callout"><strong><code>javac Main</code>や<code>java Main.java</code>と書く</strong><p>コンパイルはファイル名、実行はクラス名。この区別を固定する。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次の状況で最初に確認することは何か。「<code>javac Main.java</code>を実行したら、ファイルが見つからないと言われた」。</p><details class="answer-panel"><summary>考え方と答えを見る</summary><p>最初に確認するのは、ターミナルの現在地とファイルの保存場所が一致しているか。</p><p><code>dir</code>で<code>Main.java</code>が表示されるか確認する。表示されないなら、<code>cd</code>で正しいフォルダへ移動するか、ファイルの保存場所を直す。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>このLessonの目的は、ターミナル操作そのものを難しくすることではありません。<strong>自分の手でコンパイルし、実行し、エラーを読む</strong>ための最小手順を固定することです。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>やること</th><th>コマンド例</th><th>確認すること</th></tr></thead><tbody><tr><td>現在地を見る</td><td><code>pwd</code> / <code>cd</code></td><td>Javaファイルがある場所にいるか</td></tr><tr><td>コンパイル</td><td><code>javac Main.java</code></td><td><code>.class</code>が作られるか</td></tr><tr><td>実行</td><td><code>java Main</code></td><td>クラス名を指定しているか</td></tr></tbody></table></div>
+<pre><code>mkdir java-basic-test
+cd java-basic-test
+notepad Main.java
+javac Main.java
+java Main</code></pre>
+<p>うまくいかないときは、まず「今いるフォルダ」「ファイル名」「publicクラス名」「実行時に指定したクラス名」を順番に確認します。エラーメッセージを読まずにファイルを何度も書き換えるのは非効率です。</p>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>ターミナルで詰まる原因の多くはJava文法ではなく、場所・名前・コマンドの指定ミスです。コードを疑う前に、実行環境の前提を確認してください。</p></div>
+</section><section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>ターミナル・javac・javaを、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="23.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-24.html";</script>
+<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

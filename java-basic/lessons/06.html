@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="数値の範囲、リテラル、型変換、計算時の型の変化を整理する。" name="description"/>
+<title>Lesson 6 数値型と型変換｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 6</p>
+<h1>数値型と型変換</h1>
+<p class="lead">数値の範囲、リテラル、型変換、計算時の型の変化を整理する。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p>数値型は「入る範囲」と「計算したときの型」を分けて考える。特に<code>byte</code>、<code>short</code>、<code>char</code>は、計算時に<code>int</code>へ昇格しやすい。ここを知らないと、見た目は小さい数なのにコンパイルエラーになる理由が説明できない。</p></section><section class="card lesson-section"><h2>代表的な数値型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>型</th><th>大まかな役割</th><th>注意点</th></tr></thead><tbody><tr><td><code>byte</code></td><td>小さい整数</td><td>計算時は<code>int</code>になりやすい</td></tr><tr><td><code>short</code></td><td>小さい整数</td><td>リテラル代入と計算結果代入を分ける</td></tr><tr><td><code>int</code></td><td>整数の基本</td><td>整数リテラルの基本型</td></tr><tr><td><code>long</code></td><td>大きい整数</td><td><code>L</code>を付けることがある</td></tr><tr><td><code>float</code></td><td>単精度小数</td><td><code>F</code>を付けないと小数リテラルは基本<code>double</code></td></tr><tr><td><code>double</code></td><td>小数の基本</td><td>小数リテラルの基本型</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>リテラル代入と計算結果代入は違う</h2><p><code>byte b = 10;</code>は通る。10が<code>byte</code>の範囲内で、定数として明らかだから。しかし<code>byte c = b + 1;</code>は通らない。<code>b + 1</code>の計算結果は<code>int</code>として扱われるから。</p><p class="code-caption">悪い例</p><pre><code>byte b = 10;
+byte c = b + 1; // コンパイルエラー</code></pre><p class="code-caption">修正例</p><pre><code>byte b = 10;
+byte c = (byte) (b + 1); // 明示的にキャスト</code></pre></section><section class="card lesson-section"><h2>複合代入は暗黙のキャストを含む</h2><p><code>+=</code>などの複合代入は、単純な<code>+</code>とは挙動が違う。<code>x += 1</code>は、計算後に左辺の型へ戻す処理を含む。</p><p class="code-caption">通常の加算</p><pre><code>byte x = 1;
+x = x + 1; // コンパイルエラー</code></pre><p class="code-caption">複合代入</p><pre><code>byte x = 1;
+x += 1; // OK</code></pre></section><section class="card lesson-section"><h2>小数リテラルの罠</h2><p>小数リテラルは基本的に<code>double</code>。<code>float f = 1.0;</code>は、<code>double</code>を<code>float</code>へ入れようとしているためコンパイルエラーになる。</p><pre><code>float f1 = 1.0;   // コンパイルエラー
+float f2 = 1.0F;  // OK
+double d = 1.0;   // OK</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のうちコンパイルできるものを、理由付きで判定する。</p><pre><code>short a = 100;
+short b = a + 1;
+long c = 10;
+float d = 10.0F;
+float e = 10.0;</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>数値型は「どれも数字」ではない。扱える範囲、整数か小数か、計算時にどの型へ昇格するかが違う。Javaではこの型の違いを厳しく見る。</p><p>整数リテラルは基本的に<code>int</code>、小数リテラルは基本的に<code>double</code>として扱われる。だから<code>float f = 1.0;</code>はそのままだと通らない。<code>1.0F</code>のように明示する必要がある。</p><p><code>byte</code>や<code>short</code>は特に注意。変数同士の計算では<code>int</code>に昇格しやすい。代入できるかどうかは「右辺の型」と「左辺の型」の関係で見る。</p><div class="principle-grid"><div class="principle-card"><strong>範囲</strong><p>小さい型に大きい値は入らない。必要ならキャストが必要。</p></div><div class="principle-card"><strong>リテラル型</strong><p>整数は基本<code>int</code>、小数は基本<code>double</code>。</p></div><div class="principle-card"><strong>数値昇格</strong><p><code>byte</code>や<code>short</code>の計算結果は基本<code>int</code>になりやすい。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>代入可能 / キャスト必要</td><td>狭い型へ広い型を入れるなら基本キャストが必要。</td><td>左辺と右辺の型を見る。</td></tr><tr><td>整数 / 小数</td><td><code>10</code>は整数、<code>10.0</code>は小数。</td><td>小数は<code>double</code>扱いが基本。</td></tr><tr><td>リテラル / 変数</td><td>定数リテラルは範囲内なら特別に代入できる場合がある。変数計算は別。</td><td><code>byte b = 10;</code>と<code>byte b = a + 1;</code>を区別する。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>数値が整数か小数かを見る。</li><li>リテラルのデフォルト型を判断する。</li><li>演算があるなら、演算後の型を判断する。</li><li>左辺の型に代入できるか確認する。</li><li>必要なら明示的キャストまたは接尾辞を使う。</li></ol><p class="code-caption">確認用コード</p><pre><code>byte a = 10;
+byte b = 20;
+byte c = a + b;</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>a + b</code></td><td><code>byte</code>同士の計算</td><td><code>int</code>へ昇格</td></tr><tr><td>左辺</td><td><code>byte c</code></td><td><code>int</code>をそのまま入れられない</td></tr><tr><td>結論</td><td>暗黙変換不可</td><td>コンパイルエラー</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong><code>byte + byte</code>は<code>byte</code>、ではない</strong><p>小さい整数型の計算は<code>int</code>として扱われるのが基本。</p></div><div class="mistake-callout"><strong><code>float f = 1.0;</code>は通る、ではない</strong><p><code>1.0</code>は<code>double</code>。<code>1.0F</code>またはキャストが必要。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のうち、なぜコンパイルエラーになるかを説明する。</p><p class="code-caption">確認問題</p><pre><code>short s = 10;
+s = s + 1;</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p><code>s + 1</code>の結果は<code>short</code>ではなく<code>int</code>として扱われる。</p><p><code>int</code>を<code>short</code>変数へそのまま代入できないため、コンパイルエラーになる。<code>s = (short)(s + 1);</code>のような明示的キャストが必要。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>数値型で重要なのは、<strong>代入できるか</strong>と<strong>計算した結果の型が何か</strong>を分けることです。初心者は「値が範囲内なら大丈夫」と考えがちですが、変数を使った計算では別のルールが働きます。</p>
+<pre><code>byte a = 10;       // OK。10はbyteの範囲内
+byte b = 20;       // OK
+byte c = 10 + 20;  // OK。定数式として30と判断できる
+// byte d = a + b; // コンパイルエラー。byte同士の計算結果はint</code></pre>
+<p><code>a + b</code>は、値としては30になりそうでも、式の型は<code>int</code>です。<code>byte</code>や<code>short</code>は、計算時に<code>int</code>へ昇格する、と覚えてください。これは暗記ではなく、Javaが小さい整数型の計算を安全に扱うための基本ルールです。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>コード</th><th>見るポイント</th><th>結果</th></tr></thead><tbody><tr><td><code>short s = 100;</code></td><td>整数リテラルが範囲内</td><td>OK</td></tr><tr><td><code>short s = 100000;</code></td><td>shortの範囲外</td><td>コンパイルエラー</td></tr><tr><td><code>int i = 10L;</code></td><td>longをintに入れようとしている</td><td>コンパイルエラー</td></tr><tr><td><code>float f = 1.0;</code></td><td>小数リテラルは基本double</td><td>コンパイルエラー</td></tr><tr><td><code>float f = 1.0F;</code></td><td>Fでfloatリテラルにしている</td><td>OK</td></tr></tbody></table></div>
+<div class="mistake-callout"><strong>問題でも実務でも危ない読み方</strong><p>「右辺の答えが小さいから入る」と読むのは危険です。リテラルなのか、変数を含む式なのか、式の型は何かを順番に見てください。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>数値型と型変換を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="05.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="07.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-06.html";</script>
+<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>
