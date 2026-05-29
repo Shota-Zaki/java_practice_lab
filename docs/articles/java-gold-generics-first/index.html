@@ -8,7 +8,7 @@
 <title>ジェネリクス入門｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,16 +22,16 @@
 <article class="content-page long-article gold-deep-article">
 <h1>ジェネリクス入門</h1>
 <p class="lead">ジェネリクスは、コレクションの中身の型をコンパイル時に守る仕組みです。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>List&lt;String&gt;は「Stringだけを入れるList」</h2><p>ジェネリクスがあることで、取り出した値を安全にStringとして扱えます。逆に、違う型を入れようとするとコンパイルエラーになります。</p></section>
 <pre class="article-code"><code>List&lt;String&gt; list = new ArrayList&lt;&gt;();
-list.add(&quot;A&quot;);
+list.add("A");
 // list.add(10); // コンパイルエラー
 String s = list.get(0);</code></pre>
 <section class="article-section"><h2>型パラメータは実行時ではなくコンパイル時の安全装置</h2><p>多くの場合、実行時には型引数の情報は消えます。これを型消去と呼びます。そのため、<code>new T()</code>や<code>T.class</code>のような使い方はできません。</p></section>
 <table class="study-table ref-table"><thead><tr><th>書き方</th><th>意味</th><th>注意</th></tr></thead><tbody><tr><td><code>class Box&lt;T&gt;</code></td><td>T型の値を扱うクラス</td><td>Tは実際に使うときに決まる。</td></tr><tr><td><code>List&lt;String&gt;</code></td><td>String要素のList</td><td><code>List&lt;Object&gt;</code>とは別物。</td></tr><tr><td><code>&lt;T&gt; T method(T value)</code></td><td>メソッド独自の型パラメータ</td><td>クラスのTとは別に定義できる。</td></tr></tbody></table>
-<div class="bad-good"><div><strong>悪い判断</strong><p>List<String>はList<Object>に代入できると思う。</p></div><div><strong>良い判断</strong><p>StringリストにIntegerを追加できてしまう危険があるため、代入不可と判断する。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+<div class="bad-good"><div><strong>悪い判断</strong><p>List<string>はList<object>に代入できると思う。</object></string></p></div><div><strong>良い判断</strong><p>StringリストにIntegerを追加できてしまう危険があるため、代入不可と判断する。</p></div></div>
+
 </article>
 </main>
 </div>
@@ -43,8 +43,8 @@ String s = list.get(0);</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

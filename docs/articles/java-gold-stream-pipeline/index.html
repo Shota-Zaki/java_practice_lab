@@ -8,7 +8,7 @@
 <title>Streamパイプライン｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,21 +22,21 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Streamパイプラインの追跡</h1>
 <p class="lead">複数の中間操作が並ぶコードを、左から丸暗記せず、要素単位で追跡する方法を整理します。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>パイプラインは「全filter→全map」ではなく、要素が順に流れる</h2><p>実装上の最適化はありますが、学習では各要素が上流から下流へ通過すると考えると追いやすくなります。</p></section>
-<pre class="article-code"><code>List&lt;String&gt; result = Stream.of(&quot;ant&quot;, &quot;bear&quot;, &quot;cat&quot;)
+<pre class="article-code"><code>List&lt;String&gt; result = Stream.of("ant", "bear", "cat")
     .filter(s -&gt; s.length() &gt;= 4)
     .map(String::toUpperCase)
     .toList();
 // [BEAR]</code></pre>
 <table class="study-table ref-table"><thead><tr><th>要素</th><th>filter</th><th>map</th><th>結果</th></tr></thead><tbody><tr><td><code>"ant"</code></td><td>false</td><td>実行されない</td><td>除外</td></tr><tr><td><code>"bear"</code></td><td>true</td><td><code>"BEAR"</code></td><td>残る</td></tr><tr><td><code>"cat"</code></td><td>false</td><td>実行されない</td><td>除外</td></tr></tbody></table>
 <section class="article-section"><h2>peekは確認用。結果を作る主役にしない</h2><p><code>peek</code>は主にデバッグ用途です。副作用を書けますが、終端操作がなければ実行されず、短絡操作があれば一部しか実行されないことがあります。</p></section>
-<pre class="article-code"><code>Stream.of(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
+<pre class="article-code"><code>Stream.of("A", "B", "C")
     .peek(System.out::print)
     .limit(2)
     .count(); // A B だけが対象になる可能性がある</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>peekに書いた処理が必ず全要素分実行されると考える。</p></div><div><strong>良い判断</strong><p>終端操作と短絡操作を確認して、実際に流れる要素だけを見る。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -48,8 +48,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

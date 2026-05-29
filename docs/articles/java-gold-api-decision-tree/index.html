@@ -8,7 +8,7 @@
 <title>API判定ツリー：型・実行タイミング・戻り値で読む｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
@@ -22,15 +22,15 @@
 <article class="content-page long-article gold-deep-article">
 <h1>API判定ツリー</h1>
 <p class="lead">API問題は、暗記よりも判定順序です。コンパイル可否、型、実行タイミング、例外の順で切ります。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>最初に見る4点</h2><ol class="article-list priority-list"><li>importが必要な型か、パッケージが合っているか。</li><li>メソッドがその型に存在するか。</li><li>ラムダの引数型・戻り値型が合うか。</li><li>実行時に空、null、キー重複、閉じ忘れなどが起きるか。</li></ol></section>
 <table class="study-table ref-table"><thead><tr><th>段階</th><th>見ること</th><th>典型ミス</th></tr></thead><tbody><tr><td>コンパイル前提</td><td>型・メソッド・引数</td><td>OptionalにStream用メソッドを書いている。</td></tr><tr><td>戻り値</td><td>次のメソッドへつながる型</td><td>collect後をStreamのままだと思う。</td></tr><tr><td>実行タイミング</td><td>遅延評価・短絡評価</td><td>peekが必ず全要素で動くと思う。</td></tr><tr><td>実行時例外</td><td>null、空、重複、get</td><td>Optional.get、toMap重複、Future.get。</td></tr></tbody></table>
-<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of(&quot;aa&quot;, &quot;bb&quot;)
+<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb")
     .collect(Collectors.toMap(String::length, s -&gt; s));
 // コンパイルは通るが、キー重複で実行時例外</code></pre>
 <section class="article-section"><h2>API問題は「コンパイルエラー」と「実行時例外」を分ける</h2><p>メソッドの型が合わないならコンパイルエラーです。型は合っているが、データ条件で失敗するなら実行時例外です。この切り分けが最優先です。</p></section>
 <div class="bad-good"><div><strong>悪い判断</strong><p>見たことがあるAPIだから正常動作と判断する。</p></div><div><strong>良い判断</strong><p>型が合うか、実行条件で落ちないか、戻り値が何かを順番に確認する。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main></div>
 <footer class="site-footer global-footer">
@@ -41,7 +41,7 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body></html>

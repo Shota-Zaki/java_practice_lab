@@ -8,7 +8,7 @@
 <title>module-info.java整理｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=gold-se11-se17-split-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,7 @@
 <article class="content-page long-article gold-deep-article">
 <h1>module-info.javaの確認</h1>
 <p class="lead">モジュールは、公開するパッケージと必要なモジュールを宣言する仕組みです。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>module-info.javaの基本</h2><p>モジュール名、依存するモジュール、外部へ公開するパッケージを宣言します。</p></section>
 <pre class="article-code"><code>module com.example.app {
     requires java.sql;
@@ -35,7 +35,7 @@
     // lib.internal は公開していない
 }</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>publicクラスならモジュール外から必ず使えると考える。</p></div><div><strong>良い判断</strong><p>publicかどうかに加えて、そのパッケージがexportsされているかを見る。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -47,8 +47,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../assets/js/app.js?v=gold-se11-se17-split-20260529"></script>
-<script src="../../pwa.js?v=gold-se11-se17-split-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>
