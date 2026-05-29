@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="遅延評価、中間操作、終端操作、map、filter、reduce、groupingByを整理します。" name="description"/>
 <title>Stream APIを丁寧に読む｜Java Practice Lab</title>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -20,7 +20,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Stream APIを丁寧に読む</h1>
 <p class="lead">遅延評価、短絡操作、reduce、collectを、型と実行タイミングで分解します。</p>
-
 <section class="article-section"><h2>遅延評価は「実行されない」ではなく「必要になるまで保留」</h2><p>中間操作はパイプラインを組み立てます。終端操作が呼ばれた時点で、必要な分だけ上流から要素が流れます。</p></section>
 <pre class="article-code"><code>Stream&lt;String&gt; s = Stream.of("A", "B")
     .peek(System.out::println);
@@ -39,7 +38,6 @@ s.count(); // 終端操作で処理が流れる</code></pre>
 Optional&lt;Integer&gt; max = Stream.&lt;Integer&gt;empty()
     .reduce((a, b) -&gt; a &gt; b ? a : b); // Optional.empty</code></pre>
 <div class="article-callout">Streamの深い問題は、見た目よりも「戻り値の型」と「評価される要素数」で決まります。処理の意味を雰囲気で読むと、短絡操作で落ちます。</div>
-
 </article>
 </main>
 </div>
@@ -51,6 +49,6 @@ Optional&lt;Integer&gt; max = Stream.&lt;Integer&gt;empty()
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script><script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script><script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script><script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script><script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

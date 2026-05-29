@@ -8,7 +8,7 @@
 <title>ラムダ式入門｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>ラムダ式と関数型インタフェース</h1>
 <p class="lead">ラムダ式は、抽象メソッドが1つだけの型へ代入される処理です。形ではなく、代入先の型から読みます。</p>
-
 <section class="article-section"><h2>ラムダ式だけでは型が決まらない</h2><p><code>x -&gt; x + 1</code>という形だけでは、何型の引数を受け取り、何型を返すのか決まりません。代入先やメソッド引数の型によって決まります。</p></section>
 <pre class="article-code"><code>Function&lt;Integer, Integer&gt; f = x -&gt; x + 1;
 Predicate&lt;String&gt; p = s -&gt; s.length() &gt; 0;
@@ -33,7 +32,6 @@ Consumer&lt;String&gt; c = s -&gt; System.out.println(s);</code></pre>
 Function&lt;String, Integer&gt; b = s -&gt; { return s.length(); };
 // Function&lt;String, Integer&gt; c = s -&gt; { s.length(); }; // コンパイルエラー</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>ラムダの見た目だけで戻り値あり・なしを判断する。</p></div><div><strong>良い判断</strong><p>代入先の関数型インタフェースの抽象メソッドを確認する。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -45,8 +43,8 @@ Function&lt;String, Integer&gt; b = s -&gt; { return s.length(); };
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

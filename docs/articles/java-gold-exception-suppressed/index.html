@@ -8,7 +8,7 @@
 <title>try-with-resourcesと抑制された例外｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>try-with-resourcesと抑制例外</h1>
 <p class="lead">try-with-resourcesでは、try本体の例外とclose時の例外が同時に起きることがあります。</p>
-
 <section class="article-section"><h2>リソースは逆順にcloseされる</h2><p>try-with-resourcesで複数のリソースを宣言した場合、closeは宣言と逆順に呼ばれます。</p></section>
 <pre class="article-code"><code>try (A a = new A("A"); B b = new B("B")) {
     System.out.println("body");
@@ -35,7 +34,6 @@
 // closeでも例外が出ると、close側はsuppressedに入る</code></pre>
 <table class="study-table ref-table"><thead><tr><th>状況</th><th>主例外</th><th>抑制例外</th></tr></thead><tbody><tr><td>try本体だけで例外</td><td>try本体の例外</td><td>なし</td></tr><tr><td>closeだけで例外</td><td>closeの例外</td><td>なし</td></tr><tr><td>try本体とcloseで例外</td><td>try本体の例外</td><td>closeの例外</td></tr><tr><td>複数closeで例外</td><td>最初に主例外になったもの</td><td>残りが抑制される</td></tr></tbody></table>
 <div class="article-callout">try-with-resourcesは「closeの順番」と「どの例外が主になるか」を分けて追います。</div>
-
 </article>
 </main>
 </div>
@@ -47,8 +45,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

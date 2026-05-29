@@ -8,7 +8,7 @@
 <title>Streamパイプライン｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Streamパイプラインの追跡</h1>
 <p class="lead">複数の中間操作が並ぶコードを、左から丸暗記せず、要素単位で追跡する方法を整理します。</p>
-
 <section class="article-section"><h2>パイプラインは「全filter→全map」ではなく、要素が順に流れる</h2><p>実装上の最適化はありますが、学習では各要素が上流から下流へ通過すると考えると追いやすくなります。</p></section>
 <pre class="article-code"><code>List&lt;String&gt; result = Stream.of("ant", "bear", "cat")
     .filter(s -&gt; s.length() &gt;= 4)
@@ -36,7 +35,6 @@
     .limit(2)
     .count(); // A B だけが対象になる可能性がある</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>peekに書いた処理が必ず全要素分実行されると考える。</p></div><div><strong>良い判断</strong><p>終端操作と短絡操作を確認して、実際に流れる要素だけを見る。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -48,8 +46,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

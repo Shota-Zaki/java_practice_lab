@@ -8,7 +8,7 @@
 <title>頻出ひっかけパターン総まとめ</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -23,7 +23,6 @@
 <h1>頻出ひっかけパターン総まとめ</h1>
 <p class="lead">問題で落ちるのは、派手な論点よりも小さな違いです。似た構文を横並びで整理します。</p>
 <div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-
 <table class="study-table detail-table">
 <tr><th>比較</th><th>正しい理解</th><th>危険な誤解</th></tr>
 <tr><td><code>==</code> / <code>equals()</code></td><td><code>==</code>は参照同一性。<code>equals()</code>は実装次第。</td><td>中身が同じなら<code>==</code>もtrue。</td></tr>
@@ -49,17 +48,7 @@
 <tr><td>実行時例外</td><td>null参照、配列範囲外、キャスト失敗</td><td>そこまでの出力は残る可能性がある。</td></tr>
 <tr><td>正常出力</td><td>型・アクセス・例外がすべて通る</td><td>最後に評価順を追う。</td></tr>
 </tbody></table></section>
-<section class="article-section deep-followup-section"><h2>この単元をコードに適用する手順</h2><ol class="article-list priority-list"><li>まず宣言を読む。型、修飾子、メソッド名、引数を固定する。</li><li>次に変更される値を探す。代入、メソッド呼び出し、副作用を表にする。</li><li>最後に出力を組み立てる。途中で止まるなら、そこまでの出力だけを残す。</li></ol><div class="article-callout">理解した気になっているだけなら、似たコードに変えた瞬間に間違えます。本文の例を1行ずつ書き換えて、どこで結果が変わるか確認してください。</div></section><section class="article-section final-check-section">
-<h2>最後に自分で確認すること</h2>
-<div class="article-card">
-<p>この記事を読み終えたら、次の3点を口頭で説明できるか確認します。説明できない場合は、まだ「読んだだけ」で、コードに適用できる状態ではありません。</p>
-<ul class="article-list">
-<li>この単元で最初に見るべき場所はどこか。</li>
-<li>コンパイルエラー、実行時例外、正常出力をどの順番で分けるか。</li>
-<li>自分が間違えやすい引っかけは、型・参照・戻り値・アクセス・例外のどれか。</li>
-</ul>
-</div>
-</section>
+<section class="article-section deep-followup-section"><h2>この単元をコードに適用する手順</h2><ol class="article-list priority-list"><li>まず宣言を読む。型、修飾子、メソッド名、引数を固定する。</li><li>次に変更される値を探す。代入、メソッド呼び出し、副作用を表にする。</li><li>最後に出力を組み立てる。途中で止まるなら、そこまでの出力だけを残す。</li></ol><div class="article-callout">理解した気になっているだけなら、似たコードに変えた瞬間に間違えます。本文の例を1行ずつ書き換えて、どこで結果が変わるか確認してください。</div></section>
 </section>
 </main>
 </div>
@@ -71,8 +60,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-pitfalls.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

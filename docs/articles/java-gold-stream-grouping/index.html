@@ -8,7 +8,7 @@
 <title>Collectors.groupingBy｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>groupingByを正確に読む</h1>
 <p class="lead">Collectors.groupingByは、分類キーと値の集約方法を分けて読むと崩れません。</p>
-
 <section class="article-section"><h2>groupingByの基本形</h2><p>第1引数は分類キーを作る関数です。下流Collectorを省略すると、同じキーの要素がListに集まります。</p></section>
 <pre class="article-code"><code>Map&lt;Integer, List&lt;String&gt;&gt; map = Stream.of("a", "bb", "cc")
     .collect(Collectors.groupingBy(String::length));
@@ -33,7 +32,6 @@
     .collect(Collectors.groupingBy(String::length, Collectors.counting()));
 // {1=1, 2=2}</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>groupingByは必ずMap<k, list<t="">&gt;になると決めつける。</k,></p></div><div><strong>良い判断</strong><p>分類キーの型と下流Collectorの戻り値を別々に見る。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -45,8 +43,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

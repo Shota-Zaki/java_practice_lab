@@ -8,7 +8,7 @@
 <title>PathとFiles｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>PathとFilesの基本</h1>
 <p class="lead">NIO.2は、Pathがパス表現、Filesが操作、という役割分担で読むと整理できます。</p>
-
 <section class="article-section"><h2>Pathはファイルそのものではない</h2><p><code>Path</code>はファイルやディレクトリの場所を表すオブジェクトです。実体が存在するかどうかは別問題です。</p></section>
 <pre class="article-code"><code>Path p = Path.of("data", "sample.txt");
 System.out.println(p.getFileName()); // sample.txt</code></pre>
@@ -33,7 +32,6 @@ System.out.println(p.normalize()); // b
 
 // p.toRealPath(); // 実体がなければIOException</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>Pathを作れたのでファイルが存在すると考える。</p></div><div><strong>良い判断</strong><p>Path作成、存在確認、読み書き操作を別々に判断する。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -45,8 +43,8 @@ System.out.println(p.normalize()); // b
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

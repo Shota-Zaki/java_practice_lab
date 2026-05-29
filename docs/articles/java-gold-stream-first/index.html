@@ -8,7 +8,7 @@
 <title>Stream API入門｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Stream API入門</h1>
 <p class="lead">Streamは「コレクションを別の形に処理する流れ」です。中間操作と終端操作を分ければ、出力や戻り値をかなり正確に追えます。</p>
-
 <section class="article-section"><h2>Streamを読む順番</h2>
 <p>Streamの問題は、メソッド名を知っているだけでは解けません。必ず次の順番で追います。</p>
 <ol class="article-list priority-list"><li>元データの型と要素型を確認する。</li><li>中間操作で要素が残るのか、別の型に変わるのかを確認する。</li><li>終端操作で何が返るのかを確認する。</li><li>終端操作がなければ、原則として処理は流れないと判断する。</li></ol>
@@ -40,7 +39,6 @@ System.out.println(count); // 1</code></pre>
     .map(String::length)           // 2, 3 に変わる
     .toList();</code></pre>
 <div class="article-callout">Streamの最初の壁は、処理内容よりも「いつ実行されるか」です。中間操作だけを見て出力を決めると、ほぼ確実に誤ります。</div>
-
 </article>
 </main>
 </div>
@@ -52,8 +50,8 @@ System.out.println(count); // 1</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

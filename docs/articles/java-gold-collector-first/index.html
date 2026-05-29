@@ -8,7 +8,7 @@
 <title>Collectors入門</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Collectors入門</h1>
 <p class="lead">collectはStreamの終点です。どのCollectorを渡したかで、List、Set、Map、文字列、数値集約に変わります。</p>
-
 <section class="article-section"><h2>collectは「集め方」を指定する</h2><p><code>collect</code>自体を覚えるより、渡しているCollectorの種類を読むほうが重要です。</p></section>
 <table class="study-table ref-table"><thead><tr><th>Collector</th><th>結果</th><th>確認点</th></tr></thead><tbody><tr><td><code>toList()</code></td><td>List</td><td>順序や変更可能性を決めつけない。</td></tr><tr><td><code>toSet()</code></td><td>Set</td><td>重複が消える。順序も決めつけない。</td></tr><tr><td><code>joining()</code></td><td>String</td><td>要素型はCharSequence系である必要がある。</td></tr><tr><td><code>toMap()</code></td><td>Map</td><td>キー重複時の扱いが重要。</td></tr><tr><td><code>groupingBy()</code></td><td>Map</td><td>キーと値側の型を分けて読む。</td></tr></tbody></table>
 <pre class="article-code"><code>String joined = Stream.of("A", "B", "C")
@@ -39,7 +38,6 @@ System.out.println(joined); // A-B-C</code></pre>
         (oldValue, newValue) -&gt; oldValue));
 // キー重複時の処理を指定しているためOK</code></pre>
 <div class="article-callout">Collectorsは「何に集めるか」よりも「重複、順序、下流Collector、戻り値の型」を見ると安定します。</div>
-
 </article>
 </main>
 </div>
@@ -51,8 +49,8 @@ System.out.println(joined); // A-B-C</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

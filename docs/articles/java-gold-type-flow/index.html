@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Stream、ジェネリクス、Optionalの型の流れをコード例で整理。" name="description"/>
 <title>型の流れを読む｜Java Practice Lab</title>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout" data-section="articles">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -20,7 +20,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>型の流れを追う</h1>
 <p class="lead">API連鎖の問題は、メソッド名ではなく「今の式の型」を書き出すと安定します。</p>
-
 <section class="article-section"><h2>型を書き出すだけで難度は下がる</h2><p>Stream、Optional、ジェネリクスが混ざるコードは、1行ごとの式の型を確認します。型が変わる場所は、主に<code>map</code>、<code>flatMap</code>、<code>collect</code>、<code>orElse</code>です。</p></section>
 <pre class="article-code"><code>List&lt;String&gt; names = List.of("a", "bb");
 Optional&lt;Integer&gt; firstLength = names.stream()  // Stream&lt;String&gt;
@@ -34,7 +33,6 @@ Optional&lt;Integer&gt; firstLength = names.stream()  // Stream&lt;String&gt;
     .findFirst()          // Optional&lt;String&gt;
     .orElse("none");     // String</code></pre>
 <div class="article-callout">API問題で迷ったら、式全体を一気に読まず、各行の右端に型を書いてください。勘より速く、間違いも減ります。</div>
-
 </article>
 </main>
 </div>
@@ -45,6 +43,6 @@ Optional&lt;Integer&gt; firstLength = names.stream()  // Stream&lt;String&gt;
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

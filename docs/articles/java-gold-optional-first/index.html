@@ -8,7 +8,7 @@
 <title>Optional入門</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Optional入門</h1>
 <p class="lead">Optionalはnullを隠す魔法ではありません。「値がある場合だけ処理する」ための型です。</p>
-
 <section class="article-section"><h2>Optionalの基本姿勢</h2><p><code>Optional&lt;T&gt;</code>は、T型の値があるかもしれない、ないかもしれない状態を表します。中身を無条件に取り出す前提で使うなら、Optionalの意味がありません。</p></section>
 <table class="study-table ref-table"><thead><tr><th>メソッド</th><th>意味</th><th>落とし穴</th></tr></thead><tbody><tr><td><code>of(value)</code></td><td>非null値から作る</td><td>valueがnullならNullPointerException。</td></tr><tr><td><code>ofNullable(value)</code></td><td>nullならemptyにする</td><td>nullの可能性がある入力で使う。</td></tr><tr><td><code>empty()</code></td><td>空のOptional</td><td>値は存在しない。</td></tr><tr><td><code>get()</code></td><td>値を取り出す</td><td>空ならNoSuchElementException。無条件使用は危険。</td></tr><tr><td><code>orElse</code></td><td>空なら代替値</td><td>引数は先に評価される。</td></tr><tr><td><code>orElseGet</code></td><td>空ならSupplierを実行</td><td>必要な時だけ代替値を作る。</td></tr></tbody></table>
 <pre class="article-code"><code>Optional&lt;String&gt; name = Optional.ofNullable(getName());
@@ -34,7 +33,6 @@ String result = name.orElse("unknown");</code></pre>
 String b = Optional.of("A").orElseGet(() -&gt; createDefault());
 // createDefault() は呼ばれない</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>Optionalを使えばNullPointerExceptionが絶対に起きないと考える。</p></div><div><strong>良い判断</strong><p>Optionalを作る時点、getする時点、map内の戻り値でnullが絡む場所を確認する。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -46,8 +44,8 @@ String b = Optional.of("A").orElseGet(() -&gt; createDefault());
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

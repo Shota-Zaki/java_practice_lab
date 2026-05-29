@@ -8,7 +8,7 @@
 <title>module-info.java整理｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>module-info.javaの確認</h1>
 <p class="lead">モジュールは、公開するパッケージと必要なモジュールを宣言する仕組みです。</p>
-
 <section class="article-section"><h2>module-info.javaの基本</h2><p>モジュール名、依存するモジュール、外部へ公開するパッケージを宣言します。</p></section>
 <pre class="article-code"><code>module com.example.app {
     requires java.sql;
@@ -35,7 +34,6 @@
     // lib.internal は公開していない
 }</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>publicクラスならモジュール外から必ず使えると考える。</p></div><div><strong>良い判断</strong><p>publicかどうかに加えて、そのパッケージがexportsされているかを見る。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -47,8 +45,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

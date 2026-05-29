@@ -8,7 +8,7 @@
 <title>ワイルドカード｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>ワイルドカード境界の判定</h1>
 <p class="lead">ワイルドカードは「何が入るか」ではなく「安全に何ができるか」で読みます。</p>
-
 <section class="article-section"><h2>List&lt;?&gt; は何でも入るListではない</h2><p><code>List&lt;?&gt;</code>は要素型が不明なListです。何でも入れられるのではなく、何が入っているかわからないため、基本的に追加できません。</p></section>
 <pre class="article-code"><code>List&lt;?&gt; list = List.of("A", "B");
 Object value = list.get(0); // OK
@@ -40,7 +39,6 @@ static void addInts(List&lt;? super Integer&gt; list) {
     list.add(2);
 }</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>extendsは継承しているから追加できる、と考える。</p></div><div><strong>良い判断</strong><p>extendsは「読める型の上限が決まる」と考える。具体的な実体型が不明なので追加できない。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -52,8 +50,8 @@ static void addInts(List&lt;? super Integer&gt; list) {
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

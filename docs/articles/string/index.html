@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="Stringの不変性、文字列プール、StringBuilderとの違いを例で整理します。" name="description"/>
 <title>StringとStringBuilder｜Java Practice Lab</title>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -21,17 +21,6 @@
 <p class="lead">String問題は「不変性」「戻り値」「文字列プール」「StringBuilderとの違い」を分けて読むと安定します。</p>
 <div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
 
-<section class="article-section article-opening-summary">
-<h2>最初に固定する読み方</h2>
-<div class="article-callout strong"><strong>結論を急がない。</strong> まずコンパイルできるか、次に実行時に止まるか、最後に出力を追います。出力だけを先に追うと、型・アクセス・例外で簡単に崩れます。</div>
-<ol class="article-list priority-list">
-<li><strong>宣言を見る。</strong> 型、修飾子、継承関係、メソッドシグネチャを先に確定します。</li>
-<li><strong>代入できるかを見る。</strong> 右辺の型・値・参照先が左辺に入るかを判断します。</li>
-<li><strong>呼び出せるかを見る。</strong> 変数の宣言型から、その場で見えるメンバだけを呼べます。</li>
-<li><strong>実体で動くものを分ける。</strong> オーバーライドされたインスタンスメソッドは実体、フィールドやstaticは別規則です。</li>
-<li><strong>副作用を表にする。</strong> 代入、インクリメント、可変オブジェクト、例外で状態が変わる箇所を書き出します。</li>
-</ol>
-</section>
 <section class="article-section">
 <h2>この単元の結論</h2>
 <div class="article-card">
@@ -265,17 +254,7 @@ System.out.println(sb.length()); // 0</code></pre>
 <details class="article-card"><summary><strong>Q4. <code>new StringBuilder("x").equals(new StringBuilder("x"))</code> は？</strong></summary><p><code>false</code> です。<code>StringBuilder</code> の <code>equals</code> は内容比較として考えてはいけません。内容比較するなら <code>toString()</code> 後に比較します。</p></details>
 <p class="inline-note article-callout">次に読む: <a href="../reference/index.html">同一性・同値性</a> / 関連: <a href="../types/index.html">var・スコープ</a> / <a href="../java-silver-array-list-difference/index.html">配列・List</a></p>
 </section>
-<section class="article-section final-check-section">
-<h2>最後に自分で確認すること</h2>
-<div class="article-card">
-<p>この記事を読み終えたら、次の3点を口頭で説明できるか確認します。説明できない場合は、まだ「読んだだけ」で、コードに適用できる状態ではありません。</p>
-<ul class="article-list">
-<li>この単元で最初に見るべき場所はどこか。</li>
-<li>コンパイルエラー、実行時例外、正常出力をどの順番で分けるか。</li>
-<li>自分が間違えやすい引っかけは、型・参照・戻り値・アクセス・例外のどれか。</li>
-</ul>
-</div>
-</section>
+
 </section></main>
 </div>
 <footer class="site-footer global-footer">
@@ -286,6 +265,6 @@ System.out.println(sb.length()); // 0</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script><script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script><script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script><script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script><script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

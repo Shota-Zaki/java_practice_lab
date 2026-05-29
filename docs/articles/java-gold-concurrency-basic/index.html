@@ -8,7 +8,7 @@
 <title>並行処理入門｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>並行処理入門</h1>
 <p class="lead">ExecutorService、Future、shutdownは、タスク投入、結果取得、終了処理の3つに分けて読みます。</p>
-
 <section class="article-section"><h2>ExecutorServiceはタスクを実行する場所</h2><p><code>submit</code>でタスクを渡すと、結果を表す<code>Future</code>が返ります。<code>shutdown</code>は新規タスク受付を止めるだけで、投入済みタスクを即座に消すわけではありません。</p></section>
 <pre class="article-code"><code>ExecutorService ex = Executors.newSingleThreadExecutor();
 Future&lt;Integer&gt; f = ex.submit(() -&gt; 10 + 20);
@@ -36,7 +35,6 @@ ex.submit(() -&gt; System.out.print("B"));
 ex.shutdown();
 // ABとは限らない</code></pre>
 <div class="article-callout">並行処理は、正確な順序が保証されている箇所と、保証されていない箇所を分けるのが最重要です。</div>
-
 </article>
 </main>
 </div>
@@ -48,8 +46,8 @@ ex.shutdown();
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="==、equals、new、String、配列、record、参照コピーを丁寧に整理します。" name="description"/>
 <title>参照の同一性と同値比較｜Java Practice Lab</title>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -21,17 +21,6 @@
 <p class="lead">参照比較は最も間違えやすい分野の一つです。 == は「同じものを指しているか」、 equals() は「同じ内容とみなすか」を確認するためのものです。ただし、 equals() の挙動はクラスによって変わります。</p>
 <div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
 
-<section class="article-section article-opening-summary">
-<h2>最初に固定する読み方</h2>
-<div class="article-callout strong"><strong>結論を急がない。</strong> まずコンパイルできるか、次に実行時に止まるか、最後に出力を追います。出力だけを先に追うと、型・アクセス・例外で簡単に崩れます。</div>
-<ol class="article-list priority-list">
-<li><strong>宣言を見る。</strong> 型、修飾子、継承関係、メソッドシグネチャを先に確定します。</li>
-<li><strong>代入できるかを見る。</strong> 右辺の型・値・参照先が左辺に入るかを判断します。</li>
-<li><strong>呼び出せるかを見る。</strong> 変数の宣言型から、その場で見えるメンバだけを呼べます。</li>
-<li><strong>実体で動くものを分ける。</strong> オーバーライドされたインスタンスメソッドは実体、フィールドやstaticは別規則です。</li>
-<li><strong>副作用を表にする。</strong> 代入、インクリメント、可変オブジェクト、例外で状態が変わる箇所を書き出します。</li>
-</ol>
-</section>
 <section class="article-section textbook-section">
 <h2>この単元で固定する判断</h2>
 <p><code>==</code> と <code>equals</code> は、Javaで最も誤答が出やすい比較論点です。最初に結論だけ覚えるのではなく、次の順番で必ず判定します。</p>
@@ -208,17 +197,7 @@ System.out.println(p1.equals(p2)); // true</code></pre>
 <details class="article-card"><summary><strong>Q4. 次の出力は？</strong><br/><code>StringBuilder a=new StringBuilder("x"); StringBuilder b=a; a.append("y"); System.out.println(b);</code></summary><p><strong>xy</strong>。<code>a</code> と <code>b</code> は同じ可変オブジェクトを参照しています。</p></details>
 <p class="inline-note article-callout">関連: <a href="../string/index.html">文字列・StringBuilder</a> / <a href="../types/index.html">型・変数</a> / <a href="../java-silver-array-list-difference/index.html">配列・List</a></p>
 </section>
-<section class="article-section final-check-section">
-<h2>最後に自分で確認すること</h2>
-<div class="article-card">
-<p>この記事を読み終えたら、次の3点を口頭で説明できるか確認します。説明できない場合は、まだ「読んだだけ」で、コードに適用できる状態ではありません。</p>
-<ul class="article-list">
-<li>この単元で最初に見るべき場所はどこか。</li>
-<li>コンパイルエラー、実行時例外、正常出力をどの順番で分けるか。</li>
-<li>自分が間違えやすい引っかけは、型・参照・戻り値・アクセス・例外のどれか。</li>
-</ul>
-</div>
-</section>
+
 </section></main>
 </div>
 <footer class="site-footer global-footer">
@@ -229,6 +208,6 @@ System.out.println(p1.equals(p2)); // true</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script><script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script><script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script><script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script><script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

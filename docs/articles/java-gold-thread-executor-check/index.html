@@ -8,7 +8,7 @@
 <title>ExecutorService注意点｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>ExecutorServiceとFutureの判定</h1>
 <p class="lead">Futureは「いつか終わる処理の結果」です。get、cancel、isDoneの意味を区別します。</p>
-
 <section class="article-section"><h2>Future.getは待つ</h2><p><code>get()</code>は結果が出るまで待機します。タスク内で例外が起きた場合、<code>ExecutionException</code>として受け取ります。</p></section>
 <pre class="article-code"><code>Future&lt;String&gt; f = executor.submit(() -&gt; "done");
 String result = f.get(); // 終了まで待つ</code></pre>
@@ -31,7 +30,6 @@ String result = f.get(); // 終了まで待つ</code></pre>
 <pre class="article-code"><code>Callable&lt;Integer&gt; c = () -&gt; 100;
 Runnable r = () -&gt; System.out.println("run");</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>submitした直後に必ずタスクが完了していると思う。</p></div><div><strong>良い判断</strong><p>完了確認、getによる待機、shutdownの意味を分ける。</p></div></div>
-
 </article>
 </main>
 </div>
@@ -43,8 +41,8 @@ Runnable r = () -&gt; System.out.println("run");</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>

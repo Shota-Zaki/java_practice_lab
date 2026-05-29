@@ -8,7 +8,7 @@
 <title>OptionalとflatMap｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -22,7 +22,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>OptionalのmapとflatMap</h1>
 <p class="lead">OptionalのmapとflatMapは、戻り値が通常値なのかOptionalなのかで使い分けます。</p>
-
 <section class="article-section"><h2>mapは中身を変換する</h2><p><code>map</code>に渡す関数は、TからRを返します。結果は<code>Optional&lt;R&gt;</code>になります。</p></section>
 <pre class="article-code"><code>Optional&lt;String&gt; s = Optional.of("java");
 Optional&lt;Integer&gt; len = s.map(String::length); // Optional&lt;Integer&gt;</code></pre>
@@ -33,7 +32,6 @@ Optional&lt;String&gt; email = user.flatMap(User::email); // email() が Optiona
 <pre class="article-code"><code>Optional&lt;Optional&lt;String&gt;&gt; wrong = user.map(User::email);
 Optional&lt;String&gt; right = user.flatMap(User::email);</code></pre>
 <div class="article-callout">Optionalの入れ子が見えたら、flatMapの出番です。型を書いてみると判断できます。</div>
-
 </article>
 </main>
 </div>
@@ -45,8 +43,8 @@ Optional&lt;String&gt; right = user.flatMap(User::email);</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
-<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
 </body>
 </html>
