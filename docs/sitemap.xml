@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/app/article-practice-map.html</loc></url>
   <url><loc>https://example.com/app/dashboard.html</loc></url>
   <url><loc>https://example.com/app/learning-path.html</loc></url>
+  <url><loc>https://example.com/app/level-audit.html</loc></url>
   <url><loc>https://example.com/app/mistake-reasons.html</loc></url>
   <url><loc>https://example.com/app/mode.html</loc></url>
   <url><loc>https://example.com/app/notes.html</loc></url>
@@ -33,6 +35,7 @@
   <url><loc>https://example.com/articles/bronze-array-string-basic/index.html</loc></url>
   <url><loc>https://example.com/articles/bronze-if-loop-reading/index.html</loc></url>
   <url><loc>https://example.com/articles/bronze-mistakes-deep/index.html</loc></url>
+  <url><loc>https://example.com/articles/bronze-precision-training/index.html</loc></url>
   <url><loc>https://example.com/articles/cheatsheet/index.html</loc></url>
   <url><loc>https://example.com/articles/class-design/index.html</loc></url>
   <url><loc>https://example.com/articles/compile-errors/index.html</loc></url>
@@ -49,6 +52,7 @@
   <url><loc>https://example.com/articles/java-command/index.html</loc></url>
   <url><loc>https://example.com/articles/java-debug-printing-tips/index.html</loc></url>
   <url><loc>https://example.com/articles/java-exam-review-method/index.html</loc></url>
+  <url><loc>https://example.com/articles/java-gold-api-decision-tree/index.html</loc></url>
   <url><loc>https://example.com/articles/java-gold-collector-first/index.html</loc></url>
   <url><loc>https://example.com/articles/java-gold-concurrency-basic/index.html</loc></url>
   <url><loc>https://example.com/articles/java-gold-exception-suppressed/index.html</loc></url>
@@ -148,47 +152,45 @@
   <url><loc>https://example.com/courses/bronze/practice/final-check.html</loc></url>
   <url><loc>https://example.com/courses/bronze/practice/oop-basic.html</loc></url>
   <url><loc>https://example.com/courses/bronze/practice/pitfall-check.html</loc></url>
-  <url><loc>https://example.com/courses/gold/exams/a.html</loc></url>
-  <url><loc>https://example.com/courses/gold/exams/b.html</loc></url>
   <url><loc>https://example.com/courses/gold/index.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/01.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/02.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/03.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/04.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/05.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/06.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/07.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/08.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/09.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/10.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/11.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/12.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/13.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/14.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/15.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/16.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/17.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/18.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/19.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/20.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/21.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/22.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/23.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/24.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/25.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/26.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/27.html</loc></url>
-  <url><loc>https://example.com/courses/gold/lessons/28.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/concurrency-nio.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/generics-collections.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/gold-api-mix.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/io-concurrency.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/lambda-optional.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/lambda-stream.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/module-final.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/nio-datetime.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/stream-advanced.html</loc></url>
-  <url><loc>https://example.com/courses/gold/practice/stream-collectors.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/exams/c.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/index.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/collectors-map-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/comprehensive-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/concurrency-nio.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/generics-collections.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/generics-functional-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/gold-api-mix.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/io-concurrency.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/lambda-optional.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/lambda-stream.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/module-final.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/nio-concurrency-module-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/nio-datetime.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/stream-advanced.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/stream-collectors.html</loc></url>
+  <url><loc>https://example.com/courses/gold11/practice/stream-optional-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/exams/a.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/exams/c.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/index.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/collectors-map-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/comprehensive-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/concurrency-nio.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/generics-collections.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/generics-functional-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/gold-api-mix.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/io-concurrency.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/lambda-optional.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/lambda-stream.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/module-final.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/nio-concurrency-module-extra.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/nio-datetime.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/stream-advanced.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/stream-collectors.html</loc></url>
+  <url><loc>https://example.com/courses/gold17/practice/stream-optional-extra.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/index.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/lessons/00.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/lessons/01.html</loc></url>
@@ -219,6 +221,7 @@
   <url><loc>https://example.com/courses/java-basic/practice/syntax.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/exams/a.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/exams/b.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/exams/c.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/index.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/lessons/01.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/lessons/02.html</loc></url>
@@ -244,13 +247,18 @@
   <url><loc>https://example.com/courses/java11-silver/lessons/22.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/lessons/23.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/lessons/24.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/api-boundary-extra.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/api-string.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/basic-syntax.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/compile-check.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/compile-command-extra.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/comprehensive-extra.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/exception-inheritance.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/final-check.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/inheritance-exception-extra.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/oop.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/output-mix.html</loc></url>
+  <url><loc>https://example.com/courses/java11-silver/practice/output-runtime-extra.html</loc></url>
   <url><loc>https://example.com/courses/java11-silver/practice/package-command.html</loc></url>
   <url><loc>https://example.com/courses/java17-silver/articles.html</loc></url>
   <url><loc>https://example.com/courses/java17-silver/exams/a.html</loc></url>

@@ -1693,7 +1693,7 @@ body.is-exam-page .answer-actions,
 }
 
 
-/* exercise-display-articles-units-20260529: exercise display, header active state, article cards */
+/* exercise-visible-clean-20260529: exercise display, header active state, article cards */
 body.is-practice-page .layout,
 body.is-exam-page .layout {
   display: block !important;
@@ -1740,3 +1740,16 @@ body.is-exam-page .layout::after { display: none !important; }
 .article-unit-card h2 { min-height: 3.2em; }
 @media (max-width: 1040px) { .article-unit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 @media (max-width: 680px) { .article-unit-grid { grid-template-columns: 1fr !important; } .article-unit-card { min-height: 0 !important; } }
+
+
+/* exercise-visible-clean-20260529: remove explanatory notes and keep fallback exercises visible */
+.course-hero-side,
+.added-practice-panel,
+.practice-quality-guide,
+.article-opening-summary,
+.deep-intro-section,
+.final-check-section { display: none !important; }
+.course-dashboard-panel .section-head-row .inline-note { display: none !important; }
+.static-exercise-summary { margin-bottom: 18px; }
+.static-exercise-card { min-height: 168px; }
+.course-dashboard-card p:empty { display: none; }
