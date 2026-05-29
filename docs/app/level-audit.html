@@ -1,31 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>レベル別問題品質チェック｜Java Practice Lab</title>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=header-footer-top-20260529">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>レベル別問題品質チェック｜Java Practice Lab</title>
+<link href="../assets/css/styles.css?v=start-prep-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
 <header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../index.html">Java学習ポータルトップ</a><a href="../courses/java-basic/index.html">基礎</a><a href="../courses/bronze/index.html">Bronze</a><a href="../courses/java11-silver/index.html">Java11 Silver</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Gold</a><a href="../articles/index.html">記事</a><a href="../app/dashboard.html">ダッシュボード</a><a href="../app/search.html">検索</a><a href="../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../index.html">Java学習ポータルトップ</a><a href="../courses/java-basic/index.html">基礎</a><a href="../courses/bronze/index.html">Bronze</a><a href="../courses/java11-silver/index.html">Java11 Silver</a><a href="../courses/java17-silver/index.html">Java17 Silver</a><a href="../courses/gold/index.html">Gold</a><a href="../articles/index.html">学習記事</a><a href="../app/dashboard.html">ダッシュボード</a><a href="../app/search.html">検索</a><a href="../app/settings.html">設定</a></nav>
 </div>
 </header>
-<div class="layout"><main id="mainContent" class="main">
+<div class="layout"><main class="main" id="mainContent">
 <section class="hero"><p class="eyebrow">Quality Audit</p><h1>レベル別問題品質チェック</h1><p class="lead">問題文・コード・選択肢・解説が、各コースの学習段階に合うように再設計されています。</p></section>
 <section class="panel"><h2>今回の調整方針</h2><div class="card-grid">
 <div class="card"><h3>Bronze</h3><p>文法、型、if/loop、配列、クラスの入口に限定。var、record、sealed、Stream系は出しません。</p></div>
 <div class="card"><h3>Java11 Silver</h3><p>Java11で成立する文法と基本APIに限定。record、sealed、switch式、instanceofパターンマッチングは除外しました。</p></div>
-<div class="card"><h3>Java17 Silver</h3><p>record、sealed、switch式、instanceofパターンマッチングは扱います。Gold向けAPI群は除外しました。</p></div>
-<div class="card"><h3>Gold</h3><p>Stream、Optional、Collectors、ジェネリクス、ラムダ、NIO、並行処理、モジュールをGold側に集約しました。</p></div>
+<div class="card"><h3>Java17 Silver</h3><p>record、sealed、switch式、instanceofパターンマッチングを扱います。</p></div>
+<div class="card"><h3>Gold</h3><p>Stream、Optional、Collectors、ジェネリクス、ラムダ、NIO、並行処理、モジュールを該当範囲に集約しました。</p></div>
 </div></section>
 <section class="panel"><h2>修正結果</h2><ul>
 <li>Bronze / Java11 Silver / Gold の通常演習・模試を、コースレベル別テンプレートで再設計。</li>
-<li>Java11 SilverからJava17固有構文・Gold寄りAPIを除外。</li>
-<li>Java17 SilverからGold寄りAPI問題を除外し、Java17 Silver向け構文問題へ置換。</li>
+<li>Java11 SilverからJava17追加部分構文・Gold寄りAPIを除外。</li>
+<li>追加部分の構文問題を中心に整理。</li>
 <li>全問題に level / scopeNote を追加し、検索・監査時に範囲を追えるようにしました。</li>
 </ul></section>
 </main></div>
@@ -36,8 +37,7 @@
 <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
 </div>
 </footer>
-
 <script>window.APP_ROOT="../";window.CURRENT_PAGE="level-audit.html";</script>
-<script src="../data/questions.js?v=header-footer-top-20260529"></script>
-<script src="../assets/js/app.js?v=header-footer-top-20260529"></script>
+<script src="../data/questions.js?v=start-prep-20260529"></script>
+<script src="../assets/js/app.js?v=start-prep-20260529"></script>
 </body></html>

@@ -3,8 +3,9 @@
   const PAGE_PATHS = {"index.html":"index.html","about.html":"site/about.html","contact.html":"site/contact.html","privacy.html":"site/privacy.html","terms.html":"site/terms.html","offline.html":"site/offline.html","java-basic.html":"courses/java-basic/index.html","java-basic-01.html":"courses/java-basic/lessons/01.html","java-basic-02.html":"courses/java-basic/lessons/02.html","java-basic-03.html":"courses/java-basic/lessons/03.html","java-basic-04.html":"courses/java-basic/lessons/04.html","java-basic-05.html":"courses/java-basic/lessons/05.html","java-basic-06.html":"courses/java-basic/lessons/06.html","java-basic-07.html":"courses/java-basic/lessons/07.html","java-basic-08.html":"courses/java-basic/lessons/08.html","java-basic-09.html":"courses/java-basic/lessons/09.html","java-basic-10.html":"courses/java-basic/lessons/10.html","java-basic-11.html":"courses/java-basic/lessons/11.html","java-basic-12.html":"courses/java-basic/lessons/12.html","java-basic-13.html":"courses/java-basic/lessons/13.html","java-basic-14.html":"courses/java-basic/lessons/14.html","java-basic-15.html":"courses/java-basic/lessons/15.html","java-basic-16.html":"courses/java-basic/lessons/16.html","java-basic-17.html":"courses/java-basic/lessons/17.html","java-basic-18.html":"courses/java-basic/lessons/18.html","java-basic-19.html":"courses/java-basic/lessons/19.html","java-basic-20.html":"courses/java-basic/lessons/20.html","bronze.html":"courses/bronze/index.html","bronze-01.html":"courses/bronze/lessons/01.html","bronze-02.html":"courses/bronze/lessons/02.html","bronze-03.html":"courses/bronze/lessons/03.html","bronze-04.html":"courses/bronze/lessons/04.html","bronze-05.html":"courses/bronze/lessons/05.html","bronze-06.html":"courses/bronze/lessons/06.html","bronze-practice-1.html":"courses/bronze/practice/basic-syntax.html","bronze-practice-2.html":"courses/bronze/practice/oop-basic.html","bronze-exam-a.html":"courses/bronze/exams/a.html","java11silver.html":"courses/java11-silver/index.html","java11silver-01.html":"courses/java11-silver/lessons/01.html","java11silver-02.html":"courses/java11-silver/lessons/02.html","java11silver-03.html":"courses/java11-silver/lessons/03.html","java11silver-04.html":"courses/java11-silver/lessons/04.html","java11silver-05.html":"courses/java11-silver/lessons/05.html","java11silver-06.html":"courses/java11-silver/lessons/06.html","java11silver-07.html":"courses/java11-silver/lessons/07.html","java11silver-08.html":"courses/java11-silver/lessons/08.html","java11-practice-1.html":"courses/java11-silver/practice/basic-syntax.html","java11-practice-2.html":"courses/java11-silver/practice/oop.html","java11-practice-3.html":"courses/java11-silver/practice/final-check.html","java11-exam-a.html":"courses/java11-silver/exams/a.html","java11-exam-b.html":"courses/java11-silver/exams/b.html","java17silver.html":"courses/java17-silver/index.html","practice-a.html":"courses/java17-silver/units/java-basic.html","practice-b.html":"courses/java17-silver/units/type-string-array.html","practice-l.html":"courses/java17-silver/units/reference-api.html","practice-c.html":"courses/java17-silver/units/operator-control.html","practice-d.html":"courses/java17-silver/units/class-design.html","practice-e.html":"courses/java17-silver/units/inheritance.html","practice-f.html":"courses/java17-silver/units/exception.html","practice-m.html":"courses/java17-silver/units/compile-check.html","practice-i.html":"courses/java17-silver/units/random.html","practice-g.html":"courses/java17-silver/exams/a.html","practice-h.html":"courses/java17-silver/exams/b.html","practice-j.html":"courses/java17-silver/exams/c.html","practice-k.html":"courses/java17-silver/exams/d.html","exam.html":"courses/java17-silver/exams/index.html","exam-aftercare.html":"courses/java17-silver/exams/aftercare.html","exam-quality.html":"courses/java17-silver/exams/quality.html","gold.html":"courses/gold/index.html","gold-01.html":"courses/gold/lessons/01.html","gold-02.html":"courses/gold/lessons/02.html","gold-03.html":"courses/gold/lessons/03.html","gold-04.html":"courses/gold/lessons/04.html","gold-05.html":"courses/gold/lessons/05.html","gold-06.html":"courses/gold/lessons/06.html","gold-07.html":"courses/gold/lessons/07.html","gold-08.html":"courses/gold/lessons/08.html","gold-practice-1.html":"courses/gold/practice/lambda-stream.html","gold-practice-2.html":"courses/gold/practice/generics-collections.html","gold-practice-3.html":"courses/gold/practice/io-concurrency.html","gold-practice-4.html":"courses/gold/practice/module-final.html","gold-exam-a.html":"courses/gold/exams/a.html","gold-exam-b.html":"courses/gold/exams/b.html","articles.html":"articles/index.html","article-types.html":"articles/types/index.html","article-string.html":"articles/string/index.html","article-reference.html":"articles/reference/index.html","article-pitfalls.html":"articles/pitfalls/index.html","article-operators-control.html":"articles/operators-control/index.html","article-class-design.html":"articles/class-design/index.html","article-inheritance.html":"articles/inheritance/index.html","article-exception.html":"articles/exception/index.html","article-compile-errors.html":"articles/compile-errors/index.html","methods.html":"articles/methods/index.html","glossary.html":"articles/glossary/index.html","cheatsheet.html":"articles/cheatsheet/index.html","study-plan.html":"articles/study-plan/index.html","before-exam.html":"articles/before-exam/index.html","weak-guides.html":"articles/weak-guides/index.html","mistake-patterns.html":"articles/mistake-patterns/index.html","exam-strategy.html":"articles/exam-strategy/index.html","dashboard.html":"app/dashboard.html","mode.html":"app/mode.html","learning-path.html":"app/learning-path.html","quality-map.html":"app/quality-map.html","search.html":"app/search.html","random.html":"app/random.html","notes.html":"app/notes.html","settings.html":"app/settings.html","sync.html":"app/sync.html","mistake-reasons.html":"app/mistake-reasons.html","review-wrong.html":"app/review/wrong.html","review-marked.html":"app/review/marked.html","review-weak.html":"app/review/weak.html","review-due.html":"app/review/due.html","tag-index.html":"app/tags/index.html","tag-array.html":"app/tags/array.html","tag-basic.html":"app/tags/basic.html","tag-class.html":"app/tags/class.html","tag-compile.html":"app/tags/compile.html","tag-control.html":"app/tags/control.html","tag-exception.html":"app/tags/exception.html","tag-inheritance.html":"app/tags/inheritance.html","tag-operator.html":"app/tags/operator.html","tag-output.html":"app/tags/output.html","tag-reference.html":"app/tags/reference.html","tag-runtime.html":"app/tags/runtime.html","tag-string.html":"app/tags/string.html","tag-type.html":"app/tags/type.html","java-basic-21.html":"courses/java-basic/lessons/21.html","java-basic-22.html":"courses/java-basic/lessons/22.html","java-basic-23.html":"courses/java-basic/lessons/23.html","java-basic-24.html":"courses/java-basic/lessons/24.html"};
   const EXTRA_PAGE_PATHS_HEADER_CARDS = {"control-array.html": "courses/bronze/practice/control-array.html", "final-check.html": "courses/bronze/practice/final-check.html", "class-method.html": "courses/bronze/practice/class-method.html", "pitfall-check.html": "courses/bronze/practice/pitfall-check.html", "api-string.html": "courses/java11-silver/practice/api-string.html", "exception-inheritance.html": "courses/java11-silver/practice/exception-inheritance.html", "package-command.html": "courses/java11-silver/practice/package-command.html", "compile-check.html": "courses/java11-silver/practice/compile-check.html", "output-mix.html": "courses/java11-silver/practice/output-mix.html", "stream-advanced.html": "courses/gold/practice/stream-advanced.html", "concurrency-nio.html": "courses/gold/practice/concurrency-nio.html", "lambda-optional.html": "courses/gold/practice/lambda-optional.html", "stream-collectors.html": "courses/gold/practice/stream-collectors.html", "nio-datetime.html": "courses/gold/practice/nio-datetime.html", "gold-api-mix.html": "courses/gold/practice/gold-api-mix.html", "foundation.html": "courses/java-basic/practice/foundation.html", "syntax.html": "courses/java-basic/practice/syntax.html"};
   Object.assign(PAGE_PATHS, EXTRA_PAGE_PATHS_HEADER_CARDS);
-  const ARTICLE_PRACTICE_PAGE_PATHS = {"article-practice-map.html":"app/article-practice-map.html"};
   Object.assign(PAGE_PATHS, ARTICLE_PRACTICE_PAGE_PATHS);
+  const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold/practice/nio-concurrency-module-extra.html"};
+  Object.assign(PAGE_PATHS, JAVA11_GOLD_MORE_PAGE_PATHS);
   function pageHref(page) {
     if (!page) return (window.APP_ROOT || "") + "index.html";
     if (/^(https?:|mailto:|#|\/\/)/.test(page)) return page;
@@ -102,7 +103,6 @@
     "exam-review-deep"
   ],
   "java11-p1": [
-    "java11-silver-reading-flow",
     "java11-silver-var-string",
     "java-silver-type-promotion"
   ],
@@ -128,7 +128,6 @@
   ],
   "java11-p6": [
     "java-command",
-    "java11-silver-reading-flow"
   ],
   "java11-p7": [
     "compile-errors",
@@ -140,10 +139,29 @@
     "pitfalls",
     "runtime-errors"
   ],
+  "java11-p9": [
+    "java11-silver-stringbuilder-arraylist",
+    "java11-silver-api-check",
+    "java-silver-arraylist-remove"
+  ],
+  "java11-p10": [
+    "java11-silver-polymorphism-field",
+    "java11-silver-exception-finally",
+    "java-silver-constructor-order-cases"
+  ],
+  "java11-p11": [
+    "java-command",
+    "compile-errors",
+    "java-silver-error-message-reading"
+  ],
+  "java11-p12": [
+    "silver-output-problems",
+    "java-silver-type-promotion",
+    "java-silver-string-immutability"
+  ],
   "java11-exam-a": [
     "exam-strategy",
     "java-exam-review-method",
-    "java11-silver-reading-flow"
   ],
   "java11-exam-b": [
     "exam-strategy",
@@ -187,7 +205,6 @@
   ],
   "unit13": [
     "compile-errors",
-    "java17-silver-boundary-map",
     "java17-specific-precision"
   ],
   "unit09": [
@@ -264,6 +281,26 @@
     "java-gold-type-flow",
     "java-gold-module-info-check"
   ],
+  "gold-p11": [
+    "java-gold-stream-deep",
+    "java-gold-optional-first",
+    "java-gold-optional-flatmap"
+  ],
+  "gold-p12": [
+    "java-gold-collector-first",
+    "java-gold-stream-grouping",
+    "java-gold-api-decision-tree"
+  ],
+  "gold-p13": [
+    "java-gold-generics-deep",
+    "java-gold-generics-wildcard",
+    "java-gold-lambda-first"
+  ],
+  "gold-p14": [
+    "java-gold-nio-path-files",
+    "java-gold-thread-executor-check",
+    "java-gold-module-info-check"
+  ],
   "gold-exam-a": [
     "exam-strategy",
     "exam-review-deep",
@@ -278,115 +315,100 @@
   const ARTICLE_TITLE_MAP = {
   "api-reading": "Java API仕様の読み方",
   "before-exam": "直前チェックモード",
-  "bronze-array-string-basic": "Java Bronzeの配列とString入門",
-  "bronze-if-loop-reading": "Java Bronzeのif文とループを読む",
-  "bronze-mistakes-deep": "Java Bronzeで落ちやすい基礎ミス",
-  "bronze-precision-training": "Bronze演習の読み方：基本問題を雑に解かない",
+  "bronze-array-string-basic": "配列とString入門",
+  "bronze-if-loop-reading": "if文とループを読む",
+  "bronze-mistakes-deep": "落ちやすい基礎ミス",
+  "bronze-precision-training": "基本問題を雑に解かない",
   "cheatsheet": "解き方チートシート",
-  "class-design": "Java Silverのクラス設計・static・recordの要点",
-  "compile-errors": "Java Silverでコンパイルエラーになる原因まとめ",
+  "class-design": "クラス設計・static・recordの要点",
+  "compile-errors": "コンパイルエラーになる原因まとめ",
   "course-selection-bronze-silver-gold": "Bronze・Silver・Goldの違い",
   "exam-review-deep": "模試後レビューの精度を上げる方法",
   "exam-strategy": "実践模試の解き方",
-  "exception": "Java Silverのtry-catch-finallyと例外処理完全整理",
-  "glossary": "Java Silver単語集 詳細版",
-  "inheritance": "Java Silverの継承・オーバーライド・フィールド隠蔽",
+  "exception": "try-catch-finallyと例外処理完全整理",
+  "glossary": "単語集 詳細版",
+  "inheritance": "継承・オーバーライド・フィールド隠蔽",
   "java-api-traps": "Java Silver頻出APIの罠まとめ",
-  "java-bronze-object-basic": "Java Bronzeのオブジェクト入門",
-  "java-bronze-study-map": "Java Bronzeの学習順序",
+  "java-bronze-object-basic": "オブジェクト入門",
+  "java-bronze-study-map": "学習順序",
   "java-command": "javac・javaコマンドで詰まる原因",
   "java-debug-printing-tips": "Javaのデバッグ出力で確認するポイント",
   "java-exam-review-method": "模試後の復習方法",
-  "java-gold-api-decision-tree": "Java Gold API判定ツリー：型・実行タイミング・戻り値で読む",
-  "java-gold-collector-first": "Java GoldのCollectors入門",
-  "java-gold-concurrency-basic": "Java Goldの並行処理入門",
+  "java-gold-api-decision-tree": "API判定ツリー：型・実行タイミング・戻り値で読む",
+  "java-gold-collector-first": "Collectors入門",
+  "java-gold-concurrency-basic": "並行処理入門",
   "java-gold-exception-suppressed": "try-with-resourcesと抑制された例外",
-  "java-gold-generics-deep": "Java Goldのジェネリクスとワイルドカード",
-  "java-gold-generics-first": "Java Goldのジェネリクス入門",
-  "java-gold-generics-wildcard": "Java Goldのワイルドカード",
-  "java-gold-lambda-first": "Java Goldに入る前のラムダ式入門",
-  "java-gold-module-info-check": "Java Goldのmodule-info.java整理",
-  "java-gold-nio-path-files": "Java GoldのPathとFiles",
-  "java-gold-optional-first": "Java Goldに入る前のOptional入門",
-  "java-gold-optional-flatmap": "Java GoldのOptionalとflatMap",
-  "java-gold-stream-deep": "Java GoldのStream APIを丁寧に読む",
-  "java-gold-stream-first": "Java GoldのStream API入門",
-  "java-gold-stream-grouping": "Java GoldのCollectors.groupingBy",
-  "java-gold-stream-pipeline": "Java GoldのStreamパイプライン",
-  "java-gold-thread-executor-check": "Java GoldのExecutorService注意点",
-  "java-gold-type-flow": "Java Goldの型の流れを読む",
+  "java-gold-generics-deep": "ジェネリクスとワイルドカード",
+  "java-gold-generics-first": "ジェネリクス入門",
+  "java-gold-generics-wildcard": "ワイルドカード",
+  "java-gold-lambda-first": "ラムダ式入門",
+  "java-gold-module-info-check": "module-info.java整理",
+  "java-gold-nio-path-files": "PathとFiles",
+  "java-gold-optional-first": "Optional入門",
+  "java-gold-optional-flatmap": "OptionalとflatMap",
+  "java-gold-stream-deep": "Stream APIを丁寧に読む",
+  "java-gold-stream-first": "Stream API入門",
+  "java-gold-stream-grouping": "Collectors.groupingBy",
+  "java-gold-stream-pipeline": "Streamパイプライン",
+  "java-gold-thread-executor-check": "ExecutorService注意点",
+  "java-gold-type-flow": "型の流れを読む",
   "java-learning-debug-checklist": "Javaエラー調査チェックリスト",
   "java-learning-roadmap-after-silver": "Silver合格後に何を学ぶべきか",
-  "java-silver-access-modifier": "Java Silverのアクセス修飾子まとめ",
+  "java-silver-access-modifier": "アクセス修飾子まとめ",
   "java-silver-array-covariance": "配列の共変とArrayStoreException",
-  "java-silver-array-default": "Java Silverの配列デフォルト値とnull",
-  "java-silver-array-list-difference": "配列とArrayListの違いをJava Silver向けに整理",
+  "java-silver-array-default": "配列デフォルト値とnull",
+  "java-silver-array-list-difference": "配列とArrayListの違いを整理",
   "java-silver-arraylist-remove": "ArrayList.removeで間違える理由",
   "java-silver-cast-instanceof": "キャストとinstanceofの読み方",
-  "java-silver-code-reading": "Java Silverのコード読解で落ちない読み方",
-  "java-silver-compile-vs-runtime": "Java Silverのコンパイルエラーと実行時例外の分け方",
-  "java-silver-constructor": "Java Silverのコンストラクタで落ちるパターン",
+  "java-silver-code-reading": "コード読解で落ちない読み方",
+  "java-silver-compile-vs-runtime": "コンパイルエラーと実行時例外の分け方",
+  "java-silver-constructor": "コンストラクタで落ちるパターン",
   "java-silver-constructor-order-cases": "コンストラクタ呼び出し順の頻出パターン",
   "java-silver-default-method": "defaultメソッド競合の整理",
-  "java-silver-error-message-reading": "Java Silverのエラーメッセージの読み方",
+  "java-silver-error-message-reading": "エラーメッセージの読み方",
   "java-silver-final-rules": "finalの頻出ルール",
   "java-silver-interface-constant": "interfaceの変数が暗黙にpublic static finalになる理由",
   "java-silver-interface-default-cases": "interface defaultメソッドの衝突パターン",
-  "java-silver-local-variable": "Java Silverのローカル変数で間違える理由",
-  "java-silver-method-resolution": "Java Silverのメソッド呼び出し解決まとめ",
-  "java-silver-null": "Java SilverのnullとNullPointerException",
-  "java-silver-object-equality-cases": "Java Silverの同一性・同値性で落ちるパターン",
-  "java-silver-overload": "Java Silverのオーバーロード解決",
+  "java-silver-local-variable": "ローカル変数で間違える理由",
+  "java-silver-method-resolution": "メソッド呼び出し解決まとめ",
+  "java-silver-null": "nullとNullPointerException",
+  "java-silver-object-equality-cases": "同一性・同値性で落ちるパターン",
+  "java-silver-overload": "オーバーロード解決",
   "java-silver-sealed": "sealedクラス・interfaceの頻出ルール",
   "java-silver-sealed-record-review": "sealedとrecordのJava17 Silver頻出整理",
-  "java-silver-static": "Java Silverのstaticで間違えるポイント",
-  "java-silver-string-immutability": "Java SilverのString不変性で落ちるパターン",
-  "java-silver-switch": "Java Silverのswitch文とswitch式",
+  "java-silver-static": "staticで間違えるポイント",
+  "java-silver-string-immutability": "String不変性で落ちるパターン",
+  "java-silver-switch": "switch文とswitch式",
   "java-silver-switch-yield-cases": "switch文・switch式・yieldの見分け方",
-  "java-silver-type-promotion": "Java Silverの数値昇格で間違える理由",
-  "java11-silver-api-check": "Java11 Silver頻出APIチェック",
-  "java11-silver-exception-finally": "Java11 Silverの例外処理とfinally",
-  "java11-silver-polymorphism-field": "Java11 Silverのポリモーフィズムとフィールド隠蔽",
-  "java11-silver-precision": "Java11 Silverの頻出差分と注意点",
-  "java11-silver-reading-flow": "Java11 Silverコード読解フロー",
-  "java11-silver-stringbuilder-arraylist": "Java11 SilverのStringBuilderとArrayList",
-  "java11-silver-var-string": "Java11 SilverのvarとString",
-  "java17-silver-boundary-map": "Java17 Silverの範囲境界：Java11・Java17・Goldを混ぜない",
-  "java17-silver-pattern-matching-instanceof": "Java17 Silverのinstanceofパターン変数",
-  "java17-silver-record-details": "Java17 Silverのrecordを丁寧に整理",
-  "java17-silver-sealed-permits": "Java17 Silverのsealedとpermits",
-  "java17-silver-switch-expression-yield": "Java17 Silverのswitch式とyield",
-  "java17-specific-precision": "Java17 Silverの追加論点を正確に読む",
+  "java-silver-type-promotion": "数値昇格で間違える理由",
+  "java11-silver-api-check": "頻出APIチェック",
+  "java11-silver-exception-finally": "例外処理とfinally",
+  "java11-silver-polymorphism-field": "ポリモーフィズムとフィールド隠蔽",
+  "java11-silver-precision": "頻出差分と注意点",
+  "java11-silver-stringbuilder-arraylist": "StringBuilderとArrayList",
+  "java11-silver-var-string": "varとString",
+  "java17-silver-pattern-matching-instanceof": "instanceofパターン変数",
+  "java17-silver-record-details": "recordを丁寧に整理",
+  "java17-silver-sealed-permits": "sealedとpermits",
+  "java17-silver-switch-expression-yield": "switch式とyield",
+  "java17-specific-precision": "Java17 Silver追加部分を正確に読む",
   "memory-model-beginner": "参照・メモリ・代入の基本",
   "methods": "頻出メソッドリスト 詳細版",
   "mistake-patterns": "誤答パターン集",
   "oop-compile-errors": "オブジェクト指向で起こるコンパイルエラー",
   "operators-control": "Javaの++iとi++、短絡評価、switch問題の解き方",
-  "pitfalls": "Java Silver頻出ひっかけパターン総まとめ",
+  "pitfalls": "頻出ひっかけパターン総まとめ",
   "reference": "参照の同一性と同値比較",
-  "runtime-errors": "Java Silverの実行時例外まとめ",
+  "runtime-errors": "実行時例外まとめ",
   "silver-output-problems": "出力結果問題の読み方",
-  "string": "Java SilverのStringとStringBuilder",
+  "string": "StringとStringBuilder",
   "study-order": "Java学習のおすすめ順序",
   "study-plan": "復習ロードマップ",
-  "types": "Java Silverの型変換・var・配列でコンパイルエラーになる例",
+  "types": "型変換・var・配列でコンパイルエラーになる例",
   "weak-guides": "弱点タグ別ミニ解説"
 };
   function renderLinkedArticlesPanel(unit) {
-    if (!unit) return;
-    let slot = document.querySelector("[data-linked-articles]");
-    const guide = document.querySelector("[data-quality-guide]");
-    if (!slot && guide) {
-      slot = document.createElement("section");
-      slot.className = "panel article-bridge-panel";
-      slot.setAttribute("data-linked-articles", "");
-      guide.insertAdjacentElement("afterend", slot);
-    }
-    if (!slot) return;
-    const slugs = UNIT_ARTICLE_LINKS[unit.id] || [];
-    if (!slugs.length) { slot.remove(); return; }
-    const cards = slugs.slice(0, 4).map(slug => `<a class="bridge-card" href="${pageHref('articles/' + slug + '/index.html')}"><span class="bridge-level">先に読む</span><strong>${escapeHtml(ARTICLE_TITLE_MAP[slug] || slug)}</strong><small>この演習で詰まりやすい論点を先に整理する</small></a>`).join("");
-    slot.innerHTML = `<div class="section-head-row"><h2>この演習に対応する学習記事</h2><a class="btn ghost" href="${pageHref('app/article-practice-map.html')}">対応表</a></div><p>問題を解く前に読む記事です。解いてから間違えた場合も、ここへ戻って根拠を確認してください。</p><div class="bridge-grid">${cards}</div>`;
+    return;
   }
 
   const mistakeReasonLabels = {
@@ -758,7 +780,7 @@
         + section('実践模試', link('exam.html','模試センター', activePath === 'exam.html') + unitLinks('java17', true), isExamUnit() || activePath === 'exam.html')
         + section('復習・分析', reviewLinks, !!reviewMode || ["dashboard.html","mistake-reasons.html"].includes(activePath))
         + section('演習ツール', toolLinks, !!tagFilter || randomMode || ["search.html","notes.html"].includes(activePath))
-        + section('学習記事', direct('courses/java17-silver/articles.html','Java17 Silver記事', activePath === 'java17-articles.html') + direct('articles/compile-errors/index.html','コンパイルエラー') + direct('articles/reference/index.html','参照比較') + direct('articles/java17-specific-precision/index.html','Java17固有論点'), activePath === 'java17-articles.html')
+        + section('学習記事', direct('courses/java17-silver/articles.html','Java17 Silver記事', activePath === 'java17-articles.html') + direct('articles/compile-errors/index.html','コンパイルエラー') + direct('articles/reference/index.html','参照比較') + direct('articles/java17-specific-precision/index.html','Java17追加部分論点'), activePath === 'java17-articles.html')
         + silverCourseLinks;
     } else if (activeCourse === 'gold') {
       html += section('Java Gold', courseHome.gold + lessonLinks('courses/gold','gold',goldTitles), true)
@@ -918,7 +940,7 @@
       const s = unitProgressSummary(u);
       const total = s.questions.length || u.fixedCount || 0;
       const continueHref = s.firstUnanswered ? `${pageHref(u.page)}?q=${encodeURIComponent(s.firstUnanswered.id)}` : pageHref(u.page);
-      return `<article class="course-dashboard-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${s.answered.length}/${total}問</span></div><div class="progress-track"><span style="width:${total ? Math.min(100, Math.round(s.answered.length / total * 100)) : 0}%"></span></div><p>${escapeHtml(u.description || "")}</p><div class="mini-stat-row"><span>正答率 ${s.rate}%</span><span>不正解 ${s.wrong.length}</span><span>復習 ${s.due}</span></div><div class="chip-row"><a class="mini-chip" href="${escapeHtml(continueHref)}">続きから解く</a><a class="mini-chip" href="${pageHref("review-wrong.html")}?unit=${encodeURIComponent(u.id)}">間違いだけ</a></div></article>`;
+      return `<article class="course-dashboard-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${s.answered.length}/${total}問</span></div><div class="progress-track"><span style="width:${total ? Math.min(100, Math.round(s.answered.length / total * 100)) : 0}%"></span></div><p>${escapeHtml(u.description || "")}</p><div class="mini-stat-row"><span>正答率 ${s.rate}%</span><span>不正解 ${s.wrong.length}</span><span>復習 ${s.due}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">最初から始める</a><a class="mini-chip" href="${escapeHtml(continueHref)}">続きから解く</a><a class="mini-chip" href="${pageHref("review-wrong.html")}?unit=${encodeURIComponent(u.id)}">間違いだけ</a></div></article>`;
     }).join("");
     const examHistory = readExamHistory();
     const examCards = exams.map(u => {
@@ -928,7 +950,7 @@
       const best = histories.length ? Math.max(...histories.map(h => Math.round((h.score || 0) / Math.max(h.total || 1, 1) * 100))) : null;
       return `<article class="course-dashboard-card exam-progress-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${u.timeLimitMinutes || 90}分</span></div><p>${escapeHtml(u.description || "")}</p><div class="mini-stat-row"><span>${qs.length || u.fixedCount || 60}問</span><span>回答記録 ${answeredInProgress}</span><span>最高 ${best === null ? "-" : `${best}%`}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">模試を開始</a></div></article>`;
     }).join("");
-    root.innerHTML = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-next-box"><h3>次にやること</h3><p>${escapeHtml(nextText)}</p><div class="practice-tools"><a class="btn primary" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn" href="${escapeHtml(courseExamHref(course))}">模試へ</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="chip-row">${weakHtml}</div></div><h3>通常演習の進み具合</h3><div class="course-dashboard-grid">${unitCards}</div><h3>実践模試</h3><div class="course-dashboard-grid">${examCards || `<p class="notice">このコースの模試はまだありません。</p>`}</div>`;
+    root.innerHTML = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3><span class="inline-note">各セットの進捗を見ながら開始できます。</span></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || `<p class="notice">このコースの模試はまだありません。</p>`}</div>`;
   }
 
   function renderIndex() {
@@ -1439,7 +1461,7 @@
     } else if (id.startsWith("java11-")) {
       course = "Java11 Silver";
       focus = [
-        "Java11範囲に限定して読む。record、sealed、switch式、instanceofパターン変数はここでは前提にしない。",
+        "対象範囲に限定して読む。record、sealed、switch式、instanceofパターン変数はここでは前提にしない。",
         "var、StringBuilder、ArrayList、例外、継承は、使える場所・戻り値・副作用・参照型を分ける。",
         "オーバーロードはコンパイル時、オーバーライドは実行時の実体で決まる。この区別を崩さない。"
       ];
@@ -1567,7 +1589,6 @@
       <div><strong>${highWrong.length}</strong><span>自信あり不正解</span></div>
       <div><strong>${noteCount}</strong><span>学習メモ</span></div>
     </div>
-    <div class="notice"><strong>次にやること：</strong>${escapeHtml(recommend)}</div>
     <div class="practice-tools"><a class="btn primary" href="${pageHref('review-due.html')}">今日の復習</a><a class="btn" href="${pageHref('review-wrong.html')}">間違えた問題だけ復習</a><a class="btn" href="${pageHref('review-weak.html')}">弱点優先復習</a><a class="btn" href="${pageHref('review-marked.html')}">見直し問題</a><a class="btn" href="${pageHref('notes.html')}">学習メモ</a><a class="btn" href="${pageHref('tag-index.html')}">タグ別演習</a><a class="btn" href="${pageHref('random.html')}">ランダム演習</a><a class="btn" href="${pageHref('sync.html')}">履歴を移行</a><button class="btn ghost" id="clearAllProgress" type="button">全履歴を削除</button></div>
     <h2>自信度のズレ</h2>
     <p class="inline-note">自信ありで間違えた問題は、理解の穴が大きい箇所です。自信低めで正解した問題は、定着前なので早めに再確認してください。</p>
@@ -1801,7 +1822,7 @@
       <div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div>
       <div class="stat-card"><strong>${marked}</strong><span>見直し</span></div>
       <div class="stat-card"><strong>${due}</strong><span>今日の復習候補</span></div>
-    </div><p class="inline-note">※この進捗は通常演習のみです。模試A〜Dや各コース模試は実践模試センター・模試履歴で確認します。</p><div class="recommend-box"><h3>次にやること</h3><p>${wrong.length ? "まず不正解と自信低めの問題を処理してください。" : answered.length ? "次はタグ別演習で弱点を補強するか、実践模試センターで本番形式を確認してください。" : "まずは通常演習を20問ほど解いて、弱点データを作ってください。"}</p><div class="practice-tools"><a class="btn primary" href="${pageHref('review-due.html')}">今日の復習</a><a class="btn" href="${pageHref('dashboard.html')}">弱点分析</a><a class="btn" href="${pageHref('exam.html')}">実践模試</a><a class="btn" href="${pageHref('learning-path.html')}">ロードマップ</a></div><div class="chip-row">${weakHtml}</div></div>`;
+    </div><p class="inline-note">※この進捗は通常演習のみです。模試A〜Dや各コース模試は実践模試センター・模試履歴で確認します。</p><div class="practice-tools"><a class="btn primary" href="${pageHref('dashboard.html')}">全体ダッシュボード</a><a class="btn" href="${pageHref('review-due.html')}">今日の復習</a><a class="btn" href="${pageHref('review-wrong.html')}">不正解復習</a><a class="btn" href="${pageHref('exam.html')}">実践模試</a></div><div class="chip-row">${weakHtml}</div>`;
   }
 
   function questionsForDueCount(sourceQuestions = allQuestions()) {

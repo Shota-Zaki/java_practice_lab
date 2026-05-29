@@ -190,6 +190,7 @@
   <url><loc>https://example.com/courses/gold/practice/stream-advanced.html</loc></url>
   <url><loc>https://example.com/courses/gold/practice/stream-collectors.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/index.html</loc></url>
+  <url><loc>https://example.com/courses/java-basic/lessons/00.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/lessons/01.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/lessons/02.html</loc></url>
   <url><loc>https://example.com/courses/java-basic/lessons/03.html</loc></url>
@@ -275,5 +276,4 @@
   <url><loc>https://example.com/site/offline.html</loc></url>
   <url><loc>https://example.com/site/privacy.html</loc></url>
   <url><loc>https://example.com/site/terms.html</loc></url>
-<url><loc>./app/article-practice-map.html</loc></url>
 </urlset>
