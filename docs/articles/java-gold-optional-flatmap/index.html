@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="OptionalのmapとflatMapを整理する。" name="description"/>
+<title>OptionalとflatMap｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>OptionalのmapとflatMap</h1>
+<p class="lead">OptionalのmapとflatMapは、戻り値が通常値なのかOptionalなのかで使い分けます。</p>
+<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+<section class="article-section"><h2>mapは中身を変換する</h2><p><code>map</code>に渡す関数は、TからRを返します。結果は<code>Optional&lt;R&gt;</code>になります。</p></section>
+<pre class="article-code"><code>Optional&lt;String&gt; s = Optional.of(&quot;java&quot;);
+Optional&lt;Integer&gt; len = s.map(String::length); // Optional&lt;Integer&gt;</code></pre>
+<section class="article-section"><h2>flatMapはOptionalの入れ子を防ぐ</h2><p>関数の戻り値がすでに<code>Optional&lt;R&gt;</code>なら、<code>map</code>ではなく<code>flatMap</code>を使うと入れ子になりません。</p></section>
+<pre class="article-code"><code>Optional&lt;User&gt; user = findUser();
+Optional&lt;String&gt; email = user.flatMap(User::email); // email() が Optional&lt;String&gt; を返す場合</code></pre>
+<table class="study-table ref-table"><thead><tr><th>関数の戻り値</th><th>使うメソッド</th><th>結果</th></tr></thead><tbody><tr><td><code>R</code></td><td><code>map</code></td><td><code>Optional&lt;R&gt;</code></td></tr><tr><td><code>Optional&lt;R&gt;</code></td><td><code>flatMap</code></td><td><code>Optional&lt;R&gt;</code></td></tr><tr><td><code>null</code>の可能性</td><td><code>map</code>はempty扱いになる場合がある</td><td>nullを返す設計自体を疑う</td></tr></tbody></table>
+<pre class="article-code"><code>Optional&lt;Optional&lt;String&gt;&gt; wrong = user.map(User::email);
+Optional&lt;String&gt; right = user.flatMap(User::email);</code></pre>
+<div class="article-callout">Optionalの入れ子が見えたら、flatMapの出番です。型を書いてみると判断できます。</div>
+<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

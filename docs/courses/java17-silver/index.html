@@ -1,99 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Java SEの基礎をオリジナル問題で学習できる非公式学習サイト。">
-  <title>Java17 Silver｜Java Practice Lab</title>
-  <meta name="theme-color" content="#2563eb">
-  <link rel="manifest" href="../../manifest.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=progress-noexam-20260526">
-  
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java17 Silver 対策 の学習ページです。" name="description"/>
+<title>Java17 Silver 対策｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
 </head>
-<body>
-  <a class="skip-link" href="#mainContent">本文へ移動</a>
-  <div class="layout">
-    <button id="sidebarOpen" class="sidebar-open" type="button" aria-label="サイドバーを表示" aria-hidden="true" hidden>メニュー</button>
-    <aside class="sidebar" id="siteSidebar">
-      <div class="sidebar-top">
-        <p class="brand"><a href="../../index.html">Java Practice Lab</a></p>
-        <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-pressed="false" aria-label="サイドバーを隠す" title="サイドバーを隠す">×</button>
-      </div>
-      <nav id="unitNav" class="nav-list" aria-label="学習メニュー"></nav>
-      <div class="footer-links" style="margin-top:18px">
-        <a class="small" href="../../articles/index.html">学習記事</a>
-        <a class="small" href="../../articles/reference/index.html">参照比較</a><a class="small" href="../../articles/pitfalls/index.html">細かい違い</a><a class="small" href="../../articles/methods/index.html">メソッド表</a>
-        <a class="small" href="../../site/about.html">このサイト</a>
-        <a class="small" href="../../site/privacy.html">Privacy</a>
-      </div>
-    </aside>
-    <main id="mainContent" class="main">
-      
-
-<section class="hero home-hero compact-home-hero">
-  <p class="eyebrow">Java SE / Java Silver 対策</p>
-  <h1>Java Practice Lab</h1>
-  <p>通常演習で理解し、実践模試で本番形式に慣れ、復習機能で弱点を潰すためのJava学習サイトです。</p>
-  <p class="notice">問題文・選択肢・解説は公開向けに新規作成したオリジナル教材です。特定書籍・試験提供元とは関係ありません。</p>
+<body class="header-layout course-home" data-course="java17">
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="course-hero-card">
+<div>
+<p class="eyebrow">Java17 Silver / メインコース</p>
+<h1>Java17 Silver 対策</h1>
+<p class="lead">通常演習・実践模試・弱点復習を回すためのメインページです。record、sealed、switch式、instanceofパターンマッチングは追加部分として整理します。</p>
+<p class="notice">record、sealed、switch式、instanceofパターンマッチングを追加部分として確認します。</p>
+<div class="hero-actions">
+<a class="btn primary" href="units/java-basic.html">通常演習を始める</a>
+<a class="btn" href="exams/index.html">実践模試センター</a>
+</div>
+</div>
+<div class="course-hero-side">
+<strong>学習方針</strong>
+<span>通常演習 → 不正解復習 → 模試 → 弱点タグ補強</span>
+</div>
+</section>
+<div class="ad-slot course-ad"><span>コース上部広告</span></div><section class="panel course-dashboard-panel" id="practiceList"><div class="section-head-row"><h2>通常演習</h2><span class="inline-note">通常演習の進捗を見ながら、この画面から演習を開始できます。</span></div><div data-course="java17" id="courseDashboardRoot"></div></section>
+<section class="panel course-menu-panel">
+<h2>学習メニュー</h2>
+<div class="course-menu-grid">
+<a class="course-menu-card" href="#practiceList"><strong>通常演習</strong><span>論点別に解いて理解を固める</span></a>
+<a class="course-menu-card" href="#examList"><strong>実践模試</strong><span>本番形式で時間配分を確認</span></a>
+<a class="course-menu-card" href="../../app/review/wrong.html"><strong>苦手復習</strong><span>不正解・見直し問題だけ解き直す</span></a>
+<a class="course-menu-card" href="../../articles/index.html"><strong>学習記事</strong><span>つまずいた論点を文章で確認</span></a>
+</div>
 </section>
 
-<section class="panel primary-actions-panel
 
-<div class="ad-slot ad-visible home-ad" aria-label="広告枠"><span>トップページ上部</span></div> home-entry-panel">
-  <h2>学習メニュー</h2>
-  <div class="primary-action-grid four-entry-grid">
-    <a class="primary-action-card" href="units/java-basic.html"><strong>通常演習</strong><span>単元順に理解を固める</span></a>
-    <a class="primary-action-card" href="exams/index.html"><strong>実践模試</strong><span>60問・90分で本番形式</span></a>
-    <a class="primary-action-card" href="../../app/review/due.html"><strong>苦手復習</strong><span>不正解・見直し・自信低めを処理</span></a>
-    <a class="primary-action-card" href="../../articles/index.html"><strong>学習記事</strong><span>頻出論点を例で確認</span></a>
-  </div>
-</section>
 
-<section class="panel compact-status-panel home-status-lite">
-  <div class="section-head-row">
-    <h2>今日の進捗</h2>
-    <a class="btn ghost" href="../../app/dashboard.html">詳細を見る</a>
-  </div>
-  <div id="homeStatsRoot"></div>
-</section>
+
+
 
 <section class="panel">
-  <div class="section-head-row">
-    <h2>通常演習</h2>
-    <a class="btn ghost" href="../../app/mode.html">目的から選ぶ</a>
-  </div>
-  <div id="unitGrid" class="unit-grid compact-unit-grid tag-style-grid"></div>
+<h2>関連する学習記事</h2>
+<div class="card-grid compact-card-grid"><a class="article-card rich-card" href="../../articles/java17-specific-precision/index.html"><strong>Java17追加部分論点の精度確認</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-record-details/index.html"><strong>recordの詳細</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-sealed-permits/index.html"><strong>sealed permits</strong><span>関連解説を読む</span></a><a class="article-card rich-card" href="../../articles/java17-silver-switch-expression-yield/index.html"><strong>switch式とyield</strong><span>関連解説を読む</span></a></div>
 </section>
-
-<section class="panel exam-collection
-
-<div class="ad-slot ad-visible home-ad" aria-label="広告枠"><span>通常演習一覧の下</span></div> exam-center-preview">
-  <div class="section-head-row">
-    <h2>実践模試</h2>
-    <a class="btn primary" href="exams/index.html">模試センターを開く</a>
-  </div>
-  <div id="examGrid" class="unit-grid compact-unit-grid exam-card-grid"></div>
-</section>
-
-<section class="panel home-secondary-links">
-  <h2>復習・確認</h2>
-  <div class="card-grid compact-card-grid">
-    <a class="article-card rich-card" href="../../app/review/wrong.html"><strong>間違えた問題</strong><span>不正解だけ解き直す</span></a>
-    <a class="article-card rich-card" href="../../app/mistake-reasons.html"><strong>間違えた理由</strong><span>ミス原因を分類</span></a>
-    <a class="article-card rich-card" href="../../articles/compile-errors/index.html"><strong>コンパイルエラー原因</strong><span>例で頻出パターンを確認</span></a>
-    <a class="article-card rich-card" href="../../articles/before-exam/index.html"><strong>直前チェック</strong><span>試験前の頻出論点確認</span></a>
-  </div>
-</section>
-
-      <footer class="site-footer">
-        <div class="footer-links">
-          <a href="../../index.html">Home</a><a href="../../articles/index.html">Articles</a><a href="exams/index.html">Exam</a><a href="../../app/dashboard.html">Dashboard</a><a href="../../app/notes.html">Notes</a><a href="../../app/settings.html">Settings</a><a href="../../app/sync.html">Sync</a><a href="../../articles/reference/index.html">References</a><a href="../../site/about.html">About</a><a href="../../site/contact.html">Contact</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/ads-guide.html">Ads</a>
-        </div>
-        <p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-      </footer></main>
-  </div>
-  <script>window.APP_ROOT="../../";window.CURRENT_PAGE="java17silver.html";</script><script src="../../data/questions.js"></script>
-  <script src="../../assets/js/app.js?v=progress-noexam-20260526"></script>
-  <script src="../../pwa.js"></script>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="java17silver.html";</script>
+<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
 </body>
 </html>

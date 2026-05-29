@@ -1,1 +1,72 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="初心者向けの学習順を説明します。"><title>Java学習の進め方｜Java Practice Lab</title><meta name="theme-color" content="#2563eb"><link rel="manifest" href="../../../manifest.webmanifest"><link rel="stylesheet" href="../../../assets/css/styles.css?v=progress-noexam-20260526"></head><body><a class="skip-link" href="#mainContent">本文へ移動</a><div class="layout"><aside class="sidebar" id="siteSidebar"><div class="sidebar-top"><p class="brand"><a href="../../../index.html">Java Practice Lab</a></p></div><nav class="nav-list"><details class="nav-section" open><summary>コース</summary><div><a class="nav-link" href="../index.html">1からわかるJava基礎</a><a class="nav-link" href="../../bronze/index.html">Java Bronze</a><a class="nav-link" href="../../java11-silver/index.html">Java11 Silver</a><a class="nav-link" href="../../java17-silver/index.html">Java17 Silver</a><a class="nav-link" href="../../gold/index.html">Java Gold</a></div></details><details class="nav-section"><summary>共通</summary><div><a class="nav-link" href="../../../articles/index.html">学習記事</a><a class="nav-link" href="../../java17-silver/exams/index.html">Java17模試センター</a><a class="nav-link" href="../../../app/dashboard.html">学習状況</a></div></details></nav></aside><main id="mainContent" class="main"><article class="article-page"><h1>Java学習の進め方</h1><p>最初は文法を網羅しようとしすぎるより、実行できる小さなコードを増やす方が効率的です。</p><ol><li>Javaの実行の流れを知る</li><li>変数・型・文字列を使う</li><li>条件分岐とループを書く</li><li>クラスとメソッドを作る</li><li>例外処理を読む</li><li>演習問題で判定力を鍛える</li></ol></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer></main><aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside></div><script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-20.html";</script><script src="../../../pwa.js"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Javaコードを上から眺めるのではなく、決まった手順で読む。" name="description"/>
+<title>Lesson 20 コードを読む順番｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 20</p>
+<h1>コードを読む順番</h1>
+<p class="lead">Javaコードを上から眺めるのではなく、決まった手順で読む。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p>コードは上から眺めるだけでは読めない。まずコンパイル可否、次に入口、次に型、次に値の変化、最後に出力を追う。この順番を固定すると、複雑に見えるコードでも処理を分解できる。</p></section><section class="card lesson-section"><h2>読解の基本手順</h2><ol><li>publicクラス名・ファイル名・mainの形を見る。</li><li>宣言されている変数の型を見る。</li><li>コンパイルエラーになる箇所がないか確認する。</li><li>newで作られるインスタンスや配列を図にする。</li><li>値が変わる行だけを追う。</li><li>メソッド呼び出しでどこへ移動するか確認する。</li><li>最後に出力順を確認する。</li></ol></section><section class="card lesson-section"><h2>小さい例で読む</h2><pre><code>class Item {
+    int price;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Item a = new Item();
+        Item b = a;
+        b.price = 100;
+        System.out.println(a.price);
+    }
+}</code></pre><p>読み方は、<code>a</code>が新しい<code>Item</code>を指す、<code>b = a</code>で同じ<code>Item</code>を指す、<code>b.price</code>を書き換える、同じ実体を<code>a</code>から読んで100が出る、という順。</p></section><section class="card lesson-section"><h2>値の変化だけを表にする</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>行</th><th>a</th><th>b</th><th>オブジェクトのprice</th></tr></thead><tbody><tr><td><code>Item a = new Item();</code></td><td>Item#1</td><td>-</td><td>0</td></tr><tr><td><code>Item b = a;</code></td><td>Item#1</td><td>Item#1</td><td>0</td></tr><tr><td><code>b.price = 100;</code></td><td>Item#1</td><td>Item#1</td><td>100</td></tr><tr><td><code>println(a.price)</code></td><td>Item#1</td><td>Item#1</td><td>100を読む</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>読解でやってはいけないこと</h2><ul><li>いきなり出力選択肢を見る。</li><li>コンパイルエラー確認を飛ばす。</li><li>宣言型と実体型を混同する。</li><li><code>String</code>や配列の参照を図にせず頭だけで追う。</li><li><code>++</code>や<code>+=</code>の副作用を読み飛ばす。</li></ul></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードを、コンパイル可否→型→参照→値→出力の順で読む。</p><pre><code>StringBuilder sb1 = new StringBuilder("A");
+StringBuilder sb2 = sb1;
+sb2.append("B");
+System.out.println(sb1);</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>Javaコードは上から眺めるだけでは読めない。読む順番を固定する。まずクラス構造、次に実行入口、次に変数の型、最後に実行時の値の変化を追う。</p><p>特に試験形式や短いサンプルでは、見た目の順番と実行順序が一致しないことが多い。メソッド定義は上にあっても、呼ばれなければ実行されない。コンストラクタは<code>new</code>のタイミングで動く。</p><p>コード読解の目的は「なんとなく分かる」ではなく、「この行の時点でこの変数はこの値」と説明できる状態にすること。</p><div class="principle-grid"><div class="principle-card"><strong>構造確認</strong><p>クラス、フィールド、メソッド、コンストラクタを分ける。</p></div><div class="principle-card"><strong>入口確認</strong><p><code>main</code>または呼び出し元から実行順序を追う。</p></div><div class="principle-card"><strong>状態追跡</strong><p>変数と参照がどう変わるかを表にする。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>定義順 / 実行順</td><td>上に書いてあるから先に実行されるとは限らない。</td><td><code>main</code>から呼び出しを追う。</td></tr><tr><td>型 / 実体</td><td>変数の型と<code>new</code>された型は違う場合がある。</td><td><code>A a = new B()</code>を分解する。</td></tr><tr><td>宣言 / 代入</td><td>宣言だけでは値が入らない場合がある。</td><td>初期化済みか見る。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>トップレベルクラスとファイル名を見る。</li><li>フィールド、コンストラクタ、メソッドを色分けするつもりで分ける。</li><li><code>main</code>から実行順に番号を振る。</li><li>各変数について、型・値・参照先を表にする。</li><li>分岐・ループ・例外で実行されない行を消す。</li></ol><p class="code-caption">確認用コード</p><pre><code>class Item {
+    int price;
+    Item(int price) { this.price = price; }
+    void change(int price) { this.price = price; }
+}
+Item item = new Item(100);
+item.change(200);
+System.out.println(item.price);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>new Item(100)</code></td><td>コンストラクタ実行</td><td><code>price=100</code></td></tr><tr><td><code>change(200)</code></td><td>フィールドを200に更新</td><td><code>price=200</code></td></tr><tr><td>出力</td><td><code>item.price</code></td><td><code>200</code></td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>上から全部実行される、は違う</strong><p>メソッド定義やクラス定義は、そこに書いてあるだけで実行されるわけではない。</p></div><div class="mistake-callout"><strong>変数名だけで判断する</strong><p>同じ名前でもローカル変数とフィールドがある。<code>this</code>の有無を見る。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>コードを読むとき、出力を考える前に確認すべき最初の3点を答える。</p><details class="answer-panel"><summary>考え方と答えを見る</summary><p>1つ目は、コンパイルできる構造か。ファイル名、クラス名、main、型の整合性を見る。</p><p>2つ目は、実行入口がどこか。通常は<code>main</code>から追う。</p><p>3つ目は、変数の型と初期値。特にローカル変数、フィールド、参照型を分ける。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>コード読解で失敗する最大の原因は、<strong>上から眺めて雰囲気で答える</strong>ことです。Javaコードは、必ず順序を決めて読みます。まずコンパイル可否、次に実行開始位置、次に値の変化、最後に出力や例外です。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>順番</th><th>確認内容</th><th>飛ばすと起きる失敗</th></tr></thead><tbody><tr><td>1</td><td>クラス・メソッド・型が成立しているか</td><td>コンパイル不可なのに出力を考える</td></tr><tr><td>2</td><td><code>main</code>からどこへ進むか</td><td>呼ばれないメソッドの処理を読んでしまう</td></tr><tr><td>3</td><td>変数・参照・条件式の変化</td><td>古い値のまま計算する</td></tr><tr><td>4</td><td>出力、return、例外、finally</td><td>途中で制御が移る箇所を見落とす</td></tr></tbody></table></div>
+<pre><code>int x = 1;
+int y = x++ + ++x;
+System.out.println(x + "," + y);</code></pre>
+<p>このようなコードを見たとき、いきなり足し算しないでください。<code>x++</code>で「式には元の値を使い、その後増える」、<code>++x</code>で「先に増えて、その値を使う」と順番に処理します。表を書けばミスは減ります。</p>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>読解力はセンスではありません。順番を固定して、値の変化を表に落とすだけでかなり改善します。雑に暗算する癖は捨ててください。</p></div>
+</section><section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>コードを読む順番を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="19.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="21.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-20.html";</script>
+<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

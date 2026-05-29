@@ -1,1 +1,99 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="プリミティブ型、参照型、変数、メモリの見方を説明します。"><title>変数・型・メモリの考え方｜Java Practice Lab</title><meta name="theme-color" content="#2563eb"><link rel="manifest" href="../../../manifest.webmanifest"><link rel="stylesheet" href="../../../assets/css/styles.css?v=progress-noexam-20260526"></head><body><a class="skip-link" href="#mainContent">本文へ移動</a><div class="layout"><aside class="sidebar" id="siteSidebar"><div class="sidebar-top"><p class="brand"><a href="../../../index.html">Java Practice Lab</a></p></div><nav class="nav-list"><details class="nav-section" open><summary>コース</summary><div><a class="nav-link" href="../index.html">1からわかるJava基礎</a><a class="nav-link" href="../../bronze/index.html">Java Bronze</a><a class="nav-link" href="../../java11-silver/index.html">Java11 Silver</a><a class="nav-link" href="../../java17-silver/index.html">Java17 Silver</a><a class="nav-link" href="../../gold/index.html">Java Gold</a></div></details><details class="nav-section"><summary>共通</summary><div><a class="nav-link" href="../../../articles/index.html">学習記事</a><a class="nav-link" href="../../java17-silver/exams/index.html">Java17模試センター</a><a class="nav-link" href="../../../app/dashboard.html">学習状況</a></div></details></nav></aside><main id="mainContent" class="main"><article class="article-page"><h1>変数・型・メモリの考え方</h1><p>変数は値を入れる箱と説明されがちですが、Javaではプリミティブ型と参照型で考え方が違います。</p><h2>プリミティブ型</h2><p>`int`や`double`などは値そのものを扱います。</p><h2>参照型</h2><p>`String`や配列、クラスのインスタンスは、オブジェクトそのものではなく参照を変数に持ちます。`==`が参照比較になる理由はここにあります。</p></article><footer class="site-footer"><div class="footer-links"><a href="../../../index.html">Home</a><a href="../../../articles/index.html">Articles</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer></main><aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside></div><script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-05.html";</script><script src="../../../pwa.js"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="変数に何が入っているのかを、プリミティブ型と参照型に分けて理解する。" name="description"/>
+<title>Lesson 5 変数・値・型｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<div class="nav breadcrumb"><a href="../../../index.html">トップ</a><a href="../index.html">Java基礎</a><a href="../../../articles/index.html">学習記事</a></div>
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 5</p>
+<h1>変数・値・型</h1>
+<p class="lead">変数に何が入っているのかを、プリミティブ型と参照型に分けて理解する。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>先に結論</h2><p>変数は「値を入れる箱」と説明されがちだが、それだけでは不十分。Javaでは、プリミティブ型の変数には値そのものが入り、参照型の変数にはオブジェクトへの参照が入る。この違いが配列・String・クラスで効いてくる。</p></section><section class="card lesson-section"><h2>プリミティブ型と参照型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>分類</th><th>代表例</th><th>変数に入るもの</th><th>null</th></tr></thead><tbody><tr><td>プリミティブ型</td><td><code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code></td><td>値そのもの</td><td>入らない</td></tr><tr><td>参照型</td><td><code>String</code>, 配列, 自作クラス</td><td>オブジェクトを指す参照</td><td>入る</td></tr></tbody></table></div><pre><code>int n = 10;        // nには数値10が入る
+String s = "A";    // sにはStringオブジェクトへの参照が入る
+String t = null;   // tは何も参照していない</code></pre></section><section class="card lesson-section"><h2>ローカル変数とフィールドの初期値</h2><p>メソッド内で宣言したローカル変数は、自動初期化されない。使う前に必ず代入が必要。クラスのフィールドは、型ごとのデフォルト値で初期化される。</p><p class="code-caption">差が出る例</p><pre><code>public class Main {
+    static int field;
+
+    public static void main(String[] args) {
+        int local;
+        System.out.println(field); // 0
+        System.out.println(local); // コンパイルエラー
+    }
+}</code></pre></section><section class="card lesson-section"><h2>型は「扱い方」を決める</h2><p>型は単なるラベルではない。その変数に何を代入できるか、どんな演算ができるか、どのメソッドを呼べるかを決める。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>コード</th><th>結果</th><th>理由</th></tr></thead><tbody><tr><td><code>int x = 10;</code></td><td>OK</td><td><code>int</code>に整数値を代入できる</td></tr><tr><td><code>int x = null;</code></td><td>エラー</td><td>プリミティブ型に<code>null</code>は入らない</td></tr><tr><td><code>String s = null;</code></td><td>OK</td><td>参照型は<code>null</code>を持てる</td></tr><tr><td><code>boolean b = 1;</code></td><td>エラー</td><td>Javaの<code>boolean</code>は数値ではない</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>悪い例と修正</h2><p class="code-caption">悪い例：初期化前に使っている</p><pre><code>public class Main {
+    public static void main(String[] args) {
+        int count;
+        count++;
+        System.out.println(count);
+    }
+}</code></pre><p class="code-caption">修正例</p><pre><code>public class Main {
+    public static void main(String[] args) {
+        int count = 0;
+        count++;
+        System.out.println(count);
+    }
+}</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次の変数について、プリミティブ型か参照型か、初期化なしで使えるかを判断する。</p><pre><code>int a;
+String b;
+int[] c;
+boolean d;</code></pre><p>メソッド内のローカル変数なら、どれも初期化前には使えない。型の分類と初期化ルールは別問題。</p></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>変数を「箱」とだけ覚えると、参照型で必ず詰まる。Javaでは、プリミティブ型の変数には値そのもの、参照型の変数にはオブジェクトへの参照が入る。この違いが、代入、比較、メソッド呼び出し、配列で効いてくる。</p><p>ローカル変数とフィールドの違いも重要。ローカル変数は自動初期化されない。フィールドは型ごとのデフォルト値で初期化される。ここを曖昧にすると、「なぜこっちは0で、こっちはコンパイルエラーなのか」が説明できない。</p><p>型は「入れ物の名前」ではなく「扱い方のルール」。<code>int</code>なら整数演算、<code>boolean</code>なら真偽値、<code>String</code>なら文字列オブジェクトへの参照として扱う。</p><div class="principle-grid"><div class="principle-card"><strong>プリミティブ型</strong><p>値そのものを持つ。<code>null</code>は入らない。</p></div><div class="principle-card"><strong>参照型</strong><p>オブジェクトを指す参照を持つ。<code>null</code>を持てる。</p></div><div class="principle-card"><strong>型</strong><p>代入できる値、使える演算、呼べるメソッドを決める。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>ローカル変数 / フィールド</td><td>ローカル変数は自動初期化されない。フィールドは初期値を持つ。</td><td>宣言場所を見る。</td></tr><tr><td>値 / 参照</td><td><code>int</code>は値、<code>String</code>や配列は参照。</td><td>型がプリミティブか参照型かを見る。</td></tr><tr><td>代入 / コピー</td><td>代入は変数の中身をコピーする。参照型なら参照がコピーされる。</td><td>オブジェクト自体が複製されるとは限らない。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>変数の宣言場所を見る。ローカルかフィールドかを決める。</li><li>型を見る。プリミティブ型か参照型かを決める。</li><li>代入式の右辺が、その型に入れられるか確認する。</li><li>使う前に初期化済みか確認する。</li><li>参照型なら<code>null</code>の可能性も考える。</li></ol><p class="code-caption">確認用コード</p><pre><code>public class Main {
+    static int field;
+
+    public static void main(String[] args) {
+        int local;
+        System.out.println(field);
+        System.out.println(local);
+    }
+}</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>field</code></td><td>staticフィールド</td><td>デフォルト値0で初期化済み</td></tr><tr><td><code>local</code></td><td>ローカル変数</td><td>初期化されていない</td></tr><tr><td>結論</td><td><code>local</code>使用で失敗</td><td>コンパイルエラー</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>ローカル変数も0になる、は間違い</strong><p>自動初期化されるのはフィールド。ローカル変数は使う前に代入が必要。</p></div><div class="mistake-callout"><strong>参照型の代入でオブジェクトがコピーされる、は危険</strong><p>コピーされるのは参照。2つの変数が同じオブジェクトを見ることがある。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードはコンパイルできるか。できない場合は理由を説明する。</p><p class="code-caption">確認問題</p><pre><code>public class Main {
+    public static void main(String[] args) {
+        int x;
+        String s = null;
+        System.out.println(s);
+        System.out.println(x);
+    }
+}</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>コンパイルできない。</p><p><code>s</code>は参照型なので<code>null</code>を代入できる。問題は<code>x</code>。ローカル変数<code>x</code>は初期化されないまま使われているため、コンパイルエラーになる。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>このLessonの中心は、<strong>変数を「値が入る箱」とだけ覚えない</strong>ことです。箱という比喩は入口としては使えますが、Javaを読むときはそこで止まると危険です。プリミティブ型の変数には値そのものが入り、参照型の変数にはオブジェクトそのものではなく参照が入ります。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>見る対象</th><th>確認すること</th><th>判断</th></tr></thead><tbody><tr><td>宣言</td><td><code>int n;</code> / <code>String s;</code></td><td>変数名と型が決まる。まだ使える値があるとは限らない。</td></tr><tr><td>初期化</td><td><code>n = 10;</code> / <code>s = "Java";</code></td><td>その変数を読んでよい状態になる。</td></tr><tr><td>再代入</td><td><code>n = 20;</code> / <code>s = "Java";</code></td><td>変数が保持する値、または参照が差し替わる。</td></tr><tr><td>使用</td><td><code>System.out.println(n);</code></td><td>ここまでに必ず初期化されている必要がある。</td></tr></tbody></table></div>
+<p>特にローカル変数は、宣言しただけでは使えません。フィールドには型ごとの初期値がありますが、ローカル変数には自動初期化がありません。この差を曖昧にしたまま進むと、後のメソッド、コンストラクタ、クラスの問題で毎回つまずきます。</p>
+<pre><code>public class Sample {
+    int field; // フィールド。intの初期値0が入る
+
+    public void test() {
+        int local; // ローカル変数。まだ使えない
+        // System.out.println(local); // コンパイルエラー
+        System.out.println(field);    // 0
+    }
+}</code></pre>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>「変数を宣言したら何か値が入っている」は雑すぎます。フィールドなのかローカル変数なのか、プリミティブ型なのか参照型なのかで話が変わります。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>変数・値・型を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="04.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="06.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイト</a><a href="../../../site/privacy.html">Privacy</a><a href="../../../site/terms.html">Terms</a><a href="../../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-05.html";</script>
+<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

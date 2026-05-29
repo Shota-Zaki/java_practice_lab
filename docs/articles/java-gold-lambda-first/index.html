@@ -1,3 +1,52 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Silver後にGoldへ進む人向けにラムダ式の考え方を整理します。"><title>Java Goldに入る前のラムダ式入門｜Java Practice Lab</title><meta name="theme-color" content="#2563eb"><link rel="manifest" href="../../manifest.webmanifest"><link rel="stylesheet" href="../../assets/css/styles.css?v=docs-content-02-20260526"></head><body><a class="skip-link" href="#mainContent">本文へ移動</a><div class="layout"><aside class="sidebar" id="siteSidebar"><div class="sidebar-top"><p class="brand"><a href="../../index.html">Java Practice Lab</a></p></div><nav class="nav-list"><details class="nav-section" open><summary>コース</summary><div><a class="nav-link" href="../../courses/java-basic/index.html">1からわかるJava基礎</a><a class="nav-link" href="../../courses/bronze/index.html">Java Bronze</a><a class="nav-link" href="../../courses/java11-silver/index.html">Java11 Silver</a><a class="nav-link" href="../../courses/java17-silver/index.html">Java17 Silver</a><a class="nav-link" href="../../courses/gold/index.html">Java Gold</a></div></details><details class="nav-section"><summary>共通</summary><div><a class="nav-link" href="../../articles/index.html">学習記事</a><a class="nav-link" href="../../courses/java17-silver/exams/index.html">Java17模試センター</a><a class="nav-link" href="../../app/dashboard.html">学習状況</a></div></details></nav></aside><main id="mainContent" class="main"><article class="article-page"><h1>Java Goldに入る前のラムダ式入門</h1><p class="lead">Silver後にGoldへ進む人向けにラムダ式の考え方を整理します。</p><h2>ラムダ式とは</h2><p>処理を値のように渡す書き方です。関数型インタフェースとセットで使います。</p><pre><code>Runnable r = () -&gt; System.out.println(&quot;run&quot;);
-r.run();</code></pre><h2>引数あり</h2><pre><code>Function&lt;String, Integer&gt; f = s -&gt; s.length();
-System.out.println(f.apply(&quot;Java&quot;));</code></pre><h2>注意</h2><p>ラムダ式はGold範囲で重要です。Silver学習中は「こういう書き方がある」程度で十分です。</p><nav class="pager"><a class="btn secondary" href="../index.html">学習記事一覧へ</a></nav></article><footer class="site-footer"><div class="footer-links"><a href="../../index.html">Home</a><a href="../../articles/index.html">Articles</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></div><p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p></footer></main><aside class="right-rail-ad"><div class="ad-slot"><span>広告</span></div></aside></div><script>window.APP_ROOT="../../";window.CURRENT_PAGE="java-gold-lambda-first";</script><script src="../../pwa.js?v=docs-content-02-20260526"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java後にGoldへ進む人向けにラムダ式の考え方を整理します。" name="description"/>
+<title>ラムダ式入門｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>ラムダ式と関数型インタフェース</h1>
+<p class="lead">ラムダ式は、抽象メソッドが1つだけの型へ代入される処理です。形ではなく、代入先の型から読みます。</p>
+<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+<section class="article-section"><h2>ラムダ式だけでは型が決まらない</h2><p><code>x -&gt; x + 1</code>という形だけでは、何型の引数を受け取り、何型を返すのか決まりません。代入先やメソッド引数の型によって決まります。</p></section>
+<pre class="article-code"><code>Function&lt;Integer, Integer&gt; f = x -&gt; x + 1;
+Predicate&lt;String&gt; p = s -&gt; s.length() &gt; 0;
+Consumer&lt;String&gt; c = s -&gt; System.out.println(s);</code></pre>
+<table class="study-table ref-table"><thead><tr><th>型</th><th>抽象メソッド</th><th>用途</th></tr></thead><tbody><tr><td><code>Predicate&lt;T&gt;</code></td><td><code>boolean test(T t)</code></td><td>条件判定。filterなどで使う。</td></tr><tr><td><code>Function&lt;T,R&gt;</code></td><td><code>R apply(T t)</code></td><td>値の変換。mapなどで使う。</td></tr><tr><td><code>Consumer&lt;T&gt;</code></td><td><code>void accept(T t)</code></td><td>値を受け取って処理する。戻り値なし。</td></tr><tr><td><code>Supplier&lt;T&gt;</code></td><td><code>T get()</code></td><td>値を供給する。引数なし。</td></tr></tbody></table>
+<section class="article-section"><h2>波かっこありのreturn</h2><p>式形式ならreturnを書きません。ブロック形式で値を返すならreturnが必要です。</p></section>
+<pre class="article-code"><code>Function&lt;String, Integer&gt; a = s -&gt; s.length();
+Function&lt;String, Integer&gt; b = s -&gt; { return s.length(); };
+// Function&lt;String, Integer&gt; c = s -&gt; { s.length(); }; // コンパイルエラー</code></pre>
+<div class="bad-good"><div><strong>悪い判断</strong><p>ラムダの見た目だけで戻り値あり・なしを判断する。</p></div><div><strong>良い判断</strong><p>代入先の関数型インタフェースの抽象メソッドを確認する。</p></div></div>
+<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>

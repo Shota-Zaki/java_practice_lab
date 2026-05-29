@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="遅延評価、中間操作、終端操作、map、filter、reduce、groupingByを整理します。" name="description"/>
+<title>Stream APIを丁寧に読む｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>Stream APIを丁寧に読む</h1>
+<p class="lead">遅延評価、短絡操作、reduce、collectを、型と実行タイミングで分解します。</p>
+<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+<section class="article-section"><h2>遅延評価は「実行されない」ではなく「必要になるまで保留」</h2><p>中間操作はパイプラインを組み立てます。終端操作が呼ばれた時点で、必要な分だけ上流から要素が流れます。</p></section>
+<pre class="article-code"><code>Stream&lt;String&gt; s = Stream.of(&quot;A&quot;, &quot;B&quot;)
+    .peek(System.out::println);
+// この時点では何も表示されない
+s.count(); // 終端操作で処理が流れる</code></pre>
+<section class="article-section"><h2>短絡操作は全要素を処理しないことがある</h2><p><code>anyMatch</code>、<code>allMatch</code>、<code>findFirst</code>、<code>limit</code> は、結果が確定した時点で処理を打ち切ることがあります。出力問題では、何個の要素が実際に評価されたかを追います。</p></section>
+<pre class="article-code"><code>boolean result = Stream.of(1, 2, 3, 4)
+    .peek(System.out::print)
+    .anyMatch(n -&gt; n &gt; 2);
+// 表示は 123 で止まる</code></pre>
+<table class="study-table ref-table"><thead><tr><th>操作</th><th>戻り値</th><th>注意点</th></tr></thead><tbody><tr><td><code>map</code></td><td><code>Stream&lt;R&gt;</code></td><td>要素型が変わる。以後のラムダ引数の型も変わる。</td></tr><tr><td><code>flatMap</code></td><td><code>Stream&lt;R&gt;</code></td><td>Streamの入れ子を平らにする。戻り値はStreamでなければならない。</td></tr><tr><td><code>reduce</code></td><td>値または<code>Optional</code></td><td>初期値の有無で戻り値が変わる。</td></tr><tr><td><code>collect</code></td><td>コレクションやMapなど</td><td>Collectorの指定によって戻り値が大きく変わる。</td></tr></tbody></table>
+<section class="article-section"><h2>reduceは「畳み込み」</h2><p><code>reduce</code>は、要素を1つの値へまとめます。初期値ありなら空Streamでも初期値が返ります。初期値なしなら結果が存在しない可能性があるため、戻り値は<code>Optional</code>になります。</p></section>
+<pre class="article-code"><code>int sum = Stream.of(1, 2, 3)
+    .reduce(0, (a, b) -&gt; a + b); // 6
+
+Optional&lt;Integer&gt; max = Stream.&lt;Integer&gt;empty()
+    .reduce((a, b) -&gt; a &gt; b ? a : b); // Optional.empty</code></pre>
+<div class="article-callout">Streamの深い問題は、見た目よりも「戻り値の型」と「評価される要素数」で決まります。処理の意味を雰囲気で読むと、短絡操作で落ちます。</div>
+<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer">
+<div class="site-footer-inner">
+<div class="footer-brand">Java Practice Lab</div>
+<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
+<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
+</div>
+</footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script><script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script><script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+</body>
+</html>
