@@ -8,18 +8,18 @@
 <title>sealedとrecordのJava17 Silver頻出整理</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-<div class="nav"><a href="../../index.html">トップ</a><a href="../../courses/java-basic/index.html">Java基礎</a><a href="../../articles/index.html">学習記事</a></div><article class="card"><h1>sealedとrecordのJava17 Silver頻出整理</h1><p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>sealed</h2><p><code>sealed</code>は継承できるクラスを制限します。直接のサブクラスは<code>final</code>、<code>sealed</code>、<code>non-sealed</code>のいずれかを指定します。</p><h2>record</h2><p>recordはデータ保持用の簡潔なクラスです。アクセサは<code>name()</code>のようにコンポーネント名になります。</p><h2>注意</h2><p>recordのフィールドへ直接再代入したり、存在しないgetter名を呼ぶ問題に注意します。</p><div class="nav"><a href="../index.html">記事一覧へ</a></div>
+<article class="card"><h1>sealedとrecordのJava17 Silver頻出整理</h1><p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>sealed</h2><p><code>sealed</code>は継承できるクラスを制限します。直接のサブクラスは<code>final</code>、<code>sealed</code>、<code>non-sealed</code>のいずれかを指定します。</p><h2>record</h2><p>recordはデータ保持用の簡潔なクラスです。アクセサは<code>name()</code>のようにコンポーネント名になります。</p><h2>注意</h2><p>recordのフィールドへ直接再代入したり、存在しないgetter名を呼ぶ問題に注意します。</p>
 <section class="article-section quality-upgrade-section"><h2>defaultメソッドの衝突を読む</h2>
 <ol class="article-list priority-list"><li>クラスに具象メソッドがあれば、それが優先。</li><li>複数interfaceのdefaultが衝突したら、実装クラスでoverride必須。</li><li>interfaceのstaticメソッドは実装クラスへ継承されない。</li><li>interfaceの抽象メソッドを実装するときはpublicを弱められない。</li></ol>
 <pre class="article-code"><code>interface A { default void test(){ System.out.println("A"); } }
@@ -50,8 +50,8 @@ class C implements A, B {
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

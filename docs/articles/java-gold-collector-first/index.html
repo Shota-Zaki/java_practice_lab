@@ -8,13 +8,13 @@
 <title>Collectors入門</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,24 +22,24 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Collectors入門</h1>
 <p class="lead">collectはStreamの終点です。どのCollectorを渡したかで、List、Set、Map、文字列、数値集約に変わります。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>collectは「集め方」を指定する</h2><p><code>collect</code>自体を覚えるより、渡しているCollectorの種類を読むほうが重要です。</p></section>
 <table class="study-table ref-table"><thead><tr><th>Collector</th><th>結果</th><th>確認点</th></tr></thead><tbody><tr><td><code>toList()</code></td><td>List</td><td>順序や変更可能性を決めつけない。</td></tr><tr><td><code>toSet()</code></td><td>Set</td><td>重複が消える。順序も決めつけない。</td></tr><tr><td><code>joining()</code></td><td>String</td><td>要素型はCharSequence系である必要がある。</td></tr><tr><td><code>toMap()</code></td><td>Map</td><td>キー重複時の扱いが重要。</td></tr><tr><td><code>groupingBy()</code></td><td>Map</td><td>キーと値側の型を分けて読む。</td></tr></tbody></table>
-<pre class="article-code"><code>String joined = Stream.of(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
-    .collect(Collectors.joining(&quot;-&quot;));
+<pre class="article-code"><code>String joined = Stream.of("A", "B", "C")
+    .collect(Collectors.joining("-"));
 System.out.println(joined); // A-B-C</code></pre>
 <section class="article-section"><h2>toMapはキー重複に注意</h2><p><code>toMap</code>で同じキーが作られると、マージ関数を指定していない場合は実行時例外になります。</p></section>
-<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of(&quot;aa&quot;, &quot;bb&quot;)
+<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb")
     .collect(Collectors.toMap(String::length, s -&gt; s));
 // どちらもキー2になるため、実行時例外</code></pre>
-<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of(&quot;aa&quot;, &quot;bb&quot;)
+<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb")
     .collect(Collectors.toMap(
         String::length,
         s -&gt; s,
         (oldValue, newValue) -&gt; oldValue));
 // キー重複時の処理を指定しているためOK</code></pre>
 <div class="article-callout">Collectorsは「何に集めるか」よりも「重複、順序、下流Collector、戻り値の型」を見ると安定します。</div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -51,8 +51,8 @@ System.out.println(joined); // A-B-C</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

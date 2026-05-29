@@ -8,13 +8,13 @@
 <title>try-with-resourcesと抑制された例外｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,20 +22,20 @@
 <article class="content-page long-article gold-deep-article">
 <h1>try-with-resourcesと抑制例外</h1>
 <p class="lead">try-with-resourcesでは、try本体の例外とclose時の例外が同時に起きることがあります。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>リソースは逆順にcloseされる</h2><p>try-with-resourcesで複数のリソースを宣言した場合、closeは宣言と逆順に呼ばれます。</p></section>
-<pre class="article-code"><code>try (A a = new A(&quot;A&quot;); B b = new B(&quot;B&quot;)) {
-    System.out.println(&quot;body&quot;);
+<pre class="article-code"><code>try (A a = new A("A"); B b = new B("B")) {
+    System.out.println("body");
 }
 // closeは B → A の順</code></pre>
 <section class="article-section"><h2>抑制例外とは何か</h2><p>try本体で例外が発生し、さらにcloseでも例外が発生した場合、主例外はtry本体の例外です。closeで発生した例外は抑制例外として主例外に保持されます。</p></section>
 <pre class="article-code"><code>try (Resource r = new Resource()) {
-    throw new RuntimeException(&quot;body&quot;);
+    throw new RuntimeException("body");
 }
 // closeでも例外が出ると、close側はsuppressedに入る</code></pre>
 <table class="study-table ref-table"><thead><tr><th>状況</th><th>主例外</th><th>抑制例外</th></tr></thead><tbody><tr><td>try本体だけで例外</td><td>try本体の例外</td><td>なし</td></tr><tr><td>closeだけで例外</td><td>closeの例外</td><td>なし</td></tr><tr><td>try本体とcloseで例外</td><td>try本体の例外</td><td>closeの例外</td></tr><tr><td>複数closeで例外</td><td>最初に主例外になったもの</td><td>残りが抑制される</td></tr></tbody></table>
 <div class="article-callout">try-with-resourcesは「closeの順番」と「どの例外が主になるか」を分けて追います。</div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -47,8 +47,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

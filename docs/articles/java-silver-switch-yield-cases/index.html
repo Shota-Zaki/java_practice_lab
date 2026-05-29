@@ -8,18 +8,18 @@
 <title>switch文・switch式・yieldの見分け方</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-<div class="nav"><a href="../../index.html">トップ</a><a href="../../courses/java-basic/index.html">Java基礎</a><a href="../../articles/index.html">学習記事</a></div><article class="card"><h1>switch文・switch式・yieldの見分け方</h1><p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>switch文</h2><pre><code>switch(x){ case 1: result="A"; break; }</code></pre><p>文なので値を返しません。</p><h2>switch式</h2><pre><code>String s = switch(x){ case 1 -&gt; "A"; default -&gt; "B"; };</code></pre><p>式なので値を返します。</p><h2>yield</h2><pre><code>String s = switch(x){ case 1: yield "A"; default: yield "B"; };</code></pre><div class="nav"><a href="../index.html">記事一覧へ</a></div>
+<article class="card"><h1>switch文・switch式・yieldの見分け方</h1><p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p><h2>switch文</h2><pre><code>switch(x){ case 1: result="A"; break; }</code></pre><p>文なので値を返しません。</p><h2>switch式</h2><pre><code>String s = switch(x){ case 1 -&gt; "A"; default -&gt; "B"; };</code></pre><p>式なので値を返します。</p><h2>yield</h2><pre><code>String s = switch(x){ case 1: yield "A"; default: yield "B"; };</code></pre>
 <section class="article-section quality-upgrade-section"><h2>追加構文は「何が自動生成され、何が禁止されるか」で読む</h2>
 <table class="study-table ref-table"><thead><tr><th>構文</th><th>確認すること</th><th>落とし穴</th></tr></thead><tbody>
 <tr><td><code>record</code></td><td>コンポーネント、アクセサ、equals/hashCode/toString</td><td>アクセサはgetXではなくx()。</td></tr>
@@ -50,8 +50,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

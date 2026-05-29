@@ -8,13 +8,13 @@
 <title>Lesson 23 メモリ・スタック・ヒープ｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -25,7 +25,7 @@
 <h1>メモリ・スタック・ヒープ</h1>
 <p class="lead">ローカル変数、参照、newされたオブジェクトの位置関係をイメージする。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>ローカル変数やメソッド呼び出しの管理はスタック、<code>new</code>されたオブジェクトはヒープに置かれる、と考えると参照の動きが理解しやすい。厳密なJVM内部を覚えるより、まず「変数」と「オブジェクト」を分ける。</p></section><section class="card lesson-section"><h2>スタックとヒープの役割</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>領域</th><th>何を置くと考えるか</th><th>学習上の使い道</th></tr></thead><tbody><tr><td>スタック</td><td>メソッド呼び出し、ローカル変数など</td><td>今どのメソッドを実行中か、ローカル変数が何を持つかを見る</td></tr><tr><td>ヒープ</td><td><code>new</code>されたオブジェクトや配列</td><td>参照型変数が何を指しているかを見る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>参照型の図解を言葉で書く</h2><pre><code>Item a = new Item();
+</article><section class="card lesson-section"><h2>スタックとヒープの役割</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>領域</th><th>何を置くと考えるか</th><th>学習上の使い道</th></tr></thead><tbody><tr><td>スタック</td><td>メソッド呼び出し、ローカル変数など</td><td>今どのメソッドを実行中か、ローカル変数が何を持つかを見る</td></tr><tr><td>ヒープ</td><td><code>new</code>されたオブジェクトや配列</td><td>参照型変数が何を指しているかを見る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>参照型の図解を言葉で書く</h2><pre><code>Item a = new Item();
 Item b = a;</code></pre><p>このとき、ヒープ上に<code>Item</code>オブジェクトが1つ作られる。スタック上の<code>a</code>と<code>b</code>は、その同じオブジェクトを指す参照を持つ。</p><pre><code>b = new Item();</code></pre><p>ここで<code>b</code>だけが新しい<code>Item</code>を指すようになる。<code>a</code>が指す先は変わらない。</p></section><section class="card lesson-section"><h2>プリミティブ型は値のコピー</h2><pre><code>int a = 10;
 int b = a;
 b = 20;
@@ -61,8 +61,8 @@ System.out.println(a[0]); // 9</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-23.html";</script>
-<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

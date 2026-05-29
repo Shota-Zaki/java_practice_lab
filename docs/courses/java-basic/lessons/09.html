@@ -8,13 +8,13 @@
 <title>Lesson 9 for・while｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -25,7 +25,7 @@
 <h1>for・while</h1>
 <p class="lead">繰り返し処理を、初期化・条件・更新・本体の順序で追えるようにする。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>ループは「初期化」「条件判定」「本体」「更新」の順番で読む。<code>while</code>は先に条件判定、<code>do-while</code>は本体を先に実行する。<code>break</code>は抜ける、<code>continue</code>は次の反復へ進む。</p></section><section class="card lesson-section"><h2>for文の読み方</h2><p class="code-caption">0, 1, 2が表示される</p><pre><code>for (int i = 0; i &lt; 3; i++) {
+</article><section class="card lesson-section"><h2>for文の読み方</h2><p class="code-caption">0, 1, 2が表示される</p><pre><code>for (int i = 0; i &lt; 3; i++) {
     System.out.println(i);
 }</code></pre><ol><li><code>int i = 0</code>を最初に1回だけ実行する。</li><li><code>i &lt; 3</code>を判定する。</li><li>trueなら本体を実行する。</li><li><code>i++</code>を実行する。</li><li>条件判定へ戻る。</li></ol></section><section class="card lesson-section"><h2>whileとdo-while</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>構文</th><th>条件判定のタイミング</th><th>最低実行回数</th></tr></thead><tbody><tr><td><code>while</code></td><td>本体の前</td><td>0回</td></tr><tr><td><code>do-while</code></td><td>本体の後</td><td>1回</td></tr></tbody></table></div><pre><code>int x = 10;
 while (x &lt; 5) {
@@ -81,8 +81,8 @@ do {
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-09.html";</script>
-<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

@@ -8,13 +8,13 @@
 <title>Lesson 21 ビット・バイト・2進数｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -25,7 +25,7 @@
 <h1>ビット・バイト・2進数</h1>
 <p class="lead">型や文字コードの理解に必要な最小限のコンピュータ基礎を押さえる。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>bitは0か1の情報、byteは通常8bit。Javaの数値リテラルや文字コード、ファイルサイズを理解するために最低限必要。深追いしすぎる必要はないが、2進数・16進数の表記は読めるようにする。</p></section><section class="card lesson-section"><h2>bitとbyte</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>単位</th><th>意味</th><th>例</th></tr></thead><tbody><tr><td>bit</td><td>0または1の1桁</td><td>スイッチのON/OFFのような情報</td></tr><tr><td>byte</td><td>通常8bit</td><td>ファイルサイズ、メモリサイズ</td></tr><tr><td>KB/MB/GB</td><td>byteを大きくした単位</td><td>ストレージ容量など</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>2進数の読み方</h2><p>2進数は右から1, 2, 4, 8, 16...の重みを持つ。1になっている桁の重みを足す。</p><p class="code-caption">Javaの2進数リテラル</p><pre><code>0b1010
+</article><section class="card lesson-section"><h2>bitとbyte</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>単位</th><th>意味</th><th>例</th></tr></thead><tbody><tr><td>bit</td><td>0または1の1桁</td><td>スイッチのON/OFFのような情報</td></tr><tr><td>byte</td><td>通常8bit</td><td>ファイルサイズ、メモリサイズ</td></tr><tr><td>KB/MB/GB</td><td>byteを大きくした単位</td><td>ストレージ容量など</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>2進数の読み方</h2><p>2進数は右から1, 2, 4, 8, 16...の重みを持つ。1になっている桁の重みを足す。</p><p class="code-caption">Javaの2進数リテラル</p><pre><code>0b1010
 = 8 + 2
 = 10</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>2進数</th><th>10進数</th></tr></thead><tbody><tr><td><code>0b1</code></td><td>1</td></tr><tr><td><code>0b10</code></td><td>2</td></tr><tr><td><code>0b11</code></td><td>3</td></tr><tr><td><code>0b1000</code></td><td>8</td></tr><tr><td><code>0b1111</code></td><td>15</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>16進数の読み方</h2><p>16進数は0〜9に加えてA〜Fを使う。Javaでは<code>0x</code>を付けて書く。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>16進</th><th>10進</th></tr></thead><tbody><tr><td><code>0xA</code></td><td>10</td></tr><tr><td><code>0xF</code></td><td>15</td></tr><tr><td><code>0x10</code></td><td>16</td></tr><tr><td><code>0xFF</code></td><td>255</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>Javaの整数リテラル</h2><pre><code>int a = 10;      // 10進数
 int b = 0b1010;  // 2進数。10
@@ -49,8 +49,8 @@ int c = 0x0A;   // 10</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-21.html";</script>
-<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

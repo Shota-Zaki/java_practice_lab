@@ -8,13 +8,13 @@
 <title>PathとFiles｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,18 +22,18 @@
 <article class="content-page long-article gold-deep-article">
 <h1>PathとFilesの基本</h1>
 <p class="lead">NIO.2は、Pathがパス表現、Filesが操作、という役割分担で読むと整理できます。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>Pathはファイルそのものではない</h2><p><code>Path</code>はファイルやディレクトリの場所を表すオブジェクトです。実体が存在するかどうかは別問題です。</p></section>
-<pre class="article-code"><code>Path p = Path.of(&quot;data&quot;, &quot;sample.txt&quot;);
+<pre class="article-code"><code>Path p = Path.of("data", "sample.txt");
 System.out.println(p.getFileName()); // sample.txt</code></pre>
 <table class="study-table ref-table"><thead><tr><th>API</th><th>役割</th><th>注意</th></tr></thead><tbody><tr><td><code>Path.of(...)</code></td><td>Pathを作る</td><td>存在確認はしない。</td></tr><tr><td><code>Files.exists(path)</code></td><td>存在確認</td><td>戻り値はboolean。</td></tr><tr><td><code>Files.readString(path)</code></td><td>内容を読む</td><td>IOExceptionの可能性。</td></tr><tr><td><code>Files.lines(path)</code></td><td>行Streamを返す</td><td>Streamを閉じる意識が必要。</td></tr><tr><td><code>Files.copy</code></td><td>コピー</td><td>既存ファイルの扱いに注意。</td></tr></tbody></table>
 <section class="article-section"><h2>normalizeとtoRealPathを混同しない</h2><p><code>normalize</code>はパス文字列上の<code>.</code>や<code>..</code>を整理します。ファイルの存在確認はしません。<code>toRealPath</code>は実ファイルシステムに問い合わせるため、存在しない場合に例外が起きます。</p></section>
-<pre class="article-code"><code>Path p = Path.of(&quot;a&quot;, &quot;..&quot;, &quot;b&quot;);
+<pre class="article-code"><code>Path p = Path.of("a", "..", "b");
 System.out.println(p.normalize()); // b
 
 // p.toRealPath(); // 実体がなければIOException</code></pre>
 <div class="bad-good"><div><strong>悪い判断</strong><p>Pathを作れたのでファイルが存在すると考える。</p></div><div><strong>良い判断</strong><p>Path作成、存在確認、読み書き操作を別々に判断する。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -45,8 +45,8 @@ System.out.println(p.normalize()); // b
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

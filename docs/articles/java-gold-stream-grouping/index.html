@@ -8,13 +8,13 @@
 <title>Collectors.groupingBy｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,18 +22,18 @@
 <article class="content-page long-article gold-deep-article">
 <h1>groupingByを正確に読む</h1>
 <p class="lead">Collectors.groupingByは、分類キーと値の集約方法を分けて読むと崩れません。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>groupingByの基本形</h2><p>第1引数は分類キーを作る関数です。下流Collectorを省略すると、同じキーの要素がListに集まります。</p></section>
-<pre class="article-code"><code>Map&lt;Integer, List&lt;String&gt;&gt; map = Stream.of(&quot;a&quot;, &quot;bb&quot;, &quot;cc&quot;)
+<pre class="article-code"><code>Map&lt;Integer, List&lt;String&gt;&gt; map = Stream.of("a", "bb", "cc")
     .collect(Collectors.groupingBy(String::length));
 // {1=[a], 2=[bb, cc]}</code></pre>
 <table class="study-table ref-table"><thead><tr><th>指定</th><th>意味</th><th>戻り値の形</th></tr></thead><tbody><tr><td><code>groupingBy(classifier)</code></td><td>キーごとにListへ集める</td><td><code>Map&lt;K, List&lt;T&gt;&gt;</code></td></tr><tr><td><code>groupingBy(classifier, counting())</code></td><td>キーごとに件数を数える</td><td><code>Map&lt;K, Long&gt;</code></td></tr><tr><td><code>groupingBy(classifier, mapping(...))</code></td><td>キーごとに値を変換して集める</td><td>下流Collector次第</td></tr></tbody></table>
 <section class="article-section"><h2>下流Collectorを読む</h2><p>2つ目の引数がある場合、値側は<code>List&lt;T&gt;</code>とは限りません。<code>counting()</code>なら<code>Long</code>、<code>joining()</code>なら<code>String</code>、<code>toSet()</code>なら<code>Set</code>です。</p></section>
-<pre class="article-code"><code>Map&lt;Integer, Long&gt; counts = Stream.of(&quot;a&quot;, &quot;bb&quot;, &quot;cc&quot;)
+<pre class="article-code"><code>Map&lt;Integer, Long&gt; counts = Stream.of("a", "bb", "cc")
     .collect(Collectors.groupingBy(String::length, Collectors.counting()));
 // {1=1, 2=2}</code></pre>
-<div class="bad-good"><div><strong>悪い判断</strong><p>groupingByは必ずMap<K, List<T>>になると決めつける。</p></div><div><strong>良い判断</strong><p>分類キーの型と下流Collectorの戻り値を別々に見る。</p></div></div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+<div class="bad-good"><div><strong>悪い判断</strong><p>groupingByは必ずMap<k, list<t="">&gt;になると決めつける。</k,></p></div><div><strong>良い判断</strong><p>分類キーの型と下流Collectorの戻り値を別々に見る。</p></div></div>
+
 </article>
 </main>
 </div>
@@ -45,8 +45,8 @@
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

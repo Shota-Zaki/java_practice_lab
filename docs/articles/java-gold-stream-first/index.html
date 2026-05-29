@@ -8,13 +8,13 @@
 <title>Stream API入門｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,25 +22,25 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Stream API入門</h1>
 <p class="lead">Streamは「コレクションを別の形に処理する流れ」です。中間操作と終端操作を分ければ、出力や戻り値をかなり正確に追えます。</p>
-<section class="article-section deep-intro-section"><h2>先に結論</h2><p>この単元は、用語を覚えるだけでは安定しません。コードを見た瞬間に、型、戻り値、実行タイミング、副作用の有無を順番に切り分ける必要があります。</p></section>
+
 <section class="article-section"><h2>Streamを読む順番</h2>
 <p>Streamの問題は、メソッド名を知っているだけでは解けません。必ず次の順番で追います。</p>
 <ol class="article-list priority-list"><li>元データの型と要素型を確認する。</li><li>中間操作で要素が残るのか、別の型に変わるのかを確認する。</li><li>終端操作で何が返るのかを確認する。</li><li>終端操作がなければ、原則として処理は流れないと判断する。</li></ol>
 </section>
 <table class="study-table ref-table"><thead><tr><th>分類</th><th>代表例</th><th>判定ポイント</th></tr></thead><tbody><tr><td>元データ</td><td><code>List&lt;String&gt;</code>, <code>Stream&lt;Integer&gt;</code></td><td>要素型を固定する。ここを曖昧にすると後続の型が崩れる。</td></tr><tr><td>中間操作</td><td><code>filter</code>, <code>map</code>, <code>sorted</code>, <code>peek</code></td><td>戻り値は基本的にStream。まだ処理結果そのものではない。</td></tr><tr><td>終端操作</td><td><code>count</code>, <code>forEach</code>, <code>collect</code>, <code>reduce</code></td><td>ここで初めて処理が実行され、Streamではない結果に変わる。</td></tr></tbody></table>
-<pre class="article-code"><code>List&lt;String&gt; names = List.of(&quot;Ann&quot;, &quot;Bob&quot;, &quot;Chris&quot;);
+<pre class="article-code"><code>List&lt;String&gt; names = List.of("Ann", "Bob", "Chris");
 long count = names.stream()
     .filter(s -&gt; s.length() &gt;= 4)
     .count();
 System.out.println(count); // 1</code></pre>
 <section class="article-section"><h2>filterとmapを混同しない</h2><p><code>filter</code>は要素を残すか捨てるかを決めます。<code>map</code>は要素を別の値へ変換します。どちらも中間操作なので、終端操作が来るまで処理は完了しません。</p></section>
 <div class="bad-good"><div><strong>悪い判断</strong><p>filterを「値を加工するメソッド」と読む。</p></div><div><strong>良い判断</strong><p>filterはboolean判定、mapは変換、と役割を分ける。</p></div></div>
-<pre class="article-code"><code>List&lt;Integer&gt; lengths = List.of(&quot;a&quot;, &quot;bb&quot;, &quot;ccc&quot;).stream()
-    .filter(s -&gt; s.length() &gt;= 2)  // &quot;bb&quot;, &quot;ccc&quot; が残る
+<pre class="article-code"><code>List&lt;Integer&gt; lengths = List.of("a", "bb", "ccc").stream()
+    .filter(s -&gt; s.length() &gt;= 2)  // "bb", "ccc" が残る
     .map(String::length)           // 2, 3 に変わる
     .toList();</code></pre>
 <div class="article-callout">Streamの最初の壁は、処理内容よりも「いつ実行されるか」です。中間操作だけを見て出力を決めると、ほぼ確実に誤ります。</div>
-<section class="article-section final-check-section"><h2>演習前チェック</h2><div class="article-card"><p>演習に入る前に、次の4点を自分の言葉で確認してください。</p><ol class="article-list priority-list"><li>このコードはコンパイルできるか。</li><li>戻り値の型は何か。</li><li>処理はいつ実行されるか。</li><li>元のオブジェクトが変わるのか、新しい結果が返るだけなのか。</li></ol></div><p><a class="btn secondary" href="../index.html">学習記事一覧へ戻る</a></p></section>
+
 </article>
 </main>
 </div>
@@ -52,8 +52,8 @@ System.out.println(count); // 1</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

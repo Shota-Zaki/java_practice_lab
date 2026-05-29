@@ -1677,3 +1677,66 @@ body.theme-dark .setup-ok { background: #052e16; color: #dcfce7; }
 @media (max-width: 680px) {
   .article-unit-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Exam official spec update */
+.practice-quality-guide.is-hidden { display: none !important; }
+body.is-practice-page .answer-actions,
+body.is-exam-page .answer-actions,
+.answer-actions {
+  bottom: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+.question-list { padding-bottom: 76px !important; }
+@media (max-width: 860px) {
+  .question-list { padding-bottom: 128px !important; }
+}
+
+
+/* exercise-display-articles-units-20260529: exercise display, header active state, article cards */
+body.is-practice-page .layout,
+body.is-exam-page .layout {
+  display: block !important;
+  width: min(100% - 32px, 980px) !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+body.is-practice-page .main,
+body.is-exam-page .main {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 22px 0 120px !important;
+}
+body.is-practice-page .layout::after,
+body.is-exam-page .layout::after { display: none !important; }
+.practice-quality-guide,
+.article-opening-summary,
+.deep-intro-section,
+.final-check-section { display: none !important; }
+.site-nav a.is-active {
+  color: var(--primary-dark, #1d4ed8) !important;
+  background: #dbeafe !important;
+  border-color: #bfdbfe !important;
+}
+.site-nav a.nav-home-button:not(.is-active) {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #334155 !important;
+}
+.article-unit-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+.article-unit-card {
+  height: 100% !important;
+  min-height: 310px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.article-unit-card a { flex: 1 1 auto; }
+.article-unit-card h2 { min-height: 3.2em; }
+@media (max-width: 1040px) { .article-unit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 680px) { .article-unit-grid { grid-template-columns: 1fr !important; } .article-unit-card { min-height: 0 !important; } }

@@ -8,13 +8,13 @@
 <title>recordを丁寧に整理｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold/index.html">Gold</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -22,7 +22,7 @@
 <h1>recordを丁寧に整理</h1>
 <p class="lead">recordのコンストラクタ、アクセサ、equalsをまとめます。</p>
 <div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-<div class="article-nav"><a class="btn" href="../index.html">学習記事一覧</a><a class="btn" href="../types/index.html">型・配列</a><a class="btn" href="../string/index.html">文字列</a><a class="btn" href="../operators-control/index.html">演算・制御</a><a class="btn" href="../class-design/index.html">クラス設計</a><a class="btn" href="../inheritance/index.html">継承</a><a class="btn" href="../exception/index.html">例外</a><a class="btn" href="../methods/index.html">メソッド表</a></div>
+
 <section class="article-section article-opening-summary">
 <h2>最初に固定する読み方</h2>
 <div class="article-callout strong"><strong>結論を急がない。</strong> まずコンパイルできるか、次に実行時に止まるか、最後に出力を追います。出力だけを先に追うと、型・アクセス・例外で簡単に崩れます。</div>
@@ -35,15 +35,6 @@
 </ol>
 </section>
 <section class="article-section">
-<h2>このページの使い方</h2>
-<p>Java 17論点は、単に「新しい書き方を知っているか」ではありません。問題では、<strong>その構文がどこまで自動生成するか</strong>、<strong>どの修飾子が必須か</strong>、<strong>どの範囲で変数が使えるか</strong>を狙ってきます。</p>
-<div class="decision-lane compact">
-<div><span>1</span><strong>構文として成立するか</strong><p>record、sealed、switch式、instanceofパターンの形を確認する。</p></div>
-<div><span>2</span><strong>暗黙に補われるものを読む</strong><p>recordのフィールド・アクセサ、interfaceの修飾子など。</p></div>
-<div><span>3</span><strong>実行時の型・出力を追う</strong><p>toString、equals、switchの戻り値、pattern変数のスコープ。</p></div>
-</div>
-<p class="inline-note article-callout">Java 17論点は、<a href="../class-design/index.html">クラス・static・record</a>、<a href="../java-silver-access-modifier/index.html">修飾子・アクセス制御</a>、<a href="../java-silver-cast-instanceof/index.html">ポリモーフィズム・キャスト</a>と強くつながっています。</p>
-</section><section class="article-section">
 <h2>recordの基本：データ保持用クラスを短く書く</h2>
 <p><code>record</code> は、値のまとまりを表すクラスを簡潔に書くための仕組みです。次の1行だけで、コンストラクタ、アクセサ、<code>equals</code>、<code>hashCode</code>、<code>toString</code> などが自動的に用意されます。</p>
 <pre class="article-code"><code>record Item(String name, int price) {}
@@ -311,8 +302,8 @@ if (obj instanceof String s &amp;&amp; s.length() &gt; 2) {
 </div>
 </footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
-<script src="../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

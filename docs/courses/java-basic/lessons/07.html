@@ -8,13 +8,13 @@
 <title>Lesson 7 Stringの基本｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -25,7 +25,7 @@
 <h1>Stringの基本</h1>
 <p class="lead">文字列がどのように扱われ、なぜ比較や変更でつまずくのかを理解する。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p><code>String</code>は文字列を扱う参照型で、内容は不変。メソッドで加工しても元の文字列は変わらず、新しい文字列が返る。比較では<code>==</code>と<code>equals</code>を分ける。</p></section><section class="card lesson-section"><h2>Stringは不変</h2><p><code>replace</code>、<code>substring</code>、<code>toUpperCase</code>などは、元の<code>String</code>を書き換えない。戻り値を受け取らないと、結果は捨てられる。</p><p class="code-caption">悪い読み方をしやすい例</p><pre><code>String s = "java";
+</article><section class="card lesson-section"><h2>Stringは不変</h2><p><code>replace</code>、<code>substring</code>、<code>toUpperCase</code>などは、元の<code>String</code>を書き換えない。戻り値を受け取らないと、結果は捨てられる。</p><p class="code-caption">悪い読み方をしやすい例</p><pre><code>String s = "java";
 s.toUpperCase();
 System.out.println(s); // java</code></pre><p class="code-caption">戻り値を受け取る</p><pre><code>String s = "java";
 s = s.toUpperCase();
@@ -68,8 +68,8 @@ System.out.println(s); // bc</code></pre>
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-07.html";</script>
-<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>

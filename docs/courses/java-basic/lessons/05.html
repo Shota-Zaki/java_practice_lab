@@ -8,13 +8,13 @@
 <title>Lesson 5 変数・値・型｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=exercise-article-basic-fix-20260529" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=exercise-display-articles-units-20260529" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
@@ -25,7 +25,7 @@
 <h1>変数・値・型</h1>
 <p class="lead">変数に何が入っているのかを、プリミティブ型と参照型に分けて理解する。</p>
 <div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
-</article><section class="card lesson-section"><h2>先に結論</h2><p>変数は「値を入れる箱」と説明されがちだが、それだけでは不十分。Javaでは、プリミティブ型の変数には値そのものが入り、参照型の変数にはオブジェクトへの参照が入る。この違いが配列・String・クラスで効いてくる。</p></section><section class="card lesson-section"><h2>プリミティブ型と参照型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>分類</th><th>代表例</th><th>変数に入るもの</th><th>null</th></tr></thead><tbody><tr><td>プリミティブ型</td><td><code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code></td><td>値そのもの</td><td>入らない</td></tr><tr><td>参照型</td><td><code>String</code>, 配列, 自作クラス</td><td>オブジェクトを指す参照</td><td>入る</td></tr></tbody></table></div><pre><code>int n = 10;        // nには数値10が入る
+</article><section class="card lesson-section"><h2>プリミティブ型と参照型</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>分類</th><th>代表例</th><th>変数に入るもの</th><th>null</th></tr></thead><tbody><tr><td>プリミティブ型</td><td><code>int</code>, <code>double</code>, <code>char</code>, <code>boolean</code></td><td>値そのもの</td><td>入らない</td></tr><tr><td>参照型</td><td><code>String</code>, 配列, 自作クラス</td><td>オブジェクトを指す参照</td><td>入る</td></tr></tbody></table></div><pre><code>int n = 10;        // nには数値10が入る
 String s = "A";    // sにはStringオブジェクトへの参照が入る
 String t = null;   // tは何も参照していない</code></pre></section><section class="card lesson-section"><h2>ローカル変数とフィールドの初期値</h2><p>メソッド内で宣言したローカル変数は、自動初期化されない。使う前に必ず代入が必要。クラスのフィールドは、型ごとのデフォルト値で初期化される。</p><p class="code-caption">差が出る例</p><pre><code>public class Main {
     static int field;
@@ -92,8 +92,8 @@ boolean d;</code></pre><p>メソッド内のローカル変数なら、どれも
 </div>
 </footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-05.html";</script>
-<script src="../../../data/questions.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../assets/js/app.js?v=exercise-article-basic-fix-20260529"></script>
-<script src="../../../pwa.js?v=exercise-article-basic-fix-20260529"></script>
+<script src="../../../data/questions.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../assets/js/app.js?v=exercise-display-articles-units-20260529"></script>
+<script src="../../../pwa.js?v=exercise-display-articles-units-20260529"></script>
 </body>
 </html>
