@@ -999,6 +999,7 @@
       const histories = examHistory.filter(h => h.unitId === u.id).slice(0, 3);
       const best = histories.length ? Math.max(...histories.map(h => Math.round((h.score || 0) / Math.max(h.total || 1, 1) * 100))) : null;
       return `<article class="course-dashboard-card exam-progress-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${u.timeLimitMinutes || 90}分</span></div><div class="mini-stat-row"><span>回答記録 ${answeredInProgress}</span><span>最高 ${best === null ? "-" : `${best}%`}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">模試を開始</a></div></article>`;
+      return `<article class="course-dashboard-card exam-progress-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${u.timeLimitMinutes || 90}分</span></div><p>本番形式: タイマー、未回答警告、見直しマーク、採点後分析</p><div class="mini-stat-row"><span>保存 ${answeredInProgress}/${qs.length || u.fixedCount || 0}</span><span>最高 ${best === null ? "-" : `${best}%`}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">模試を開始</a></div></article>`;
     }).join("");
     const html = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || ``}</div>`;
     if (!unitCards.trim() && fallbackHtml.trim()) return;
@@ -1286,6 +1287,18 @@
     const elapsed = Math.floor((Date.now() - Date.parse(state.startedAt)) / 1000);
     return examDurationSec() - elapsed;
   }
+  function examCourseName(unit) {
+    const id = unit?.id || "";
+    const course = unit?.course || "";
+    if (course === "bronze" || id.startsWith("bronze-")) return "Bronze";
+    if (course === "java11" || id.startsWith("java11-") || id.startsWith("unit")) return "Silver";
+    if (course.startsWith("gold") || id.startsWith("gold")) return "Gold";
+    return "Java";
+  }
+  function unansweredQuestionNumbers() {
+    const progress = readProgress();
+    return questionsForCurrentUnit().filter(q => !(progress[q.id]?.selected || []).length).map(q => q.number);
+  }
   function renderExamPanel() {
     if (!isExamUnit()) return;
     const hero = document.querySelector(".hero");
@@ -1296,6 +1309,7 @@
     panel.className = "exam-panel";
     panel.innerHTML = `<div class="exam-status">
         <strong>実践形式</strong>
+        <strong>${escapeHtml(examCourseName(unit))} 模試モード</strong>
         <span>制限時間 ${unit.timeLimitMinutes || 90}分 / ${unit.fixedCount || 60}問</span>
         <span class="timer" id="examTimer">${formatTime(examDurationSec())}</span>
       </div>
@@ -1306,6 +1320,7 @@
         <button id="jumpReview" class="btn ghost">見直しへ</button>
       </div>
       <div class="exam-live-summary" id="examLiveSummary" aria-live="polite"></div>
+      <div class="exam-mode-guide"><span>回答は自動保存</span><span>未回答を採点前に警告</span><span>見直しマーク対応</span><span>採点後に弱点タグ・難易度別結果</span></div>
       <p class="inline-note" id="examMessage">開始後はタイマーが動きます。採点するまで正解・解説は表示されません。</p><div id="examResult"></div>`;
     hero.appendChild(panel);
     document.getElementById("startExam")?.addEventListener("click", startExam);
@@ -1339,6 +1354,14 @@
     const progress = readProgress();
     const unansweredBeforeFinish = questionsForCurrentUnit().filter(q => !(progress[q.id]?.selected || []).length).length;
     if (!timeUp && unansweredBeforeFinish > 0 && !confirm(`${unansweredBeforeFinish}問が未回答です。このまま採点しますか？`)) return;
+    const unansweredNumbers = unansweredQuestionNumbers();
+    const unansweredBeforeFinish = unansweredNumbers.length;
+    if (!timeUp && unansweredBeforeFinish > 0) {
+      const shown = unansweredNumbers.slice(0, 12).join("、");
+      const more = unansweredBeforeFinish > 12 ? ` ほか${unansweredBeforeFinish - 12}問` : "";
+      if (!confirm(`${unansweredBeforeFinish}問が未回答です。未回答: ${shown}${more}
+このまま採点しますか？`)) return;
+    }
     let correct = 0;
     questionsForCurrentUnit().forEach(q => {
       const selected = progress[q.id]?.selected || [];
@@ -1468,8 +1491,10 @@
     const resultSlot = document.getElementById("examResult");
     if (resultSlot) { resultSlot.innerHTML = examResultHtml(); bindExamResultButtons(); }
     if (msg) {
+      const remainingNow = examRemainingSeconds(state);
       if (!state?.startedAt) msg.textContent = "開始後はタイマーが動きます。1問ずつ解答し、前後移動・問題番号一覧から戻れます。";
       else if (state.finishedAt) msg.textContent = `${state.timeUp ? "時間切れで採点しました。" : "採点済みです。"} スコア: ${state.score ?? 0}/${questionsForCurrentUnit().length}`;
+      else if (remainingNow <= 300) msg.textContent = "残り5分以内です。未回答と見直しマークを優先して確認してください。";
       else msg.textContent = "選択すると自動保存されます。迷う問題は「後で見直す」を押してください。最後に「採点する」で結果を表示します。";
     }
   }
