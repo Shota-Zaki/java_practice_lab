@@ -8,7 +8,7 @@
 <title>Lesson 10 配列｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=basic-quiz-levels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -76,13 +76,14 @@ System.out.println(nums[nums.length - 1]);</code></pre></article>
 </div>
 <div class="lesson-note"><strong>判定ポイント</strong><p>配列の添字は0から始まります。最後の要素はlengthではなくlength - 1です。</p></div>
 </section>
-<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p><code>break</code> と <code>continue</code> の違いは何ですか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>breakはループを抜けます。continueは現在の周回を中断して次の周回へ進みます。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="09.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="11.html">次のLesson →</a></div></section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>配列のlengthと添字の範囲を説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>lengthは要素数です。添字は0からlength - 1までです。length番目の添字は存在しません。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコードはどうなりますか。</p><pre><code>int[] a = new int[3];
+System.out.println(a[3]);</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>コンパイルはできますが、実行時にArrayIndexOutOfBoundsExceptionです。有効な添字は0,1,2です。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>int[] a = b; のように参照をコピーすると、配列本体は増えますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>増えません。aとbが同じ配列オブジェクトを参照します。片方から要素を書き換えると同じ本体が変わります。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="09.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="11.html">次のLesson →</a></div></section>
 </main>
 </div>
 <footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-10.html";</script>
-<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
-<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
-<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+<script src="../../../data/questions.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../assets/js/app.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../pwa.js?v=basic-quiz-levels-20260601"></script>
 </body>
 </html>

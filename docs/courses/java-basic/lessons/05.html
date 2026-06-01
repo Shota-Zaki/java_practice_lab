@@ -8,7 +8,7 @@
 <title>Lesson 5 変数・値・型｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=basic-quiz-levels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -104,13 +104,14 @@ String name = "100";</code></pre></article>
 </div>
 <div class="lesson-note"><strong>判定ポイント</strong><p>変数には型があります。代入できる値は、その型と互換性がある必要があります。</p></div>
 </section>
-<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p>参照型変数に <code>null</code> が入っている状態でメソッドを呼ぶとどうなりますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>実行時に <code>NullPointerException</code> が発生します。nullはオブジェクトではなく、参照先がない状態です。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="04.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="06.html">次のLesson →</a></div></section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>変数、値、型、リテラルを分けて説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>変数は値を入れる名前、値は実データ、型は扱い方のルール、リテラルはコード上に直接書いた値です。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコードはコンパイルできますか。</p><pre><code>int a;
+System.out.println(a);</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>コンパイルできません。ローカル変数は使う前に初期化が必要です。フィールドの自動初期値とは分けます。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>int a = 10; のうち、型・変数名・値はどれですか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>intが型、aが変数名、10が値です。10は整数リテラルでもあります。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="04.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="06.html">次のLesson →</a></div></section>
 </main>
 </div>
 <footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-05.html";</script>
-<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
-<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
-<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+<script src="../../../data/questions.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../assets/js/app.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../pwa.js?v=basic-quiz-levels-20260601"></script>
 </body>
 </html>

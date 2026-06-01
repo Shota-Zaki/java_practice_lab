@@ -8,7 +8,7 @@
 <title>Lesson 12 クラスとオブジェクト｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=basic-quiz-levels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -106,13 +106,17 @@ a.price = 100;</code></pre></article>
 </div>
 <div class="lesson-note"><strong>判定ポイント</strong><p>参照型変数を宣言しただけではインスタンスは作られていません。newが必要です。</p></div>
 </section>
-<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p>メンバとは何を指しますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>クラスの中に定義されるフィールド、メソッド、コンストラクタなどです。ローカル変数はメンバではありません。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="11.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="13.html">次のLesson →</a></div></section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>クラス、オブジェクト、インスタンス、メンバを説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>クラスは設計図、インスタンスはnewで作られた実体、オブジェクトは扱う対象、メンバはクラスに定義するフィールドやメソッドなどです。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコードで出力は何ですか。</p><pre><code>class Item { int price; }
+Item a = new Item();
+Item b = a;
+b.price = 100;
+System.out.println(a.price);</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>100です。aとbは同じインスタンスを参照しています。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>参照型変数を代入してもオブジェクト本体がコピーされない理由を説明してください。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>参照型変数に入っているのはオブジェクト本体ではなく参照です。代入でコピーされるのは参照であり、本体ではありません。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="11.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="13.html">次のLesson →</a></div></section>
 </main>
 </div>
 <footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-12.html";</script>
-<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
-<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
-<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+<script src="../../../data/questions.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../assets/js/app.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../pwa.js?v=basic-quiz-levels-20260601"></script>
 </body>
 </html>

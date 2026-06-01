@@ -8,7 +8,7 @@
 <title>Lesson 11 メソッドと引数｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=basic-quiz-levels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -139,13 +139,15 @@ public static void main(String[] args) {
 </div>
 <div class="lesson-note"><strong>判定ポイント</strong><p>戻り値型がvoidでないメソッドは、対応する型の値をreturnする必要があります。</p></div>
 </section>
-<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p>戻り値型が <code>void</code> のメソッドは値を返せますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>返せません。<code>return;</code> で終了することはできますが、<code>return 1;</code> のように値を返すとコンパイルエラーです。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="10.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="12.html">次のLesson →</a></div></section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>メソッド、引数、戻り値を説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>メソッドは処理のまとまり、引数は呼び出し時に渡す値、戻り値はメソッドから返す値です。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコードはコンパイルできますか。</p><pre><code>static int add(int a, int b) {
+    a + b;
+}</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>コンパイルできません。戻り値型がintなのでreturnでint値を返す必要があります。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>voidメソッドでreturn;を書ける理由を説明してください。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>voidは値を返さないメソッドです。return; はメソッドをそこで終了するだけで、値を返しません。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="10.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="12.html">次のLesson →</a></div></section>
 </main>
 </div>
 <footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-11.html";</script>
-<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
-<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
-<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+<script src="../../../data/questions.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../assets/js/app.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../pwa.js?v=basic-quiz-levels-20260601"></script>
 </body>
 </html>

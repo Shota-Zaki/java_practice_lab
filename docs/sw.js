@@ -1,4 +1,4 @@
-const CACHE_NAME = 'java-practice-lab-navigation-pass-20260601';
+const CACHE_NAME = 'java-practice-lab-memorization-expanded-20260601';
 const CORE_ASSETS = [
   './',
   './index.html',

@@ -8,7 +8,7 @@
 <title>Lesson 4 mainメソッド｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../../manifest.webmanifest" rel="manifest"/>
-<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+<link href="../../../assets/css/styles.css?v=basic-quiz-levels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
@@ -92,13 +92,15 @@
 </div>
 <div class="lesson-note"><strong>判定ポイント</strong><p>mainはJVMから呼び出される入口です。staticがないと通常の起動入口として扱えません。</p></div>
 </section>
-<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p>小数リテラル <code>1.0</code> の標準の型は何ですか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p><code>double</code> です。<code>float f = 1.0;</code> はそのままではコンパイルエラーです。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="03.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="05.html">次のLesson →</a></div></section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>mainメソッドは何のためにありますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>javaコマンドでプログラムを開始するときの入口です。mainがあるクラスを指定して実行します。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のmainは入口として使えますか。</p><pre><code>public static void main(String args) {
+    System.out.println("A");
+}</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>使えません。引数はString[] argsまたはString... argsである必要があります。String args単体は入口のmainになりません。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>mainがあるだけで何でも直接は使えない理由を説明してください。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>javaコマンドが探すのは決まった形のpublic static void main(String[] args)です。名前がmainでも、戻り値・static・引数の形がずれると入口になりません。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="03.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="05.html">次のLesson →</a></div></section>
 </main>
 </div>
 <footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-04.html";</script>
-<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
-<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
-<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+<script src="../../../data/questions.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../assets/js/app.js?v=basic-quiz-levels-20260601"></script>
+<script src="../../../pwa.js?v=basic-quiz-levels-20260601"></script>
 </body>
 </html>

@@ -430,6 +430,47 @@
     return;
   }
 
+
+  const EXAM_REVIEW_ROUTES = [
+    { keys: ["stream"], label: "Stream", article: "articles/java-gold-stream-deep/index.html", practice: "courses/gold11/practice/stream-advanced.html" },
+    { keys: ["collector", "collectors"], label: "Collectors", article: "articles/java-gold-collector-first/index.html", practice: "courses/gold11/practice/stream-collectors.html" },
+    { keys: ["optional"], label: "Optional", article: "articles/java-gold-optional-first/index.html", practice: "courses/gold11/practice/lambda-optional.html" },
+    { keys: ["generics", "generic"], label: "ジェネリクス", article: "articles/java-gold-generics-deep/index.html", practice: "courses/gold11/practice/generics-collections.html" },
+    { keys: ["lambda", "functional"], label: "ラムダ式", article: "articles/java-gold-lambda-first/index.html", practice: "courses/gold11/practice/lambda-stream.html" },
+    { keys: ["nio", "path", "files"], label: "NIO / Files", article: "articles/java-gold-nio-path-files/index.html", practice: "courses/gold11/practice/nio-datetime.html" },
+    { keys: ["concurrency", "thread", "future", "executor"], label: "並行処理", article: "articles/java-gold-concurrency-basic/index.html", practice: "courses/gold11/practice/concurrency-nio.html" },
+    { keys: ["module"], label: "module-info", article: "articles/java-gold-module-info-check/index.html", practice: "courses/gold/practice/gold17-comprehensive-final.html" },
+    { keys: ["type", "var", "literal"], label: "型・変数", article: "articles/types/index.html", practice: "courses/java11-silver/practice/basic-syntax.html" },
+    { keys: ["operator", "control"], label: "演算子・制御", article: "articles/operators-control/index.html", practice: "courses/java11-silver/practice/basic-syntax.html" },
+    { keys: ["string", "array", "arraylist", "list"], label: "String / 配列", article: "articles/string/index.html", practice: "courses/java11-silver/practice/api-string.html" },
+    { keys: ["class", "static", "constructor", "record"], label: "クラス・static", article: "articles/class-design/index.html", practice: "courses/java11-silver/practice/oop.html" },
+    { keys: ["inheritance", "interface", "override", "sealed"], label: "継承・interface", article: "articles/inheritance/index.html", practice: "courses/java11-silver/practice/exception-inheritance.html" },
+    { keys: ["exception", "runtime", "compile"], label: "例外・エラー", article: "articles/exception/index.html", practice: "courses/java11-silver/practice/compile-check.html" }
+  ];
+  function rootHref(path) {
+    return (window.APP_ROOT || "") + path;
+  }
+  function examCategoryForQuestion(q) {
+    const tags = (q.tags || []).map(t => String(t).toLowerCase());
+    const titleText = `${q.title || ""} ${q.prompt || ""}`.toLowerCase();
+    const route = EXAM_REVIEW_ROUTES.find(r => r.keys.some(k => tags.includes(k) || titleText.includes(k)));
+    if (route) return route.label;
+    if (tags.includes("output")) return "出力判定";
+    if (tags.includes("api")) return "API仕様";
+    return "総合読解";
+  }
+  function routeForExamCategory(label) {
+    return EXAM_REVIEW_ROUTES.find(r => r.label === label) || null;
+  }
+  function pct(n, d) {
+    return d ? Math.round(n / d * 100) : 0;
+  }
+  function resultRank(rate) {
+    if (rate >= 85) return "安定";
+    if (rate >= 70) return "要確認";
+    return "優先復習";
+  }
+
   const mistakeReasonLabels = {
     compile: "コンパイル可否を見落とした",
     runtime: "例外発生を見落とした",
@@ -1397,32 +1438,45 @@
     const noteCount = Object.keys(readNotes()).length;
     const byTag = {};
     const byDifficulty = {};
+    const byCategory = {};
+    const markedStats = { total: 0, correct: 0 };
     const reasons = readMistakeReasons();
     const reasonCounts = {};
     Object.values(reasons).forEach(v => (v.reasons || []).forEach(r => reasonCounts[r] = (reasonCounts[r] || 0) + 1));
     const reasonRows = Object.entries(reasonCounts).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([r,c]) => `<tr><td>${escapeHtml(mistakeReasonLabels[r] || r)}</td><td>${c}</td></tr>`).join("") || `<tr><td colspan="2">まだ記録がありません。</td></tr>`;
     questions.forEach(q => {
       const ok = progress[q.id]?.isCorrect === true;
+      if (reviews[q.id]) { markedStats.total++; if (ok) markedStats.correct++; }
       (q.tags || ["untagged"]).forEach(t => {
-        byTag[t] ||= { total: 0, correct: 0 };
+        byTag[t] ||= { total: 0, correct: 0, wrong: 0 };
         byTag[t].total++;
-        if (ok) byTag[t].correct++;
+        if (ok) byTag[t].correct++; else byTag[t].wrong++;
       });
       const d = q.difficulty || "standard";
-      byDifficulty[d] ||= { total: 0, correct: 0 };
+      byDifficulty[d] ||= { total: 0, correct: 0, wrong: 0 };
       byDifficulty[d].total++;
-      if (ok) byDifficulty[d].correct++;
+      if (ok) byDifficulty[d].correct++; else byDifficulty[d].wrong++;
+      const category = examCategoryForQuestion(q);
+      byCategory[category] ||= { total: 0, correct: 0, wrong: 0 };
+      byCategory[category].total++;
+      if (ok) byCategory[category].correct++; else byCategory[category].wrong++;
     });
     const weakTags = Object.entries(byTag)
       .filter(([,v]) => v.total >= 2)
-      .sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total))
+      .sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total) || b[1].wrong - a[1].wrong)
       .slice(0,5);
-    const tagRows = weakTags.map(([tag,v]) => `<tr><td>${escapeHtml(tagTitle(tag))}</td><td>${v.correct}/${v.total}</td><td>${Math.round(v.correct/v.total*100)}%</td><td><a href="${tagHref(tag)}">練習</a></td></tr>`).join("") || `<tr><td colspan="4">弱点タグを出すには、もう少し回答データが必要です。</td></tr>`;
-    const reviewAdvice = weakTags.length
-      ? weakTags.map(([tag]) => `<a class="mini-chip" href="${tagHref(tag)}">${escapeHtml(tagTitle(tag))}を復習</a>`).join("")
-      : `<span class="inline-note">弱点タグが十分に出ていません。まず不正解問題を解き直してください。</span>`;
+    const tagRows = weakTags.map(([tag,v]) => `<tr><td>${escapeHtml(tagTitle(tag))}</td><td>${v.correct}/${v.total}</td><td>${pct(v.correct,v.total)}%</td><td><a href="${tagHref(tag)}">練習</a></td></tr>`).join("") || `<tr><td colspan="4">弱点タグを出すには、もう少し回答データが必要です。</td></tr>`;
     const diffLabel = { basic: "基本確認", standard: "標準", hard: "応用" };
-    const diffRows = Object.entries(byDifficulty).map(([d,v]) => `<tr><td>${escapeHtml(diffLabel[d] || d)}</td><td>${v.correct}/${v.total}</td><td>${Math.round(v.correct/v.total*100)}%</td></tr>`).join("");
+    const diffRows = ["basic", "standard", "hard"].filter(d => byDifficulty[d]).map(d => { const v = byDifficulty[d]; const rate = pct(v.correct, v.total); return `<tr><td>${escapeHtml(diffLabel[d] || d)}</td><td>${v.correct}/${v.total}</td><td>${rate}%</td><td>${escapeHtml(resultRank(rate))}</td></tr>`; }).join("");
+    const categoryEntries = Object.entries(byCategory).sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total) || b[1].wrong - a[1].wrong);
+    const categoryRows = categoryEntries.map(([cat,v]) => { const rate = pct(v.correct, v.total); const route = routeForExamCategory(cat); const links = route ? `<a href="${rootHref(route.article)}">記事</a> / <a href="${rootHref(route.practice)}">演習</a>` : `<a href="${pageHref('review-wrong.html')}?unit=${encodeURIComponent(unitId)}">復習</a>`; return `<tr><td>${escapeHtml(cat)}</td><td>${v.correct}/${v.total}</td><td>${rate}%</td><td>${escapeHtml(resultRank(rate))}</td><td>${links}</td></tr>`; }).join("");
+    const weakCategories = categoryEntries.filter(([,v]) => v.total >= 2 && pct(v.correct, v.total) < 80).slice(0, 4);
+    const reviewAdvice = weakCategories.length
+      ? weakCategories.map(([cat]) => { const route = routeForExamCategory(cat); return route ? `<a class="mini-chip" href="${rootHref(route.article)}">${escapeHtml(cat)}の記事</a><a class="mini-chip" href="${rootHref(route.practice)}">${escapeHtml(cat)}の演習</a>` : `<span class="mini-chip">${escapeHtml(cat)}を復習</span>`; }).join("")
+      : (weakTags.length ? weakTags.map(([tag]) => `<a class="mini-chip" href="${tagHref(tag)}">${escapeHtml(tagTitle(tag))}を復習</a>`).join("") : `<span class="inline-note">弱点が大きく偏っていません。間違えた問題だけを再確認してください。</span>`);
+    const markedRate = markedStats.total ? `${markedStats.correct}/${markedStats.total} (${pct(markedStats.correct, markedStats.total)}%)` : "0問";
+    const unansweredList = questions.filter(q => !(progress[q.id]?.selected || []).length).slice(0, 12).map(q => `問${q.number}`).join("、");
+    const nextActionLead = weakCategories.length ? `${escapeHtml(weakCategories[0][0])}から戻るのが最優先です。` : (wrong ? "間違えた問題だけを復習してください。" : "大きな穴は見えていません。時間を空けてもう一度解いてください。");
     return `<div class="exam-result-box">
       <h3>模試結果</h3>
       <div class="result-summary-grid">
@@ -1432,15 +1486,18 @@
         <div><strong>${unanswered}</strong><span>未回答</span></div>
         <div><strong>${Object.keys(reviews).length}</strong><span>見直し</span></div>
         <div><strong>${wrong}</strong><span>不正解</span></div>
+        <div><strong>${markedRate}</strong><span>見直し正答率</span></div>
       </div>
+      ${unanswered ? `<p class="exam-analysis-note">未回答: ${escapeHtml(unansweredList)}${unanswered > 12 ? " ほか" + (unanswered - 12) + "問" : ""}</p>` : ""}
+      <section class="exam-analysis-panel"><h4>次にやること</h4><p>${nextActionLead}</p><div class="exam-review-advice">${reviewAdvice}</div></section>
+      <h4>カテゴリ別</h4>
+      <table class="mini-table exam-analysis-table"><thead><tr><th>分類</th><th>正解</th><th>正答率</th><th>判定</th><th>戻る場所</th></tr></thead><tbody>${categoryRows}</tbody></table>
       <h4>弱点タグ</h4>
       <table class="mini-table"><thead><tr><th>タグ</th><th>正解</th><th>正答率</th><th>練習</th></tr></thead><tbody>${tagRows}</tbody></table>
       <h4>難易度別</h4>
-      <table class="mini-table"><thead><tr><th>難易度</th><th>正解</th><th>正答率</th></tr></thead><tbody>${diffRows}</tbody></table>
+      <table class="mini-table"><thead><tr><th>難易度</th><th>正解</th><th>正答率</th><th>判定</th></tr></thead><tbody>${diffRows}</tbody></table>
       <h4>間違えた理由</h4>
       <table class="mini-table"><thead><tr><th>理由</th><th>件数</th></tr></thead><tbody>${reasonRows}</tbody></table>
-      <h4>次に戻る場所</h4>
-      <div class="exam-review-advice">${reviewAdvice}</div>
       <div class="exam-result-actions"><a class="btn primary" href="${pageHref('review-wrong.html')}?unit=${encodeURIComponent(unitId)}">この模試の間違えた問題だけ復習</a><button class="btn" type="button" id="jumpWrongExam">最初の不正解へ</button><button class="btn ghost" type="button" id="jumpMarkedExam">見直し問題へ</button></div>
     </div>`;
   }
