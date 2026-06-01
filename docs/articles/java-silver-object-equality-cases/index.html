@@ -8,21 +8,19 @@
 <title>同一性・同値性で落ちるパターン</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=course-labels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent"><section class="content-page article-body wide-article upgraded-article">
 <h1>同一性・同値性で落ちるパターン</h1>
 <p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p>
-<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-
 <section class="article-section textbook-section">
 <h2>この単元で固定する判断</h2>
 <p><code>==</code> と <code>equals</code> は、Javaで最も誤答が出やすい比較論点です。最初に結論だけ覚えるのではなく、次の順番で必ず判定します。</p>
@@ -199,19 +197,12 @@ System.out.println(p1.equals(p2)); // true</code></pre>
 <details class="article-card"><summary><strong>Q4. 次の出力は？</strong><br/><code>StringBuilder a=new StringBuilder("x"); StringBuilder b=a; a.append("y"); System.out.println(b);</code></summary><p><strong>xy</strong>。<code>a</code> と <code>b</code> は同じ可変オブジェクトを参照しています。</p></details>
 <p class="inline-note article-callout">関連: <a href="../string/index.html">文字列・StringBuilder</a> / <a href="../types/index.html">型・変数</a> / <a href="../java-silver-array-list-difference/index.html">配列・List</a></p>
 </section>
-
 </section></main>
 </div>
-<footer class="site-footer global-footer">
-<div class="site-footer-inner">
-<div class="footer-brand">Java Practice Lab</div>
-<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
-<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-</div>
-</footer>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
-<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../data/questions.js?v=course-labels-20260601"></script>
+<script src="../../assets/js/app.js?v=course-labels-20260601"></script>
+<script src="../../pwa.js?v=firefox-exercise-fix-20260601"></script>
 </body>
 </html>

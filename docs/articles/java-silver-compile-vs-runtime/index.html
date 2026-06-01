@@ -8,21 +8,19 @@
 <title>コンパイルエラーと実行時例外の分け方</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
-<link href="../../assets/css/styles.css?v=exercise-visible-clean-20260529" rel="stylesheet"/>
+<link href="../../assets/css/styles.css?v=course-labels-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout">
 <a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
 <div class="site-header-inner">
 <a class="site-brand" href="../../index.html">Java Practice Lab</a>
-<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/java11-silver/index.html">Java11 Silver</a><a href="../../courses/java17-silver/index.html">Java17 Silver</a><a href="../../courses/gold11/index.html">Java Gold SE 11</a><a href="../../courses/gold17/index.html">Java Gold SE 17</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
 </div>
 </header>
 <div class="layout">
 <main class="main" id="mainContent"><section class="content-page article-body wide-article upgraded-article">
 <h1>コンパイルエラーと実行時例外の分け方</h1>
 <p class="lead">学習対策と実装理解の両方で使えるよう、例を中心に整理します。</p>
-<div aria-label="広告枠" class="ad-slot ad-visible article-top-ad"><span>記事本文上部</span></div>
-
 <section class="article-section">
 <h2>3分類を混ぜない</h2>
 <p>Javaの選択肢は、しばしば「コンパイルエラー」「実行時例外」「出力結果」を混ぜてきます。ここを混同すると、解説を読んでも同じ間違いを繰り返します。</p><table class="ref-table study-table"><thead><tr><th>分類</th><th>発生タイミング</th><th>例</th></tr></thead><tbody><tr><td>コンパイルエラー</td><td>実行前。classファイルを作れない</td><td>型不一致、未初期化ローカル変数、override違反、catch到達不能</td></tr><tr><td>実行時例外</td><td>コンパイル後、実行中</td><td><code>NullPointerException</code>、<code>ArrayIndexOutOfBoundsException</code>、<code>ClassCastException</code></td></tr><tr><td>正常出力</td><td>コンパイルも実行も成功</td><td>printlnの結果、または何も表示されない</td></tr></tbody></table>
@@ -275,19 +273,12 @@ System.out.println(x);</code></pre>
 <li>catchされた後にfinallyと後続処理へ進むかを見たか。</li>
 </ul>
 </section>
-
 </section></main>
 </div>
-<footer class="site-footer global-footer">
-<div class="site-footer-inner">
-<div class="footer-brand">Java Practice Lab</div>
-<nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイト</a><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a><a href="../../site/contact.html">Contact</a></nav>
-<p>© Java Practice Lab. 非公式のオリジナル学習サイトです。</p>
-</div>
-</footer>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
 <script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
-<script src="../../data/questions.js?v=exercise-visible-clean-20260529"></script>
-<script src="../../assets/js/app.js?v=exercise-visible-clean-20260529"></script>
-<script src="../../pwa.js?v=exercise-visible-clean-20260529"></script>
+<script src="../../data/questions.js?v=course-labels-20260601"></script>
+<script src="../../assets/js/app.js?v=course-labels-20260601"></script>
+<script src="../../pwa.js?v=firefox-exercise-fix-20260601"></script>
 </body>
 </html>
