@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="newしたときの初期化処理と、コンストラクタ呼び出しの順序を理解する。" name="description"/>
+<title>Lesson 14 コンストラクタ｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 14</p>
+<h1>コンストラクタ</h1>
+<p class="lead">newしたときの初期化処理と、コンストラクタ呼び出しの順序を理解する。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section"><h2>基本形</h2><pre><code>class Item {
+    String name;
+
+    Item(String name) {
+        this.name = name;
+    }
+}
+
+Item item = new Item("apple");</code></pre><p><code>new Item("apple")</code>のタイミングでコンストラクタが呼ばれ、フィールド<code>name</code>へ値が入る。</p></section><section class="card lesson-section"><h2>メソッドではない</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>項目</th><th>コンストラクタ</th><th>メソッド</th></tr></thead><tbody><tr><td>名前</td><td>クラス名と同じ</td><td>自由に付ける</td></tr><tr><td>戻り値型</td><td>書かない</td><td><code>void</code>や<code>int</code>などを書く</td></tr><tr><td>呼び出し</td><td><code>new</code>時に呼ばれる</td><td>明示的に呼ぶ</td></tr><tr><td>目的</td><td>初期化</td><td>処理の実行</td></tr></tbody></table></div><p class="code-caption">戻り値型を書くとメソッドになる</p><pre><code>class Sample {
+    void Sample() { } // これはコンストラクタではなくメソッド
+}</code></pre></section><section class="card lesson-section"><h2>デフォルトコンストラクタ</h2><p>コンストラクタを1つも書かない場合だけ、引数なしコンストラクタが自動で用意される。</p><p class="code-caption">自動生成される</p><pre><code>class A { }
+new A(); // OK</code></pre><p class="code-caption">1つ書いたので自動生成されない</p><pre><code>class B {
+    B(String name) { }
+}
+new B(); // コンパイルエラー</code></pre></section><section class="card lesson-section"><h2>this()とsuper()</h2><p><code>this()</code>は同じクラスの別コンストラクタを呼ぶ。<code>super()</code>は親クラスのコンストラクタを呼ぶ。どちらもコンストラクタの先頭にしか書けない。</p><pre><code>class Item {
+    String name;
+    int price;
+
+    Item() {
+        this("unknown", 0);
+    }
+
+    Item(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+}</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードがなぜコンパイルエラーになるか説明する。</p><pre><code>class Parent {
+    Parent(String name) { }
+}
+
+class Child extends Parent {
+    Child() { }
+}</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>コンストラクタは、<code>new</code>された直後の初期化処理。戻り値型を書かず、クラス名と同じ名前にする。メソッドではないので、<code>void</code>を書いたら普通のメソッドになってしまう。</p><p>コンストラクタの先頭では、明示しなくても親クラスのコンストラクタ呼び出しが行われる。自分で<code>this(...)</code>または<code>super(...)</code>を書くなら、必ずコンストラクタの最初の文にする必要がある。</p><p>初期化の順序を読むときは、フィールド初期化、コンストラクタ本体、親子関係の順序を分ける。基礎段階では、まず「newしたらコンストラクタが動く」「名前と戻り値型に注意」の2点を固める。</p><div class="principle-grid"><div class="principle-card"><strong>名前</strong><p>コンストラクタ名はクラス名と同じ。</p></div><div class="principle-card"><strong>戻り値型なし</strong><p><code>void</code>も書かない。書くとメソッドになる。</p></div><div class="principle-card"><strong>初期化</strong><p>インスタンス生成時にフィールドを適切な状態にする。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>コンストラクタ / メソッド</td><td>コンストラクタは戻り値型なし。メソッドは戻り値型がある。</td><td><code>void ClassName()</code>はコンストラクタではない。</td></tr><tr><td><code>this()</code> / <code>super()</code></td><td><code>this()</code>は同じクラスの別コンストラクタ、<code>super()</code>は親コンストラクタ。</td><td>最初の文にしか書けない。</td></tr><tr><td>デフォルトコンストラクタ / 自作コンストラクタ</td><td>コンストラクタを書かない場合だけ、引数なしコンストラクタが自動追加される。</td><td>1つでも書いたら自動追加されない。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>クラス名と同じ名前の宣言を探す。</li><li>戻り値型が書かれていないか確認する。</li><li><code>new</code>の引数と一致するコンストラクタがあるか確認する。</li><li><code>this()</code>や<code>super()</code>が最初の文か確認する。</li><li>フィールドがどの値で初期化されるか追う。</li></ol><p class="code-caption">確認用コード</p><pre><code>class Item {
+    String name;
+
+    void Item(String name) {
+        this.name = name;
+    }
+}
+
+Item item = new Item("pen");</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>void Item</code></td><td>戻り値型<code>void</code>がある</td><td>コンストラクタではなくメソッド</td></tr><tr><td><code>new Item("pen")</code></td><td>String引数コンストラクタを探す</td><td>存在しない</td></tr><tr><td>結論</td><td>一致するコンストラクタなし</td><td>コンパイルエラー</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>コンストラクタに<code>void</code>を書く</strong><p>それはコンストラクタではなく、クラス名と同じ名前のメソッドになる。</p></div><div class="mistake-callout"><strong>自作コンストラクタを書いても引数なしが残ると思う</strong><p>1つでもコンストラクタを書くと、引数なしのデフォルトコンストラクタは自動生成されない。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードはなぜコンパイルエラーになるか。</p><p class="code-caption">確認問題</p><pre><code>class User {
+    User(String name) { }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        User u = new User();
+    }
+}</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p><code>User(String name)</code>を自分で定義しているため、引数なしコンストラクタは自動生成されない。</p><p><code>new User()</code>に対応する引数なしコンストラクタが存在しないため、コンパイルエラーになる。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>コンストラクタは、<strong>newされた直後のインスタンスを使える状態に整える処理</strong>です。メソッドに似ていますが、戻り値型を書かない、クラス名と同じ名前にする、生成時に呼ばれる、という点が違います。</p>
+<pre><code>class User {
+    String name;
+
+    User(String name) {
+        this.name = name;
+    }
+}</code></pre>
+<p>ここでの<code>this.name</code>はフィールド、右辺の<code>name</code>は引数です。コンストラクタは、外から受け取った値をインスタンスの状態へセットする役割を持ちます。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>状況</th><th>何が起きるか</th><th>注意</th></tr></thead><tbody><tr><td>コンストラクタを1つも書かない</td><td>引数なしのデフォルトコンストラクタが用意される</td><td>自動で作られる</td></tr><tr><td>引数ありコンストラクタを書く</td><td>デフォルトコンストラクタは自動生成されない</td><td><code>new User()</code>は不可</td></tr><tr><td><code>this(...)</code>を書く</td><td>同じクラスの別コンストラクタを呼ぶ</td><td>先頭行にしか書けない</td></tr><tr><td><code>super(...)</code>を書く</td><td>親クラスのコンストラクタを呼ぶ</td><td>先頭行にしか書けない</td></tr></tbody></table></div>
+<pre><code>class Item {
+    String name;
+
+    Item() {
+        this("unknown");
+    }
+
+    Item(String name) {
+        this.name = name;
+    }
+}</code></pre>
+<div class="mistake-callout"><strong>よくあるミス</strong><p>コンストラクタに<code>void</code>を書くと、コンストラクタではなく通常メソッドになります。見た目が似ていても、生成時には呼ばれません。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>コンストラクタを、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="13.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="15.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-14.html";</script>
+<script src="../../../data/questions.js?v=silver-gold-unified-20260601"></script>
+<script src="../../../assets/js/app.js?v=silver-gold-unified-20260601"></script>
+<script src="../../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body>
+</html>
