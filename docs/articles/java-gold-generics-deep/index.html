@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="extends、super、PECS、型消去を整理します。" name="description"/>
+<title>ジェネリクスとワイルドカード｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>ジェネリクスとワイルドカード</h1>
+<p class="lead">extends、super、PECS、型消去を、読み取りと書き込みの制限から整理します。</p>
+<section class="article-section"><h2>不変性を最初に固定する</h2><p><code>String</code>は<code>Object</code>のサブクラスですが、<code>List&lt;String&gt;</code>は<code>List&lt;Object&gt;</code>のサブタイプではありません。</p></section>
+<pre class="article-code"><code>List&lt;String&gt; strings = new ArrayList&lt;&gt;();
+// List&lt;Object&gt; objects = strings; // コンパイルエラー</code></pre>
+<section class="article-section"><h2>? extends T は読む側に強い</h2><p>上限境界は、取り出した値を少なくともTとして扱えます。ただし、実際のリストが<code>List&lt;Integer&gt;</code>なのか<code>List&lt;Double&gt;</code>なのか不明なので、具体的な値を追加できません。</p></section>
+<pre class="article-code"><code>List&lt;? extends Number&gt; nums = List.of(1, 2, 3);
+Number n = nums.get(0); // OK
+// nums.add(4);         // コンパイルエラー</code></pre>
+<section class="article-section"><h2>? super T は書く側に強い</h2><p>下限境界は、TまたはTのサブクラスの値を追加できます。一方、取り出すときは安全には<code>Object</code>までです。</p></section>
+<pre class="article-code"><code>List&lt;? super Integer&gt; list = new ArrayList&lt;Number&gt;();
+list.add(10);       // OK
+Object x = list.get(0); // 安全に言えるのはObjectまで</code></pre>
+<table class="study-table ref-table"><thead><tr><th>目的</th><th>選ぶ境界</th><th>理由</th></tr></thead><tbody><tr><td>取り出して使いたい</td><td><code>? extends T</code></td><td>少なくともTとして読める。追加は制限される。</td></tr><tr><td>値を追加したい</td><td><code>? super T</code></td><td>Tを受け取れることが保証される。読み取りはObject寄り。</td></tr><tr><td>読み書き両方を強くしたい</td><td>ワイルドカードなし</td><td>具体的な型を固定する。</td></tr></tbody></table>
+<div class="article-callout">PECSは暗記語ではなく、Producerならextends、Consumerならsuperという読み替えです。値を「出す側」か「受け取る側」かで判断します。</div>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles";</script>
+<script src="../../data/questions.js?v=silver-gold-unified-20260601"></script><script src="../../assets/js/app.js?v=silver-gold-unified-20260601"></script><script src="../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body>
+</html>

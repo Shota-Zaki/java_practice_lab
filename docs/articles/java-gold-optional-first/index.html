@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java学習サイト" name="description"/>
+<title>Optional入門</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>Optional入門</h1>
+<p class="lead">Optionalはnullを隠す魔法ではありません。「値がある場合だけ処理する」ための型です。</p>
+<section class="article-section"><h2>Optionalの基本姿勢</h2><p><code>Optional&lt;T&gt;</code>は、T型の値があるかもしれない、ないかもしれない状態を表します。中身を無条件に取り出す前提で使うなら、Optionalの意味がありません。</p></section>
+<table class="study-table ref-table"><thead><tr><th>メソッド</th><th>意味</th><th>落とし穴</th></tr></thead><tbody><tr><td><code>of(value)</code></td><td>非null値から作る</td><td>valueがnullならNullPointerException。</td></tr><tr><td><code>ofNullable(value)</code></td><td>nullならemptyにする</td><td>nullの可能性がある入力で使う。</td></tr><tr><td><code>empty()</code></td><td>空のOptional</td><td>値は存在しない。</td></tr><tr><td><code>get()</code></td><td>値を取り出す</td><td>空ならNoSuchElementException。無条件使用は危険。</td></tr><tr><td><code>orElse</code></td><td>空なら代替値</td><td>引数は先に評価される。</td></tr><tr><td><code>orElseGet</code></td><td>空ならSupplierを実行</td><td>必要な時だけ代替値を作る。</td></tr></tbody></table>
+<pre class="article-code"><code>Optional&lt;String&gt; name = Optional.ofNullable(getName());
+String result = name.orElse("unknown");</code></pre>
+<section class="article-section"><h2>orElseとorElseGetの違い</h2><p>どちらも空の場合の代替値を返します。ただし、<code>orElse</code>の引数はOptionalに値があっても評価されます。<code>orElseGet</code>は必要な場合だけSupplierが呼ばれます。</p></section>
+<pre class="article-code"><code>String a = Optional.of("A").orElse(createDefault());
+// createDefault() は呼ばれる
+
+String b = Optional.of("A").orElseGet(() -&gt; createDefault());
+// createDefault() は呼ばれない</code></pre>
+<div class="bad-good"><div><strong>悪い判断</strong><p>Optionalを使えばNullPointerExceptionが絶対に起きないと考える。</p></div><div><strong>良い判断</strong><p>Optionalを作る時点、getする時点、map内の戻り値でnullが絡む場所を確認する。</p></div></div>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="index.html";</script>
+<script src="../../data/questions.js?v=silver-gold-unified-20260601"></script>
+<script src="../../assets/js/app.js?v=silver-gold-unified-20260601"></script>
+<script src="../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body>
+</html>

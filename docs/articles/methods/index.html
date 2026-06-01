@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java頻出メソッドの戻り値、破壊的変更、例外条件、落とし穴を詳しく整理。" name="description"/>
+<title>頻出メソッドリスト 詳細版｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent"><section class="content-page article-body wide-article upgraded-article">
+<h1>頻出メソッドリスト 詳細版</h1>
+<p class="lead">メソッド問題は、戻り値、元オブジェクトを変更するか、例外条件、添字の範囲</p>
+<section class="article-section foundation-bridge-section" id="foundation-method-constructor">
+<h2>メソッド呼び出しの基本部品</h2>
+<p>メソッド問題では、呼び出し側の値と、受け取る側の変数を混同しないことが重要です。特にオーバーロード、戻り値、値渡し、コンストラクタで差が出ます。</p>
+<table class="study-table ref-table">
+<thead><tr><th>用語</th><th>意味</th><th>例</th></tr></thead>
+<tbody>
+<tr><td>呼び出し先</td><td>実行されるメソッド。</td><td><code>print("A")</code> の <code>print</code></td></tr>
+<tr><td>実引数</td><td>呼び出し時に渡す値。</td><td><code>print("A")</code> の <code>"A"</code></td></tr>
+<tr><td>仮引数</td><td>メソッド側で受け取る変数。</td><td><code>void print(String s)</code> の <code>s</code></td></tr>
+<tr><td>戻り値</td><td>メソッドが呼び出し元に返す値。</td><td><code>return s.length();</code></td></tr>
+<tr><td>シグネチャ</td><td>メソッド名と引数リスト。</td><td><code>print(String)</code></td></tr>
+</tbody>
+</table>
+<pre><code>static int lengthOf(String text) { // textは仮引数
+    return text.length();          // intを戻す
+}
+
+int n = lengthOf("abc");          // "abc"は実引数</code></pre>
+<p>オーバーロード判定では、戻り値だけでは区別できません。見るのはメソッド名と引数リストです。</p>
+<h3>コンストラクタはメソッドではない</h3>
+<p>コンストラクタは、インスタンス生成時に初期化を行う特別な構文です。名前はクラス名と同じで、戻り値型を書きません。戻り値型を書いた瞬間、それはコンストラクタではなく通常メソッドになります。</p>
+<table class="study-table ref-table">
+<thead><tr><th>観点</th><th>メソッド</th><th>コンストラクタ</th></tr></thead>
+<tbody>
+<tr><td>名前</td><td>任意</td><td>クラス名と同じ</td></tr>
+<tr><td>戻り値型</td><td>必要。<code>void</code> も戻り値型。</td><td>書かない</td></tr>
+<tr><td>呼び出し</td><td>通常のメソッド呼び出し</td><td><code>new</code> 時、または <code>this(...)</code> / <code>super(...)</code></td></tr>
+<tr><td>継承</td><td>条件を満たせば継承・override可能</td><td>継承されない</td></tr>
+</tbody>
+</table>
+<pre><code>class Sample {
+    Sample() { }      // コンストラクタ
+    void Sample() { } // メソッド。コンストラクタではない
+}</code></pre>
+<div class="article-callout warn"><strong>落とし穴:</strong> <code>void Sample()</code> はコンストラクタに見えますが、戻り値型 <code>void</code> を持つ通常メソッドです。</div>
+</section>
+<section class="article-section article-card important">
+<h2>この単元のゴール</h2>
+<p>メソッド・コンストラクタの問題は、コード量が少なくても罠が多いです。特に オーバーロード解決、戻り値、可変長引数、this/super、暗黙super、値渡し は、Javaで頻出</p>
+<ol class="article-list priority-list">
+<li><strong>メソッドなら:</strong> 宣言が正しいか、呼び出しに一致する候補があるか、戻り値が適切かを見る。</li>
+<li><strong>コンストラクタなら:</strong> 戻り値型を書いていないか、<code>this()</code>/<code>super()</code> が先頭か、親コンストラクタを呼べるかを見る。</li>
+<li><strong>引数渡しなら:</strong> 変数そのものが変わるのか、参照先オブジェクトの中身が変わるのかを分ける。</li>
+</ol>
+<div class="article-callout warn"><strong>雑に覚えると危険:</strong> 「参照型は参照渡し」という言い方は学習対策としては不正確です。Javaは常に値渡しです。参照型では参照値がコピーされます。</div>
+</section><section class="article-section">
+<h2>メソッド宣言の構成</h2>
+<p>メソッド宣言は、修飾子、戻り値型、メソッド名、引数リスト、throws句、メソッド本体で構成されます。</p>
+<pre class="article-code"><code>public static int add(int a, int b) throws Exception {
+    return a + b;
+}</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>部分</th><th>例</th><th>見るポイント</th></tr></thead>
+<tbody>
+<tr><td>修飾子</td><td><code>public static</code></td><td>アクセス、static/instanceの違い</td></tr>
+<tr><td>戻り値型</td><td><code>int</code></td><td><code>void</code> 以外は必ず値を返す必要がある</td></tr>
+<tr><td>メソッド名</td><td><code>add</code></td><td>識別子ルールに従う</td></tr>
+<tr><td>引数</td><td><code>int a, int b</code></td><td>型と順番がシグネチャに関係する</td></tr>
+<tr><td>throws</td><td><code>throws Exception</code></td><td>チェック例外の処理に関係する</td></tr>
+<tr><td>本体</td><td><code>{ return a + b; }</code></td><td>戻り値、到達不能文、例外発生を確認する</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>メソッドシグネチャとオーバーロード</h2>
+<p>Javaでオーバーロード判定に使うシグネチャは、基本的に <strong>メソッド名 + 引数リスト</strong> です。戻り値型だけを変えてもオーバーロードにはなりません。</p>
+<pre class="article-code"><code>class Sample {
+    void test(int a) {}
+    void test(String s) {}     // OK: 引数型が違う
+    void test(int a, int b) {} // OK: 引数の数が違う
+    // int test(int a) { return a; } // NG: 戻り値型だけ違う
+}</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>違い</th><th>オーバーロード可否</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>引数の型が違う</td><td>可</td><td><code>test(int)</code> と <code>test(String)</code> は別</td></tr>
+<tr><td>引数の数が違う</td><td>可</td><td><code>test(int)</code> と <code>test(int,int)</code> は別</td></tr>
+<tr><td>引数の順番が違う</td><td>可</td><td><code>test(int,String)</code> と <code>test(String,int)</code> は別</td></tr>
+<tr><td>戻り値型だけ違う</td><td>不可</td><td>呼び出し側だけでは区別できない</td></tr>
+<tr><td>仮引数名だけ違う</td><td>不可</td><td><code>test(int x)</code> と <code>test(int y)</code> は同じシグネチャ</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>オーバーロード解決の優先順位</h2>
+<p>複数の候補がある場合、呼び出しに最も適合するメソッドが選ばれます。Javaでは、細かい仕様を完全暗記するより、次の優先順で選択肢を切ると安定します。</p>
+<table class="ref-table study-table">
+<thead><tr><th>優先</th><th>変換</th><th>例</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>完全一致</td><td><code>test(int)</code> に <code>10</code></td></tr>
+<tr><td>2</td><td>拡大プリミティブ変換</td><td><code>int</code> → <code>long</code></td></tr>
+<tr><td>3</td><td>ボクシング</td><td><code>int</code> → <code>Integer</code></td></tr>
+<tr><td>4</td><td>可変長引数</td><td><code>int...</code></td></tr>
+</tbody>
+</table>
+<pre class="article-code"><code>void test(long x) { System.out.print("long"); }
+void test(Integer x) { System.out.print("Integer"); }
+void test(int... x) { System.out.print("varargs"); }
+
+test(10); // long</code></pre>
+<p><code>10</code> はintリテラルです。<code>long</code> への拡大変換は、<code>Integer</code> へのボクシングや可変長引数より優先されます。</p>
+</section><section class="article-section">
+<h2>nullを渡すオーバーロード</h2>
+<p><code>null</code> は参照型に代入できます。複数の参照型候補がある場合、より具体的な型が選ばれます。どちらが具体的か決められない場合はコンパイルエラーです。</p>
+<pre class="article-code"><code>void test(Object o) { System.out.print("Object"); }
+void test(String s) { System.out.print("String"); }
+
+test(null); // String</code></pre>
+<p><code>String</code> は <code>Object</code> のサブクラスなので、より具体的な <code>String</code> が選ばれます。</p>
+<pre class="article-code"><code>void sample(String s) {}
+void sample(StringBuilder sb) {}
+
+// sample(null); // NG: String と StringBuilder のどちらとも決められない</code></pre>
+<div class="article-callout"><strong>判断:</strong> <code>null</code> 問題では、候補が親子関係か、横並びの別クラスかを見ます。</div>
+</section><section class="article-section">
+<h2>varargsのルール</h2>
+<p>可変長引数は、0個以上の引数を受け取れる仕組みです。メソッド内では配列として扱われます。</p>
+<pre class="article-code"><code>void print(String label, int... values) {
+    System.out.println(values.length);
+}
+
+print("A");          // 0
+print("B", 1, 2, 3); // 3</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>ルール</th><th>例</th></tr></thead>
+<tbody>
+<tr><td>可変長引数は最後に1つだけ</td><td><code>void m(String s, int... x)</code></td></tr>
+<tr><td>最後以外には書けない</td><td><code>void m(int... x, String s)</code> はNG</td></tr>
+<tr><td>2つ以上書けない</td><td><code>void m(int... a, String... b)</code> はNG</td></tr>
+<tr><td>配列として渡せる</td><td><code>m(new int[]{1,2})</code></td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>戻り値の判定</h2>
+<p><code>void</code> 以外のメソッドは、正常終了するすべての経路で値を返す必要があります。</p>
+<pre class="article-code"><code>int ok(boolean b) {
+    if (b) {
+        return 1;
+    }
+    return 2;
+}
+
+int ng(boolean b) {
+    if (b) {
+        return 1;
+    }
+    // NG: bがfalseの経路でreturnがない
+}</code></pre>
+<p><code>return</code> の後に通常文を書くと到達不能文としてコンパイルエラーになることがあります。</p>
+<pre class="article-code"><code>void test() {
+    return;
+    // System.out.println("A"); // NG: 到達不能
+}</code></pre>
+</section><section class="article-section">
+<h2>コンストラクタの基本</h2>
+<p>コンストラクタはインスタンス生成時に呼ばれる特別な処理です。クラス名と同じ名前で、戻り値型を書きません。戻り値型を書いたら、それはコンストラクタではなく普通のメソッドです。</p>
+<pre class="article-code"><code>class Sample {
+    Sample() { }       // コンストラクタ
+    void Sample() { }  // メソッド。コンストラクタではない
+}</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>項目</th><th>メソッド</th><th>コンストラクタ</th></tr></thead>
+<tbody>
+<tr><td>名前</td><td>任意の識別子</td><td>クラス名と同じ</td></tr>
+<tr><td>戻り値型</td><td>必要。<code>void</code> も可</td><td>書かない</td></tr>
+<tr><td>呼び出し</td><td><code>obj.method()</code></td><td><code>new Sample()</code></td></tr>
+<tr><td>継承</td><td>条件次第で継承される</td><td>継承されない</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>デフォルトコンストラクタ</h2>
+<p>コンストラクタを1つも定義しない場合、コンパイラが引数なしコンストラクタを自動で追加します。しかし、1つでも自分でコンストラクタを定義すると、デフォルトコンストラクタは追加されません。</p>
+<pre class="article-code"><code>class A {
+    // コンストラクタを何も書かないので A() が暗黙にある
+}
+new A(); // OK
+
+class B {
+    B(String s) {}
+}
+// new B(); // NG: B() は自動追加されない</code></pre>
+<div class="article-callout warn"><strong>頻出:</strong> 「引数ありコンストラクタを書いたから、引数なしもあるはず」は誤りです。必要なら明示的に定義します。</div>
+</section><section class="article-section">
+<h2>this() と super()</h2>
+<p><code>this()</code> は同じクラスの別コンストラクタを呼び、<code>super()</code> は親クラスのコンストラクタを呼びます。どちらもコンストラクタの先頭行にしか書けません。同じコンストラクタ内で両方を書くこともできません。</p>
+<pre class="article-code"><code>class A {
+    A(int n) {}
+}
+class B extends A {
+    B() {
+        this(10); // OK: 先頭行
+    }
+    B(int n) {
+        super(n); // OK: 先頭行
+    }
+}</code></pre>
+<pre class="article-code"><code>class C extends A {
+    C() {
+        System.out.println("C");
+        // super(10); // NG: 先頭行ではない
+    }
+}</code></pre>
+</section><section class="article-section">
+<h2>暗黙のsuper()</h2>
+<p>コンストラクタの先頭に <code>this()</code> も <code>super()</code> も書かない場合、コンパイラが <code>super()</code> を挿入します。そのため、親クラスに引数なしコンストラクタがないとコンパイルエラーになります。</p>
+<pre class="article-code"><code>class Parent {
+    Parent(String name) {}
+}
+class Child extends Parent {
+    Child() {
+        // ここに super(); が暗黙挿入される
+        // しかし Parent() が存在しないのでNG
+    }
+}</code></pre>
+<p>修正するなら、親のコンストラクタに合うように明示的に <code>super("x")</code> を呼びます。</p>
+<pre class="article-code"><code>class Child extends Parent {
+    Child() {
+        super("x");
+    }
+}</code></pre>
+</section><section class="article-section">
+<h2>コンストラクタ連鎖の実行順</h2>
+<p>サブクラスのインスタンス生成では、最終的に親クラス側から初期化されます。<code>this()</code> で同じクラスの別コンストラクタへ進んでも、どこかで <code>super()</code> に到達します。</p>
+<pre class="article-code"><code>class A {
+    A() { System.out.print("A"); }
+}
+class B extends A {
+    B() {
+        this(1);
+        System.out.print("B");
+    }
+    B(int n) {
+        System.out.print("C");
+    }
+}
+new B();</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>順番</th><th>処理</th><th>出力</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><code>B()</code> が <code>this(1)</code> を呼ぶ</td><td>-</td></tr>
+<tr><td>2</td><td><code>B(int)</code> の先頭に暗黙 <code>super()</code></td><td>-</td></tr>
+<tr><td>3</td><td><code>A()</code></td><td>A</td></tr>
+<tr><td>4</td><td><code>B(int)</code> の本体</td><td>C</td></tr>
+<tr><td>5</td><td><code>B()</code> の残り</td><td>B</td></tr>
+</tbody>
+</table>
+<p>出力は <code>ACB</code> です。</p>
+</section><section class="article-section">
+<h2>引数渡し: Javaは常に値渡し</h2>
+<p>プリミティブ型では値そのもののコピー、参照型では参照値のコピーが渡されます。</p>
+<pre class="article-code"><code>static void change(int x) {
+    x = 20;
+}
+int a = 10;
+change(a);
+System.out.println(a); // 10</code></pre>
+<p>呼び出し元の <code>a</code> は変わりません。コピーされた <code>x</code> だけが変わります。</p>
+<pre class="article-code"><code>static void change(StringBuilder sb) {
+    sb.append("B");
+    sb = new StringBuilder("C");
+}
+StringBuilder s = new StringBuilder("A");
+change(s);
+System.out.println(s); // AB</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>操作</th><th>呼び出し元に影響</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td><code>sb.append("B")</code></td><td>ある</td><td>同じオブジェクトの中身を変更している</td></tr>
+<tr><td><code>sb = new StringBuilder("C")</code></td><td>ない</td><td>仮引数の参照値コピーを差し替えただけ</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>staticメソッドとインスタンスメソッド</h2>
+<p><code>static</code> メソッドはインスタンスなしで呼べますが、インスタンスフィールドへ直接アクセスできません。</p>
+<pre class="article-code"><code>class Sample {
+    private String name = "A";
+    static void print() {
+        // System.out.println(name); // NG: staticからinstanceを直接参照できない
+    }
+}</code></pre>
+<p>インスタンスを作って、その参照を経由すればアクセスできます。</p>
+<pre class="article-code"><code>class Sample {
+    private String name = "A";
+    static void print() {
+        Sample s = new Sample();
+        System.out.println(s.name); // OK
+    }
+}</code></pre>
+</section><section class="article-section">
+<h2>mainメソッドの形</h2>
+<p>実行エントリポイントとして使えるmainメソッドは、基本形を崩さないことが重要です。</p>
+<pre class="article-code"><code>public static void main(String[] args) {}
+public static void main(String... args) {}</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>要素</th><th>必要条件</th></tr></thead>
+<tbody>
+<tr><td>アクセス</td><td><code>public</code></td></tr>
+<tr><td>static</td><td>必要</td></tr>
+<tr><td>戻り値</td><td><code>void</code></td></tr>
+<tr><td>名前</td><td><code>main</code></td></tr>
+<tr><td>引数</td><td><code>String[]</code> または <code>String...</code></td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>コンストラクタとアクセス修飾子</h2>
+<p>コンストラクタにもアクセス修飾子を付けられます。サブクラスから親コンストラクタを呼ぶ場合、そのコンストラクタにアクセスできる必要があります。</p>
+<pre class="article-code"><code>class A {
+    private A() {}
+}
+class B extends A {
+    // B() { super(); } が必要だが、A() はprivateなのでNG
+}</code></pre>
+<p><code>protected</code> の親コンストラクタは、サブクラスから呼べます。</p>
+<pre class="article-code"><code>class A {
+    protected A() {}
+}
+class B extends A {
+    public B() {
+        super(); // OK
+    }
+}</code></pre>
+</section><section class="article-section">
+<h2>典型ひっかけ</h2>
+<div class="article-card-grid">
+<div class="article-card"><h3>戻り値型付きコンストラクタ</h3><p>void Sample() はコンストラクタではなくメソッドです。 new Sample() 時には呼ばれません</p></div>
+<div class="article-card"><h3>戻り値だけ違うオーバーロード</h3><p>同じ引数リストで戻り値だけ違う同名メソッドは定義できません</p></div>
+<div class="article-card"><h3>暗黙super()</h3><p>親に無引数コンストラクタがないのに、子で明示的な super(...) を書かないとコンパイルエラー</p></div>
+<div class="article-card"><h3>参照型を参照渡しだと思う</h3><p>仮引数を別インスタンスに差し替えても、呼び出し元の変数は差し替わりません</p></div>
+<div class="article-card"><h3>varargsを通常引数より優先する</h3><p>可変長引数は原則として最後の候補です。完全一致や拡大変換があればそちらを優先します</p></div>
+<div class="article-card"><h3>staticからinstanceへ直接アクセス</h3><p>main やstaticメソッドからインスタンスフィールドを直接読めません</p></div>
+</div>
+</section><section class="article-section">
+<h2>ミニ演習</h2>
+<details class="article-card"><summary><strong>Q1. <code>class A { void A(){} }</code> にはコンストラクタがある？</strong></summary><p>void A() はメソッドです。明示的なコンストラクタはありません。そのため、引数なしデフォルトコンストラクタが追加されます</p></details>
+<details class="article-card"><summary><strong>Q2. <code>void test(int)</code> と <code>int test(int)</code> は同時に定義できる？</strong></summary><p>できません。戻り値型だけの違いではオーバーロードになりません</p></details>
+<details class="article-card"><summary><strong>Q3. 親に <code>A(String)</code> しかないとき、子の <code>B(){}</code> はコンパイルできる？</strong></summary><p>できません。 B() の先頭に暗黙の super() が入りますが、親に A() がないため</p></details>
+<details class="article-card"><summary><strong>Q4. <code>test(10)</code> に対して <code>test(long)</code> と <code>test(Integer)</code> がある場合は？</strong></summary><p>通常は test(long) が選ばれます。 int から long への拡大変換が、ボクシングより優先されるため</p></details>
+<p class="inline-note article-callout">関連: <a href="../silver-output-problems/index.html">出力追跡</a> / <a href="../class-design/index.html">クラス・static・record</a> / <a href="../inheritance/index.html">継承・interface</a> / <a href="../java-silver-cast-instanceof/index.html">ポリモーフィズム</a></p>
+</section><section class="article-section">
+<h2>この単元で固定する判断順</h2>
+<ol class="article-list priority-list">
+<li><strong>対象が何かを見る。</strong> <code>String</code>、<code>StringBuilder</code>、配列、<code>ArrayList</code>、<code>List</code>、ラッパークラスでは同じメソッド名でも意味が変わります。</li>
+<li><strong>戻り値を確認する。</strong> 返された値を使っているか、戻り値を捨てているかで結果が変わります。</li>
+<li><strong>元のオブジェクトが変わるかを見る。</strong> <code>String</code> は不変、<code>StringBuilder</code> と <code>ArrayList</code> は基本的に可変です。</li>
+<li><strong>インデックス範囲を見る。</strong> <code>0</code> 始まり、終端は「含む」のか「含まない」のかを必ず分けます。</li>
+<li><strong>null・空・範囲外の例外を見る。</strong> コンパイルできても、実行時に <code>NullPointerException</code> や範囲外例外で止まることがあります。</li>
+</ol>
+<div class="article-callout warn">
+<strong>雑に暗記すると危険です。</strong><br/>
+          問題では「このメソッドを知っているか」より、「戻り値を受け取らないと変わらない」「元が変わっているから後続行に影響する」という形で落としてきます。
+        </div>
+</section><section class="article-section">
+<h2>String：不変オブジェクトとして見る</h2>
+<p><code>String</code> のメソッドは、多くの場合「新しい結果」を返します。元の文字列は変わりません。ここを間違えると、出力問題でほぼ確実に落ちます。</p>
+<pre class="article-code"><code>String s = "abc";
+s.concat("de");
+System.out.println(s);     // abc
+
+s = s.concat("de");
+System.out.println(s);     // abcde</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド</th><th>戻り値</th><th>元のString</th><th>問題での注意</th></tr></thead>
+<tbody>
+<tr><td><code>length()</code></td><td><code>int</code></td><td>変化なし</td><td>配列は <code>length</code> フィールド。<code>()</code> を付けない。</td></tr>
+<tr><td><code>charAt(int index)</code></td><td><code>char</code></td><td>変化なし</td><td><code>0</code> 以上 <code>length() - 1</code> 以下。範囲外は例外。</td></tr>
+<tr><td><code>substring(int begin)</code></td><td><code>String</code></td><td>変化なし</td><td><code>begin</code> から末尾まで。戻り値を使わないと意味がない。</td></tr>
+<tr><td><code>substring(int begin, int end)</code></td><td><code>String</code></td><td>変化なし</td><td><code>begin</code> 以上 <code>end</code> 未満。<code>end</code> の文字は含まない。</td></tr>
+<tr><td><code>indexOf(String s)</code></td><td><code>int</code></td><td>変化なし</td><td>見つからない場合は <code>-1</code>。例外ではない。</td></tr>
+<tr><td><code>replace(char old, char new)</code></td><td><code>String</code></td><td>変化なし</td><td>すべて置換した新しい文字列を返す。</td></tr>
+<tr><td><code>startsWith(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>大小文字は区別される。</td></tr>
+<tr><td><code>endsWith(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>末尾一致。部分一致とは違う。</td></tr>
+<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>変化なし</td><td>左辺が <code>null</code> なら呼び出し時に例外。</td></tr>
+<tr><td><code>equalsIgnoreCase(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>左辺 <code>null</code> は例外。右辺 <code>null</code> は <code>false</code>。</td></tr>
+<tr><td><code>toLowerCase()</code> / <code>toUpperCase()</code></td><td><code>String</code></td><td>変化なし</td><td>戻り値を代入しないと元は変わらない。</td></tr>
+<tr><td><code>trim()</code></td><td><code>String</code></td><td>変化なし</td><td>前後の空白を取り除いた結果を返す。中間の空白は消えない。</td></tr>
+<tr><td><code>concat(String)</code></td><td><code>String</code></td><td>変化なし</td><td><code>+</code> と似るが、<code>null</code> 引数は例外になり得る。</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>Stringの境界値：substringとcharAt</h2>
+<p>境界値は、問題作成者が最も使いやすいひっかけです。<code>substring</code> の第2引数は「取り出す最後の位置」ではなく、「取り出しを終える位置」です。</p>
+<pre class="article-code"><code>String s = "abcd";
+System.out.println(s.substring(1, 3)); // bc
+System.out.println(s.substring(4));    // 空文字
+System.out.println(s.charAt(3));       // d
+System.out.println(s.charAt(4));       // 実行時例外</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>式</th><th>結果</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td><code>s.substring(0, 4)</code></td><td><code>"abcd"</code></td><td><code>end</code> は <code>length()</code> まで許される。</td></tr>
+<tr><td><code>s.substring(4)</code></td><td>空文字</td><td>末尾から末尾までを取り出す扱い。</td></tr>
+<tr><td><code>s.substring(2, 2)</code></td><td>空文字</td><td>開始位置と終了位置が同じ。</td></tr>
+<tr><td><code>s.substring(3, 2)</code></td><td>実行時例外</td><td>開始位置が終了位置より後。</td></tr>
+<tr><td><code>s.charAt(4)</code></td><td>実行時例外</td><td><code>charAt</code> は <code>length()</code> と同じ位置を参照できない。</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>StringBuilder：可変オブジェクトとして見る</h2>
+<p><code>StringBuilder</code> は中身を書き換えます。戻り値も多くの場合、自分自身への参照です。つまり、同じインスタンスを複数変数で参照していると、片方の操作がもう片方の見え方にも影響します。</p>
+<pre class="article-code"><code>StringBuilder a = new StringBuilder("A");
+StringBuilder b = a;
+a.append("B");
+System.out.println(b); // AB</code></pre>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド</th><th>戻り値</th><th>元のStringBuilder</th><th>問題での注意</th></tr></thead>
+<tbody>
+<tr><td><code>append(x)</code></td><td><code>StringBuilder</code></td><td>変わる</td><td>末尾追加。戻り値は基本的に同じインスタンス。</td></tr>
+<tr><td><code>insert(index, x)</code></td><td><code>StringBuilder</code></td><td>変わる</td><td>指定位置の前に挿入。範囲外に注意。</td></tr>
+<tr><td><code>delete(begin, end)</code></td><td><code>StringBuilder</code></td><td>変わる</td><td><code>begin</code> 以上 <code>end</code> 未満を削除。</td></tr>
+<tr><td><code>deleteCharAt(index)</code></td><td><code>StringBuilder</code></td><td>変わる</td><td>1文字削除。範囲外は例外。</td></tr>
+<tr><td><code>replace(begin, end, str)</code></td><td><code>StringBuilder</code></td><td>変わる</td><td>範囲を別文字列で置換。</td></tr>
+<tr><td><code>reverse()</code></td><td><code>StringBuilder</code></td><td>変わる</td><td>戻り値を受けなくても反転済み。</td></tr>
+<tr><td><code>length()</code></td><td><code>int</code></td><td>変化なし</td><td>現在の文字数。</td></tr>
+<tr><td><code>charAt(index)</code></td><td><code>char</code></td><td>変化なし</td><td>範囲外は例外。</td></tr>
+<tr><td><code>toString()</code></td><td><code>String</code></td><td>変化なし</td><td><code>String</code> と比較したいなら文字列化してから。</td></tr>
+<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>変化なし</td><td>内容比較ではない。基本は参照比較。</td></tr>
+</tbody>
+</table>
+<div class="article-callout">
+<strong>StringBuilder.equals() は頻出の罠。</strong><br/>
+<code>new StringBuilder("a").equals(new StringBuilder("a"))</code> は、内容が同じでも通常 <code>false</code> です。内容比較したいなら <code>toString().equals(...)</code> を使う必要があります。
+        </div>
+</section><section class="article-section">
+<h2>配列：lengthはフィールド、固定長、初期値あり</h2>
+<p>配列はオブジェクトですが、<code>length</code> はメソッドではなくフィールドです。<code>length()</code> と書いたらコンパイルエラーです。</p>
+<table class="ref-table study-table">
+<thead><tr><th>対象</th><th>要素数取得</th><th>注意</th></tr></thead>
+<tbody>
+<tr><td>配列</td><td><code>array.length</code></td><td>フィールド。<code>()</code> なし。</td></tr>
+<tr><td><code>String</code></td><td><code>str.length()</code></td><td>メソッド。<code>()</code> あり。</td></tr>
+<tr><td><code>ArrayList</code></td><td><code>list.size()</code></td><td>メソッド。<code>length</code> ではない。</td></tr>
+</tbody>
+</table>
+<pre class="article-code"><code>int[] nums = new int[3];
+System.out.println(nums.length); // 3
+System.out.println(nums[0]);     // 0
+nums[3] = 10;                    // 実行時例外</code></pre>
+</section><section class="article-section">
+<h2>ArrayList / List：戻り値と副作用を分ける</h2>
+<p><code>ArrayList</code> は可変です。<code>add</code>、<code>set</code>、<code>remove</code> の戻り値がそれぞれ違うため、選択肢で狙われます。</p>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド</th><th>戻り値</th><th>副作用</th><th>注意</th></tr></thead>
+<tbody>
+<tr><td><code>add(E e)</code></td><td><code>boolean</code></td><td>末尾に追加</td><td>通常 <code>true</code>。戻り値は追加要素ではない。</td></tr>
+<tr><td><code>add(int index, E e)</code></td><td><code>void</code></td><td>指定位置に挿入</td><td>指定位置以降が後ろへずれる。</td></tr>
+<tr><td><code>set(int index, E e)</code></td><td>置換前の要素</td><td>指定位置を置換</td><td>追加ではない。サイズは変わらない。</td></tr>
+<tr><td><code>get(int index)</code></td><td>指定位置の要素</td><td>なし</td><td>範囲外は例外。</td></tr>
+<tr><td><code>remove(int index)</code></td><td>削除した要素</td><td>指定位置を削除</td><td>後続要素のインデックスが詰まる。</td></tr>
+<tr><td><code>remove(Object o)</code></td><td><code>boolean</code></td><td>一致要素を削除</td><td>最初に一致した要素のみ削除。</td></tr>
+<tr><td><code>contains(Object o)</code></td><td><code>boolean</code></td><td>なし</td><td><code>equals</code> で判定。</td></tr>
+<tr><td><code>size()</code></td><td><code>int</code></td><td>なし</td><td>配列の <code>length</code> と混同しない。</td></tr>
+<tr><td><code>clear()</code></td><td><code>void</code></td><td>全要素削除</td><td>空になるがリスト変数自体は <code>null</code> ではない。</td></tr>
+<tr><td><code>isEmpty()</code></td><td><code>boolean</code></td><td>なし</td><td>サイズ0なら <code>true</code>。</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>removeのオーバーロード：intかObjectか</h2>
+<p><code>remove</code> は、引数が <code>int</code> ならインデックス削除、<code>Object</code> なら要素削除です。整数リストでは特に危険です。</p>
+<pre class="article-code"><code>var list = new java.util.ArrayList&lt;Integer&gt;();
+list.add(10);
+list.add(20);
+list.add(30);
+
+list.remove(1);                  // インデックス1を削除。20が消える
+list.remove(Integer.valueOf(30)); // 要素30を削除</code></pre>
+<div class="article-callout warn">
+<strong>ここは暗記ではなくオーバーロード解決です。</strong><br/>
+<code>remove(1)</code> の <code>1</code> は <code>int</code> リテラルなので、<code>remove(int index)</code> が優先されます。要素の <code>1</code> を消したい場合は <code>Integer.valueOf(1)</code> のように <code>Object</code> として渡す必要があります。
+        </div>
+</section><section class="article-section">
+<h2>List.of と Arrays.asList</h2>
+<p>どちらも短くリストを作れますが、性質が違います。変更できるか、元配列と連動するかを見ます。</p>
+<table class="ref-table study-table">
+<thead><tr><th>作り方</th><th>サイズ変更</th><th>要素変更</th><th>注意</th></tr></thead>
+<tbody>
+<tr><td><code>new ArrayList&lt;&gt;()</code></td><td>できる</td><td>できる</td><td>通常の可変リスト。</td></tr>
+<tr><td><code>List.of("A", "B")</code></td><td>できない</td><td>できない</td><td>変更系操作は実行時例外になり得る。</td></tr>
+<tr><td><code>Arrays.asList(array)</code></td><td>できない</td><td>できる</td><td>固定サイズ。元配列と連動する点に注意。</td></tr>
+</tbody>
+</table>
+<pre class="article-code"><code>String[] array = {"A", "B"};
+var list = java.util.Arrays.asList(array);
+list.set(0, "X");
+System.out.println(array[0]); // X
+// list.add("C");            // 実行時例外</code></pre>
+</section><section class="article-section">
+<h2>ラッパークラス・変換メソッド</h2>
+<p>ラッパークラスでは、文字列を数値に変換するメソッド、数値を文字列にするメソッド、オートボクシングとの関係が問われます。</p>
+<table class="ref-table study-table">
+<thead><tr><th>メソッド/式</th><th>戻り値</th><th>注意</th></tr></thead>
+<tbody>
+<tr><td><code>Integer.parseInt("10")</code></td><td><code>int</code></td><td>プリミティブを返す。変換不能なら <code>NumberFormatException</code>。</td></tr>
+<tr><td><code>Integer.valueOf("10")</code></td><td><code>Integer</code></td><td>ラッパーを返す。</td></tr>
+<tr><td><code>String.valueOf(x)</code></td><td><code>String</code></td><td><code>null</code> にも比較的強い。</td></tr>
+<tr><td><code>Integer i = 10;</code></td><td><code>Integer</code></td><td>オートボクシング。</td></tr>
+<tr><td><code>int n = i;</code></td><td><code>int</code></td><td>アンボクシング。<code>i</code> が <code>null</code> なら実行時例外。</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>equals / compareTo / contains の見方</h2>
+<p>比較系メソッドは「何を基準に比較しているか」を見る必要があります。</p>
+<table class="ref-table study-table">
+<thead><tr><th>対象</th><th>メソッド</th><th>判定基準</th><th>注意</th></tr></thead>
+<tbody>
+<tr><td><code>String</code></td><td><code>equals</code></td><td>文字列の内容</td><td><code>==</code> は参照比較。</td></tr>
+<tr><td><code>String</code></td><td><code>compareTo</code></td><td>辞書順</td><td>等しければ0。大小は正負で判定。</td></tr>
+<tr><td><code>StringBuilder</code></td><td><code>equals</code></td><td>基本は参照</td><td>内容比較ではない。</td></tr>
+<tr><td><code>ArrayList</code></td><td><code>contains</code></td><td><code>equals</code></td><td>要素側の <code>equals</code> 実装に依存。</td></tr>
+<tr><td>配列</td><td><code>equals</code></td><td>基本は参照</td><td>内容比較ではない。問題では参照比較として扱う。</td></tr>
+</tbody>
+</table>
+</section><section class="article-section">
+<h2>問題での最終チェック</h2>
+<ul class="article-list check-list">
+<li><code>String</code> の戻り値を捨てていないか。</li>
+<li><code>StringBuilder</code> の変更が別変数にも見えていないか。</li>
+<li><code>substring</code> の第2引数を「含む」と誤解していないか。</li>
+<li>配列の <code>length</code>、文字列の <code>length()</code>、Listの <code>size()</code> を混同していないか。</li>
+<li><code>remove(int)</code> と <code>remove(Object)</code> を区別しているか。</li>
+<li><code>List.of</code> や <code>Arrays.asList</code> を通常の <code>ArrayList</code> と同じに扱っていないか。</li>
+<li>左辺が <code>null</code> のメソッド呼び出しになっていないか。</li>
+</ul>
+</section>
+</section></main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="methods.html";</script>
+<script src="../../data/questions.js?v=silver-gold-unified-20260601"></script>
+<script src="../../assets/js/app.js?v=silver-gold-unified-20260601"></script>
+<script src="../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body>
+</html>

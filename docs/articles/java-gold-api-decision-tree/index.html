@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Gold API判定ツリー：型・実行タイミング・戻り値で読む。Java Practice Labのオリジナル学習記事です。" name="description"/>
+<title>API判定ツリー：型・実行タイミング・戻り値で読む｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout"><main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>API判定ツリー</h1>
+<p class="lead">API問題は、暗記よりも判定順序です。コンパイル可否、型、実行タイミング、例外の順で切ります。</p>
+<section class="article-section"><h2>最初に見る4点</h2><ol class="article-list priority-list"><li>importが必要な型か、パッケージが合っているか。</li><li>メソッドがその型に存在するか。</li><li>ラムダの引数型・戻り値型が合うか。</li><li>実行時に空、null、キー重複、閉じ忘れなどが起きるか。</li></ol></section>
+<table class="study-table ref-table"><thead><tr><th>段階</th><th>見ること</th><th>典型ミス</th></tr></thead><tbody><tr><td>コンパイル前提</td><td>型・メソッド・引数</td><td>OptionalにStream用メソッドを書いている。</td></tr><tr><td>戻り値</td><td>次のメソッドへつながる型</td><td>collect後をStreamのままだと思う。</td></tr><tr><td>実行タイミング</td><td>遅延評価・短絡評価</td><td>peekが必ず全要素で動くと思う。</td></tr><tr><td>実行時例外</td><td>null、空、重複、get</td><td>Optional.get、toMap重複、Future.get。</td></tr></tbody></table>
+<pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb")
+    .collect(Collectors.toMap(String::length, s -&gt; s));
+// コンパイルは通るが、キー重複で実行時例外</code></pre>
+<section class="article-section"><h2>API問題は「コンパイルエラー」と「実行時例外」を分ける</h2><p>メソッドの型が合わないならコンパイルエラーです。型は合っているが、データ条件で失敗するなら実行時例外です。この切り分けが最優先です。</p></section>
+<div class="bad-good"><div><strong>悪い判断</strong><p>見たことがあるAPIだから正常動作と判断する。</p></div><div><strong>良い判断</strong><p>型が合うか、実行条件で落ちないか、戻り値が何かを順番に確認する。</p></div></div>
+</article>
+</main></div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=silver-gold-unified-20260601"></script>
+<script src="../../assets/js/app.js?v=silver-gold-unified-20260601"></script>
+<script src="../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body></html>

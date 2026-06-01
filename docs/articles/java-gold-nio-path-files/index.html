@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="PathとFiles" name="description"/>
+<title>PathとFiles｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=silver-gold-unified-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<article class="content-page long-article gold-deep-article">
+<h1>PathとFilesの基本</h1>
+<p class="lead">NIO.2は、Pathがパス表現、Filesが操作、という役割分担で読むと整理できます。</p>
+<section class="article-section"><h2>Pathはファイルそのものではない</h2><p><code>Path</code>はファイルやディレクトリの場所を表すオブジェクトです。実体が存在するかどうかは別問題です。</p></section>
+<pre class="article-code"><code>Path p = Path.of("data", "sample.txt");
+System.out.println(p.getFileName()); // sample.txt</code></pre>
+<table class="study-table ref-table"><thead><tr><th>API</th><th>役割</th><th>注意</th></tr></thead><tbody><tr><td><code>Path.of(...)</code></td><td>Pathを作る</td><td>存在確認はしない。</td></tr><tr><td><code>Files.exists(path)</code></td><td>存在確認</td><td>戻り値はboolean。</td></tr><tr><td><code>Files.readString(path)</code></td><td>内容を読む</td><td>IOExceptionの可能性。</td></tr><tr><td><code>Files.lines(path)</code></td><td>行Streamを返す</td><td>Streamを閉じる意識が必要。</td></tr><tr><td><code>Files.copy</code></td><td>コピー</td><td>既存ファイルの扱いに注意。</td></tr></tbody></table>
+<section class="article-section"><h2>normalizeとtoRealPathを混同しない</h2><p><code>normalize</code>はパス文字列上の<code>.</code>や<code>..</code>を整理します。ファイルの存在確認はしません。<code>toRealPath</code>は実ファイルシステムに問い合わせるため、存在しない場合に例外が起きます。</p></section>
+<pre class="article-code"><code>Path p = Path.of("a", "..", "b");
+System.out.println(p.normalize()); // b
+
+// p.toRealPath(); // 実体がなければIOException</code></pre>
+<div class="bad-good"><div><strong>悪い判断</strong><p>Pathを作れたのでファイルが存在すると考える。</p></div><div><strong>良い判断</strong><p>Path作成、存在確認、読み書き操作を別々に判断する。</p></div></div>
+</article>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=silver-gold-unified-20260601"></script>
+<script src="../../assets/js/app.js?v=silver-gold-unified-20260601"></script>
+<script src="../../pwa.js?v=silver-gold-unified-20260601"></script>
+</body>
+</html>
