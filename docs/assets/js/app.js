@@ -1,14 +1,18 @@
 (function () {
 
-  const PAGE_PATHS = {"index.html":"index.html","about.html":"site/about.html","contact.html":"site/contact.html","privacy.html":"site/privacy.html","terms.html":"site/terms.html","offline.html":"site/offline.html","java-basic.html":"courses/java-basic/index.html","java-basic-01.html":"courses/java-basic/lessons/01.html","java-basic-02.html":"courses/java-basic/lessons/02.html","java-basic-03.html":"courses/java-basic/lessons/03.html","java-basic-04.html":"courses/java-basic/lessons/04.html","java-basic-05.html":"courses/java-basic/lessons/05.html","java-basic-06.html":"courses/java-basic/lessons/06.html","java-basic-07.html":"courses/java-basic/lessons/07.html","java-basic-08.html":"courses/java-basic/lessons/08.html","java-basic-09.html":"courses/java-basic/lessons/09.html","java-basic-10.html":"courses/java-basic/lessons/10.html","java-basic-11.html":"courses/java-basic/lessons/11.html","java-basic-12.html":"courses/java-basic/lessons/12.html","java-basic-13.html":"courses/java-basic/lessons/13.html","java-basic-14.html":"courses/java-basic/lessons/14.html","java-basic-15.html":"courses/java-basic/lessons/15.html","java-basic-16.html":"courses/java-basic/lessons/16.html","java-basic-17.html":"courses/java-basic/lessons/17.html","java-basic-18.html":"courses/java-basic/lessons/18.html","java-basic-19.html":"courses/java-basic/lessons/19.html","java-basic-20.html":"courses/java-basic/lessons/20.html","bronze.html":"courses/bronze/index.html","bronze-01.html":"courses/bronze/lessons/01.html","bronze-02.html":"courses/bronze/lessons/02.html","bronze-03.html":"courses/bronze/lessons/03.html","bronze-04.html":"courses/bronze/lessons/04.html","bronze-05.html":"courses/bronze/lessons/05.html","bronze-06.html":"courses/bronze/lessons/06.html","bronze-practice-1.html":"courses/bronze/practice/basic-syntax.html","bronze-practice-2.html":"courses/bronze/practice/oop-basic.html","bronze-exam-a.html":"courses/bronze/exams/a.html","java11silver.html":"courses/java11-silver/index.html","java11silver-01.html":"courses/java11-silver/lessons/01.html","java11silver-02.html":"courses/java11-silver/lessons/02.html","java11silver-03.html":"courses/java11-silver/lessons/03.html","java11silver-04.html":"courses/java11-silver/lessons/04.html","java11silver-05.html":"courses/java11-silver/lessons/05.html","java11silver-06.html":"courses/java11-silver/lessons/06.html","java11silver-07.html":"courses/java11-silver/lessons/07.html","java11silver-08.html":"courses/java11-silver/lessons/08.html","java11-practice-1.html":"courses/java11-silver/practice/basic-syntax.html","java11-practice-2.html":"courses/java11-silver/practice/oop.html","java11-practice-3.html":"courses/java11-silver/practice/final-check.html","java11-exam-a.html":"courses/java11-silver/exams/a.html","java11-exam-b.html":"courses/java11-silver/exams/b.html","java17silver.html":"courses/java17-silver/index.html","practice-a.html":"courses/java17-silver/units/java-basic.html","practice-b.html":"courses/java17-silver/units/type-string-array.html","practice-l.html":"courses/java17-silver/units/reference-api.html","practice-c.html":"courses/java17-silver/units/operator-control.html","practice-d.html":"courses/java17-silver/units/class-design.html","practice-e.html":"courses/java17-silver/units/inheritance.html","practice-f.html":"courses/java17-silver/units/exception.html","practice-m.html":"courses/java17-silver/units/compile-check.html","practice-i.html":"courses/java17-silver/units/random.html","practice-g.html":"courses/java17-silver/exams/a.html","practice-h.html":"courses/java17-silver/exams/b.html","practice-j.html":"courses/java17-silver/exams/c.html","practice-k.html":"courses/java17-silver/exams/d.html","exam.html":"courses/java17-silver/exams/index.html","exam-aftercare.html":"courses/java17-silver/exams/aftercare.html","exam-quality.html":"courses/java17-silver/exams/quality.html","gold.html":"courses/gold/index.html","gold-01.html":"courses/gold/lessons/01.html","gold-02.html":"courses/gold/lessons/02.html","gold-03.html":"courses/gold/lessons/03.html","gold-04.html":"courses/gold/lessons/04.html","gold-05.html":"courses/gold/lessons/05.html","gold-06.html":"courses/gold/lessons/06.html","gold-07.html":"courses/gold/lessons/07.html","gold-08.html":"courses/gold/lessons/08.html","gold-practice-1.html":"courses/gold/practice/lambda-stream.html","gold-practice-2.html":"courses/gold/practice/generics-collections.html","gold-practice-3.html":"courses/gold/practice/io-concurrency.html","gold-practice-4.html":"courses/gold/practice/module-final.html","gold-exam-a.html":"courses/gold/exams/a.html","gold-exam-b.html":"courses/gold/exams/b.html","articles.html":"articles/index.html","article-types.html":"articles/types/index.html","article-string.html":"articles/string/index.html","article-reference.html":"articles/reference/index.html","article-pitfalls.html":"articles/pitfalls/index.html","article-operators-control.html":"articles/operators-control/index.html","article-class-design.html":"articles/class-design/index.html","article-inheritance.html":"articles/inheritance/index.html","article-exception.html":"articles/exception/index.html","article-compile-errors.html":"articles/compile-errors/index.html","methods.html":"articles/methods/index.html","glossary.html":"articles/glossary/index.html","cheatsheet.html":"articles/cheatsheet/index.html","study-plan.html":"articles/study-plan/index.html","before-exam.html":"articles/before-exam/index.html","weak-guides.html":"articles/weak-guides/index.html","mistake-patterns.html":"articles/mistake-patterns/index.html","exam-strategy.html":"articles/exam-strategy/index.html","dashboard.html":"app/dashboard.html","mode.html":"app/mode.html","learning-path.html":"app/learning-path.html","quality-map.html":"app/quality-map.html","search.html":"app/search.html","random.html":"app/random.html","notes.html":"app/notes.html","settings.html":"app/settings.html","sync.html":"app/sync.html","mistake-reasons.html":"app/mistake-reasons.html","review-wrong.html":"app/review/wrong.html","review-marked.html":"app/review/marked.html","review-weak.html":"app/review/weak.html","review-due.html":"app/review/due.html","tag-index.html":"app/tags/index.html","tag-array.html":"app/tags/array.html","tag-basic.html":"app/tags/basic.html","tag-class.html":"app/tags/class.html","tag-compile.html":"app/tags/compile.html","tag-control.html":"app/tags/control.html","tag-exception.html":"app/tags/exception.html","tag-inheritance.html":"app/tags/inheritance.html","tag-operator.html":"app/tags/operator.html","tag-output.html":"app/tags/output.html","tag-reference.html":"app/tags/reference.html","tag-runtime.html":"app/tags/runtime.html","tag-string.html":"app/tags/string.html","tag-type.html":"app/tags/type.html","java-basic-21.html":"courses/java-basic/lessons/21.html","java-basic-22.html":"courses/java-basic/lessons/22.html","java-basic-23.html":"courses/java-basic/lessons/23.html","java-basic-24.html":"courses/java-basic/lessons/24.html"};
-  const EXTRA_PAGE_PATHS_HEADER_CARDS = {"control-array.html": "courses/bronze/practice/control-array.html", "final-check.html": "courses/bronze/practice/final-check.html", "class-method.html": "courses/bronze/practice/class-method.html", "pitfall-check.html": "courses/bronze/practice/pitfall-check.html", "api-string.html": "courses/java11-silver/practice/api-string.html", "exception-inheritance.html": "courses/java11-silver/practice/exception-inheritance.html", "package-command.html": "courses/java11-silver/practice/package-command.html", "compile-check.html": "courses/java11-silver/practice/compile-check.html", "output-mix.html": "courses/java11-silver/practice/output-mix.html", "stream-advanced.html": "courses/gold/practice/stream-advanced.html", "concurrency-nio.html": "courses/gold/practice/concurrency-nio.html", "lambda-optional.html": "courses/gold/practice/lambda-optional.html", "stream-collectors.html": "courses/gold/practice/stream-collectors.html", "nio-datetime.html": "courses/gold/practice/nio-datetime.html", "gold-api-mix.html": "courses/gold/practice/gold-api-mix.html", "foundation.html": "courses/java-basic/practice/foundation.html", "syntax.html": "courses/java-basic/practice/syntax.html"};
+  const PAGE_PATHS = {"index.html":"index.html","about.html":"site/about.html","contact.html":"site/contact.html","privacy.html":"site/privacy.html","terms.html":"site/terms.html","offline.html":"site/offline.html","java-basic.html":"courses/java-basic/index.html","java-basic-01.html":"courses/java-basic/lessons/01.html","java-basic-02.html":"courses/java-basic/lessons/02.html","java-basic-03.html":"courses/java-basic/lessons/03.html","java-basic-04.html":"courses/java-basic/lessons/04.html","java-basic-05.html":"courses/java-basic/lessons/05.html","java-basic-06.html":"courses/java-basic/lessons/06.html","java-basic-07.html":"courses/java-basic/lessons/07.html","java-basic-08.html":"courses/java-basic/lessons/08.html","java-basic-09.html":"courses/java-basic/lessons/09.html","java-basic-10.html":"courses/java-basic/lessons/10.html","java-basic-11.html":"courses/java-basic/lessons/11.html","java-basic-12.html":"courses/java-basic/lessons/12.html","java-basic-13.html":"courses/java-basic/lessons/13.html","java-basic-14.html":"courses/java-basic/lessons/14.html","java-basic-15.html":"courses/java-basic/lessons/15.html","java-basic-16.html":"courses/java-basic/lessons/16.html","java-basic-17.html":"courses/java-basic/lessons/17.html","java-basic-18.html":"courses/java-basic/lessons/18.html","java-basic-19.html":"courses/java-basic/lessons/19.html","java-basic-20.html":"courses/java-basic/lessons/20.html","bronze.html":"courses/bronze/index.html","bronze-01.html":"courses/bronze/lessons/01.html","bronze-02.html":"courses/bronze/lessons/02.html","bronze-03.html":"courses/bronze/lessons/03.html","bronze-04.html":"courses/bronze/lessons/04.html","bronze-05.html":"courses/bronze/lessons/05.html","bronze-06.html":"courses/bronze/lessons/06.html","bronze-practice-1.html":"courses/bronze/practice/basic-syntax.html","bronze-practice-2.html":"courses/bronze/practice/oop-basic.html","bronze-exam-a.html":"courses/bronze/exams/a.html","java11silver.html":"courses/java11-silver/index.html","java11silver-01.html":"courses/java11-silver/lessons/01.html","java11silver-02.html":"courses/java11-silver/lessons/02.html","java11silver-03.html":"courses/java11-silver/lessons/03.html","java11silver-04.html":"courses/java11-silver/lessons/04.html","java11silver-05.html":"courses/java11-silver/lessons/05.html","java11silver-06.html":"courses/java11-silver/lessons/06.html","java11silver-07.html":"courses/java11-silver/lessons/07.html","java11silver-08.html":"courses/java11-silver/lessons/08.html","java11-practice-1.html":"courses/java11-silver/practice/basic-syntax.html","java11-practice-2.html":"courses/java11-silver/practice/oop.html","java11-practice-3.html":"courses/java11-silver/practice/final-check.html","java11-exam-a.html":"courses/java11-silver/exams/a.html","java11-exam-b.html":"courses/java11-silver/exams/b.html","java17silver.html":"courses/java17-silver/index.html","practice-a.html":"courses/java17-silver/units/java-basic.html","practice-b.html":"courses/java17-silver/units/type-string-array.html","practice-l.html":"courses/java17-silver/units/reference-api.html","practice-c.html":"courses/java17-silver/units/operator-control.html","practice-d.html":"courses/java17-silver/units/class-design.html","practice-e.html":"courses/java17-silver/units/inheritance.html","practice-f.html":"courses/java17-silver/units/exception.html","practice-m.html":"courses/java17-silver/units/compile-check.html","practice-i.html":"courses/java17-silver/units/random.html","practice-g.html":"courses/java17-silver/exams/a.html","practice-h.html":"courses/java17-silver/exams/b.html","practice-j.html":"courses/java17-silver/exams/c.html","practice-k.html":"courses/java17-silver/exams/d.html","exam.html":"courses/java17-silver/exams/index.html","exam-aftercare.html":"courses/java17-silver/exams/aftercare.html","exam-quality.html":"courses/java17-silver/exams/quality.html","gold.html":"courses/gold/index.html","gold-01.html":"courses/gold/lessons/01.html","gold-02.html":"courses/gold/lessons/02.html","gold-03.html":"courses/gold/lessons/03.html","gold-04.html":"courses/gold/lessons/04.html","gold-05.html":"courses/gold/lessons/05.html","gold-06.html":"courses/gold/lessons/06.html","gold-07.html":"courses/gold/lessons/07.html","gold-08.html":"courses/gold/lessons/08.html","gold-practice-1.html":"courses/gold17/practice/lambda-stream.html","gold-practice-2.html":"courses/gold17/practice/generics-collections.html","gold-practice-3.html":"courses/gold17/practice/io-concurrency.html","gold-practice-4.html":"courses/gold17/practice/module-final.html","gold-exam-a.html":"courses/gold17/exams/a.html","gold-exam-b.html":"courses/gold17/exams/b.html","articles.html":"articles/index.html","article-types.html":"articles/types/index.html","article-string.html":"articles/string/index.html","article-reference.html":"articles/reference/index.html","article-pitfalls.html":"articles/pitfalls/index.html","article-operators-control.html":"articles/operators-control/index.html","article-class-design.html":"articles/class-design/index.html","article-inheritance.html":"articles/inheritance/index.html","article-exception.html":"articles/exception/index.html","article-compile-errors.html":"articles/compile-errors/index.html","methods.html":"articles/methods/index.html","glossary.html":"articles/glossary/index.html","cheatsheet.html":"articles/cheatsheet/index.html","study-plan.html":"articles/study-plan/index.html","before-exam.html":"articles/before-exam/index.html","weak-guides.html":"articles/weak-guides/index.html","mistake-patterns.html":"articles/mistake-patterns/index.html","exam-strategy.html":"articles/exam-strategy/index.html","dashboard.html":"app/dashboard.html","mode.html":"app/mode.html","learning-path.html":"app/learning-path.html","quality-map.html":"app/quality-map.html","search.html":"app/search.html","random.html":"app/random.html","notes.html":"app/notes.html","settings.html":"app/settings.html","sync.html":"app/sync.html","mistake-reasons.html":"app/mistake-reasons.html","review-wrong.html":"app/review/wrong.html","review-marked.html":"app/review/marked.html","review-weak.html":"app/review/weak.html","review-due.html":"app/review/due.html","tag-index.html":"app/tags/index.html","tag-array.html":"app/tags/array.html","tag-basic.html":"app/tags/basic.html","tag-class.html":"app/tags/class.html","tag-compile.html":"app/tags/compile.html","tag-control.html":"app/tags/control.html","tag-exception.html":"app/tags/exception.html","tag-inheritance.html":"app/tags/inheritance.html","tag-operator.html":"app/tags/operator.html","tag-output.html":"app/tags/output.html","tag-reference.html":"app/tags/reference.html","tag-runtime.html":"app/tags/runtime.html","tag-string.html":"app/tags/string.html","tag-type.html":"app/tags/type.html","java-basic-21.html":"courses/java-basic/lessons/21.html","java-basic-22.html":"courses/java-basic/lessons/22.html","java-basic-23.html":"courses/java-basic/lessons/23.html","java-basic-24.html":"courses/java-basic/lessons/24.html"};
+  const EXTRA_PAGE_PATHS_HEADER_CARDS = {"control-array.html": "courses/bronze/practice/control-array.html", "final-check.html": "courses/bronze/practice/final-check.html", "class-method.html": "courses/bronze/practice/class-method.html", "pitfall-check.html": "courses/bronze/practice/pitfall-check.html", "api-string.html": "courses/java11-silver/practice/api-string.html", "exception-inheritance.html": "courses/java11-silver/practice/exception-inheritance.html", "package-command.html": "courses/java11-silver/practice/package-command.html", "compile-check.html": "courses/java11-silver/practice/compile-check.html", "output-mix.html": "courses/java11-silver/practice/output-mix.html", "stream-advanced.html": "courses/gold17/practice/stream-advanced.html", "concurrency-nio.html": "courses/gold17/practice/concurrency-nio.html", "lambda-optional.html": "courses/gold17/practice/lambda-optional.html", "stream-collectors.html": "courses/gold17/practice/stream-collectors.html", "nio-datetime.html": "courses/gold17/practice/nio-datetime.html", "gold-api-mix.html": "courses/gold17/practice/gold-api-mix.html", "foundation.html": "courses/java-basic/practice/foundation.html", "syntax.html": "courses/java-basic/practice/syntax.html"};
   Object.assign(PAGE_PATHS, EXTRA_PAGE_PATHS_HEADER_CARDS);
-  const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold/practice/nio-concurrency-module-extra.html"};
+  const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold17/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold17/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold17/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold17/practice/nio-concurrency-module-extra.html"};
   Object.assign(PAGE_PATHS, JAVA11_GOLD_MORE_PAGE_PATHS);
   const EXTRA_ADDED_PAGE_PATHS = {"java11-practice-13.html":"courses/java11-silver/practice/comprehensive-extra.html","java11-exam-c.html":"courses/java11-silver/exams/c.html","gold11-practice-15.html":"courses/gold11/practice/comprehensive-extra.html","gold11-exam-c.html":"courses/gold11/exams/c.html","gold17-practice-15.html":"courses/gold17/practice/comprehensive-extra.html","gold17-exam-c.html":"courses/gold17/exams/c.html"};
   Object.assign(PAGE_PATHS, EXTRA_ADDED_PAGE_PATHS);
   const GOLD_SPLIT_PAGE_PATHS = {"gold11.html":"courses/gold11/index.html","gold17.html":"courses/gold17/index.html","gold-hub.html":"courses/gold/index.html"};
   Object.assign(PAGE_PATHS, GOLD_SPLIT_PAGE_PATHS);
+  const ADDED_MOCK_PAGE_PATHS = {"bronze-exam-b.html":"courses/bronze/exams/b.html","java11-exam-d.html":"courses/java11-silver/exams/d.html","gold11-exam-d.html":"courses/gold11/exams/d.html","gold17-exam-d.html":"courses/gold17/exams/d.html"};
+  Object.assign(PAGE_PATHS, ADDED_MOCK_PAGE_PATHS);
+  const EVEN_UNITS_PAGE_PATHS = {"java17-practice-language-additions.html":"courses/java17-silver/units/language-additions.html","java11-practice-14.html":"courses/java11-silver/practice/final-mix-extra.html","gold11-practice-16.html":"courses/gold11/practice/migration-api-final.html","gold17-practice-16.html":"courses/gold17/practice/api-final.html"};
+  Object.assign(PAGE_PATHS, EVEN_UNITS_PAGE_PATHS);
   function pageHref(page) {
     if (!page) return (window.APP_ROOT || "") + "index.html";
     if (/^(https?:|mailto:|#|\/\/)/.test(page)) return page;
@@ -17,6 +21,11 @@
   }
   function tagHref(tag) { return (window.APP_ROOT || "") + "app/tags/" + encodeURIComponent(tag) + ".html"; }
   const DATA = window.JAVA_STUDY_DATA;
+  // CSS.escape fallback for older/local browsers.
+  if (!window.CSS) window.CSS = {};
+  if (typeof window.CSS.escape !== "function") {
+    window.CSS.escape = function(value) { return String(value).replace(/[^a-zA-Z0-9_\-]/g, "\\$&"); };
+  }
   const unitId = window.UNIT_ID || null;
   const storageKey = "java-practice-lab-progress-v2";
   const examStorageKey = "java-practice-lab-exam-v1";
@@ -37,13 +46,13 @@
   const viewKey = unitId || (tagFilter ? `tag:${tagFilter}` : reviewMode ? `review:${reviewMode}:${reviewUnitFilter || "all"}` : randomMode ? `random:${randomSize}` : "global");
 
   function allQuestions() {
-    return Object.values(DATA.questions || {}).flat();
+    return Object.values(DATA?.questions || {}).flat();
   }
   function isExamUnitId(id) {
-    return (DATA.units || []).some(u => u.id === id && u.mode === "exam");
+    return (DATA?.units || []).some(u => u.id === id && u.mode === "exam");
   }
   function practiceQuestions() {
-    return Object.entries(DATA.questions || {})
+    return Object.entries(DATA?.questions || {})
       .filter(([uid]) => !isExamUnitId(uid))
       .flatMap(([, qs]) => qs || []);
   }
@@ -508,7 +517,7 @@
   function selectedConfidence(card) { return card?.querySelector("input[data-confidence]:checked")?.value || "medium"; }
   function confidenceLabel(value) { return ({ high: "高い", medium: "普通", low: "低い" })[value] || "普通"; }
   function progressTime(p) { return Date.parse(p?.answeredAt || p?.savedAt || 0) || 0; }
-  function unitById(id) { return DATA.units.find(u => u.id === id); }
+  function unitById(id) { return (DATA?.units || []).find(u => u.id === id); }
   function isGloballyMarked(qid) {
     return Object.values(readReviewAll()).some(map => !!map?.[qid]);
   }
@@ -830,7 +839,8 @@
       unit05: "継承 / interface / sealed",
       unit06: "try-catch / finally / close",
       unit13: "var / static / 到達不能",
-      unit09: "全範囲 / 総合確認"
+      unit09: "全範囲 / 総合確認",
+      unit14: "record / sealed / switch式"
     };
     if (u.mode === "exam") {
       const level = ({ unit07: "標準", unit08: "標準〜難", unit10: "複合問題多め", unit11: "仕上げ" })[u.id] || "実践";
@@ -888,7 +898,7 @@
       <div class="stat-card"><strong>${marked}</strong><span>見直し</span></div>
       <div class="stat-card"><strong>${due}</strong><span>今日の復習候補</span></div>
       <div class="stat-card"><strong>${examAnswered}</strong><span>模試回答記録</span></div>
-    </div><p class="inline-note">通常進捗は模試を含めません。模試は本番練習として別管理します。</p>`;
+    </div>`;
   }
 
 
@@ -965,7 +975,7 @@
       const best = histories.length ? Math.max(...histories.map(h => Math.round((h.score || 0) / Math.max(h.total || 1, 1) * 100))) : null;
       return `<article class="course-dashboard-card exam-progress-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${u.timeLimitMinutes || 90}分</span></div><p>${escapeHtml(u.description || "")}</p><div class="mini-stat-row"><span>${qs.length || u.fixedCount || 60}問</span><span>回答記録 ${answeredInProgress}</span><span>最高 ${best === null ? "-" : `${best}%`}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">模試を開始</a></div></article>`;
     }).join("");
-    root.innerHTML = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3><span class="inline-note">各セットの進捗を見ながら開始できます。</span></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || `<p class="notice">このコースの模試はまだありません。</p>`}</div>`;
+    root.innerHTML = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || `<p class="notice">このコースの模試はまだありません。</p>`}</div>`;
   }
 
   function renderIndex() {
@@ -1436,11 +1446,11 @@
     const root = document.getElementById("questionRoot");
     if (!root || (!unitId && !tagFilter && !reviewMode && !randomMode)) return;
     const questions = questionsForCurrentUnit();
-    if (!questions.length) { root.innerHTML = `<p class="notice">問題が見つかりません。</p>`; return; }
+    if (!questions.length) { root.innerHTML = `<p class="notice">問題が見つかりません。データ読み込み、またはこのページのUNIT_IDを確認してください。</p>`; return; }
     const idx = currentIndex();
     const q = questions[idx];
     root.classList.add("single-question-root");
-    root.innerHTML = `${renderQuestionControls()}${questionHtml(q)}<div class="bottom-nav">${renderQuestionControls()}</div><div class="ad-slot" aria-label="広告枠"><span>スポンサーリンク配置予定</span></div>`;
+    root.innerHTML = `${renderQuestionControls()}${questionHtml(q)}<div class="bottom-nav">${renderQuestionControls()}</div>`;
     const card = root.querySelector(`[data-question-id="${q.id}"]`);
     if (card) bindQuestion(card, q);
     root.querySelectorAll("[data-prev]").forEach(btn => btn.addEventListener("click", () => goRelative(-1)));
@@ -1552,7 +1562,7 @@
     const history = readExamHistory();
     const recentRows = history.slice(0, 8).map(h => `<tr><td>${escapeHtml(h.title || h.unitId)}</td><td>${h.score}/${h.total}</td><td>${Math.round((h.score || 0)/(h.total || 1)*100)}%</td><td>${formatTime(h.usedSec || 0)}</td><td>${escapeHtml(new Date(h.finishedAt).toLocaleString())}</td></tr>`).join("") || `<tr><td colspan="5">模試の採点履歴はまだありません。</td></tr>`;
     const weakTop = Object.entries(byTag).filter(([,v]) => v.wrong > 0).sort((a,b) => b[1].wrong - a[1].wrong).slice(0, 3);
-    const recommend = wrong.length ? `まず不正解${wrong.length}問を復習し、その後 ${weakTop.map(([t]) => tagTitle(t)).join("・") || "苦手タグ"} をタグ別演習で確認してください。` : answered.length ? "現時点では不正解履歴がありません。実践模試A/B/C/D/C/Dで弱点を出してください。" : "まだ解答履歴がありません。まずJavaの基礎か実践模試Aを解いてください。";
+    const recommend = wrong.length ? `まず不正解${wrong.length}問を復習し、その後 ${weakTop.map(([t]) => tagTitle(t)).join("・") || "苦手タグ"} をタグ別演習で確認してください。` : answered.length ? "現時点では不正解履歴がありません。実践模試A〜Dで弱点を出してください。" : "まだ解答履歴がありません。まずJavaの基礎か実践模試Aを解いてください。";
     root.innerHTML = `<div class="result-summary-grid dashboard-summary">
       <div><strong>${questions.length}</strong><span>総問題数</span></div>
       <div><strong>${answered.length}</strong><span>解答済み</span></div>
@@ -1840,7 +1850,7 @@
     const duplicateTitles = Object.entries(all.reduce((m,q)=>{m[q.title]=(m[q.title]||0)+1; return m;},{})).filter(([,c])=>c>8).length;
     root.innerHTML = `<div class="stat-grid"><div class="stat-card"><strong>${all.length}</strong><span>総問題数</span></div><div class="stat-card"><strong>${DATA.units.filter(u=>u.mode==='exam').length}</strong><span>模試数</span></div><div class="stat-card"><strong>${missingTags}</strong><span>タグ未設定</span></div><div class="stat-card"><strong>${missingExplanation}</strong><span>解説不足</span></div><div class="stat-card"><strong>${duplicateTitles}</strong><span>重複傾向タイトル</span></div></div>
     <h2>セット別分布</h2><table class="mini-table wide-table"><thead><tr><th>セット</th><th>問数</th><th>コード系</th><th>複数選択</th><th>基本/標準/応用</th><th>詳説</th><th>進捗</th><th>主要タグ</th></tr></thead><tbody>${rows}</tbody></table>
-    <p class="notice">ここで「解説不足」「タグ未設定」が0なら、公開前の最低限の構造チェックは通っています。中身の精度は模試A〜Dを実際に解いて確認してください。</p>`;
+    <p class="notice">ここで「解説不足」「タグ未設定」が0なら、問題データの基本構造は整っています。気になる単元は実際に解いて確認してください。</p>`;
   }
 
   function renderLearningPathPage() {
@@ -1956,13 +1966,7 @@
   function renderAdsGuidePage() {
     const root = document.getElementById("adsGuideRoot");
     if (!root) return;
-    root.innerHTML = `<table class="mini-table wide-table"><thead><tr><th>ページ</th><th>広告方針</th><th>理由</th></tr></thead><tbody>
-      <tr><td>学習記事</td><td>本文上部・中盤・末尾</td><td>検索流入向け。読む導線を壊しにくい。</td></tr>
-      <tr><td>トップ</td><td>控えめに1〜2箇所</td><td>入口なので圧迫しない。</td></tr>
-      <tr><td>通常演習</td><td>下部またはサイドのみ</td><td>コード読解中に割り込ませない。</td></tr>
-      <tr><td>模試中</td><td>原則なし</td><td>制限時間内で解く集中を壊すと教材価値が落ちる。</td></tr>
-      <tr><td>模試結果</td><td>下部のみ可</td><td>復習導線を邪魔しない。</td></tr>
-    </tbody></table><p class="notice">収益化するなら、問題ページより記事ページを主な流入・広告配置先にする方が安全です。</p>`;
+    root.innerHTML = `<p class="notice">現在、広告設定ページは使用していません。</p>`;
   }
 
 
@@ -1996,5 +2000,38 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => { applySettings(); activateSiteHeader(); renderNav(); renderIndex(); renderHomeStats(); renderCourseStats(); renderCourseDashboard(); renderDashboard(); renderQualityMapPage(); renderLearningPathPage(); renderNotesPage(); renderSettingsPage(); renderSearchPage(); renderModePage(); renderMistakeReasonsPage(); renderWeakGuidePage(); renderBeforeExamPage(); renderAdsGuidePage(); renderSyncPage(); renderUnit(); bindToolbar(); bindKeyboardShortcuts(); });
+  function safeRun(name, fn) {
+    try { if (typeof fn === "function") fn(); }
+    catch (error) {
+      console.error(`[Java Practice Lab] ${name} failed`, error);
+      const root = document.getElementById("questionRoot");
+      if (root && !root.innerHTML.trim() && (window.UNIT_ID || window.TAG_FILTER || window.REVIEW_MODE || window.RANDOM_MODE)) {
+        root.innerHTML = `<p class="notice">演習の表示中にエラーが発生しました。ページを再読み込みしてください。</p>`;
+      }
+    }
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    safeRun("applySettings", applySettings);
+    safeRun("activateSiteHeader", activateSiteHeader);
+    safeRun("renderNav", renderNav);
+    safeRun("bindToolbar", bindToolbar);
+    safeRun("renderUnit", renderUnit);
+    safeRun("renderIndex", renderIndex);
+    safeRun("renderHomeStats", renderHomeStats);
+    safeRun("renderCourseStats", renderCourseStats);
+    safeRun("renderCourseDashboard", renderCourseDashboard);
+    safeRun("renderDashboard", renderDashboard);
+    safeRun("renderQualityMapPage", renderQualityMapPage);
+    safeRun("renderLearningPathPage", renderLearningPathPage);
+    safeRun("renderNotesPage", renderNotesPage);
+    safeRun("renderSettingsPage", renderSettingsPage);
+    safeRun("renderSearchPage", renderSearchPage);
+    safeRun("renderModePage", renderModePage);
+    safeRun("renderMistakeReasonsPage", renderMistakeReasonsPage);
+    safeRun("renderWeakGuidePage", renderWeakGuidePage);
+    safeRun("renderBeforeExamPage", renderBeforeExamPage);
+    safeRun("renderAdsGuidePage", renderAdsGuidePage);
+    safeRun("renderSyncPage", renderSyncPage);
+    safeRun("bindKeyboardShortcuts", bindKeyboardShortcuts);
+  });
 })();
