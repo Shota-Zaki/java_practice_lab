@@ -409,7 +409,7 @@ list.add(null);
 <tr><td><code>list.get(list.size())</code></td><td>実行時例外</td><td>最後の添字は <code>size()-1</code></td></tr>
 <tr><td><code>List.of("A").add("B")</code></td><td>実行時例外</td><td>変更不可List</td></tr>
 <tr><td><code>Arrays.asList(arr).add("X")</code></td><td>実行時例外</td><td>固定サイズList</td></tr>
-<tr><td><code>new StringBuilder("a").equals(new StringBuilder("a"))</code></td><td><code>false</code></td><td>内容比較ではない</td></tr>
+<tr><td><code>new StringBuilder("a").equals(new StringBuilder("a"))</code></td><td><code>false</code></td><td>内容比較しない</td></tr>
 </tbody></table>
 </section>
 <section class="article-section">

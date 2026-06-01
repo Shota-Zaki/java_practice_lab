@@ -38,7 +38,7 @@
 Item b = a;</code></pre><p>このとき、ヒープ上に<code>Item</code>オブジェクトが1つ作られる。スタック上の<code>a</code>と<code>b</code>は、その同じオブジェクトを指す参照を持つ。</p><pre><code>b = new Item();</code></pre><p>ここで<code>b</code>だけが新しい<code>Item</code>を指すようになる。<code>a</code>が指す先は変わらない。</p></section><section class="card lesson-section"><h2>プリミティブ型は値のコピー</h2><pre><code>int a = 10;
 int b = a;
 b = 20;
-System.out.println(a); // 10</code></pre><p><code>int</code>では値がコピーされる。<code>b</code>を変えても<code>a</code>は変わらない。参照型の「同じオブジェクトを見ている」動きとは一致しない。</p></section><section class="card lesson-section"><h2>ガベージコレクションの入口</h2><p>どこからも参照されなくなったオブジェクトは、将来的にガベージコレクションの対象になる。いつ回収されるかをプログラマが正確に決めるわけではない。</p><pre><code>Object a = new Object();
+System.out.println(a); // 10</code></pre><p><code>int</code>では値がコピーされる。<code>b</code>を変えても<code>a</code>は変わらない。参照型の「同じオブジェクトを見ている」動きとは別です。</p></section><section class="card lesson-section"><h2>ガベージコレクションの入口</h2><p>どこからも参照されなくなったオブジェクトは、将来的にガベージコレクションの対象になる。いつ回収されるかをプログラマが正確に決めるわけではない。</p><pre><code>Object a = new Object();
 a = null; // さきほどのObjectは参照されなくなる</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードで、最後に参照されていないオブジェクトがどれかを考える。</p><pre><code>Object a = new Object(); // Object#1
 Object b = new Object(); // Object#2
 Object c = a;

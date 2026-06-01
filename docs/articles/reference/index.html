@@ -184,7 +184,7 @@ System.out.println(p1.equals(p2)); // true</code></pre>
 <tr><td><code>"A".equals(null)</code></td><td><code>false</code></td><td>左辺は <code>null</code> ではない</td></tr>
 <tr><td><code>null変数.equals("A")</code></td><td>実行時例外</td><td><code>null</code> に対するメソッド呼び出し</td></tr>
 <tr><td><code>new int[]{1}.equals(new int[]{1})</code></td><td><code>false</code></td><td>配列の <code>equals</code> は要素比較ではない</td></tr>
-<tr><td><code>new StringBuilder("A").equals(new StringBuilder("A"))</code></td><td><code>false</code></td><td><code>StringBuilder</code> は内容比較ではない</td></tr>
+<tr><td><code>new StringBuilder("A").equals(new StringBuilder("A"))</code></td><td><code>false</code></td><td><code>StringBuilder</code> は内容比較しない</td></tr>
 </tbody>
 </table>
 </section><section class="article-section textbook-section">

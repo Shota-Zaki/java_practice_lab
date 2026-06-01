@@ -166,7 +166,7 @@ public class Child extends Parent {
 <tr><td>戻り値型</td><td>同じ型、または共変戻り値</td><td>親が <code>String</code> 戻り値で子が <code>Object</code> はNG</td></tr>
 <tr><td>アクセス修飾子</td><td>同じか、より広くする</td><td><code>public</code> を <code>protected</code> に狭めるのはNG</td></tr>
 <tr><td>例外</td><td>checked例外を広げられない</td><td>親が例外なしで子が <code>throws IOException</code> はNG</td></tr>
-<tr><td>対象</td><td>インスタンスメソッド</td><td><code>static</code>、<code>private</code>、<code>final</code> は通常のoverride対象ではない</td></tr>
+<tr><td>対象</td><td>インスタンスメソッド</td><td><code>static</code>、<code>private</code>、<code>final</code> は通常のoverride対象にならない</td></tr>
 </tbody></table>
 <pre class="article-code"><code>class Parent {
     public Number get() { return 1; }
@@ -397,7 +397,7 @@ if (obj instanceof String s) {
 <tr><td>interfaceメソッドをデフォルトアクセスで実装</td><td>コンパイルエラー</td><td>publicを弱めている</td></tr>
 <tr><td>親の <code>public</code> メソッドを子で <code>private</code></td><td>コンパイルエラー</td><td>overrideでアクセスを狭められない</td></tr>
 <tr><td>親に引数なしコンストラクタなし、子で <code>super(...)</code> なし</td><td>コンパイルエラー</td><td>暗黙の <code>super()</code> が失敗</td></tr>
-<tr><td><code>((Child) new Parent()).childOnly()</code></td><td>実行時例外</td><td>実体がChildではない</td></tr>
+<tr><td><code>((Child) new Parent()).childOnly()</code></td><td>実行時例外</td><td>実体がChildでない</td></tr>
 <tr><td><code>private</code>メソッドを <code>@Override</code></td><td>コンパイルエラー</td><td>privateは継承先からoverrideできない</td></tr>
 </tbody></table>
 </section>
@@ -455,7 +455,7 @@ class B extends A {
 <li>サブクラスのインスタンスはスーパークラス型で扱える。</li>
 <li>呼べるかどうかは宣言型で決まる。</li>
 <li>overrideされたインスタンスメソッドの実行本体は実体で決まる。</li>
-<li>フィールドとstaticメソッドは通常のoverrideとは一致しない。</li>
+<li>フィールドとstaticメソッドは通常のoverrideにならない。</li>
 <li>コンストラクタは継承されない。</li>
 <li>interfaceの抽象メソッドは暗黙に <code>public abstract</code>。</li>
 <li>interfaceのフィールドは暗黙に <code>public static final</code>。</li>

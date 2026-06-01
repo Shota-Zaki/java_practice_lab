@@ -99,7 +99,7 @@ C.class</code></pre>
 <thead><tr><th>コマンド</th><th>判定</th><th>理由</th></tr></thead>
 <tbody>
 <tr><td><code>java A</code></td><td>OK</td><td><code>A</code> に正しい <code>main</code> がある</td></tr>
-<tr><td><code>java B</code></td><td>OK</td><td><code>B</code> はpublicではないが、トップレベルクラスであり、正しい <code>main</code> がある</td></tr>
+<tr><td><code>java B</code></td><td>OK</td><td><code>B</code> はpublicでないが、トップレベルクラスであり、正しい <code>main</code> がある</td></tr>
 <tr><td><code>java C</code></td><td>起動失敗</td><td><code>C.class</code> は存在するが、<code>main</code> がない</td></tr>
 <tr><td><code>java A.class</code></td><td>NG</td><td><code>java</code> に渡すのはファイル名ではなくクラス名</td></tr>
 </tbody>
@@ -335,7 +335,7 @@ java -cp out:lib/sample.jar app.Main</code></pre>
 <tr><td>複数classがある場合</td><td>生成された各classをクラス名で起動</td><td>最初のトップレベルクラスが起動対象</td></tr>
 </tbody>
 </table>
-<div class="article-callout strong"><strong>雑に覚えるな:</strong> 「<code>java Sample.java</code> は常に不可能」と覚えるのは危険です。Java 11以降では可能なケースがあります。ただし、コンパイル済みclassの起動問題では <code>java Sample</code> が基本です。</div>
+<div class="article-callout strong"><strong>注意:</strong> 「<code>java Sample.java</code> は常に使えない」と覚えるのは危険です。Java 11以降では可能なケースがあります。ただし、コンパイル済みclassの起動問題では <code>java Sample</code> が基本です。</div>
 </section>
 <section class="article-section">
 <h2>パッケージ宣言とディレクトリの注意</h2>

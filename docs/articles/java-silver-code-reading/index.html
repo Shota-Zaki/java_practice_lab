@@ -38,7 +38,7 @@
 <tbody>
 <tr><td>1</td><td>設問と選択肢</td><td>何を答える問題かを先に見る</td><td>出力を聞かれていると思い込み、コンパイルエラー選択肢を見落とす</td></tr>
 <tr><td>2</td><td>ソース構造</td><td>package、import、publicクラス名、トップレベルクラス修飾子</td><td>packageより前にimportを書く、トップレベルにprivate/protected/staticを付ける</td></tr>
-<tr><td>3</td><td>mainとメソッド宣言</td><td>mainの形、戻り値、引数、static、呼び出し先の存在</td><td>mainに見えるが実行エントリポイントではない</td></tr>
+<tr><td>3</td><td>mainとメソッド宣言</td><td>mainの形、戻り値、引数、static、呼び出し先の存在</td><td>mainに見えても実行エントリポイントにならない</td></tr>
 <tr><td>4</td><td>変数宣言とスコープ</td><td>初期化、varの使用場所、同名変数、ローカル変数の有効範囲</td><td>ローカル変数未初期化、varをフィールドや引数に使う</td></tr>
 <tr><td>5</td><td>型と代入</td><td>互換性、暗黙変換、キャスト、数値昇格、戻り値型</td><td>byte/short演算のint化、longをintへ代入、doubleをfloatへ代入</td></tr>
 <tr><td>6</td><td>クラス・継承・interface</td><td>constructor、this/super、override、abstract、default method</td><td>override条件違反、abstract実装漏れ、constructorを継承すると誤解する</td></tr>
@@ -103,8 +103,8 @@ public static void main(String... args) { }
 
 // mainという名前でも、実行エントリポイントではない
 public void main(String[] args) { }       // staticがない
-public static int main(String[] args) { } // 戻り値がvoidではない
-static void main(String[] args) { }       // publicではない</code></pre>
+public static int main(String[] args) { } // 戻り値がvoidでない
+static void main(String[] args) { }       // publicでない</code></pre>
 <p>問題では「mainっぽい」形を混ぜてきます。コードの中で呼び出される普通のメソッドとしては成立しても、 java コマンドで実行する入口として成立しない場合があります</p>
 <p>ただし、問題文で「このメソッドを呼び出したとき」と書かれている場合は、mainの形ではなく、その呼び出し自体が可能かを見ます。設問の前提を読み落とさないでください</p>
 </section><section class="article-section article-card">
@@ -175,7 +175,7 @@ class B extends A { }
 <table class="ref-table study-table">
 <thead><tr><th>項目</th><th>条件</th><th>違反例</th></tr></thead>
 <tbody>
-<tr><td>メソッド名・引数</td><td>同じシグネチャ</td><td>引数型が違うならoverloadでありoverrideではない</td></tr>
+<tr><td>メソッド名・引数</td><td>同じシグネチャ</td><td>引数型が違うならoverloadでありoverrideにならない</td></tr>
 <tr><td>戻り値型</td><td>同じ型または共変戻り値</td><td>サブクラス側でより広い型を返す</td></tr>
 <tr><td>アクセス修飾子</td><td>同じか、より広い</td><td><code>public</code> を <code>protected</code> に狭める</td></tr>
 <tr><td>例外</td><td>checked例外を広げない</td><td>親にない広いchecked例外をthrowsする</td></tr>

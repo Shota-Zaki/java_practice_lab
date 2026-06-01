@@ -49,7 +49,7 @@ class Engineer implements Worker {
 }
 
 class Engineer implements Worker {
-    void work() { } // コンパイルエラー：publicではない
+    void work() { } // コンパイルエラー：publicでない
 }</code></pre><p class="code-caption">修正例</p><pre><code>class Engineer implements Worker {
     public void work() { } // OK
 }</code></pre></section><section class="card lesson-section"><h2>interface型で受けるメリット</h2><pre><code>Worker w = new Engineer();

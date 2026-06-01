@@ -177,7 +177,7 @@ System.out.println("B");</code></pre>
 <tr><td>戻り値型が不正</td><td>親より広い戻り値型</td><td>戻り値は同じかサブクラス型のみ。</td><td>共変戻り値かどうか見る。</td></tr>
 <tr><td>checked例外を広げる</td><td>親が <code>IOException</code>、子が <code>Exception</code></td><td>overrideでチェック例外を広げられない。</td><td>RuntimeException系は別扱い。</td></tr>
 <tr><td>finalメソッドをoverride</td><td><code>final void m()</code> を子で再定義</td><td><code>final</code> メソッドはoverride不可。</td><td>親メソッドの <code>final</code> を確認。</td></tr>
-<tr><td>privateメソッドをoverride扱い</td><td>親 <code>private void m()</code>、子 <code>@Override void m()</code></td><td><code>private</code> は継承されないためoverrideではない。</td><td><code>@Override</code> があるとエラー。</td></tr>
+<tr><td>privateメソッドをoverride扱い</td><td>親 <code>private void m()</code>、子 <code>@Override void m()</code></td><td><code>private</code> は継承されないためoverrideにならない。</td><td><code>@Override</code> があるとエラー。</td></tr>
 <tr><td>abstractメソッド未実装</td><td>具象クラスがinterfaceメソッド未実装</td><td>抽象メソッドの実装義務が残る。</td><td>クラスが <code>abstract</code> なら未実装でもよい場合あり。</td></tr>
 <tr><td>defaultメソッド衝突</td><td>複数interfaceが同じdefaultを持つ</td><td>クラス側で解決しないと衝突。</td><td>同名同シグネチャのdefaultを探す。</td></tr>
 <tr><td>Objectメソッドをdefault定義</td><td>interfaceで <code>default String toString()</code></td><td><code>Object</code> のpublicメソッド相当をdefaultで提供できない。</td><td><code>toString</code>、<code>equals</code>、<code>hashCode</code> に注意。</td></tr>
@@ -213,7 +213,7 @@ System.out.println("B");</code></pre>
 <table class="ref-table study-table">
 <thead><tr><th>例外</th><th>典型コード</th><th>原因</th><th>問題での注意</th></tr></thead>
 <tbody>
-<tr><td><code>NullPointerException</code></td><td><code>s.length()</code> where <code>s == null</code></td><td>null参照でメソッド/フィールドアクセス。</td><td><code>System.out.println(s)</code> だけなら <code>null</code> 表示で例外ではない。</td></tr>
+<tr><td><code>NullPointerException</code></td><td><code>s.length()</code> where <code>s == null</code></td><td>null参照でメソッド/フィールドアクセス。</td><td><code>System.out.println(s)</code> だけなら <code>null</code> 表示で例外を投げない。</td></tr>
 <tr><td><code>ArrayIndexOutOfBoundsException</code></td><td><code>array[array.length]</code></td><td>配列範囲外。</td><td>最後の有効添字は <code>length - 1</code>。</td></tr>
 <tr><td><code>StringIndexOutOfBoundsException</code></td><td><code>str.charAt(str.length())</code></td><td>文字列範囲外。</td><td><code>substring(length)</code> は空文字で可能、<code>charAt(length)</code> は不可。</td></tr>
 <tr><td><code>IndexOutOfBoundsException</code></td><td><code>list.get(list.size())</code></td><td>List範囲外。</td><td>配列とは例外クラス名が違う。</td></tr>
@@ -520,7 +520,7 @@ javac -encoding UTF-8 -d out src/ex/Sample.java</code></pre>
 <h2>@Overrideで出るエラーはむしろ手がかり</h2>
 <p><code>@Override</code> を付けてエラーになった場合、「オーバーライドできていない」ことが分かります。消して通すのは悪手です。試験では、<code>@Override</code> があることでコンパイルエラーを判断しやすくなる場合があります。</p>
 <table class="ref-table study-table">
-<thead><tr><th>NG原因</th><th>例</th><th>なぜoverrideではないか</th></tr></thead>
+<thead><tr><th>NG原因</th><th>例</th><th>なぜoverrideにならないか</th></tr></thead>
 <tbody>
 <tr><td>引数型違い</td><td>親 <code>test(int)</code> / 子 <code>test(long)</code></td><td>シグネチャが違う。オーバーロード。</td></tr>
 <tr><td>戻り値型不正</td><td>親 <code>Number get()</code> / 子 <code>Object get()</code></td><td>戻り値を広げている。</td></tr>

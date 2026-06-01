@@ -50,10 +50,10 @@ System.out.println(s);     // abcde</code></pre>
 <tr><td><code>charAt(int index)</code></td><td><code>char</code></td><td>変化なし</td><td><code>0</code> 以上 <code>length() - 1</code> 以下。範囲外は例外。</td></tr>
 <tr><td><code>substring(int begin)</code></td><td><code>String</code></td><td>変化なし</td><td><code>begin</code> から末尾まで。戻り値を使わないと意味がない。</td></tr>
 <tr><td><code>substring(int begin, int end)</code></td><td><code>String</code></td><td>変化なし</td><td><code>begin</code> 以上 <code>end</code> 未満。<code>end</code> の文字は含まない。</td></tr>
-<tr><td><code>indexOf(String s)</code></td><td><code>int</code></td><td>変化なし</td><td>見つからない場合は <code>-1</code>。例外ではない。</td></tr>
+<tr><td><code>indexOf(String s)</code></td><td><code>int</code></td><td>変化なし</td><td>見つからない場合は <code>-1</code>。例外を投げない。</td></tr>
 <tr><td><code>replace(char old, char new)</code></td><td><code>String</code></td><td>変化なし</td><td>すべて置換した新しい文字列を返す。</td></tr>
 <tr><td><code>startsWith(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>大小文字は区別される。</td></tr>
-<tr><td><code>endsWith(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>末尾一致。部分一致とは一致しない。</td></tr>
+<tr><td><code>endsWith(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>末尾一致。部分一致を判定しない。</td></tr>
 <tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>変化なし</td><td>左辺が <code>null</code> なら呼び出し時に例外。</td></tr>
 <tr><td><code>equalsIgnoreCase(String)</code></td><td><code>boolean</code></td><td>変化なし</td><td>左辺 <code>null</code> は例外。右辺 <code>null</code> は <code>false</code>。</td></tr>
 <tr><td><code>toLowerCase()</code> / <code>toUpperCase()</code></td><td><code>String</code></td><td>変化なし</td><td>戻り値を代入しないと元は変わらない。</td></tr>
@@ -98,7 +98,7 @@ System.out.println(b); // AB</code></pre>
 <tr><td><code>length()</code></td><td><code>int</code></td><td>変化なし</td><td>現在の文字数。</td></tr>
 <tr><td><code>charAt(index)</code></td><td><code>char</code></td><td>変化なし</td><td>範囲外は例外。</td></tr>
 <tr><td><code>toString()</code></td><td><code>String</code></td><td>変化なし</td><td><code>String</code> と比較したいなら文字列化してから。</td></tr>
-<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>変化なし</td><td>内容比較ではない。基本は参照比較。</td></tr>
+<tr><td><code>equals(Object)</code></td><td><code>boolean</code></td><td>変化なし</td><td>内容比較しない。基本は参照比較。</td></tr>
 </tbody>
 </table>
 <div class="article-callout">
@@ -126,9 +126,9 @@ nums[3] = 10;                    // 実行時例外</code></pre>
 <table class="ref-table study-table">
 <thead><tr><th>メソッド</th><th>戻り値</th><th>副作用</th><th>注意</th></tr></thead>
 <tbody>
-<tr><td><code>add(E e)</code></td><td><code>boolean</code></td><td>末尾に追加</td><td>通常 <code>true</code>。戻り値は追加要素ではない。</td></tr>
+<tr><td><code>add(E e)</code></td><td><code>boolean</code></td><td>末尾に追加</td><td>通常 <code>true</code>。戻り値は追加要素を返さない。</td></tr>
 <tr><td><code>add(int index, E e)</code></td><td><code>void</code></td><td>指定位置に挿入</td><td>指定位置以降が後ろへずれる。</td></tr>
-<tr><td><code>set(int index, E e)</code></td><td>置換前の要素</td><td>指定位置を置換</td><td>追加ではない。サイズは変わらない。</td></tr>
+<tr><td><code>set(int index, E e)</code></td><td>置換前の要素</td><td>指定位置を置換</td><td>追加しない。サイズは変わらない。</td></tr>
 <tr><td><code>get(int index)</code></td><td>指定位置の要素</td><td>なし</td><td>範囲外は例外。</td></tr>
 <tr><td><code>remove(int index)</code></td><td>削除した要素</td><td>指定位置を削除</td><td>後続要素のインデックスが詰まる。</td></tr>
 <tr><td><code>remove(Object o)</code></td><td><code>boolean</code></td><td>一致要素を削除</td><td>最初に一致した要素のみ削除。</td></tr>
@@ -189,9 +189,9 @@ System.out.println(array[0]); // X
 <tbody>
 <tr><td><code>String</code></td><td><code>equals</code></td><td>文字列の内容</td><td><code>==</code> は参照比較。</td></tr>
 <tr><td><code>String</code></td><td><code>compareTo</code></td><td>辞書順</td><td>等しければ0。大小は正負で判定。</td></tr>
-<tr><td><code>StringBuilder</code></td><td><code>equals</code></td><td>基本は参照</td><td>内容比較ではない。</td></tr>
+<tr><td><code>StringBuilder</code></td><td><code>equals</code></td><td>基本は参照</td><td>内容比較しない。</td></tr>
 <tr><td><code>ArrayList</code></td><td><code>contains</code></td><td><code>equals</code></td><td>要素側の <code>equals</code> 実装に依存。</td></tr>
-<tr><td>配列</td><td><code>equals</code></td><td>基本は参照</td><td>内容比較ではない。問題では参照比較として扱う。</td></tr>
+<tr><td>配列</td><td><code>equals</code></td><td>基本は参照</td><td>内容比較しない。問題では参照比較として扱う。</td></tr>
 </tbody>
 </table>
 </section><section class="article-section">

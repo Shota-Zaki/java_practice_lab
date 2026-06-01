@@ -60,7 +60,7 @@ Animal a = new Dog(); // OK: DogはAnimalの一種
 <tr><td>public / protected / 条件を満たすdefaultメンバ</td><td>利用できる</td><td>アクセス修飾子とパッケージ条件を確認する。</td></tr>
 <tr><td>privateフィールド・privateメソッド</td><td>直接アクセス不可</td><td>親の内部には存在するが、子から直接触れない。</td></tr>
 <tr><td>コンストラクタ</td><td>継承されない</td><td><code>super(...)</code> で呼び出すだけ。子のコンストラクタとしては使えない。</td></tr>
-<tr><td>同名フィールド</td><td>overrideではない</td><td>フィールドは宣言型で解決される。</td></tr>
+<tr><td>同名フィールド</td><td>overrideにならない</td><td>フィールドは宣言型で解決される。</td></tr>
 <tr><td>インスタンスメソッド</td><td>override可能</td><td>呼び出し可否は宣言型、実行本体は実体で決まる。</td></tr>
 <tr><td>staticメソッド</td><td>overrideではなく隠蔽</td><td>インスタンスメソッドとは解決規則が違う。</td></tr>
 </tbody>

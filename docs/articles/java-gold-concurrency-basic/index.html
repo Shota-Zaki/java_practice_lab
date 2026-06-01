@@ -165,7 +165,7 @@ ex.shutdown();
 <tr><td><code>Future.get()</code>で待ってから次に進む</td><td>待機前後の順序は保証される</td><td><code>get()</code>が完了までブロックする。</td></tr>
 <tr><td><code>newSingleThreadExecutor()</code>に同順で投入</td><td>タスク同士は順に実行される</td><td>単一ワーカーがキューを処理する。</td></tr>
 <tr><td><code>newFixedThreadPool(2)</code>以上</td><td>原則保証されない</td><td>複数スレッドで実行される。</td></tr>
-<tr><td><code>shutdown()</code>だけ呼ぶ</td><td>mainが待つ保証はない</td><td>新規受付停止であり、待機処理ではない。</td></tr>
+<tr><td><code>shutdown()</code>だけ呼ぶ</td><td>mainが待つ保証はない</td><td>新規受付停止であり、待機処理にならない。</td></tr>
 </tbody></table>
 </section>
 <pre class="article-code"><code>ExecutorService ex = Executors.newFixedThreadPool(2);
@@ -178,7 +178,7 @@ ex.shutdown();</code></pre>
 <p><code>shutdown()</code>はExecutorServiceに「もう新しいタスクを受け付けない」と伝える操作です。投入済みタスクを即座に止める処理ではありません。</p>
 <table class="study-table ref-table"><thead><tr><th>メソッド</th><th>意味</th><th>注意</th></tr></thead><tbody>
 <tr><td><code>shutdown()</code></td><td>新規タスク受付を停止</td><td>投入済みタスクは基本的に実行される。</td></tr>
-<tr><td><code>shutdownNow()</code></td><td>実行中タスクの停止を試み、未開始タスクを返す</td><td>即停止保証ではない。</td></tr>
+<tr><td><code>shutdownNow()</code></td><td>実行中タスクの停止を試み、未開始タスクを返す</td><td>即停止は保証されない。</td></tr>
 <tr><td><code>isShutdown()</code></td><td>shutdown開始済みか</td><td>全タスク完了を意味しない。</td></tr>
 <tr><td><code>isTerminated()</code></td><td>全タスク完了済みか</td><td>shutdown後、全タスク終了でtrue。</td></tr>
 <tr><td><code>awaitTermination</code></td><td>終了まで一定時間待つ</td><td>戻り値は完了したかどうかのboolean。</td></tr>

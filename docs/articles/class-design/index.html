@@ -150,7 +150,7 @@ System.out.println(z.text); // C</code></pre>
         this.name = name;
     }
 
-    void User(String name) { // メソッド。コンストラクタではない
+    void User(String name) { // メソッド。コンストラクタにならない
         this.name = name;
     }
 }</code></pre>
@@ -382,7 +382,7 @@ new Sample();
 <section class="article-section">
 <h2>コンパイルエラーになりやすいパターン</h2>
 <table class="study-table ref-table"><thead><tr><th>コード断片</th><th>判定</th><th>理由</th></tr></thead><tbody>
-<tr><td><code>void Sample() {}</code></td><td>コンストラクタではない</td><td>戻り値型があるのでメソッド</td></tr>
+<tr><td><code>void Sample() {}</code></td><td>コンストラクタにならない</td><td>戻り値型があるのでメソッド</td></tr>
 <tr><td><code>this(); super();</code></td><td>不可</td><td>同じコンストラクタで両方は書けない</td></tr>
 <tr><td><code>System.out.println(field);</code> in static method</td><td>不可</td><td>インスタンスメンバを直接参照</td></tr>
 <tr><td><code>class Child extends Parent { Child(){} }</code></td><td>親次第</td><td>暗黙 <code>super()</code> を呼べるか確認</td></tr>

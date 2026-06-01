@@ -334,7 +334,7 @@
   const ARTICLE_TITLE_MAP = {
   "api-reading": "Java API仕様の読み方",
   "before-exam": "直前チェックモード",
-  "bronze-array-string-basic": "配列とString入門",
+  "bronze-array-string-basic": "配列とString基礎",
   "bronze-if-loop-reading": "if文とループを読む",
   "bronze-mistakes-deep": "落ちやすい基礎ミス",
   "bronze-precision-training": "基本問題を雑に解かない",
@@ -348,17 +348,17 @@
   "glossary": "単語集 詳細版",
   "inheritance": "継承・オーバーライド・フィールド隠蔽",
   "java-api-traps": "Java Silver頻出APIの罠まとめ",
-  "java-bronze-object-basic": "オブジェクト入門",
+  "java-bronze-object-basic": "オブジェクト基礎",
   "java-bronze-study-map": "学習順序",
   "java-command": "javac・javaコマンドで詰まる原因",
   "java-debug-printing-tips": "Javaのデバッグ出力で確認するポイント",
   "java-exam-review-method": "模試後の復習方法",
   "api-reading": "API判定ツリー：型・実行タイミング・戻り値で読む",
-  "java-gold-collector-first": "Collectors入門",
+  "java-gold-collector-first": "Collectors完全整理",
   "java-gold-concurrency-basic": "並行処理 / Executor / Future完全整理",
   "exception": "try-with-resourcesと抑制された例外",
   "java-gold-generics-deep": "ジェネリクスとワイルドカード",
-  "java-gold-generics-deep": "ジェネリクス入門",
+  "java-gold-generics-deep": "ジェネリクス完全整理",
   "java-gold-generics-deep": "ワイルドカード",
   "java-gold-lambda-first": "ラムダ式と関数型インタフェース完全整理",
   "java-gold-module-info-check": "module-info.java / Javaモジュール完全整理",
@@ -366,7 +366,7 @@
   "java-gold-optional-first": "Optional完全整理",
   "java-gold-optional-first": "OptionalとflatMap",
   "java-gold-stream-deep": "Stream APIを丁寧に読む",
-  "java-gold-stream-deep": "Stream API入門",
+  "java-gold-stream-deep": "Stream API完全整理",
   "java-gold-stream-deep": "Collectors.groupingBy",
   "java-gold-stream-deep": "Streamパイプライン",
   "java-gold-concurrency-basic": "ExecutorService注意点",
@@ -442,7 +442,7 @@
   };
   const tagMiniGuides = {
     reference: ["== は参照の同一性、equals は実装次第。", "String はリテラル・new・intern の参照先を分けて考える。", "record はコンポーネント値で equals が自動生成される。"],
-    string: ["String は不変。replace / substring / concat は戻り値を受け取る。", "StringBuilder は破壊的変更が多いが、equals は内容比較ではない。", "indexOf と substring の範囲は境界値を確認する。"],
+    string: ["String は不変。replace / substring / concat は戻り値を受け取る。", "StringBuilder は破壊的変更が多いが、equals は内容比較しない。", "indexOf と substring の範囲は境界値を確認する。"],
     array: ["配列要素のデフォルト値、length、ジャグ配列を確認する。", "clone は1次元目だけコピーする点に注意。", "配列共変はコンパイルできても実行時例外があり得る。"],
     type: ["byte/short/char は演算時に int へ昇格する。", "+= は暗黙キャストを含むが、通常代入は不可の場合がある。", "var はローカル変数だけ。フィールド・引数・戻り値には使えない。"],
     control: ["switch文のフォールスルーと switch式の yield を分ける。", "continue / break がどのループ・switchに効くかを見る。", "到達不能コードはコンパイルエラーになる。"],
@@ -2022,7 +2022,7 @@
       <section class="panel"><h2>参照比較</h2><ul><li>== は同じオブジェクトかを見る。</li><li>equals はクラスの実装次第。</li><li>String リテラル、new、intern を分ける。</li><li>配列の equals は参照比較。内容比較は Arrays.equals。</li></ul></section>
       <section class="panel"><h2>コンパイルエラー頻出</h2><ul><li>ローカル変数未初期化。</li><li>var をフィールド・引数・戻り値で使う。</li><li>catch の順序が広い型から狭い型。</li><li>this()/super() がコンストラクタ先頭でない。</li><li>interface 定数を書き換える。</li></ul></section>
       <section class="panel"><h2>実行時例外頻出</h2><ul><li>null に対するメソッド呼び出し。</li><li>配列範囲外。</li><li>不正なキャスト。</li><li>parseInt の不正文字列。</li><li>List.of の変更操作。</li></ul></section>
-      <section class="panel"><h2>String / StringBuilder</h2><ul><li>String は不変。戻り値を受け取る。</li><li>StringBuilder は append/delete/insert が自身を変更。</li><li>StringBuilder.equals は内容比較ではない。</li><li>substring の第2引数は含まない。</li></ul></section>
+      <section class="panel"><h2>String / StringBuilder</h2><ul><li>String は不変。戻り値を受け取る。</li><li>StringBuilder は append/delete/insert が自身を変更。</li><li>StringBuilder.equals は内容比較しない。</li><li>substring の第2引数は含まない。</li></ul></section>
       <section class="panel"><h2>演算・制御</h2><ul><li>++i は増やしてから値、i++ は値を使ってから増える。</li><li>&& / || は短絡評価、& / | は両辺評価。</li><li>switch文はフォールスルー、switch式は値を返す。</li><li>+= は暗黙キャストを含む。</li></ul></section>
       <section class="panel"><h2>継承・例外</h2><ul><li>フィールドは隠蔽、メソッドはオーバーライド。</li><li>private メソッドはオーバーライドではない。</li><li>checked 例外は処理または宣言が必要。</li><li>try-with-resources は close 後に finally。</li></ul></section>
     </div><div class="practice-tools"><a class="btn primary" href="${pageHref('exam.html')}">模試センターへ</a><a class="btn" href="${pageHref('methods.html')}">メソッド表</a><a class="btn" href="${pageHref('mistake-patterns.html')}">誤答パターン集</a></div>`;

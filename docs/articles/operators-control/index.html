@@ -151,7 +151,7 @@ System.out.println(0.0 / 0);  // NaN</code></pre>
 <div class="article-callout"><strong>判定順:</strong> <code>5 / 0</code>は構文・型としてはコンパイル可能です。落ちるのは実行時です。一方、<code>5 / false</code>はコンパイルエラーです。</div>
 </section>
 <section class="article-section">
-<h2>オーバーフローはコンパイルエラーではない</h2>
+<h2>オーバーフローはコンパイルエラーにならない</h2>
 <p>整数型の範囲を超える演算結果は循環します。実行時例外にもなりません。</p>
 <pre class="article-code"><code>int max = Integer.MAX_VALUE;
 System.out.println(max);     // 2147483647

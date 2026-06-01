@@ -38,7 +38,7 @@ class B extends A { void test() { System.out.println("B"); } void onlyB() {} }
 A a = new B();
 a.test();   // 実行されるのはBのtest
 // a.onlyB();  // コンパイルエラー。宣言型AにはonlyBがない</code></pre>
-<h3>キャストは実体を変える処理ではない</h3>
+<h3>キャストしても実体は変わらない</h3>
 <p>キャストは、オブジェクトの中身を別クラスに作り替える処理ではありません。参照を「その型として扱ってよいか」をコンパイラやJVMに示すだけです。</p>
 <table class="study-table ref-table">
 <thead><tr><th>種類</th><th>例</th><th>意味</th><th>失敗条件</th></tr></thead>
@@ -174,7 +174,7 @@ int ng(boolean b) {
 <p>コンストラクタはインスタンス生成時に呼ばれる特別な処理です。クラス名と同じ名前で、戻り値型を書きません。戻り値型を書いたら、それはコンストラクタではなく普通のメソッドです。</p>
 <pre class="article-code"><code>class Sample {
     Sample() { }       // コンストラクタ
-    void Sample() { }  // メソッド。コンストラクタではない
+    void Sample() { }  // メソッド。コンストラクタにならない
 }</code></pre>
 <table class="ref-table study-table">
 <thead><tr><th>項目</th><th>メソッド</th><th>コンストラクタ</th></tr></thead>
