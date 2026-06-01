@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Javaを始めるために必要なJDK、エディタ、作業フォルダ、最初の実行確認を整理します。" name="description"/>
+<title>始める準備｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=final-cleanup-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero setup-path-card">
+<p class="meta">Java基礎 準備</p>
+<h1>始める準備</h1>
+<p class="lead">Javaを始めるために必要なものは、最初は多くありません。JDK、エディタ、作業フォルダ、ターミナルでの確認。この4つを先に固めます。</p>
+<div class="box goal-box"><strong>このページのゴール</strong><p>Javaのインストール先、コードを書く道具、最初の実行確認を自分で説明できる状態にする。</p></div>
+</article><section class="card lesson-section basic-term-intro">
+<h2>初出用語：JDK・エディタ・ターミナル</h2>
+<div class="term-side-layout">
+<div>
+<p>Javaを書き始める前に、道具の名前を先に分けます。ここを曖昧にすると、文法ではなく環境設定で詰まります。</p>
+</div>
+<div class="term-note-grid">
+<div class="term-note basic-term-mini"><strong>JDKとは</strong>Javaを開発するための道具一式。<code>javac</code> や <code>java</code> が含まれる。</div><div class="term-note basic-term-mini"><strong>エディタとは</strong>ソースコードを書くための道具。VS Codeやメモ帳など。</div><div class="term-note basic-term-mini"><strong>ターミナルとは</strong>文字でコマンドを入力して、コンパイルや実行を行う画面。</div><div class="term-note basic-term-mini"><strong>作業フォルダとは</strong>Javaファイルを置いて作業する場所。コマンド実行時の現在地と一致させる。</div>
+</div>
+</div>
+</section><section class="card lesson-section basic-term-check"><h2>このLessonで先に区別する言葉</h2><p>似た言葉を同じ意味で読まないこと。ここを分けると、後のコード読解で迷いにくくなります。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>切り分け</th></tr></thead><tbody><tr><td>JDK / JRE / JVM</td><td>JDKは開発道具、JREは実行環境、JVMは.classを実行する仮想マシン。学習ではまずJDKを入れる。</td></tr><tr><td>エディタ / IDE</td><td>エディタはコードを書く道具。IDEは補完・実行・デバッグまで統合した開発環境。</td></tr><tr><td>ターミナル / 作業フォルダ</td><td>ターミナルはコマンドを打つ画面。作業フォルダは今いる場所で、javacの対象ファイル探索に関係する。</td></tr></tbody></table></div><p class="mini-link-row"><a class="btn ghost" href="../terms.html">基礎用語一覧で確認する</a></p></section>
+<section class="card lesson-section"><h2>入れるもの</h2>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>必要なもの</th><th>役割</th><th>おすすめ</th></tr></thead><tbody>
+<tr><td>JDK</td><td><code>javac</code>でコンパイルし、<code>java</code>で実行するための開発キット</td><td>Eclipse Temurin JDK または Oracle JDK</td></tr>
+<tr><td>エディタ</td><td><code>.java</code>ファイルを書く。補完、検索、エラー表示も担当する</td><td>VS Code + Extension Pack for Java</td></tr>
+<tr><td>ターミナル</td><td>コマンドでコンパイル・実行する</td><td>WindowsならPowerShellまたはWindows Terminal</td></tr>
+<tr><td>作業フォルダ</td><td>学習用コードを保存する場所</td><td><code>C:\java-work</code> のような単純な場所</td></tr>
+</tbody></table></div>
+</section>
+<section class="card lesson-section"><h2>Javaインストーラーへのリンク</h2>
+<p>JDKは公式配布元から入れてください。検索結果の広告や非公式ミラーから入れる必要はありません。</p>
+<div class="setup-link-list">
+<div class="setup-link-card"><a href="https://adoptium.net/ja/temurin/releases/" rel="noopener" target="_blank">Eclipse Temurin JDK</a><p>無料で使いやすいOpenJDK配布版。学習用ならまず候補にしてよい。</p></div>
+<div class="setup-link-card"><a href="https://www.oracle.com/jp/java/technologies/downloads/" rel="noopener" target="_blank">Oracle Java Downloads</a><p>Oracle公式のJDKダウンロードページ。バージョンを確認して入れる。</p></div>
+</div>
+<div class="setup-ok"><strong>選び方</strong><p>学習で混乱したくないなら、使うバージョンを1つに固定します。新しいLTS版を入れる場合でも、サイト内で扱う構文より新しい書き方をむやみに使わないことが重要です。</p></div>
+</section>
+<section class="card lesson-section"><h2>おすすめのエディタ</h2>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>候補</th><th>向いている人</th><th>注意点</th></tr></thead><tbody>
+<tr><td><a href="https://code.visualstudio.com/" rel="noopener" target="_blank">Visual Studio Code</a> + <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" rel="noopener" target="_blank">Extension Pack for Java</a></td><td>最初の学習、短いコードの確認、軽い環境で進めたい人</td><td>JDKが入っていないとJavaコードは実行できない。拡張機能だけでは不十分。</td></tr>
+<tr><td><a href="https://www.jetbrains.com/idea/download/" rel="noopener" target="_blank">IntelliJ IDEA Community Edition</a></td><td>補完・リファクタ・プロジェクト管理まで強めに使いたい人</td><td>最初は機能が多く、画面に振り回されやすい。学習初期は小さなファイルで試す。</td></tr>
+<tr><td><a href="https://eclipseide.org/" rel="noopener" target="_blank">Eclipse IDE</a></td><td>昔からあるJava IDEで学びたい人、授業や職場で指定されている人</td><td>ワークスペースやプロジェクトの概念に慣れる必要がある。</td></tr>
+</tbody></table></div>
+<div class="lesson-note"><strong>このサイトでのおすすめ</strong><p>最初はVS Codeで十分です。<code>javac</code>と<code>java</code>の動きを理解してから、必要に応じてIntelliJ IDEAやEclipseへ移る方が混乱が少ないです。</p></div>
+</section>
+<section class="card lesson-section"><h2>インストール後の確認</h2>
+<p>JDKを入れたら、PowerShellまたはターミナルで次を実行します。</p>
+<pre><code>java -version
+javac -version</code></pre>
+<p>両方でバージョンが表示されれば、最低限の準備はできています。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>状態</th><th>意味</th><th>対応</th></tr></thead><tbody>
+<tr><td><code>java -version</code>だけ通る</td><td>実行環境だけ見えていて、コンパイラが見えていない可能性</td><td>JDKを入れたか、PATHが通っているか確認する</td></tr>
+<tr><td><code>javac</code>が認識されない</td><td>JDK未インストール、またはPATH設定の問題</td><td>JDKを入れ直すか、インストーラーのPATH設定を確認する</td></tr>
+<tr><td>古いバージョンが出る</td><td>別のJavaが先に見つかっている</td><td>複数JDKが入っていないか確認する</td></tr>
+</tbody></table></div>
+</section>
+<section class="card lesson-section"><h2>作業フォルダを作る</h2>
+<p>最初はパスで詰まらないように、英数字だけの短いフォルダ名にします。</p>
+<pre><code>mkdir C:\java-work
+cd C:\java-work</code></pre>
+<p>日本語や空白を含むフォルダ名でも動くことはありますが、最初の段階では余計な原因を減らす方が合理的です。</p>
+</section>
+<section class="card lesson-section"><h2>最初に動かすコード</h2>
+<p><code>C:\java-work</code>に<code>Main.java</code>を作り、次を保存します。</p>
+<pre><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello Java");
+    }
+}</code></pre>
+<p>保存したら、同じフォルダで次を実行します。</p>
+<pre><code>javac Main.java
+java Main</code></pre>
+<p><code>Hello Java</code>と表示されれば成功です。</p>
+<div class="setup-warning"><strong>ここで覚えること</strong><p><code>javac</code>はファイル名を指定します。<code>java</code>はクラス名を指定します。<code>java Main.class</code>ではありません。</p></div>
+</section>
+<section class="card lesson-section"><h2>JDK / JVM / javac / java の役割</h2>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>役割</th><th>雑に言うと</th></tr></thead><tbody>
+<tr><td>JDK</td><td>Java開発に必要な道具一式</td><td>開発キット</td></tr>
+<tr><td>JVM</td><td><code>.class</code>を実行する仮想マシン</td><td>Javaを動かす実行基盤</td></tr>
+<tr><td><code>javac</code></td><td><code>.java</code>を<code>.class</code>へ変換する</td><td>コンパイラ</td></tr>
+<tr><td><code>java</code></td><td>JVMを起動し、指定したクラスの<code>main</code>を実行する</td><td>実行コマンド</td></tr>
+</tbody></table></div>
+<p>この違いを曖昧にしたまま進むと、エラーが出たときに原因を切り分けられません。</p>
+</section>
+<section class="card lesson-section"><h2>やらない方がいいこと</h2>
+<div class="mistake-callout"><strong>非公式サイトからJDKを入れる</strong><p>開発環境は公式配布元から入れる。余計なインストーラーを踏む必要はありません。</p></div>
+<div class="mistake-callout"><strong>複数のJDKを同時に入れる</strong><p>最初から複数入れると、どの<code>java</code>や<code>javac</code>を使っているのか分からなくなります。</p></div>
+<div class="mistake-callout"><strong>エディタの実行ボタンだけに頼る</strong><p>ボタン実行は便利ですが、裏で何が起きているか見えにくいです。最初は<code>javac</code>と<code>java</code>を一度は手で実行してください。</p></div>
+</section>
+<section class="card lesson-section"><h2>確認問題</h2>
+<p>次のうち、Javaを始める準備として本当に必要なものはどれか。</p>
+<ul><li>JDK</li><li>エディタ</li><li>作業フォルダ</li><li>有料IDE</li><li>Webサーバー</li></ul>
+<details class="answer-panel"><summary>考え方と答えを見る</summary><p>最初に必要なのは、JDK、エディタ、作業フォルダです。有料IDEやWebサーバーは不要です。</p><p>Javaの基礎学習では、<code>.java</code>を書き、<code>javac</code>でコンパイルし、<code>java</code>で実行できれば十分です。</p></details>
+</section>
+<section class="card lesson-section basic-stumble-check"><h2>このLessonのつまずきチェック</h2><p>用語を覚えただけでは不十分です。実際に間違えやすい読み方を先に潰します。</p><h3>環境構築で止まる典型</h3><div class="table-scroll"><table class="study-table"><thead><tr><th>つまずき</th><th>正しい切り分け</th></tr></thead><tbody><tr><td><code>java</code> と <code>javac</code> を同じものとして扱う</td><td><code>java</code>は実行、<code>javac</code>はコンパイル。片方だけ通る状態は普通に起きる。</td></tr><tr><td>エディタの実行ボタンだけで進める</td><td>裏でどのフォルダ・どのJDK・どのクラス名で実行しているか見えない。最初は手打ちで確認する。</td></tr><tr><td>作業フォルダを意識しない</td><td>ターミナルの現在地とファイルの置き場所がずれると、文法が正しくても動かない。</td></tr></tbody></table></div><h3>説明できる状態の目安</h3><ul class="check-list compact-check-list"><li><code>java -version</code> と <code>javac -version</code> の違いを説明できる</li><li><code>javac Main.java</code> と <code>java Main</code> の指定対象を説明できる</li><li>作業フォルダを変えると何が変わるか説明できる</li></ul><div class="lesson-note"><strong>試験対策としての使い方</strong><p>この3点を自分の言葉で説明できない場合、問題演習で似た形を見たときに運任せになります。戻ってコードを1つ実行してください。</p></div></section>
+<section class="card lesson-section code-trio-section">
+<h2>正しいコード / 失敗コード / 修正版</h2>
+<p>このLessonの要点を、成功例と失敗例で切り分けます。試験では「なぜ失敗するか」を説明できる状態が必要です。</p>
+<div class="code-trio-grid">
+<article class="code-trio-card good"><h3>正しいコード：環境確認</h3><pre><code>java -version
+javac -version</code></pre></article>
+<article class="code-trio-card bad"><h3>失敗コード</h3><pre><code>java Sample.java
+javac Sample.class</code></pre></article>
+<article class="code-trio-card fix"><h3>修正版</h3><pre><code>javac Sample.java
+java Sample</code></pre></article>
+</div>
+<div class="lesson-note"><strong>判定ポイント</strong><p>Javaを動かす準備では、まず実行用のjavaとコンパイル用のjavacが使えるかを分けて確認します。</p></div>
+</section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>JDK、JVM、javac、javaの役割をそれぞれ説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>JDKは開発キット、JVMはclassファイルを実行する仕組み、javacはコンパイル、javaは実行です。最初にこの4つを分けます。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコマンドのうち、環境確認として不足しているものはどれですか。</p><pre><code>java -version</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>javaだけでは実行環境の確認に寄ります。開発ではjavacも必要なので、javac -versionも確認します。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>javaは使えるのにjavacが使えない場合、何が起きていますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>JRE相当の実行環境だけが見えている、またはJDKのbinへのPATHが通っていない可能性があります。コンパイルできる状態ではありません。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="01.html">Lesson 1へ →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-00.html";</script>
+<script src="../../../data/questions.js?v=final-cleanup-20260601"></script>
+<script src="../../../assets/js/app.js?v=final-cleanup-20260601"></script>
+<script src="../../../pwa.js?v=final-cleanup-20260601"></script>
+</body>
+</html>

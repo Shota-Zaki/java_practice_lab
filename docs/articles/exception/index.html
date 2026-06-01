@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silverで落とされやすい例外処理を、checked例外、throw/throws、catch順序、finally、try-with-resources、実行時例外まで具体例で整理。" name="description"/>
+<title>例外処理完全整理｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=final-cleanup-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="content-page article-body wide-article upgraded-article">
+<h1>例外処理完全整理</h1>
+<p class="lead">例外処理は、コンパイル可否、発生する例外の型、catchの一致、finallyとtry-with-resourcesの順序を分けて読む単元です。出力だけを追う読み方は捨ててください。</p>
+<section class="article-section">
+<h2>例外処理問題の判定順</h2>
+<p>Silverの例外問題は、出力を追う前に<strong>コンパイル可否</strong>を確定させます。コンパイルできないコードは、実行時例外も出力も発生しません。</p>
+<ol class="article-list priority-list">
+<li><strong>try / catch / finally の形が正しいか</strong>を見る。</li>
+<li><strong>checked例外の処理漏れ</strong>がないかを見る。</li>
+<li><strong>catchの順序</strong>がサブクラスからスーパークラスになっているかを見る。</li>
+<li>コンパイルできる場合だけ、<strong>try内のどこで例外が発生するか</strong>を追う。</li>
+<li>対応する<code>catch</code>、<code>finally</code>、try-with-resourcesの<code>close()</code>順を追う。</li>
+</ol>
+<div class="article-callout warn"><strong>ここを雑に読むな:</strong> 「例外っぽいからcatchされる」ではありません。実際に発生した例外オブジェクトの型が、catchの型へ代入できるかで決まります。</div>
+</section>
+<section class="article-section">
+<h2>例外とは</h2>
+<p>例外は、プログラム実行中に通常の流れを続けられなくなったことを表すオブジェクトです。Javaでは、例外もクラスから作られるオブジェクトとして扱います。</p>
+<pre class="article-code"><code>try {
+    throw new IllegalArgumentException("bad");
+} catch (RuntimeException e) {
+    System.out.println(e.getClass().getSimpleName());
+}
+// IllegalArgumentException</code></pre>
+<table class="study-table ref-table"><thead><tr><th>用語</th><th>意味</th><th>試験での見方</th></tr></thead><tbody>
+<tr><td>例外オブジェクト</td><td><code>new IOException()</code> のように作られるトラブル情報。</td><td>型を見て、どのcatchに入るか判断する。</td></tr>
+<tr><td><code>throw</code></td><td>例外オブジェクトを実際に投げる文。</td><td>この行で通常の流れは中断される。</td></tr>
+<tr><td><code>throws</code></td><td>メソッドが例外を呼び出し元へ投げる可能性を宣言する句。</td><td>checked例外の処理漏れ対策。</td></tr>
+<tr><td>伝播</td><td>catchされなかった例外が呼び出し元へ戻ること。</td><td>呼び出し元にcatch/throwsが必要か見る。</td></tr>
+</tbody></table>
+</section>
+<section class="article-section">
+<h2>checked例外とunchecked例外</h2>
+<p>Silverでは、例外の名前を見た瞬間に、コンパイラが処理を要求するかを判断できる必要があります。</p>
+<pre class="article-code"><code>Throwable
+├─ Error                         // 通常はアプリ側で処理しない
+└─ Exception
+   ├─ RuntimeException            // unchecked例外
+   │  ├─ NullPointerException
+   │  ├─ ArithmeticException
+   │  ├─ ClassCastException
+   │  ├─ ArrayIndexOutOfBoundsException
+   │  └─ NumberFormatException
+   ├─ IOException                  // checked例外
+   └─ SQLException など            // checked例外</code></pre>
+<table class="study-table ref-table"><thead><tr><th>分類</th><th>代表例</th><th>コンパイラの要求</th><th>覚え方</th></tr></thead><tbody>
+<tr><td>checked例外</td><td><code>IOException</code>, <code>Exception</code></td><td>catchするかthrows宣言が必要。</td><td><code>RuntimeException</code> 系ではない <code>Exception</code> はまず疑う。</td></tr>
+<tr><td>unchecked例外</td><td><code>RuntimeException</code> とそのサブクラス</td><td>catch/throwsは任意。</td><td>NullPointer、配列範囲外、数値変換失敗など。</td></tr>
+<tr><td>Error</td><td><code>StackOverflowError</code> など</td><td>catch/throwsは通常不要。</td><td>基本問題では積極的に処理対象にしない。</td></tr>
+</tbody></table>
+<pre class="article-code"><code>import java.io.IOException;
+
+class Sample {
+    static void read() throws IOException {
+        throw new IOException();
+    }
+
+    public static void main(String[] args) {
+        read();       // コンパイルエラー: checked例外の処理漏れ
+    }
+}</code></pre>
+</section>
+<section class="article-section">
+<h2>throwとthrowsの違い</h2>
+<table class="study-table ref-table"><thead><tr><th>書く場所</th><th>意味</th><th>例</th></tr></thead><tbody>
+<tr><td><code>throw</code></td><td>メソッド本体の中で、例外オブジェクトを投げる。</td><td><code>throw new RuntimeException();</code></td></tr>
+<tr><td><code>throws</code></td><td>メソッド宣言部で、呼び出し元へ例外を投げる可能性を示す。</td><td><code>void read() throws IOException</code></td></tr>
+</tbody></table>
+<pre class="article-code"><code>void a() throws Exception {  // 宣言
+    throw new Exception();   // 実際に投げる
+}</code></pre>
+<div class="article-callout"><strong>不可能パターン:</strong> <code>throw IOException;</code> は不可。投げるのはクラス名ではなく例外オブジェクトです。<code>throw new IOException();</code> の形にします。</div>
+<pre class="article-code"><code>throw null;   // コンパイルは可能
+              // 実行すると NullPointerException</code></pre>
+</section>
+<section class="article-section">
+<h2>try-catch-finallyの実行順</h2>
+<p>try内で例外が発生すると、その行以降のtry内処理はスキップされ、対応するcatchへ移ります。その後、finallyがあれば実行されます。</p>
+<pre class="article-code"><code>try {
+    System.out.print("A");
+    int x = 10 / 0;
+    System.out.print("B");
+} catch (ArithmeticException e) {
+    System.out.print("C");
+} finally {
+    System.out.print("D");
+}
+// ACD</code></pre>
+<table class="study-table ref-table"><thead><tr><th>状況</th><th>流れ</th></tr></thead><tbody>
+<tr><td>例外なし</td><td><code>try → finally</code></td></tr>
+<tr><td>catchされる例外あり</td><td><code>try途中 → catch → finally</code></td></tr>
+<tr><td>catchされない例外あり</td><td><code>try途中 → finally → 呼び出し元へ伝播</code></td></tr>
+</tbody></table>
+</section>
+<section class="article-section">
+<h2>catchの順序</h2>
+<p>catchは上から順に判定されます。先にスーパークラス型で受け取ると、後ろのサブクラス型catchには絶対に到達できません。</p>
+<pre class="article-code"><code>try {
+    throw new NumberFormatException();
+} catch (RuntimeException e) {
+    System.out.println("A");
+} catch (NumberFormatException e) { // コンパイルエラー
+    System.out.println("B");
+}</code></pre>
+<p>正しい順序は、より具体的な例外を先に書く形です。</p>
+<pre class="article-code"><code>try {
+    throw new NumberFormatException();
+} catch (NumberFormatException e) {
+    System.out.println("B");
+} catch (RuntimeException e) {
+    System.out.println("A");
+}</code></pre>
+</section>
+<section class="article-section">
+<h2>multi-catchの制約</h2>
+<p>multi-catchでは、継承関係にある例外型を同時に並べられません。片方がもう片方を含むため、意味が重複するからです。</p>
+<pre class="article-code"><code>try {
+    risky();
+} catch (IOException | RuntimeException e) {
+    System.out.println("handled");
+}</code></pre>
+<pre class="article-code"><code>try {
+    risky();
+} catch (Exception | IOException e) { // コンパイルエラー
+    System.out.println("bad");
+}</code></pre>
+</section>
+<section class="article-section">
+<h2>finallyで結果が変わるパターン</h2>
+<p><code>finally</code> は例外の有無にかかわらず実行されます。ただし、<code>finally</code> の中で <code>return</code> や新しい例外を発生させると、try/catch側の結果を上書きします。</p>
+<pre class="article-code"><code>static int test() {
+    try {
+        return 1;
+    } finally {
+        return 2;
+    }
+}
+// 戻り値は2</code></pre>
+<pre class="article-code"><code>try {
+    throw new IllegalArgumentException();
+} finally {
+    throw new NullPointerException();
+}
+// 最終的に外へ出るのは NullPointerException</code></pre>
+<div class="article-callout warn"><strong>注意:</strong> 実務ではfinallyでreturnする設計は避けるべきです。試験では「結果を上書きする」ひっかけとして出ます。</div>
+</section>
+<section class="article-section">
+<h2>try-with-resources</h2>
+<p>try-with-resourcesは、<code>AutoCloseable</code> を実装したリソースを自動で閉じる構文です。closeは、tryブロックを抜けるときに宣言と逆順で呼ばれます。</p>
+<pre class="article-code"><code>class R implements AutoCloseable {
+    private final String name;
+    R(String name) { this.name = name; }
+    public void close() { System.out.print(name); }
+}
+
+try (R a = new R("A"); R b = new R("B")) {
+    System.out.print("T");
+} finally {
+    System.out.print("F");
+}
+// TBAF</code></pre>
+<ol class="article-list">
+<li>try本体が実行される。</li>
+<li>リソースは宣言と逆順にcloseされる。</li>
+<li>最後にfinallyが実行される。</li>
+</ol>
+<p>Java 9以降は、effectively finalな変数をtry-with-resourcesに指定できます。</p>
+<pre class="article-code"><code>R r = new R("R");
+try (r) {
+    System.out.print("T");
+}</code></pre>
+</section>
+<section class="article-section">
+<h2>実行時例外の典型</h2>
+<table class="study-table ref-table"><thead><tr><th>例外</th><th>発生条件</th><th>例</th></tr></thead><tbody>
+<tr><td><code>NullPointerException</code></td><td>null参照でインスタンスメンバを呼ぶ。</td><td><code>s.length()</code> で <code>s == null</code></td></tr>
+<tr><td><code>ArrayIndexOutOfBoundsException</code></td><td>配列の範囲外添字。</td><td><code>a[a.length]</code></td></tr>
+<tr><td><code>StringIndexOutOfBoundsException</code></td><td>文字列の範囲外位置。</td><td><code>"abc".charAt(3)</code></td></tr>
+<tr><td><code>NumberFormatException</code></td><td>数値に変換できない文字列。</td><td><code>Integer.parseInt("A")</code></td></tr>
+<tr><td><code>ArithmeticException</code></td><td>整数の0除算。</td><td><code>10 / 0</code></td></tr>
+<tr><td><code>ClassCastException</code></td><td>実体に合わない参照型へキャスト。</td><td><code>(String) new Object()</code></td></tr>
+</tbody></table>
+</section>
+<section class="article-section">
+<h2>整数0除算と浮動小数点0除算</h2>
+<p>0除算は全部同じではありません。整数演算では <code>ArithmeticException</code>、浮動小数点演算では <code>Infinity</code> や <code>NaN</code> になります。</p>
+<pre class="article-code"><code>System.out.println(10 / 0);    // ArithmeticException
+System.out.println(10.0 / 0);  // Infinity
+System.out.println(0.0 / 0);   // NaN</code></pre>
+</section>
+<section class="article-section">
+<h2>読解ミニ演習</h2>
+<pre class="article-code"><code>public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.print("A");
+            String s = null;
+            System.out.print(s.length());
+            System.out.print("B");
+        } catch (ArithmeticException e) {
+            System.out.print("C");
+        } catch (RuntimeException e) {
+            System.out.print("D");
+        } finally {
+            System.out.print("E");
+        }
+    }
+}</code></pre>
+<details class="answer-panel"><summary>答えを見る</summary><p><code>ADE</code> です。<code>s.length()</code> で <code>NullPointerException</code> が発生し、<code>ArithmeticException</code> では受け取れず、次の <code>RuntimeException</code> で受け取られます。try内の <code>B</code> は実行されません。</p></details>
+</section>
+</section>
+<section class="study-route-panel related-practice-panel">
+<h2>この内容を確認する演習</h2>
+<p>この記事を読んだあと、次の演習で確認してください。</p>
+<div class="study-route-grid"><a class="study-route-card" href="../../courses/java11-silver/practice/exception-inheritance.html"><span class="route-badge">確認演習</span><strong>例外・継承</strong><span>throw/throws、catch順序</span></a><a class="study-route-card" href="../../courses/java11-silver/practice/inheritance-exception-extra.html"><span class="route-badge">確認演習</span><strong>継承・例外</strong><span>finallyと継承の複合</span></a><a class="study-route-card" href="../runtime-errors/index.html"><span class="route-badge">確認演習</span><strong>実行時例外の原因</strong><span>NPE、範囲外、cast</span></a></div>
+</section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-exception.html";</script>
+<script src="../../data/questions.js?v=final-cleanup-20260601"></script>
+<script src="../../assets/js/app.js?v=final-cleanup-20260601"></script>
+<script src="../../pwa.js?v=final-cleanup-20260601"></script>
+</body>
+</html>

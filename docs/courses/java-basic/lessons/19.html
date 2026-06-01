@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="ファイル名、publicクラス、トップレベルクラス、実行クラスを混同しない。" name="description"/>
+<title>Lesson 19 Javaファイルとクラス名｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=final-cleanup-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 19</p>
+<h1>Javaファイルとクラス名</h1>
+<p class="lead">ファイル名、publicクラス、トップレベルクラス、実行クラスを混同しない。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section basic-term-intro">
+<h2>初出用語：トップレベルクラス・ファイル名・パッケージ</h2>
+<div class="term-side-layout">
+<div>
+<p>Javaファイルとクラスは1対1とは限りません。ただしpublicクラス名とファイル名には制約があります。</p>
+</div>
+<div class="term-note-grid">
+<div class="term-note basic-term-mini"><strong>トップレベルクラスとは</strong>他のクラスの中ではなく、ファイル直下に定義されたクラス。</div><div class="term-note basic-term-mini"><strong><code>public class</code>とは</strong>外部から利用できる公開クラス。1つのファイルに最大1つ。</div><div class="term-note basic-term-mini"><strong>ファイル名一致とは</strong>publicトップレベルクラスがある場合、ファイル名をそのクラス名に合わせるルール。</div><div class="term-note basic-term-mini"><strong>パッケージとは</strong>クラスを分類し、名前の衝突を避ける仕組み。</div><div class="term-note basic-term-mini"><strong>完全修飾名とは</strong>パッケージ名を含めたクラス名。例: <code>ex.Main</code>。</div>
+</div>
+</div>
+</section><section class="card lesson-section basic-term-check"><h2>このLessonで先に区別する言葉</h2><p>似た言葉を同じ意味で読まないこと。ここを分けると、後のコード読解で迷いにくくなります。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>切り分け</th></tr></thead><tbody><tr><td>トップレベルクラス / ネストしたクラス</td><td>トップレベルクラスは他のクラスの外側に直接書くクラス。ネストしたクラスはクラス内に書くクラス。</td></tr><tr><td>publicクラス / ファイル名</td><td>publicトップレベルクラスがある場合、ファイル名はそのクラス名と一致必須。</td></tr><tr><td>package / ディレクトリ</td><td>package宣言はクラスの所属名。通常はディレクトリ構造と対応させる。</td></tr></tbody></table></div><p class="mini-link-row"><a class="btn ghost" href="../terms.html">基礎用語一覧で確認する</a></p></section><section class="card lesson-section"><h2>トップレベルクラス</h2><p>他のクラスの内側ではなく、ファイル直下に書かれたクラスをトップレベルクラスと呼ぶ。</p><p class="code-caption">どちらもトップレベルクラス</p><pre><code>class A { }
+class B { }</code></pre></section><section class="card lesson-section"><h2>publicクラスとファイル名</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>ファイル内容</th><th>ファイル名</th><th>結果</th></tr></thead><tbody><tr><td><code>public class Main { }</code></td><td><code>Main.java</code></td><td>OK</td></tr><tr><td><code>public class Main { }</code></td><td><code>Sample.java</code></td><td>コンパイルエラー</td></tr><tr><td><code>class Main { }</code></td><td><code>Sample.java</code></td><td>OK</td></tr><tr><td><code>public class A { } public class B { }</code></td><td>どちらでも不可</td><td>publicトップレベルクラスが複数あるためエラー</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>実行するクラス名</h2><p><code>java</code>コマンドで指定するのは、ファイル名ではなくクラス名。<code>main</code>メソッドを持つクラスが複数あれば、それぞれ実行できる。</p><p class="code-caption">A.javaでなくても、publicがなければ保存名の自由度がある</p><pre><code>class A {
+    public static void main(String[] args) {
+        System.out.println("A");
+    }
+}
+class B {
+    public static void main(String[] args) {
+        System.out.println("B");
+    }
+}</code></pre><pre><code>javac Sample.java
+java A
+java B</code></pre></section><section class="card lesson-section"><h2>パッケージが絡む場合</h2><p><code>package</code>宣言がある場合、ディレクトリ構造とクラス名の対応も意識する必要がある。基礎段階では、まず「publicクラス名とファイル名」を確実に押さえる。</p></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードを<code>Test.java</code>として保存した場合、コンパイルできるか判定する。</p><pre><code>public class Main {
+    public static void main(String[] args) { }
+}
+class Test { }</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>Javaファイルとクラス名のルールは、最初に固めておくべき実務的な基礎。publicなトップレベルクラスがある場合、ソースファイル名はそのクラス名と一致しなければならない。</p><p>1つのファイルに複数のトップレベルクラスを書くことはできる。ただし、publicなトップレベルクラスは1つまで。publicでないクラスはファイル名と一致していなくてもよい。</p><p>実行時はファイル名ではなく、mainメソッドを持つクラス名を指定する。publicでないクラスでも、mainがあれば実行できる場合がある。</p><div class="principle-grid"><div class="principle-card"><strong>トップレベルクラス</strong><p>他のクラスの中ではなく、ファイル直下に書かれたクラス。</p></div><div class="principle-card"><strong>publicクラス</strong><p>外部から見えるクラス。ファイル名と一致が必要。</p></div><div class="principle-card"><strong>実行クラス</strong><p><code>main</code>を持ち、<code>java クラス名</code>で起動するクラス。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>ファイル名 / publicクラス名</td><td>publicトップレベルクラスがあるなら一致が必要。</td><td><code>public class X</code>なら<code>X.java</code>。</td></tr><tr><td>public / 非public</td><td>publicトップレベルクラスは1ファイル1つまで。非publicは複数可。</td><td>修飾子を見る。</td></tr><tr><td>コンパイル対象 / 実行対象</td><td>コンパイルはファイル、実行はクラス。</td><td><code>javac A.java</code>、<code>java A</code>。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>ファイル内のトップレベルクラスを数える。</li><li>publicなトップレベルクラスがあるか確認する。</li><li>publicクラス名とファイル名が一致するか見る。</li><li>mainメソッドを持つクラスを探す。</li><li>実行時はmainを持つクラス名を指定する。</li></ol><p class="code-caption">確認用コード</p><pre><code>// A.java
+public class A { }
+class B {
+    public static void main(String[] args) {
+        System.out.println("B");
+    }
+}</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>ファイル名</td><td><code>A.java</code></td><td>public class A と一致</td></tr><tr><td>クラスB</td><td>非publicトップレベルクラス</td><td>同じファイルに書ける</td></tr><tr><td>実行</td><td><code>B</code>にmainがある</td><td><code>java B</code>で実行可能</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>1ファイルに複数クラスを書ける</strong><p>複数のトップレベルクラスを書ける。ただしpublicは1つまで。</p></div><div class="mistake-callout"><strong>javaコマンドではファイル名を指定しない</strong><p><code>java</code>に渡すのはクラス名。<code>.java</code>や<code>.class</code>ではない。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードが<code>Sample.java</code>に保存されている。コンパイルできるか。</p><p class="code-caption">確認問題</p><pre><code>public class Main {
+}
+class Sample {
+}</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>コンパイルできない。</p><p>publicなトップレベルクラスは<code>Main</code>なので、ファイル名は<code>Main.java</code>である必要がある。<code>Sample.java</code>とは一致しない。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>このLessonでは、<strong>ファイル名・クラス名・実行名を分けて考える</strong>ことが中心です。Javaでは、1つのソースファイルに複数のトップレベルクラスを書けます。ただし、<code>public</code>なトップレベルクラスがある場合、ファイル名はそのクラス名と一致する必要があります。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>観点</th><th>見る場所</th><th>判断</th></tr></thead><tbody><tr><td>保存名</td><td><code>Sample.java</code></td><td><code>public class Sample</code>があるなら一致が必要</td></tr><tr><td>トップレベルクラス</td><td>ファイル直下の<code>class</code></td><td>複数書けるが、<code>public</code>は原則1つ</td></tr><tr><td>実行名</td><td><code>java クラス名</code></td><td><code>main</code>を持つクラス名を指定する</td></tr></tbody></table></div>
+<pre><code>// ファイル名: A.java
+public class A {
+    public static void main(String[] args) {
+        System.out.println("A");
+    }
+}
+
+class B {
+    public static void main(String[] args) {
+        System.out.println("B");
+    }
+}</code></pre>
+<p>この場合、<code>javac A.java</code>でコンパイルできます。実行時は<code>java A</code>でも<code>java B</code>でも、対応する<code>main</code>があれば実行できます。ファイル名と実行クラス名は同じ場面で使うものではありません。</p>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>「ファイル名と同じクラスだけが実行できる」は誤りです。実行できるかは、対象クラスが適切な<code>main</code>メソッドを持つかで判断します。</p></div>
+</section><section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>Javaファイルとクラス名を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-section basic-stumble-check"><h2>このLessonのつまずきチェック</h2><p>用語を覚えただけでは不十分です。実際に間違えやすい読み方を先に潰します。</p><h3>ファイル名とクラス名で詰まる点</h3><div class="table-scroll"><table class="study-table"><thead><tr><th>つまずき</th><th>正しい切り分け</th></tr></thead><tbody><tr><td>public classが複数書けると思う</td><td>トップレベルのpublic classは1ファイルに最大1つ。ファイル名と一致が必要。</td></tr><tr><td>publicでないクラスは実行できないと思う</td><td>publicでなくても、正しいmainがありクラス名を指定すれば実行できる場合がある。</td></tr><tr><td><code>java A.class</code>と実行する</td><td>javaコマンドに指定するのはクラス名。ファイル名ではない。</td></tr></tbody></table></div><h3>説明できる状態の目安</h3><ul class="check-list compact-check-list"><li>public classとファイル名の関係を説明できる</li><li>1ファイル複数classのclass生成を説明できる</li><li>javacとjavaで指定するものの違いを説明できる</li></ul><div class="lesson-note"><strong>試験対策としての使い方</strong><p>この3点を自分の言葉で説明できない場合、問題演習で似た形を見たときに運任せになります。戻ってコードを1つ実行してください。</p></div></section>
+<section class="card lesson-section code-trio-section">
+<h2>正しいコード / 失敗コード / 修正版</h2>
+<p>このLessonの要点を、成功例と失敗例で切り分けます。試験では「なぜ失敗するか」を説明できる状態が必要です。</p>
+<div class="code-trio-grid">
+<article class="code-trio-card good"><h3>正しいコード：ファイル名とpublic class</h3><pre><code>// Main.java
+public class Main { }
+class Helper { }</code></pre></article>
+<article class="code-trio-card bad"><h3>失敗コード</h3><pre><code>// Sample.java
+public class Main { }</code></pre></article>
+<article class="code-trio-card fix"><h3>修正版</h3><pre><code>// Main.java
+public class Main { }
+class Helper { }</code></pre></article>
+</div>
+<div class="lesson-note"><strong>判定ポイント</strong><p>publicトップレベルクラス名はファイル名と一致させます。</p></div>
+</section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>public class名とファイル名の関係を説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>トップレベルのpublic classがある場合、ソースファイル名はそのクラス名.javaにする必要があります。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次のコードをMemo.javaに保存するとコンパイルできますか。</p><pre><code>public class Main { }
+class Sub { }</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>コンパイルできません。public class Mainがあるため、ファイル名はMain.javaである必要があります。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>publicではないトップレベルクラスを複数書ける理由を説明してください。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>Javaでは1つのファイルに複数のトップレベルクラスを書けます。ただしpublicトップレベルクラスは最大1つで、ファイル名一致が必要です。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="18.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="20.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-19.html";</script>
+<script src="../../../data/questions.js?v=final-cleanup-20260601"></script>
+<script src="../../../assets/js/app.js?v=final-cleanup-20260601"></script>
+<script src="../../../pwa.js?v=final-cleanup-20260601"></script>
+</body>
+</html>

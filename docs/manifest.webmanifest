@@ -1,0 +1,10 @@
+{
+  "name": "Java Practice Lab",
+  "short_name": "JavaLab",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#2563eb",
+  "description": "Java Silver風のオリジナル演習・模試・復習ツール",
+  "icons": []
+}

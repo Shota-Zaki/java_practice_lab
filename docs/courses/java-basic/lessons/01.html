@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Javaを書く前に、コンピュータが実際には何を実行しているのかを掴む。" name="description"/>
+<title>Lesson 1 コンピュータと機械語｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=final-cleanup-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 1</p>
+<h1>コンピュータと機械語</h1>
+<p class="lead">Javaを書く前に、コンピュータが実際には何を実行しているのかを掴む。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section basic-term-intro">
+<h2>初出用語：ソースコード・機械語・バイトコード</h2>
+<div class="term-side-layout">
+<div>
+<p>Javaでは、人間が書くコード、JVMが読むコード、CPUが実行する命令を分けて考えます。</p>
+</div>
+<div class="term-note-grid">
+<div class="term-note basic-term-mini"><strong>ソースコードとは</strong><code>.java</code> に書く人間向けのプログラム。</div><div class="term-note basic-term-mini"><strong>機械語とは</strong>CPUが直接実行できる命令。Java文法そのものではない。</div><div class="term-note basic-term-mini"><strong>バイトコードとは</strong><code>javac</code> が作る <code>.class</code> の中身。JVMが実行する。</div><div class="term-note basic-term-mini"><strong>JVMとは</strong>Java Virtual Machine。バイトコードを実行する仮想的な実行環境。</div>
+</div>
+</div>
+</section><section class="card lesson-section basic-term-check"><h2>このLessonで先に区別する言葉</h2><p>似た言葉を同じ意味で読まないこと。ここを分けると、後のコード読解で迷いにくくなります。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>切り分け</th></tr></thead><tbody><tr><td>ソースコード / バイトコード / 機械語</td><td>人が書くのがソースコード、javac後の.classがバイトコード、CPUが直接扱うのが機械語。</td></tr><tr><td>コンパイル / 実行</td><td>コンパイルは実行前の変換と検査。実行はJVMが.classを動かす段階。</td></tr><tr><td>Java文法 / CPU命令</td><td>Javaのifやforは、最終的には比較やジャンプの命令として処理される。</td></tr></tbody></table></div><p class="mini-link-row"><a class="btn ghost" href="../terms.html">基礎用語一覧で確認する</a></p></section><section class="card lesson-section"><h2>機械語を難しく考えすぎない</h2><p>機械語は、足し算する、値を比較する、メモリから値を読む、条件によって次に進む場所を変える、という単純な命令の集合だと考えればよい。Javaの<code>if</code>、<code>for</code>、メソッド呼び出しも、最終的にはこうした単純な処理の組み合わせとして実行される。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>人間が見るもの</th><th>機械側で起きること</th><th>学習上の意味</th></tr></thead><tbody><tr><td><code>int a = 10;</code></td><td>値を入れる領域を用意し、10を保持する</td><td>変数は「名前付きの場所」として考える</td></tr><tr><td><code>if (a &gt; 5)</code></td><td>値を比較し、条件により進む先を変える</td><td>分岐は「条件判定＋ジャンプ」と見る</td></tr><tr><td><code>method()</code></td><td>別の処理単位へ移動し、終わったら戻る</td><td>メソッドは処理のまとまり</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>Javaの場合の実行イメージ</h2><p class="code-caption">人間が書くソースコード</p><pre><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}</code></pre><p>このコードは、いきなりCPUで実行されるのではない。まず<code>javac Main.java</code>で<code>Main.class</code>のようなバイトコードへ変換される。その後、<code>java Main</code>でJVMがクラスを読み込み、<code>main</code>メソッドから処理を開始する。</p><ol><li><code>.java</code>を書く。</li><li><code>javac</code>が文法や型を検査し、<code>.class</code>を作る。</li><li><code>java</code>コマンドがJVMを起動する。</li><li>JVMが<code>main</code>を探して実行する。</li></ol></section><section class="card lesson-section"><h2>悪い理解と修正</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>誤解</th><th>なぜ成立しないか</th><th>正しい見方</th></tr></thead><tbody><tr><td>CPUがJavaの文法を直接読む</td><td>CPUは<code>public</code>や<code>class</code>をJava文法として理解しない</td><td>JavaコードはJVMが実行できる形へ変換される</td></tr><tr><td>コンパイルできれば必ず正しく動く</td><td>コンパイルは主に文法・型の検査であり、実行中の値までは保証しない</td><td>実行時例外は実行して初めて起きる</td></tr><tr><td>エラーは全部同じ</td><td>コンパイルエラーと実行時例外は発生タイミングが違う</td><td>まず「いつ失敗したか」を見る</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードについて、CPUが直接読んでいるもの、JVMが実行するもの、人間が書くものを分けて説明してみる。</p><pre><code>int x = 3;
+int y = x + 2;
+System.out.println(y);</code></pre><ul><li>人間が書くのはこのソースコード。</li><li><code>javac</code>がバイトコードに変換する。</li><li>実行時に<code>x</code>と<code>y</code>の値がメモリ上で扱われる。</li></ul></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>Javaを学び始めた段階で一番危ないのは、「自分が書いた文字列をコンピュータがそのまま理解している」と考えること。実際には、人間向けのソースコードを、実行環境が扱える形へ段階的に変換している。</p><p>機械語は怖いものではなく、CPUにとっての最小単位の命令だと考えればよい。Javaの<code>if</code>や<code>for</code>も、最終的には値を読む、比べる、移動する、結果を書き戻す、という単純な処理へ分解される。</p><p>このレッスンの狙いは、機械語を詳しく覚えることではない。「ソースコード」「コンパイル後の形」「実行中の動き」を分けて考える癖を作ること。ここができると、コンパイルエラーと実行時例外の区別がかなり楽になる。</p><div class="principle-grid"><div class="principle-card"><strong>ソースコードは人間向け</strong><p><code>public</code>や<code>class</code>はJavaの文法であって、CPUの命令そのものではない。</p></div><div class="principle-card"><strong>実行には変換が必要</strong><p><code>javac</code>で検査・変換され、JVMが実行できるバイトコードになる。</p></div><div class="principle-card"><strong>値は実行時に動く</strong><p>変数の中身、条件分岐、繰り返し回数は、実行中の状態として追う。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>ソースコード / 機械語</td><td>ソースコードは人間が読む文章。機械語はCPUが実行する命令。</td><td><code>.java</code>を直接CPUが読むわけではない。</td></tr><tr><td>コンパイル時 / 実行時</td><td>コンパイル時は文法・型の検査。実行時は実際の値を使って処理が進む。</td><td>「いつ失敗したか」を先に見る。</td></tr><tr><td>文法上正しい / 意図通り動く</td><td>文法上正しくても、ロジックが間違っていれば意図通りにはならない。</td><td>出力結果や変数の変化を追う。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>まず<code>.java</code>に書かれた人間向けコードだと見る。</li><li>次に、<code>javac</code>で弾かれる文法・型の問題がないかを見る。</li><li>コンパイル後に初めて、実行時の値の変化を追う。</li><li>出力結果を考えるときは、CPUではなくJVMがバイトコードを実行していると捉える。</li></ol><p class="code-caption">確認用コード</p><pre><code>int a = 3;
+int b = a + 2;
+System.out.println(b);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>文法</td><td><code>int</code>変数に整数を代入している</td><td>コンパイル可能</td></tr><tr><td>実行時の値</td><td><code>a</code>は3、<code>b</code>は5</td><td>出力は5</td></tr><tr><td>失敗の種類</td><td>文法エラーでも例外でもない</td><td>正常終了</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>コードを書いただけでは実行されない</strong><p>保存しただけでは何も実行されない。コンパイルと実行の操作が別に必要。</p></div><div class="mistake-callout"><strong>コンパイル成功だけで正しいとは判断しない</strong><p>コンパイル成功は「Javaとして読める」という意味であり、「期待通りの結果」を保証しない。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次の説明は正しいか。「Javaの<code>System.out.println</code>はCPUが直接理解して画面へ表示している」。</p><details class="answer-panel"><summary>考え方と答えを見る</summary><p>誤り。CPUがJava文法を直接理解しているわけではない。</p><p>人間が書いたJavaコードはバイトコードへ変換され、JVMが実行する。最終的にはOSやCPUの機能を使うが、Java文法をCPUがそのまま読んでいるわけではない。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>このLessonは、Java文法そのものよりも前に、<strong>プログラムは最終的にコンピュータが実行できる形へ変換される</strong>という前提を作るページです。ここを飛ばすと、後で「書いたコード」「コンパイルされたコード」「実行中の値」が全部同じものに見えてしまいます。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>段階</th><th>見るもの</th><th>ここで起きること</th></tr></thead><tbody><tr><td>人間が書く</td><td><code>Main.java</code></td><td>Javaの文法で処理を書く。CPUが直接読むものではない。</td></tr><tr><td>変換する</td><td><code>Main.class</code></td><td><code>javac</code>が文法・型を検査し、バイトコードを作る。</td></tr><tr><td>実行する</td><td>JVM上の処理</td><td>JVMがバイトコードを読み、必要に応じてOSやCPUの機能を使う。</td></tr></tbody></table></div>
+<p>重要なのは、機械語やCPUの細部を暗記することではありません。Javaコードを読むときに「今考えているのはコンパイル前か、実行中か」を分けることです。この分離ができると、エラー原因の切り分けが速くなります。</p>
+<pre><code>int x = 10;
+int y = x + 5;
+System.out.println(y);</code></pre>
+<p>この3行を見るときは、まずJava文法として成立するかを確認し、次に実行時に<code>x</code>と<code>y</code>がどう変化するかを追います。いきなり「画面に何が出るか」だけを考えると、途中の判断を飛ばす癖がつきます。</p>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>「Javaを覚える＝命令を丸暗記する」ではありません。実際には、書いたコードがどの段階で検査され、どの段階で値が動くのかを分けて読めることが基礎力です。</p></div>
+</section><section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>コンピュータと機械語を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-section basic-stumble-check"><h2>このLessonのつまずきチェック</h2><p>用語を覚えただけでは不十分です。実際に間違えやすい読み方を先に潰します。</p><h3>コンピュータの話で混同しやすい点</h3><div class="table-scroll"><table class="study-table"><thead><tr><th>つまずき</th><th>正しい切り分け</th></tr></thead><tbody><tr><td>プログラムを「そのままCPUが読んでいる」と考える</td><td>CPUが直接扱うのは機械語。Javaコードは変換と実行基盤を経て動く。</td></tr><tr><td>高級言語と機械語を対立だけで覚える</td><td>高級言語は人間が読み書きしやすい表現。最終的には機械が処理できる形になる。</td></tr><tr><td>Javaだけ特別にOSなしで動くと思う</td><td>JVMもOS上で動くプログラム。JavaはJVMによりOS差を吸収しやすいだけ。</td></tr></tbody></table></div><h3>説明できる状態の目安</h3><ul class="check-list compact-check-list"><li>機械語とは何かを一文で説明できる</li><li>JavaソースコードがCPUに直接読まれるわけではない理由を説明できる</li><li>OSとJVMの位置関係を説明できる</li></ul><div class="lesson-note"><strong>試験対策としての使い方</strong><p>この3点を自分の言葉で説明できない場合、問題演習で似た形を見たときに運任せになります。戻ってコードを1つ実行してください。</p></div></section>
+<section class="card lesson-section code-trio-section">
+<h2>正しいコード / 失敗コード / 修正版</h2>
+<p>このLessonの要点を、成功例と失敗例で切り分けます。試験では「なぜ失敗するか」を説明できる状態が必要です。</p>
+<div class="code-trio-grid">
+<article class="code-trio-card good"><h3>正しいコード：機械語とJavaの変換</h3><pre><code>Sample.java  --javac--&gt;  Sample.class  --JVM--&gt;  実行</code></pre></article>
+<article class="code-trio-card bad"><h3>失敗コード</h3><pre><code>Sample.javaをCPUがそのまま実行する</code></pre></article>
+<article class="code-trio-card fix"><h3>修正版</h3><pre><code>ソースコードをjavacでバイトコードに変換し、JVMが実行する</code></pre></article>
+</div>
+<div class="lesson-note"><strong>判定ポイント</strong><p>Javaではソースコードを直接CPUが読むわけではありません。.classファイルとJVMの役割を分けます。</p></div>
+</section>
+<section class="card lesson-section basic-understanding-quiz quiz-level-section"><h2>理解確認クイズ</h2><p>用語だけで終わらせず、コード判定と説明まで確認します。</p><div class="quiz-level-list"><article class="quiz-level-card"><h3>Lv1 用語確認</h3><p>ソースコード、バイトコード、機械語の違いを説明できますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>ソースコードは人間が書く文字列、バイトコードはjavac後の.class、機械語はCPUが直接実行する命令です。JavaはJVMがバイトコードを実行します。</p></details></article><article class="quiz-level-card"><h3>Lv2 コード判定</h3><p>次の実行は正しいですか。</p><pre><code>javac Main.java
+java Main.class</code></pre><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>コンパイルは正しいですが、実行が誤りです。javaは.classファイル名ではなくクラス名を指定するため、java Mainです。</p></details></article><article class="quiz-level-card"><h3>Lv3 説明問題</h3><p>なぜJavaは.javaをそのまま実行するのではなく、通常は.classにしてから実行しますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>Javaの通常実行は、ソースをjavacでバイトコードへ変換し、そのclassをJVMが読む流れだからです。source-file modeは例外的な簡易実行として分けます。</p></details></article></div></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="00.html">← 始める準備</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="02.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-01.html";</script>
+<script src="../../../data/questions.js?v=final-cleanup-20260601"></script>
+<script src="../../../assets/js/app.js?v=final-cleanup-20260601"></script>
+<script src="../../../pwa.js?v=final-cleanup-20260601"></script>
+</body>
+</html>
