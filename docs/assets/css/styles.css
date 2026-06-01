@@ -1973,7 +1973,7 @@ body.theme-dark .basic-term-list dt { color: #ddd6fe; }
 @media (max-width: 900px){.code-trio-grid{grid-template-columns:1fr;}}
 
 
-/* quality-pass-20260601: first-appearance term layout cleanup */
+/* navigation-pass-20260601: first-appearance term layout cleanup */
 .basic-term-intro {
   position: relative;
   overflow: hidden;
@@ -2254,7 +2254,7 @@ body.theme-dark .basic-term-check > p { color: #cbd5e1; }
 body.theme-dark .basic-term-map-item h3 { color: #ddd6fe; }
 
 
-/* quality-pass-20260601: layout polish, quizzes, memorization tables */
+/* navigation-pass-20260601: layout polish, quizzes, memorization tables */
 .basic-understanding-quiz{border-left:5px solid #7c3aed;}
 .basic-understanding-quiz h2{display:flex;align-items:center;gap:.5rem;}
 .basic-understanding-quiz h2::before{content:"確認";font-size:.75rem;line-height:1;border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);color:#5b21b6;border-radius:999px;padding:.25rem .5rem;}
@@ -2281,3 +2281,23 @@ pre code{white-space:pre;}
   .article-unit-card a,.article-card{padding:14px;}
   .site-nav{max-height:70vh;overflow:auto;}
 }
+
+
+/* navigation-pass: article <-> exercise routes */
+.study-route-panel{border:1px solid var(--border,#d9e2f1);background:linear-gradient(180deg,#ffffff,#f8fbff);border-radius:18px;padding:1rem;margin:1.25rem 0;box-shadow:0 8px 20px rgba(15,23,42,.06)}
+.study-route-panel h2,.study-route-panel h3{margin-top:0}.study-route-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin-top:.75rem}.study-route-card{display:flex;flex-direction:column;gap:.35rem;text-decoration:none;color:inherit;border:1px solid var(--border,#d9e2f1);border-radius:14px;background:#fff;padding:.85rem}.study-route-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(15,23,42,.08)}.study-route-card strong{font-size:.98rem}.study-route-card span{font-size:.86rem;color:var(--muted,#64748b);line-height:1.55}.route-badge{display:inline-flex;align-items:center;width:max-content;border-radius:999px;background:#eaf2ff;color:#1d4ed8;font-weight:700;font-size:.75rem;padding:.18rem .55rem;margin-bottom:.2rem}.mock-review-flow{counter-reset:step}.mock-review-step{position:relative;padding-left:2.4rem}.mock-review-step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:.05rem;width:1.75rem;height:1.75rem;border-radius:999px;display:grid;place-items:center;background:#2563eb;color:#fff;font-weight:700}.course-dashboard-card .related-article-chip{background:#f8fafc}.course-dashboard-card .related-article-chip:before{content:'記事: ';font-weight:700;color:#475569}.article-next-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.article-next-actions a{border:1px solid var(--border,#d9e2f1);background:#fff;border-radius:999px;padding:.45rem .75rem;text-decoration:none;color:inherit;font-size:.9rem}
+@media(max-width:640px){.study-route-panel{padding:.85rem;border-radius:14px}.study-route-grid{grid-template-columns:1fr}.study-route-card{padding:.8rem}.mock-review-step{padding-left:2.15rem}.article-next-actions a{width:100%;border-radius:12px}}
+
+
+/* exam-realism-public-clean-20260601 */
+.exam-live-summary{display:flex;flex-wrap:wrap;gap:.55rem;margin:.7rem 0 .35rem}
+.exam-live-summary span{display:inline-flex;gap:.25rem;align-items:center;border:1px solid rgba(148,163,184,.28);background:rgba(248,250,252,.92);border-radius:999px;padding:.35rem .65rem;font-size:.9rem}
+.exam-live-summary strong{font-variant-numeric:tabular-nums}
+.exam-review-advice{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1rem}
+.exam-review-advice .mini-chip{border:1px solid rgba(37,99,235,.22);background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:.38rem .7rem;text-decoration:none;font-weight:700}
+.option-detail-box ul{padding-left:1.1rem}
+.option-detail-box li{border-bottom:1px solid rgba(148,163,184,.16);padding-bottom:.4rem}
+.option-detail-box li:last-child{border-bottom:0}
+@media(max-width:640px){.exam-panel{position:relative}.exam-live-summary{display:grid;grid-template-columns:1fr 1fr}.exam-live-summary span{justify-content:center;border-radius:12px}.exam-actions{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.exam-actions .btn{width:100%}.qnum-grid{grid-template-columns:repeat(auto-fill,minmax(42px,1fr))}.qnum{min-height:42px}.exam-review-advice{display:grid;grid-template-columns:1fr}.exam-review-advice .mini-chip{text-align:center;border-radius:12px}}
+body.theme-dark .exam-live-summary span{background:rgba(30,41,59,.72);border-color:rgba(148,163,184,.22)}
+body.theme-dark .exam-review-advice .mini-chip{background:rgba(30,64,175,.24);color:#bfdbfe}

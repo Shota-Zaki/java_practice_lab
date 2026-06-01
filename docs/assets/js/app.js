@@ -1305,6 +1305,7 @@
         <button id="resetExam" class="btn ghost">模試をリセット</button>
         <button id="jumpReview" class="btn ghost">見直しへ</button>
       </div>
+      <div class="exam-live-summary" id="examLiveSummary" aria-live="polite"></div>
       <p class="inline-note" id="examMessage">開始後はタイマーが動きます。採点するまで正解・解説は表示されません。</p><div id="examResult"></div>`;
     hero.appendChild(panel);
     document.getElementById("startExam")?.addEventListener("click", startExam);
@@ -1336,6 +1337,8 @@
     if (!state?.startedAt || state.finishedAt) return;
     const remaining = Math.max(0, examRemainingSeconds(state));
     const progress = readProgress();
+    const unansweredBeforeFinish = questionsForCurrentUnit().filter(q => !(progress[q.id]?.selected || []).length).length;
+    if (!timeUp && unansweredBeforeFinish > 0 && !confirm(`${unansweredBeforeFinish}問が未回答です。このまま採点しますか？`)) return;
     let correct = 0;
     questionsForCurrentUnit().forEach(q => {
       const selected = progress[q.id]?.selected || [];
@@ -1396,6 +1399,9 @@
       .sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total))
       .slice(0,5);
     const tagRows = weakTags.map(([tag,v]) => `<tr><td>${escapeHtml(tagTitle(tag))}</td><td>${v.correct}/${v.total}</td><td>${Math.round(v.correct/v.total*100)}%</td><td><a href="${tagHref(tag)}">練習</a></td></tr>`).join("") || `<tr><td colspan="4">弱点タグを出すには、もう少し回答データが必要です。</td></tr>`;
+    const reviewAdvice = weakTags.length
+      ? weakTags.map(([tag]) => `<a class="mini-chip" href="${tagHref(tag)}">${escapeHtml(tagTitle(tag))}を復習</a>`).join("")
+      : `<span class="inline-note">弱点タグが十分に出ていません。まず不正解問題を解き直してください。</span>`;
     const diffLabel = { basic: "基本確認", standard: "標準", hard: "応用" };
     const diffRows = Object.entries(byDifficulty).map(([d,v]) => `<tr><td>${escapeHtml(diffLabel[d] || d)}</td><td>${v.correct}/${v.total}</td><td>${Math.round(v.correct/v.total*100)}%</td></tr>`).join("");
     return `<div class="exam-result-box">
@@ -1414,6 +1420,8 @@
       <table class="mini-table"><thead><tr><th>難易度</th><th>正解</th><th>正答率</th></tr></thead><tbody>${diffRows}</tbody></table>
       <h4>間違えた理由</h4>
       <table class="mini-table"><thead><tr><th>理由</th><th>件数</th></tr></thead><tbody>${reasonRows}</tbody></table>
+      <h4>次に戻る場所</h4>
+      <div class="exam-review-advice">${reviewAdvice}</div>
       <div class="exam-result-actions"><a class="btn primary" href="${pageHref('review-wrong.html')}?unit=${encodeURIComponent(unitId)}">この模試の間違えた問題だけ復習</a><button class="btn" type="button" id="jumpWrongExam">最初の不正解へ</button><button class="btn ghost" type="button" id="jumpMarkedExam">見直し問題へ</button></div>
     </div>`;
   }
@@ -1448,6 +1456,15 @@
     if (startBtn) startBtn.disabled = !!state?.startedAt && !state?.finishedAt;
     if (finishBtn) finishBtn.disabled = !state?.startedAt || !!state?.finishedAt;
     setQuestionDisabled(!state?.startedAt || !!state?.finishedAt);
+    const live = document.getElementById("examLiveSummary");
+    if (live) {
+      const qs = questionsForCurrentUnit();
+      const progress = readProgress();
+      const reviewCount = Object.keys(reviewMap()).length;
+      const answeredCount = qs.filter(q => (progress[q.id]?.selected || []).length).length;
+      const unansweredCount = Math.max(0, qs.length - answeredCount);
+      live.innerHTML = `<span>回答済み <strong>${answeredCount}</strong></span><span>未回答 <strong>${unansweredCount}</strong></span><span>見直し <strong>${reviewCount}</strong></span>`;
+    }
     const resultSlot = document.getElementById("examResult");
     if (resultSlot) { resultSlot.innerHTML = examResultHtml(); bindExamResultButtons(); }
     if (msg) {
