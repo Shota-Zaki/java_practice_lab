@@ -9,6 +9,10 @@
   Object.assign(PAGE_PATHS, EXTRA_ADDED_PAGE_PATHS);
   const GOLD_SPLIT_PAGE_PATHS = {"gold11.html":"courses/gold11/index.html","gold17.html":"courses/gold17/index.html","gold-hub.html":"courses/gold/index.html"};
   Object.assign(PAGE_PATHS, GOLD_SPLIT_PAGE_PATHS);
+  const ADDED_MOCK_PAGE_PATHS = {"bronze-exam-b.html":"courses/bronze/exams/b.html","java11-exam-d.html":"courses/java11-silver/exams/d.html","gold11-exam-d.html":"courses/gold11/exams/d.html","gold17-exam-d.html":"courses/gold17/exams/d.html"};
+  Object.assign(PAGE_PATHS, ADDED_MOCK_PAGE_PATHS);
+  const EVEN_UNITS_PAGE_PATHS = {"java17-practice-language-additions.html":"courses/java17-silver/units/language-additions.html","java11-practice-14.html":"courses/java11-silver/practice/final-mix-extra.html","gold11-practice-16.html":"courses/gold11/practice/migration-api-final.html","gold17-practice-16.html":"courses/gold17/practice/api-final.html"};
+  Object.assign(PAGE_PATHS, EVEN_UNITS_PAGE_PATHS);
   function pageHref(page) {
     if (!page) return (window.APP_ROOT || "") + "index.html";
     if (/^(https?:|mailto:|#|\/\/)/.test(page)) return page;
@@ -835,7 +839,8 @@
       unit05: "継承 / interface / sealed",
       unit06: "try-catch / finally / close",
       unit13: "var / static / 到達不能",
-      unit09: "全範囲 / 総合確認"
+      unit09: "全範囲 / 総合確認",
+      unit14: "record / sealed / switch式"
     };
     if (u.mode === "exam") {
       const level = ({ unit07: "標準", unit08: "標準〜難", unit10: "複合問題多め", unit11: "仕上げ" })[u.id] || "実践";
@@ -1445,7 +1450,7 @@
     const idx = currentIndex();
     const q = questions[idx];
     root.classList.add("single-question-root");
-    root.innerHTML = `${renderQuestionControls()}${questionHtml(q)}<div class="bottom-nav">${renderQuestionControls()}</div><div class="ad-slot" aria-label="広告枠"><span>スポンサーリンク配置予定</span></div>`;
+    root.innerHTML = `${renderQuestionControls()}${questionHtml(q)}<div class="bottom-nav">${renderQuestionControls()}</div>`;
     const card = root.querySelector(`[data-question-id="${q.id}"]`);
     if (card) bindQuestion(card, q);
     root.querySelectorAll("[data-prev]").forEach(btn => btn.addEventListener("click", () => goRelative(-1)));
@@ -1557,7 +1562,7 @@
     const history = readExamHistory();
     const recentRows = history.slice(0, 8).map(h => `<tr><td>${escapeHtml(h.title || h.unitId)}</td><td>${h.score}/${h.total}</td><td>${Math.round((h.score || 0)/(h.total || 1)*100)}%</td><td>${formatTime(h.usedSec || 0)}</td><td>${escapeHtml(new Date(h.finishedAt).toLocaleString())}</td></tr>`).join("") || `<tr><td colspan="5">模試の採点履歴はまだありません。</td></tr>`;
     const weakTop = Object.entries(byTag).filter(([,v]) => v.wrong > 0).sort((a,b) => b[1].wrong - a[1].wrong).slice(0, 3);
-    const recommend = wrong.length ? `まず不正解${wrong.length}問を復習し、その後 ${weakTop.map(([t]) => tagTitle(t)).join("・") || "苦手タグ"} をタグ別演習で確認してください。` : answered.length ? "現時点では不正解履歴がありません。実践模試A/B/C/D/C/Dで弱点を出してください。" : "まだ解答履歴がありません。まずJavaの基礎か実践模試Aを解いてください。";
+    const recommend = wrong.length ? `まず不正解${wrong.length}問を復習し、その後 ${weakTop.map(([t]) => tagTitle(t)).join("・") || "苦手タグ"} をタグ別演習で確認してください。` : answered.length ? "現時点では不正解履歴がありません。実践模試A〜Dで弱点を出してください。" : "まだ解答履歴がありません。まずJavaの基礎か実践模試Aを解いてください。";
     root.innerHTML = `<div class="result-summary-grid dashboard-summary">
       <div><strong>${questions.length}</strong><span>総問題数</span></div>
       <div><strong>${answered.length}</strong><span>解答済み</span></div>
@@ -1845,7 +1850,7 @@
     const duplicateTitles = Object.entries(all.reduce((m,q)=>{m[q.title]=(m[q.title]||0)+1; return m;},{})).filter(([,c])=>c>8).length;
     root.innerHTML = `<div class="stat-grid"><div class="stat-card"><strong>${all.length}</strong><span>総問題数</span></div><div class="stat-card"><strong>${DATA.units.filter(u=>u.mode==='exam').length}</strong><span>模試数</span></div><div class="stat-card"><strong>${missingTags}</strong><span>タグ未設定</span></div><div class="stat-card"><strong>${missingExplanation}</strong><span>解説不足</span></div><div class="stat-card"><strong>${duplicateTitles}</strong><span>重複傾向タイトル</span></div></div>
     <h2>セット別分布</h2><table class="mini-table wide-table"><thead><tr><th>セット</th><th>問数</th><th>コード系</th><th>複数選択</th><th>基本/標準/応用</th><th>詳説</th><th>進捗</th><th>主要タグ</th></tr></thead><tbody>${rows}</tbody></table>
-    <p class="notice">ここで「解説不足」「タグ未設定」が0なら、公開前の最低限の構造チェックは通っています。中身の精度は模試A〜Dを実際に解いて確認してください。</p>`;
+    <p class="notice">ここで「解説不足」「タグ未設定」が0なら、問題データの基本構造は整っています。気になる単元は実際に解いて確認してください。</p>`;
   }
 
   function renderLearningPathPage() {
@@ -1961,13 +1966,7 @@
   function renderAdsGuidePage() {
     const root = document.getElementById("adsGuideRoot");
     if (!root) return;
-    root.innerHTML = `<table class="mini-table wide-table"><thead><tr><th>ページ</th><th>広告方針</th><th>理由</th></tr></thead><tbody>
-      <tr><td>学習記事</td><td>本文上部・中盤・末尾</td><td>検索流入向け。読む導線を壊しにくい。</td></tr>
-      <tr><td>トップ</td><td>控えめに1〜2箇所</td><td>入口なので圧迫しない。</td></tr>
-      <tr><td>通常演習</td><td>下部またはサイドのみ</td><td>コード読解中に割り込ませない。</td></tr>
-      <tr><td>模試中</td><td>原則なし</td><td>制限時間内で解く集中を壊すと教材価値が落ちる。</td></tr>
-      <tr><td>模試結果</td><td>下部のみ可</td><td>復習導線を邪魔しない。</td></tr>
-    </tbody></table><p class="notice">収益化するなら、問題ページより記事ページを主な流入・広告配置先にする方が安全です。</p>`;
+    root.innerHTML = `<p class="notice">現在、広告設定ページは使用していません。</p>`;
   }
 
 
