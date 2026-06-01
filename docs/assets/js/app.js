@@ -2063,3 +2063,36 @@
     safeRun("bindKeyboardShortcuts", bindKeyboardShortcuts);
   });
 })();
+
+
+function initExerciseCardFilter(){
+  document.querySelectorAll('[data-exercise-filter]').forEach(panel => {
+    const input = panel.querySelector('.exercise-filter-input');
+    const scope = panel.closest('.course-dashboard-panel') || document;
+    if(!input) return;
+    const cards = Array.from(scope.querySelectorAll('.static-exercise-card'));
+    const heads = Array.from(scope.querySelectorAll('.course-dashboard-subhead'));
+    const filter = () => {
+      const q = input.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const hit = !q || card.textContent.toLowerCase().includes(q);
+        card.hidden = !hit;
+      });
+      heads.forEach(head => {
+        let next = head.nextElementSibling;
+        let hasVisible = false;
+        while(next && !next.classList.contains('course-dashboard-subhead')){
+          if(next.querySelector && next.querySelector('.static-exercise-card:not([hidden])')) { hasVisible = true; break; }
+          next = next.nextElementSibling;
+        }
+        head.hidden = q && !hasVisible;
+      });
+    };
+    input.addEventListener('input', filter);
+  });
+}
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initExerciseCardFilter);
+}else{
+  initExerciseCardFilter();
+}

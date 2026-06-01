@@ -1971,3 +1971,313 @@ body.theme-dark .basic-term-list dt { color: #ddd6fe; }
 .code-trio-card.fix{border-left:5px solid #2563eb;}
 .code-trio-card pre{margin-bottom:0;}
 @media (max-width: 900px){.code-trio-grid{grid-template-columns:1fr;}}
+
+
+/* quality-pass-20260601: first-appearance term layout cleanup */
+.basic-term-intro {
+  position: relative;
+  overflow: hidden;
+  padding: 1.35rem 1.45rem;
+  border: 1px solid rgba(37, 99, 235, .18);
+  border-left: 6px solid #2563eb;
+  background:
+    radial-gradient(circle at top right, rgba(219, 234, 254, .72), transparent 34%),
+    linear-gradient(135deg, rgba(239, 246, 255, .96), rgba(255, 255, 255, .98));
+}
+.basic-term-intro h2 {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  flex-wrap: wrap;
+  margin: 0 0 .95rem;
+  letter-spacing: .01em;
+}
+.basic-term-intro h2::before {
+  content: "初出";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.2em;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.basic-term-intro .term-side-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, .85fr) minmax(360px, 1.35fr);
+  gap: 1.15rem 1.35rem;
+  align-items: start;
+}
+.basic-term-intro .term-side-layout > div:first-child {
+  padding: .95rem 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(148, 163, 184, .18);
+}
+.basic-term-intro .term-side-layout > div:first-child p {
+  margin: 0;
+  line-height: 1.85;
+}
+.basic-term-intro .term-note-grid,
+.term-side-layout .basic-term-intro .term-note-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 0;
+}
+.basic-term-intro .term-note {
+  min-height: 100%;
+  border-radius: 15px;
+  padding: .95rem 1rem;
+  border-color: rgba(37, 99, 235, .20);
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .055);
+}
+.basic-term-intro .term-note strong {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: .42rem;
+  color: #1d4ed8;
+}
+.basic-term-intro .term-note strong::before {
+  content: "";
+  width: .55rem;
+  height: .55rem;
+  border-radius: 999px;
+  background: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, .16);
+  flex: 0 0 auto;
+}
+.basic-term-intro code,
+.basic-term-check code,
+.basic-term-map-card code {
+  border-radius: 6px;
+  padding: .08rem .28rem;
+  background: rgba(37,99,235,.08);
+}
+.basic-term-check {
+  padding: 1.25rem 1.45rem;
+  border: 1px solid rgba(100, 116, 139, .18);
+  border-left: 6px solid #64748b;
+}
+.basic-term-check h2 {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 0 0 .75rem;
+}
+.basic-term-check h2::before {
+  content: "区別";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.2em;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  background: #475569;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.basic-term-check > p {
+  margin-top: 0;
+  color: #475569;
+}
+.basic-term-check .table-scroll {
+  overflow-x: visible;
+}
+.basic-term-check .study-table {
+  border-collapse: separate;
+  border-spacing: 0 .55rem;
+}
+.basic-term-check .study-table thead th {
+  border-bottom: 0;
+  background: transparent;
+  color: #64748b;
+  font-size: .86rem;
+}
+.basic-term-check .study-table tbody tr {
+  box-shadow: 0 8px 20px rgba(15,23,42,.04);
+}
+.basic-term-check .study-table td {
+  background: rgba(248,250,252,.92);
+  border-top: 1px solid rgba(148,163,184,.18);
+  border-bottom: 1px solid rgba(148,163,184,.18);
+  vertical-align: top;
+}
+.basic-term-check .study-table td:first-child {
+  border-left: 1px solid rgba(148,163,184,.18);
+  border-radius: 12px 0 0 12px;
+  color: #334155;
+  width: 12.5em;
+}
+.basic-term-check .study-table td:last-child {
+  border-right: 1px solid rgba(148,163,184,.18);
+  border-radius: 0 12px 12px 0;
+}
+.basic-term-map-card {
+  padding: 1.35rem 1.45rem;
+}
+.basic-term-map-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+.basic-term-map-item {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .045);
+}
+.basic-term-map-item h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .8rem;
+  color: #4c1d95;
+}
+.basic-term-map-item h3::before {
+  content: "";
+  width: .6rem;
+  height: .6rem;
+  border-radius: 999px;
+  background: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, .14);
+}
+.basic-term-list {
+  gap: .65rem;
+}
+.basic-term-list div {
+  grid-template-columns: minmax(6.5em, .55fr) minmax(0, 1fr);
+  padding: .55rem .65rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.68);
+  border: 1px solid rgba(124,58,237,.08);
+}
+.basic-term-list dt {
+  line-height: 1.55;
+}
+.basic-term-list dd {
+  line-height: 1.65;
+}
+@media (max-width: 1180px) {
+  .basic-term-map-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 980px) {
+  .basic-term-intro .term-side-layout {
+    grid-template-columns: 1fr;
+  }
+  .basic-term-intro .term-note-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .basic-term-intro,
+  .basic-term-check,
+  .basic-term-map-card {
+    padding: 1.05rem 1rem;
+    border-left-width: 5px;
+  }
+  .basic-term-intro h2,
+  .basic-term-check h2 {
+    align-items: flex-start;
+    gap: .45rem;
+  }
+  .basic-term-intro h2::before,
+  .basic-term-check h2::before {
+    margin-top: .1rem;
+  }
+  .basic-term-intro .term-note-grid,
+  .basic-term-map-grid {
+    grid-template-columns: 1fr;
+  }
+  .basic-term-check .table-scroll {
+    overflow-x: visible;
+  }
+  .basic-term-check .study-table,
+  .basic-term-check .study-table thead,
+  .basic-term-check .study-table tbody,
+  .basic-term-check .study-table tr,
+  .basic-term-check .study-table th,
+  .basic-term-check .study-table td {
+    display: block;
+    width: 100%;
+  }
+  .basic-term-check .study-table thead { display: none; }
+  .basic-term-check .study-table { border-spacing: 0; }
+  .basic-term-check .study-table tbody tr {
+    margin: .75rem 0;
+    border: 1px solid rgba(148,163,184,.18);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .basic-term-check .study-table td {
+    border: 0;
+    border-radius: 0 !important;
+    background: rgba(248,250,252,.92);
+  }
+  .basic-term-check .study-table td:first-child {
+    width: auto;
+    background: rgba(241,245,249,.98);
+    border-bottom: 1px solid rgba(148,163,184,.18);
+  }
+  .basic-term-list div {
+    grid-template-columns: 1fr;
+  }
+}
+body.theme-dark .basic-term-intro {
+  background:
+    radial-gradient(circle at top right, rgba(30, 64, 175, .32), transparent 34%),
+    linear-gradient(135deg, rgba(15, 23, 42, .94), rgba(30, 41, 59, .88));
+  border-color: rgba(147,197,253,.22);
+}
+body.theme-dark .basic-term-intro .term-side-layout > div:first-child,
+body.theme-dark .basic-term-intro .term-note,
+body.theme-dark .basic-term-list div {
+  background: rgba(15,23,42,.54);
+  border-color: rgba(148,163,184,.18);
+}
+body.theme-dark .basic-term-check .study-table td {
+  background: rgba(30,41,59,.72);
+  border-color: rgba(148,163,184,.16);
+}
+body.theme-dark .basic-term-check .study-table td:first-child {
+  color: #e2e8f0;
+}
+body.theme-dark .basic-term-check > p { color: #cbd5e1; }
+body.theme-dark .basic-term-map-item h3 { color: #ddd6fe; }
+
+
+/* quality-pass-20260601: layout polish, quizzes, memorization tables */
+.basic-understanding-quiz{border-left:5px solid #7c3aed;}
+.basic-understanding-quiz h2{display:flex;align-items:center;gap:.5rem;}
+.basic-understanding-quiz h2::before{content:"確認";font-size:.75rem;line-height:1;border:1px solid rgba(124,58,237,.35);background:rgba(124,58,237,.08);color:#5b21b6;border-radius:999px;padding:.25rem .5rem;}
+.compact-answer-panel{margin-top:.75rem;}
+.memorize-table th,.memorize-table td{vertical-align:top;}
+.memorization-page .lesson-section{scroll-margin-top:82px;}
+.basic-term-intro .term-note-grid{align-items:stretch;}
+.basic-term-intro .term-note{max-height:11rem;overflow:auto;}
+pre{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+pre code{white-space:pre;}
+.card-grid,.article-unit-grid{align-items:stretch;}
+.article-card,.course-card,.rich-card{min-width:0;}
+.exercise-filter-panel{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.75rem 0 1rem;}
+.option{min-height:48px;touch-action:manipulation;}
+.option input{min-width:20px;min-height:20px;}
+.option-detail-box li{margin:.45rem 0;line-height:1.7;}
+@media (max-width: 720px){
+  .basic-term-intro .term-note{max-height:none;}
+  .term-note-grid{grid-template-columns:1fr!important;}
+  .option{padding:14px 12px;gap:12px;}
+  .options{gap:12px;}
+  .course-hero-card .hero-actions,.hero-actions{display:grid;grid-template-columns:1fr;}
+  .card-grid.compact-card-grid{grid-template-columns:1fr;}
+  .article-unit-card a,.article-card{padding:14px;}
+  .site-nav{max-height:70vh;overflow:auto;}
+}

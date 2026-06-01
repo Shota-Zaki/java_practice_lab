@@ -1,4 +1,4 @@
-const CACHE_NAME = 'java-practice-lab-basic-code-trio-goldqa-20260601';
+const CACHE_NAME = 'java-practice-lab-quality-pass-20260601';
 const CORE_ASSETS = [
   './',
   './index.html',
