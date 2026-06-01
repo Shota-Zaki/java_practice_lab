@@ -155,6 +155,7 @@
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/exams/b.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/exams/c.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/exams/d.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/index.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/practice/collectors-map-extra.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/practice/comprehensive-extra.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold11/practice/concurrency-nio.html</loc></url>
@@ -175,22 +176,11 @@
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/exams/b.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/exams/c.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/exams/d.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/api-final.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/collectors-map-extra.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/comprehensive-extra.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/concurrency-nio.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/generics-collections.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/generics-functional-extra.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/gold-api-mix.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/io-concurrency.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/lambda-optional.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/lambda-stream.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/module-final.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/nio-concurrency-module-extra.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/nio-datetime.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/stream-advanced.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/stream-collectors.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/stream-optional-extra.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/index.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/gold17-comprehensive-final.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/record-sealed-final.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/stream-api-final.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/gold17/practice/switch-pattern-final.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/java-basic/index.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/java-basic/lessons/00.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/java-basic/lessons/01.html</loc></url>
@@ -248,7 +238,7 @@
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/java17-silver/units/sealed.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/java17-silver/units/switch-yield.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/courses/silver/index.html</loc></url>
-  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/index.html</loc></url>
+  <url><loc>https://shota-zaki.github.io/JavaSilver-Study/</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/site/about.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/site/contact.html</loc></url>
   <url><loc>https://shota-zaki.github.io/JavaSilver-Study/site/offline.html</loc></url>

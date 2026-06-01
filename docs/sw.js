@@ -1,4 +1,4 @@
-const CACHE_NAME = 'java-practice-lab-silver-gold-unified-20260601';
+const CACHE_NAME = 'java-practice-lab-gold-quality-fix-20260601';
 const CORE_ASSETS = [
   './',
   './index.html',
