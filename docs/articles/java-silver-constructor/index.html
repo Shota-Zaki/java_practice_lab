@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="コンストラクタ、this、super、暗黙super、初期化順、デフォルトコンストラクタを詳しく整理。" name="description"/>
+<title>コンストラクタで落ちるパターン完全整理｜Java Practice Lab</title>
+<link href="../../assets/css/styles.css?v=gold-mock-balance-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+
+<section class="content-page article-body wide-article upgraded-article">
+<h1>コンストラクタで落ちるパターン完全整理</h1>
+<p class="lead">コンストラクタは「new時に呼ばれる初期化処理」です。戻り値型、this()/super()、暗黙super、初期化順、継承されない性質をまとめて判定します。</p>
+<section class="article-section foundation-bridge-section">
+<h2>コンストラクタとは</h2>
+<p>コンストラクタはインスタンス生成時に実行される初期化処理です。メソッドに似ていますが、メソッドではありません。</p>
+<div class="term-note-grid">
+<div class="term-note"><strong>コンストラクタ</strong>クラス名と同じ名前で、戻り値型を書かない。<code>new</code> 時に実行される。</div>
+<div class="term-note"><strong>初期化</strong>インスタンスを使える状態にすること。フィールドへ値を入れる処理が代表。</div>
+<div class="term-note"><strong>デフォルトコンストラクタ</strong>コンストラクタを1つも書かない場合だけコンパイラが追加する引数なしコンストラクタ。</div>
+<div class="term-note"><strong>暗黙super</strong>コンストラクタ先頭に何も書かない場合に追加される <code>super()</code>。</div>
+</div>
+<pre class="article-code"><code>class Sample {
+    Sample() { }      // コンストラクタ
+    void Sample() { } // メソッド。コンストラクタではない
+}</code></pre>
+<div class="article-callout warn">戻り値型を書いたらコンストラクタではありません。<code>void</code> も戻り値型です。</div>
+</section>
+<section class="article-section"><h2>判定順</h2>
+<ol class="article-list priority-list">
+<li>クラス名と同じ名前か。</li>
+<li>戻り値型を書いていないか。</li>
+<li><code>this(...)</code> または <code>super(...)</code> が先頭行か。</li>
+<li>親クラスに呼べるコンストラクタがあるか。</li>
+<li>フィールド初期化、初期化ブロック、コンストラクタ本体の順に実行されるか。</li>
+</ol>
+</section>
+<section class="article-section"><h2>デフォルトコンストラクタは常にあるわけではない</h2>
+<pre class="article-code"><code>class A {
+    // A() が暗黙に追加される
+}
+new A(); // OK
+
+class B {
+    B(String s) {}
+}
+// new B(); // NG: B() はない</code></pre>
+<p>自分でコンストラクタを1つでも書いた場合、引数なしコンストラクタは自動では追加されません。</p>
+</section>
+<section class="article-section"><h2>this() と super() は先頭行だけ</h2>
+<pre class="article-code"><code>class A {
+    A(int n) {}
+}
+class B extends A {
+    B() {
+        this(10);
+    }
+    B(int n) {
+        super(n);
+    }
+}</code></pre>
+<p><code>this(...)</code> は同じクラスの別コンストラクタ、<code>super(...)</code> は親コンストラクタを呼びます。どちらもコンストラクタの先頭行にしか書けません。</p>
+<pre class="article-code"><code>class C extends A {
+    C() {
+        // int x = 10;
+        // super(x); // NG: 先頭行ではない
+        super(10);
+    }
+}</code></pre>
+</section>
+<section class="article-section"><h2>暗黙superで落ちるケース</h2>
+<pre class="article-code"><code>class Parent {
+    Parent(String s) {}
+}
+
+class Child extends Parent {
+    Child() {
+        // 暗黙に super(); が入る
+        // Parent() が存在しないためコンパイルエラー
+    }
+}</code></pre>
+<p>サブクラスのコンストラクタだけ見ても不十分です。親に引数なしコンストラクタがあるかを確認します。</p>
+</section>
+<section class="article-section"><h2>初期化順</h2>
+<ol class="article-list ordered">
+<li>フィールドはまずデフォルト値になる。</li>
+<li>親クラス側の初期化が先。</li>
+<li>自クラスのフィールド初期化とインスタンス初期化ブロックが、書いた順に実行される。</li>
+<li>自クラスのコンストラクタ本体が実行される。</li>
+</ol>
+<pre class="article-code"><code>class Sample {
+    int a = print("field", 1);
+    { a = print("block", 2); }
+    Sample() { a = print("constructor", 3); }
+
+    static int print(String label, int value) {
+        System.out.println(label);
+        return value;
+    }
+}
+new Sample();</code></pre>
+<p>出力は <code>field</code> → <code>block</code> → <code>constructor</code> です。</p>
+</section>
+<section class="article-section"><h2>コンストラクタは継承されない</h2>
+<p>サブクラスはスーパークラスのコンストラクタを継承しません。親コンストラクタを使いたい場合は、サブクラスのコンストラクタから <code>super(...)</code> で呼びます。</p>
+<pre class="article-code"><code>class Parent {
+    Parent(String s) {}
+}
+class Child extends Parent {
+    Child(String s) {
+        super(s);
+    }
+}
+// new Child();      // NG
+new Child("A");     // OK</code></pre>
+</section>
+<section class="article-section"><h2>不可能・誤りパターン</h2>
+<table class="study-table ref-table"><thead><tr><th>コード</th><th>判定</th><th>理由</th></tr></thead><tbody>
+<tr><td><code>void A(){}</code></td><td>コンストラクタではない</td><td>戻り値型がある</td></tr>
+<tr><td><code>this(); super();</code></td><td>不可</td><td>両方は書けない</td></tr>
+<tr><td><code>System.out.println(); super();</code></td><td>不可</td><td><code>super()</code> が先頭行ではない</td></tr>
+<tr><td>親に引数ありだけ、子で <code>super()</code></td><td>不可</td><td>呼べる親コンストラクタがない</td></tr>
+<tr><td>コンストラクタの再帰呼び出し</td><td>不可</td><td><code>this()</code> が循環する</td></tr>
+</tbody></table>
+</section>
+</section>
+
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-java-silver-constructor.html";</script>
+<script src="../../data/questions.js?v=gold-mock-balance-20260601"></script><script src="../../assets/js/app.js?v=gold-mock-balance-20260601"></script><script src="../../pwa.js?v=gold-mock-balance-20260601"></script>
+</body>
+</html>

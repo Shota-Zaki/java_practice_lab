@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="ExecutorServiceの開始、結果取得、終了処理を整理する。" name="description"/>
+<title>ExecutorService注意点｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=gold-mock-balance-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+
+<article class="content-page long-article gold-deep-article">
+<h1>ExecutorService注意点</h1>
+<p class="lead">このページは、ExecutorServiceで特に間違えやすい判定だけを抜き出した確認用です。詳しい解説は<a href="../java-gold-concurrency-basic/index.html">並行処理 / Executor / Future完全整理</a>に統合しています。</p>
+<section class="article-section"><h2>最低限の判定</h2>
+<table class="study-table ref-table"><thead><tr><th>項目</th><th>正しい読み方</th></tr></thead><tbody>
+<tr><td><code>submit</code></td><td>タスクを投入し、<code>Future</code>を返す。</td></tr>
+<tr><td><code>get</code></td><td>完了まで待ち、結果を取得する。checked例外の処理が必要。</td></tr>
+<tr><td><code>shutdown</code></td><td>新規受付停止。投入済みタスクの即停止ではない。</td></tr>
+<tr><td><code>shutdownNow</code></td><td>停止を試みる。即停止保証ではない。</td></tr>
+<tr><td>複数スレッド</td><td>同期や待機がなければ出力順は固定しない。</td></tr>
+</tbody></table></section>
+<pre class="article-code"><code>ExecutorService ex = Executors.newSingleThreadExecutor();
+Future&lt;String&gt; f = ex.submit(() -&gt; "done");
+System.out.println(f.get());
+ex.shutdown();</code></pre>
+<div class="bad-good"><div><strong>悪い判断</strong><p><code>submit</code>直後にタスクが必ず完了していると考える。</p></div><div><strong>良い判断</strong><p><code>Future</code>、<code>get</code>、<code>shutdown</code>を別々に読む。</p></div></div>
+</article>
+
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="articles.html";</script>
+<script src="../../data/questions.js?v=gold-mock-balance-20260601"></script>
+<script src="../../assets/js/app.js?v=gold-mock-balance-20260601"></script>
+<script src="../../pwa.js?v=gold-mock-balance-20260601"></script>
+</body>
+</html>

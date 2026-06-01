@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="例外が発生した後の制御の流れを、try-catch-finallyで追えるようにする。" name="description"/>
+<title>Lesson 17 例外処理の入口｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=gold-mock-balance-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 17</p>
+<h1>例外処理の入口</h1>
+<p class="lead">例外が発生した後の制御の流れを、try-catch-finallyで追えるようにする。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section basic-term-intro">
+<h2>初出用語：例外・try・catch・finally</h2>
+<div class="term-side-layout">
+<div>
+<p>例外処理は「エラーが出たらcatch」ではありません。発生した例外の型と、処理の流れで読みます。</p>
+</div>
+<div class="term-note-grid">
+<div class="term-note basic-term-mini"><strong>例外とは</strong>通常の処理を続けられない状態を表すオブジェクト。</div><div class="term-note basic-term-mini"><strong><code>try</code>とは</strong>例外が発生する可能性がある処理を書くブロック。</div><div class="term-note basic-term-mini"><strong><code>catch</code>とは</strong>発生した例外を受け取って処理するブロック。</div><div class="term-note basic-term-mini"><strong><code>finally</code>とは</strong>例外の有無にかかわらず実行したい処理を書くブロック。</div><div class="term-note basic-term-mini"><strong>checked例外とは</strong>コンパイラがcatchまたはthrowsを要求する例外。</div><div class="term-note basic-term-mini"><strong>unchecked例外とは</strong>catch/throwsが必須ではないRuntimeException系の例外。</div>
+</div>
+</div>
+</section><section class="card lesson-section basic-term-check"><h2>このLessonで先に区別する言葉</h2><p>似た言葉を同じ意味で読まないこと。ここを分けると、後のコード読解で迷いにくくなります。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>切り分け</th></tr></thead><tbody><tr><td>例外 / エラー</td><td>例外はプログラム中の異常を表すオブジェクト。Error系は通常アプリ側で回復を狙わない重大問題。</td></tr><tr><td>throw / throws</td><td>throwは例外を投げる処理。throwsはメソッドが投げる可能性を宣言する。</td></tr><tr><td>try / catch / finally</td><td>tryは監視対象、catchは例外処理、finallyは最後に実行したい処理。</td></tr></tbody></table></div><p class="mini-link-row"><a class="btn ghost" href="../terms.html">基礎用語一覧で確認する</a></p></section><section class="card lesson-section flow-section">
+<h2>例外処理を読む順番</h2>
+<p>例外処理は、出力を先に考えると崩れます。まずコンパイルできるかを確認し、その後に例外発生位置、catch、finallyの順に追います。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>順番</th><th>見ること</th><th>判断例</th></tr></thead><tbody>
+<tr><td>1</td><td>コンパイル可否</td><td>checked例外の処理漏れ、catch順序、try構文</td></tr>
+<tr><td>2</td><td>例外発生位置</td><td>例外が発生した行以降のtry内処理は実行されない</td></tr>
+<tr><td>3</td><td>catch一致</td><td>発生した例外型を受け取れるcatchへ入る</td></tr>
+<tr><td>4</td><td>finally</td><td>catchされてもされなくても最後に実行される</td></tr>
+</tbody></table></div>
+<pre><code>try {
+    System.out.print("A");
+    int x = 10 / 0;
+    System.out.print("B");
+} catch (ArithmeticException e) {
+    System.out.print("C");
+} finally {
+    System.out.print("D");
+}
+// ACD</code></pre>
+</section><section class="card lesson-section"><h2>try-catchの流れ</h2><pre><code>try {
+    int[] a = new int[0];
+    a[0] = 10;
+    System.out.println("finish");
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("error");
+}</code></pre><p>配列の範囲外アクセスで例外が発生した時点で、<code>System.out.println("finish")</code>には進まない。対応する<code>catch</code>へ移動し、<code>error</code>が表示される。</p></section><section class="card lesson-section"><h2>checked例外とunchecked例外</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>分類</th><th>代表例</th><th>コンパイラの扱い</th></tr></thead><tbody><tr><td>checked例外</td><td><code>IOException</code>など</td><td>catchするかthrows宣言が必要</td></tr><tr><td>unchecked例外</td><td><code>RuntimeException</code>系</td><td>catchやthrowsを強制されない</td></tr><tr><td>Error</td><td><code>OutOfMemoryError</code>など</td><td>通常のアプリ処理で回復を前提にしない</td></tr></tbody></table></div><p>初心者段階では、<code>RuntimeException</code>系は「実行中の値や状態が悪いと起きることが多い」と考えると整理しやすい。</p></section><section class="card lesson-section"><h2>finally</h2><p><code>finally</code>は、例外発生の有無に関係なく実行したい後処理を書く。ファイルや接続を閉じる処理の説明でよく出る。</p><p class="code-caption">例外がなければ A, C</p><pre><code>try {
+    System.out.println("A");
+} catch (Exception e) {
+    System.out.println("B");
+} finally {
+    System.out.println("C");
+}</code></pre></section><section class="card lesson-section"><h2>catchの順序</h2><p>複数の<code>catch</code>を書く場合、狭い型から広い型へ並べる。先に<code>Exception</code>で受けると、その後の具体的な例外型は到達不能になる。</p><p class="code-caption">悪い順序</p><pre><code>try {
+    // ...
+} catch (Exception e) {
+} catch (NullPointerException e) {
+    // コンパイルエラーになり得る
+}</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードで表示される文字を順番に書く。</p><pre><code>try {
+    System.out.println("A");
+    String s = null;
+    s.length();
+    System.out.println("B");
+} catch (NullPointerException e) {
+    System.out.println("C");
+} finally {
+    System.out.println("D");
+}</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>例外処理は、エラーをごまかす構文ではない。実行中に起きた異常を、どこで検知し、どこで処理し、処理後にどこへ進むかを決める仕組み。</p><p><code>try</code>内で例外が発生すると、その時点でtryブロックの残りは実行されず、対応する<code>catch</code>へ移る。<code>finally</code>があれば、例外の有無に関係なく基本的に実行される。</p><p>例外にはチェック例外と非チェック例外がある。基礎段階では、まず<code>RuntimeException</code>系は非チェック例外、<code>Exception</code>直下の多くはチェック例外、と大まかに掴む。</p><div class="principle-grid"><div class="principle-card"><strong>try</strong><p>例外が発生する可能性のある処理を書く。</p></div><div class="principle-card"><strong>catch</strong><p>発生した例外を受け取り、対処する。</p></div><div class="principle-card"><strong>finally</strong><p>後片付けなど、最後に実行したい処理を書く。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>例外発生前 / 発生後</td><td>例外が発生した行より後のtry内処理は飛ばされる。</td><td>どの行で例外が起きるか見る。</td></tr><tr><td>catchする / しない</td><td>対応するcatchがあれば処理される。なければ呼び出し元へ伝わる。</td><td>例外クラスの型を見る。</td></tr><tr><td>finally / catch</td><td>finallyは例外処理そのものではなく、後始末用。</td><td>catchされてもされなくても実行されうる。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>tryブロックを上から読む。</li><li>どの行で例外が発生するか判断する。</li><li>その例外を受け取れるcatchがあるか上から確認する。</li><li>catch後または例外伝播前にfinallyがあるか確認する。</li><li>最終的に正常終了か、例外が外へ出るか判断する。</li></ol><p class="code-caption">確認用コード</p><pre><code>try {
+    int[] a = new int[0];
+    a[0] = 10;
+    System.out.println("A");
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("B");
+} finally {
+    System.out.println("C");
+}</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>例外発生</td><td><code>a[0]</code>で範囲外アクセス</td><td><code>ArrayIndexOutOfBoundsException</code></td></tr><tr><td>try残り</td><td><code>System.out.println("A")</code>は実行されない</td><td>Aは出ない</td></tr><tr><td>catch/finally</td><td>Bを出してからC</td><td>出力はB C</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>catch後にtryの続きへ戻る、は違う</strong><p>例外が起きた時点でtryの残りは実行されない。catch後はtry-catch文の後へ進む。</p></div><div class="mistake-callout"><strong>finallyは例外があるときだけ動く、は違う</strong><p>例外がなくてもfinallyは実行される。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次の出力を答える。</p><p class="code-caption">確認問題</p><pre><code>try {
+    System.out.println("A");
+} catch (RuntimeException e) {
+    System.out.println("B");
+} finally {
+    System.out.println("C");
+}</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>出力は<code>A</code>、<code>C</code>。</p><p>try内で例外は発生しないためcatchは実行されない。ただしfinallyは実行される。</p></details></section>
+<section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>例外処理は「エラーを消す仕組み」ではありません。正確には、<strong>通常の流れで処理を続けられない事態が起きたとき、別の流れへ制御を移す仕組み</strong>です。</p>
+<pre><code>try {
+    int[] nums = {1, 2, 3};
+    System.out.println(nums[5]);
+    System.out.println("end");
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("out of range");
+}</code></pre>
+<p><code>nums[5]</code>で例外が発生すると、その時点でtryブロックの残りは実行されません。<code>"end"</code>は表示されず、対応する<code>catch</code>へ移動します。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>確認すること</th><th>見る場所</th><th>判断</th></tr></thead><tbody><tr><td>例外が発生する可能性</td><td>tryブロック内</td><td>どの行で止まるか</td></tr><tr><td>catchできるか</td><td>catchの型</td><td>発生した例外の型と互換性があるか</td></tr><tr><td>catchの順序</td><td>上から順に確認</td><td>親クラスを先に書くと子クラス側に届かない</td></tr><tr><td>finally</td><td>最後に実行</td><td>例外の有無にかかわらず基本的に実行</td></tr></tbody></table></div>
+<p>checked例外とunchecked例外の違いは、まずコンパイラが処理を要求するかで見ます。<code>Exception</code>のサブクラスでも、<code>RuntimeException</code>系はuncheckedです。</p>
+<div class="mistake-callout"><strong>雑なcatchは理解を悪くする</strong><p><code>catch (Exception e)</code>だけで済ませると、何が起きたのかを読めなくなります。学習段階では、どの例外がどのcatchに入るかを必ず言語化してください。</p></div>
+</section>
+<section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>例外処理の入口を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-section basic-stumble-check"><h2>このLessonのつまずきチェック</h2><p>用語を覚えただけでは不十分です。実際に間違えやすい読み方を先に潰します。</p><h3>例外処理で落ちる典型</h3><div class="table-scroll"><table class="study-table"><thead><tr><th>つまずき</th><th>正しい切り分け</th></tr></thead><tbody><tr><td>tryを書けば例外が消えると思う</td><td>tryは例外が起きそうな範囲を示すだけ。対応するcatchやthrowsの設計が必要。</td></tr><tr><td>throwとthrowsを混同する</td><td><code>throw</code>は例外を投げる処理。<code>throws</code>はメソッド宣言で例外可能性を示す。</td></tr><tr><td>finallyはcatchの代わりだと思う</td><td>finallyは後始末用。例外を処理するブロックではない。</td></tr></tbody></table></div><h3>説明できる状態の目安</h3><ul class="check-list compact-check-list"><li>checked例外とunchecked例外を区別できる</li><li>throwとthrowsの違いを説明できる</li><li>finallyが実行されるタイミングを説明できる</li></ul><div class="lesson-note"><strong>試験対策としての使い方</strong><p>この3点を自分の言葉で説明できない場合、問題演習で似た形を見たときに運任せになります。戻ってコードを1つ実行してください。</p></div></section>
+<section class="card lesson-section code-trio-section">
+<h2>正しいコード / 失敗コード / 修正版</h2>
+<p>このLessonの要点を、成功例と失敗例で切り分けます。試験では「なぜ失敗するか」を説明できる状態が必要です。</p>
+<div class="code-trio-grid">
+<article class="code-trio-card good"><h3>正しいコード：例外処理</h3><pre><code>try {
+    int n = Integer.parseInt("10");
+    System.out.println(n);
+} catch (NumberFormatException e) {
+    System.out.println("error");
+}</code></pre></article>
+<article class="code-trio-card bad"><h3>失敗コード</h3><pre><code>try {
+    int n = Integer.parseInt("x");
+} catch (NullPointerException e) {
+    System.out.println("error");
+}</code></pre></article>
+<article class="code-trio-card fix"><h3>修正版</h3><pre><code>try {
+    int n = Integer.parseInt("x");
+} catch (NumberFormatException e) {
+    System.out.println("error");
+}</code></pre></article>
+</div>
+<div class="lesson-note"><strong>判定ポイント</strong><p>catchは発生する例外型に対応している必要があります。型が違うと捕捉できません。</p></div>
+</section>
+<section class="card lesson-nav-bottom"><div><a class="btn ghost" href="16.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="18.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-17.html";</script>
+<script src="../../../data/questions.js?v=gold-mock-balance-20260601"></script>
+<script src="../../../assets/js/app.js?v=gold-mock-balance-20260601"></script>
+<script src="../../../pwa.js?v=gold-mock-balance-20260601"></script>
+</body>
+</html>
