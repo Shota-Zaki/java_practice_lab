@@ -489,11 +489,27 @@
     return `<ul>${lines.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>`;
   }
 
+  const memoryStore = {};
   function readJson(key, fallback) {
-    try { return JSON.parse(localStorage.getItem(key)) || fallback; }
-    catch (_) { return fallback; }
+    try {
+      const raw = window.localStorage ? window.localStorage.getItem(key) : null;
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (_) {
+      return Object.prototype.hasOwnProperty.call(memoryStore, key) ? memoryStore[key] : fallback;
+    }
   }
-  function writeJson(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+  function writeJson(key, value) {
+    try {
+      if (window.localStorage) window.localStorage.setItem(key, JSON.stringify(value));
+      memoryStore[key] = value;
+    } catch (_) {
+      memoryStore[key] = value;
+    }
+  }
+  function removeJson(key) {
+    try { if (window.localStorage) window.localStorage.removeItem(key); } catch (_) {}
+    delete memoryStore[key];
+  }
   function readProgress() { return readJson(storageKey, {}); }
   function writeProgress(progress) { writeJson(storageKey, progress); }
   function readExamAll() { return readJson(examStorageKey, {}); }
@@ -903,7 +919,7 @@
 
 
   function courseLabel(course) {
-    return ({ bronze: "Bronze", java11: "Java11 Silver", java17: "Java17 Silver", gold: "Java Gold", gold11: "Java Gold SE 11", gold17: "Java Gold SE 17", basic: "Java基礎" })[course] || "このコース";
+    return ({ bronze: "Java Bronze", java11: "Java11 Silver", java17: "Java17 Silver", gold: "Java Gold", gold11: "Java Gold SE 11", gold17: "Java Gold SE 17", basic: "Java基礎" })[course] || "このコース";
   }
   function courseMainHref(course) {
     const units = courseUnits(course, false).filter(u => u.mode !== "exam");
@@ -942,6 +958,8 @@
   function renderCourseDashboard() {
     const root = document.getElementById("courseDashboardRoot");
     if (!root) return;
+    const fallbackHtml = root.innerHTML;
+    if (!DATA || !Array.isArray(DATA.units) || !DATA.questions) return;
     const course = root.dataset.course || document.body.dataset.course || "java17";
     const label = courseLabel(course);
     const units = courseUnits(course, false).filter(u => u.mode !== "exam");
@@ -975,7 +993,9 @@
       const best = histories.length ? Math.max(...histories.map(h => Math.round((h.score || 0) / Math.max(h.total || 1, 1) * 100))) : null;
       return `<article class="course-dashboard-card exam-progress-card"><div class="course-dashboard-card-head"><strong>${escapeHtml(u.title)}</strong><span>${u.timeLimitMinutes || 90}分</span></div><p>${escapeHtml(u.description || "")}</p><div class="mini-stat-row"><span>${qs.length || u.fixedCount || 60}問</span><span>回答記録 ${answeredInProgress}</span><span>最高 ${best === null ? "-" : `${best}%`}</span></div><div class="chip-row"><a class="mini-chip" href="${pageHref(u.page)}">模試を開始</a></div></article>`;
     }).join("");
-    root.innerHTML = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || `<p class="notice">このコースの模試はまだありません。</p>`}</div>`;
+    const html = `<div class="course-dashboard-summary"><div class="stat-card"><strong>${answered.length}/${questions.length}</strong><span>通常演習</span></div><div class="stat-card"><strong>${rate}%</strong><span>正答率</span></div><div class="stat-card"><strong>${wrong.length}</strong><span>不正解</span></div><div class="stat-card"><strong>${marked}</strong><span>見直し</span></div><div class="stat-card"><strong>${due}</strong><span>今日の復習</span></div><div class="stat-card"><strong>${exams.length}</strong><span>模試</span></div></div><div class="course-dashboard-actions"><a class="btn primary" href="${escapeHtml(courseMainHref(course))}">最初から始める</a><a class="btn" href="${escapeHtml(nextHref)}">続きから演習</a><a class="btn" href="${pageHref("review-due.html")}">今日の復習</a><a class="btn" href="${pageHref("review-wrong.html")}">不正解復習</a><a class="btn ghost" href="${pageHref("dashboard.html")}">全体分析</a></div><div class="course-dashboard-subhead"><h3>通常演習</h3></div><div class="course-dashboard-grid">${unitCards}</div><h3 id="examList">実践模試</h3><div class="course-dashboard-grid">${examCards || ``}</div>`;
+    if (!unitCards.trim() && fallbackHtml.trim()) return;
+    root.innerHTML = html;
   }
 
   function renderIndex() {
@@ -1584,7 +1604,7 @@
     <table class="study-table"><thead><tr><th>タグ</th><th>総数</th><th>解答済み</th><th>正解</th><th>不正解</th><th>正答率</th><th>演習</th></tr></thead><tbody>${rows}</tbody></table>`;
     document.getElementById("clearAllProgress")?.addEventListener("click", () => {
       if (!confirm("全問題の解答履歴・模試履歴・見直しマークを削除します。よろしいですか？")) return;
-      localStorage.removeItem(storageKey); localStorage.removeItem(examStorageKey); localStorage.removeItem(viewStorageKey); localStorage.removeItem(reviewStorageKey); localStorage.removeItem(examHistoryStorageKey); localStorage.removeItem(settingsStorageKey); localStorage.removeItem(notesStorageKey); localStorage.removeItem(mistakeReasonStorageKey); location.reload();
+      [storageKey, examStorageKey, viewStorageKey, reviewStorageKey, examHistoryStorageKey, settingsStorageKey, notesStorageKey, mistakeReasonStorageKey].forEach(removeJson); location.reload();
     });
   }
 

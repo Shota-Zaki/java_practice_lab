@@ -1762,3 +1762,17 @@ body.is-exam-page .layout::after { display: none !important; }
 .site-footer-inner { align-items: center; }
 .global-footer .footer-links { justify-content: center; }
 .question-list:empty::before { content: ""; display: none; }
+
+
+/* firefox-local-fallback-20260601: keep exercise cards visible even when localStorage is blocked */
+#courseDashboardRoot { display: block !important; }
+.course-dashboard-panel .course-dashboard-summary,
+.course-dashboard-panel .course-dashboard-grid { visibility: visible !important; opacity: 1 !important; }
+.course-dashboard-panel .course-dashboard-card,
+.static-exercise-card { display: block !important; }
+
+/* course label cleanup / article card alignment */
+.article-topic-grid .article-card, .article-card.rich-card { min-height: 118px; height: 100%; }
+.course-dashboard-card { min-height: 170px; }
+.course-dashboard-grid { align-items: stretch; }
+.course-hero-card .inline-note { display: none !important; }
