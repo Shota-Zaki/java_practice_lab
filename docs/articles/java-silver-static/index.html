@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="staticメンバ、インスタンスメンバ、static文脈、main、static初期化ブロックを詳しく整理。" name="description"/>
+<title>staticで間違えるポイント完全整理｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../../articles/index.html">学習記事</a><a href="../../app/dashboard.html">ダッシュボード</a><a href="../../app/search.html">検索</a><a href="../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main" id="mainContent">
+
+<section class="content-page article-body wide-article upgraded-article">
+<h1>staticで間違えるポイント完全整理</h1>
+<p class="lead">staticは「クラス側に属する」という意味です。mainがstaticであること、staticメソッドからインスタンスメンバを直接使えないこと、staticフィールドが共有されることを整理します。</p>
+<section class="article-section foundation-bridge-section">
+<h2>staticとは</h2>
+<p><code>static</code> が付いたメンバは、インスタンスごとではなくクラス側に属します。</p>
+<div class="term-note-grid">
+<div class="term-note"><strong>staticメンバ</strong>クラス側に属するフィールドやメソッド。クラス名から呼ぶのが基本。</div>
+<div class="term-note"><strong>インスタンスメンバ</strong>newで作られた各インスタンスに属するフィールドやメソッド。</div>
+<div class="term-note"><strong>static文脈</strong>staticメソッドやstatic初期化ブロックの中。特定のインスタンスが決まっていない。</div>
+<div class="term-note"><strong>共有</strong>staticフィールドはインスタンス間で1つの値を共有する。</div>
+</div>
+<pre class="article-code"><code>class Counter {
+    static int total; // クラスに1つ
+    int value;        // インスタンスごと
+
+    Counter() {
+        total++;
+        value++;
+    }
+}</code></pre>
+</section>
+<section class="article-section"><h2>staticとインスタンスの違い</h2>
+<table class="study-table ref-table"><thead><tr><th>対象</th><th>所属</th><th>個数</th><th>基本の呼び出し</th></tr></thead><tbody>
+<tr><td>staticフィールド</td><td>クラス</td><td>クラスに1つ</td><td><code>ClassName.field</code></td></tr>
+<tr><td>staticメソッド</td><td>クラス</td><td>クラスに1つ</td><td><code>ClassName.method()</code></td></tr>
+<tr><td>インスタンスフィールド</td><td>インスタンス</td><td>インスタンスごと</td><td><code>obj.field</code></td></tr>
+<tr><td>インスタンスメソッド</td><td>インスタンス</td><td>インスタンス経由</td><td><code>obj.method()</code></td></tr>
+</tbody></table>
+<pre class="article-code"><code>Counter a = new Counter();
+Counter b = new Counter();
+System.out.println(Counter.total); // 2
+System.out.println(a.value);       // 1
+System.out.println(b.value);       // 1</code></pre>
+</section>
+<section class="article-section"><h2>staticメソッドからインスタンスメンバを直接使えない</h2>
+<pre class="article-code"><code>class Sample {
+    int value = 10;
+    static int count = 20;
+
+    void instanceMethod() {}
+    static void staticMethod() {}
+
+    static void test() {
+        System.out.println(count); // OK
+        staticMethod();            // OK
+        // System.out.println(value); // NG
+        // instanceMethod();          // NG
+
+        Sample s = new Sample();
+        System.out.println(s.value); // OK
+    }
+}</code></pre>
+<p>staticメソッド内には暗黙の <code>this</code> がありません。だからインスタンスメンバを使うには参照が必要です。</p>
+</section>
+<section class="article-section"><h2>mainがstaticである意味</h2>
+<p><code>main</code> はJVMがインスタンスを作らずに呼び出す入口です。そのため <code>static</code> でなければなりません。</p>
+<pre class="article-code"><code>public class Main {
+    int value = 10;
+
+    public static void main(String[] args) {
+        // System.out.println(value); // NG
+        Main m = new Main();
+        System.out.println(m.value);  // OK
+    }
+}</code></pre>
+</section>
+<section class="article-section"><h2>static初期化ブロック</h2>
+<p>static初期化ブロックは、クラス初期化時に1回だけ実行されます。</p>
+<pre class="article-code"><code>class Sample {
+    static {
+        System.out.println("static");
+    }
+    {
+        System.out.println("instance");
+    }
+    Sample() {
+        System.out.println("constructor");
+    }
+}
+new Sample();
+new Sample();</code></pre>
+<p>出力は <code>static</code> が1回、<code>instance</code> と <code>constructor</code> がnewごとに2回です。</p>
+</section>
+<section class="article-section"><h2>staticメソッドはoverrideされない</h2>
+<p>staticメソッドはインスタンスの実体型による動的ディスパッチの対象ではありません。サブクラスで同じ形を書いても、overrideではなく隠蔽です。</p>
+<pre class="article-code"><code>class A {
+    static void test() { System.out.println("A"); }
+}
+class B extends A {
+    static void test() { System.out.println("B"); }
+}
+A obj = new B();
+obj.test(); // A</code></pre>
+<p>通常はインスタンス参照からstaticメソッドを呼ばず、<code>A.test()</code> のようにクラス名で呼ぶべきです。</p>
+</section>
+<section class="article-section"><h2>不可能・誤りパターン</h2>
+<table class="study-table ref-table"><thead><tr><th>コード</th><th>判定</th><th>理由</th></tr></thead><tbody>
+<tr><td>staticメソッドから <code>this</code></td><td>不可</td><td>static文脈にthisはない</td></tr>
+<tr><td>staticメソッドからインスタンスフィールド直接参照</td><td>不可</td><td>対象インスタンスが不明</td></tr>
+<tr><td>トップレベル <code>static class A</code></td><td>不可</td><td>staticトップレベルクラスはない</td></tr>
+<tr><td>staticメソッドをoverride</td><td>不可</td><td>同名staticメソッドは隠蔽</td></tr>
+<tr><td>インスタンス変数でstaticフィールドを変更</td><td>可能だが非推奨</td><td>実体はクラス側の共有値</td></tr>
+</tbody></table>
+</section>
+</section>
+
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../index.html">トップ</a><a href="../../site/about.html">このサイトについて</a><a href="../../site/privacy.html">プライバシーポリシー</a><a href="../../site/terms.html">利用規約</a><a href="../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../";window.CURRENT_PAGE="article-java-silver-static.html";</script>
+<script src="../../data/questions.js?v=navigation-pass-20260601"></script>
+<script src="../../assets/js/app.js?v=navigation-pass-20260601"></script>
+<script src="../../pwa.js?v=navigation-pass-20260601"></script>
+</body>
+</html>

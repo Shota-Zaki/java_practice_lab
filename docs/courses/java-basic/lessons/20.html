@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Javaコードを上から眺めるのではなく、決まった手順で読む。" name="description"/>
+<title>Lesson 20 コードを読む順番｜Java Practice Lab</title>
+<meta content="#2563eb" name="theme-color"/>
+<link href="../../../manifest.webmanifest" rel="manifest"/>
+<link href="../../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
+</head>
+<body class="header-layout">
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header">
+<div class="site-header-inner">
+<a class="site-brand" href="../../../index.html">Java Practice Lab</a>
+<nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../../index.html">Java学習ポータルトップ</a><a aria-current="page" class="is-active" href="../../../courses/java-basic/index.html">基礎</a><a href="../../../courses/bronze/index.html">Bronze</a><a href="../../../courses/silver/index.html">Silver</a><a href="../../../courses/gold/index.html">Gold</a><a href="../../../articles/index.html">学習記事</a><a href="../../../app/dashboard.html">ダッシュボード</a><a href="../../../app/search.html">検索</a><a href="../../../app/settings.html">設定</a></nav>
+</div>
+</header>
+<div class="layout">
+<main class="main lesson-main" id="mainContent">
+<article class="card lesson-hero">
+<p class="meta">Java基礎 Lesson 20</p>
+<h1>コードを読む順番</h1>
+<p class="lead">Javaコードを上から眺めるのではなく、決まった手順で読む。</p>
+<div class="box goal-box"><strong>このレッスンのゴール</strong><p>暗記ではなく、コードを読んだときに「なぜそうなるか」を説明できる状態にする。</p></div>
+</article><section class="card lesson-section basic-term-intro">
+<h2>初出用語：評価順・制御フロー・スコープ</h2>
+<div class="term-side-layout">
+<div>
+<p>コードは上から眺めるだけでは読めません。どの順に評価され、どの範囲で名前が有効かを追います。</p>
+</div>
+<div class="term-note-grid">
+<div class="term-note basic-term-mini"><strong>評価順とは</strong>式やメソッド呼び出しが処理される順番。</div><div class="term-note basic-term-mini"><strong>制御フローとは</strong>if、for、return、例外などで処理が進む道筋。</div><div class="term-note basic-term-mini"><strong>スコープとは</strong>変数や名前が有効な範囲。</div><div class="term-note basic-term-mini"><strong>ライフタイムとは</strong>変数やオブジェクトが使える期間。</div><div class="term-note basic-term-mini"><strong>副作用とは</strong>値を返すだけでなく、変数変更や出力など状態を変えること。</div>
+</div>
+</div>
+</section><section class="card lesson-section basic-term-check"><h2>このLessonで先に区別する言葉</h2><p>似た言葉を同じ意味で読まないこと。ここを分けると、後のコード読解で迷いにくくなります。</p><div class="table-scroll"><table class="study-table"><thead><tr><th>用語</th><th>切り分け</th></tr></thead><tbody><tr><td>評価順 / 制御フロー</td><td>評価順は式の中で何が先に処理されるか。制御フローはifやloopでどこへ進むか。</td></tr><tr><td>スコープ / ライフタイム</td><td>スコープは名前を使える範囲。ライフタイムは値やオブジェクトが存在しうる期間。</td></tr><tr><td>宣言型 / 実行時の実体</td><td>コンパイル時に見える型と、実行時にnewされている実体を分ける。</td></tr></tbody></table></div><p class="mini-link-row"><a class="btn ghost" href="../terms.html">基礎用語一覧で確認する</a></p></section><section class="card lesson-section"><h2>読解の基本手順</h2><ol><li>publicクラス名・ファイル名・mainの形を見る。</li><li>宣言されている変数の型を見る。</li><li>コンパイルエラーになる箇所がないか確認する。</li><li>newで作られるインスタンスや配列を図にする。</li><li>値が変わる行だけを追う。</li><li>メソッド呼び出しでどこへ移動するか確認する。</li><li>最後に出力順を確認する。</li></ol></section><section class="card lesson-section"><h2>小さい例で読む</h2><pre><code>class Item {
+    int price;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Item a = new Item();
+        Item b = a;
+        b.price = 100;
+        System.out.println(a.price);
+    }
+}</code></pre><p>読み方は、<code>a</code>が新しい<code>Item</code>を指す、<code>b = a</code>で同じ<code>Item</code>を指す、<code>b.price</code>を書き換える、同じ実体を<code>a</code>から読んで100が出る、という順。</p></section><section class="card lesson-section"><h2>値の変化だけを表にする</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>行</th><th>a</th><th>b</th><th>オブジェクトのprice</th></tr></thead><tbody><tr><td><code>Item a = new Item();</code></td><td>Item#1</td><td>-</td><td>0</td></tr><tr><td><code>Item b = a;</code></td><td>Item#1</td><td>Item#1</td><td>0</td></tr><tr><td><code>b.price = 100;</code></td><td>Item#1</td><td>Item#1</td><td>100</td></tr><tr><td><code>println(a.price)</code></td><td>Item#1</td><td>Item#1</td><td>100を読む</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>読解でやってはいけないこと</h2><ul><li>いきなり出力選択肢を見る。</li><li>コンパイルエラー確認を飛ばす。</li><li>宣言型と実体型を混同する。</li><li><code>String</code>や配列の参照を図にせず頭だけで追う。</li><li><code>++</code>や<code>+=</code>の副作用を読み飛ばす。</li></ul></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードを、コンパイル可否→型→参照→値→出力の順で読む。</p><pre><code>StringBuilder sb1 = new StringBuilder("A");
+StringBuilder sb2 = sb1;
+sb2.append("B");
+System.out.println(sb1);</code></pre></section><section class="card lesson-section quality-section"><h2>丁寧な補講：理解の芯</h2><p>Javaコードは上から眺めるだけでは読めない。読む順番を固定する。まずクラス構造、次に実行入口、次に変数の型、最後に実行時の値の変化を追う。</p><p>特に試験形式や短いサンプルでは、見た目の順番と実行順序が一致しないことが多い。メソッド定義は上にあっても、呼ばれなければ実行されない。コンストラクタは<code>new</code>のタイミングで動く。</p><p>コード読解の目的は「なんとなく分かる」ではなく、「この行の時点でこの変数はこの値」と説明できる状態にすること。</p><div class="principle-grid"><div class="principle-card"><strong>構造確認</strong><p>クラス、フィールド、メソッド、コンストラクタを分ける。</p></div><div class="principle-card"><strong>入口確認</strong><p><code>main</code>または呼び出し元から実行順序を追う。</p></div><div class="principle-card"><strong>状態追跡</strong><p>変数と参照がどう変わるかを表にする。</p></div></div></section><section class="card lesson-section"><h2>初心者が混同しやすい境界線</h2><div class="table-scroll"><table class="study-table"><thead><tr><th>混同しやすいもの</th><th>違い</th><th>見分け方</th></tr></thead><tbody><tr><td>定義順 / 実行順</td><td>上に書いてあるから先に実行されるとは限らない。</td><td><code>main</code>から呼び出しを追う。</td></tr><tr><td>型 / 実体</td><td>変数の型と<code>new</code>された型は違う場合がある。</td><td><code>A a = new B()</code>を分解する。</td></tr><tr><td>宣言 / 代入</td><td>宣言だけでは値が入らない場合がある。</td><td>初期化済みか見る。</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>コードを読むときの手順</h2><ol><li>トップレベルクラスとファイル名を見る。</li><li>フィールド、コンストラクタ、メソッドを色分けするつもりで分ける。</li><li><code>main</code>から実行順に番号を振る。</li><li>各変数について、型・値・参照先を表にする。</li><li>分岐・ループ・例外で実行されない行を消す。</li></ol><p class="code-caption">確認用コード</p><pre><code>class Item {
+    int price;
+    Item(int price) { this.price = price; }
+    void change(int price) { this.price = price; }
+}
+Item item = new Item(100);
+item.change(200);
+System.out.println(item.price);</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td><code>new Item(100)</code></td><td>コンストラクタ実行</td><td><code>price=100</code></td></tr><tr><td><code>change(200)</code></td><td>フィールドを200に更新</td><td><code>price=200</code></td></tr><tr><td>出力</td><td><code>item.price</code></td><td><code>200</code></td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>上から全部実行される、は違う</strong><p>メソッド定義やクラス定義は、そこに書いてあるだけで実行されるわけではない。</p></div><div class="mistake-callout"><strong>変数名だけで判断する</strong><p>同じ名前でもローカル変数とフィールドがある。<code>this</code>の有無を見る。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>コードを読むとき、出力を考える前に確認すべき最初の3点を答える。</p><details class="answer-panel"><summary>考え方と答えを見る</summary><p>1つ目は、コンパイルできる構造か。ファイル名、クラス名、main、型の整合性を見る。</p><p>2つ目は、実行入口がどこか。通常は<code>main</code>から追う。</p><p>3つ目は、変数の型と初期値。特にローカル変数、フィールド、参照型を分ける。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>
+<p>コード読解で失敗する最大の原因は、<strong>上から眺めて雰囲気で答える</strong>ことです。Javaコードは、必ず順序を決めて読みます。まずコンパイル可否、次に実行開始位置、次に値の変化、最後に出力や例外です。</p>
+<div class="table-scroll"><table class="study-table"><thead><tr><th>順番</th><th>確認内容</th><th>飛ばすと起きる失敗</th></tr></thead><tbody><tr><td>1</td><td>クラス・メソッド・型が成立しているか</td><td>コンパイル不可なのに出力を考える</td></tr><tr><td>2</td><td><code>main</code>からどこへ進むか</td><td>呼ばれないメソッドの処理を読んでしまう</td></tr><tr><td>3</td><td>変数・参照・条件式の変化</td><td>古い値のまま計算する</td></tr><tr><td>4</td><td>出力、return、例外、finally</td><td>途中で制御が移る箇所を見落とす</td></tr></tbody></table></div>
+<pre><code>int x = 1;
+int y = x++ + ++x;
+System.out.println(x + "," + y);</code></pre>
+<p>このようなコードを見たとき、いきなり足し算しないでください。<code>x++</code>で「式には元の値を使い、その後増える」、<code>++x</code>で「先に増えて、その値を使う」と順番に処理します。表を書けばミスは減ります。</p>
+<div class="mistake-callout"><strong>ここで切るべき誤解</strong><p>読解力はセンスではありません。順番を固定して、値の変化を表に落とすだけでかなり改善します。雑に暗算する癖は捨ててください。</p></div>
+</section><section class="card lesson-section check-section"><h2>理解チェック</h2><ul><li>コードを読む順番を、用語だけでなく自分の言葉で説明できる。</li><li>コードを見たとき、コンパイル前に決まることと実行中に決まることを分けられる。</li><li>悪い例がなぜ失敗するのかを、文法・型・参照・実行順序のどれかで説明できる。</li></ul></section><section class="card lesson-section basic-stumble-check"><h2>このLessonのつまずきチェック</h2><p>用語を覚えただけでは不十分です。実際に間違えやすい読み方を先に潰します。</p><h3>コード読解で順番を間違える点</h3><div class="table-scroll"><table class="study-table"><thead><tr><th>つまずき</th><th>正しい切り分け</th></tr></thead><tbody><tr><td>上から全部読もうとする</td><td>試験ではまずコンパイル可否、次に実行時例外、最後に出力を判定する。</td></tr><tr><td>選択肢から逆算しすぎる</td><td>選択肢を見る前に、コンパイル不可の行・例外発生箇所・出力候補を切る。</td></tr><tr><td>状態変化を書かない</td><td>変数、参照、配列、フィールド値は表にしないと高確率で読み違える。</td></tr></tbody></table></div><h3>説明できる状態の目安</h3><ul class="check-list compact-check-list"><li>コンパイル可否→実行可否→出力の順で説明できる</li><li>変数表を作るべき問題を判断できる</li><li>参照の変化を図で説明できる</li></ul><div class="lesson-note"><strong>試験対策としての使い方</strong><p>この3点を自分の言葉で説明できない場合、問題演習で似た形を見たときに運任せになります。戻ってコードを1つ実行してください。</p></div></section>
+<section class="card lesson-section code-trio-section">
+<h2>正しいコード / 失敗コード / 修正版</h2>
+<p>このLessonの要点を、成功例と失敗例で切り分けます。試験では「なぜ失敗するか」を説明できる状態が必要です。</p>
+<div class="code-trio-grid">
+<article class="code-trio-card good"><h3>正しいコード：コード読解の順番</h3><pre><code>int a = 1;
+int b = ++a + a;
+System.out.println(b);</code></pre></article>
+<article class="code-trio-card bad"><h3>失敗コード</h3><pre><code>出力だけを先に予想する</code></pre></article>
+<article class="code-trio-card fix"><h3>修正版</h3><pre><code>1. コンパイル可否
+2. 実行時例外
+3. 評価順
+4. 出力</code></pre></article>
+</div>
+<div class="lesson-note"><strong>判定ポイント</strong><p>Java問題は出力から考えず、コンパイル可否を最初に判定します。</p></div>
+</section>
+<section class="card lesson-section basic-understanding-quiz"><h2>理解確認クイズ</h2><p>配列を別変数へ代入すると、配列本体はコピーされますか。</p><details class="answer-panel compact-answer-panel"><summary>答えと切り分けを見る</summary><p>されません。参照がコピーされるだけなので、同じ配列を指します。</p></details></section><section class="card lesson-nav-bottom"><div><a class="btn ghost" href="19.html">← 前のLesson</a><a class="btn" href="../index.html">Lesson一覧</a><a class="btn primary" href="21.html">次のLesson →</a></div></section>
+</main>
+</div>
+<footer class="site-footer global-footer"><div class="site-footer-inner"><div class="footer-brand">Java Practice Lab</div><nav aria-label="フッターリンク" class="footer-links"><a href="../../../index.html">トップ</a><a href="../../../site/about.html">このサイトについて</a><a href="../../../site/privacy.html">プライバシーポリシー</a><a href="../../../site/terms.html">利用規約</a><a href="../../../site/contact.html">お問い合わせ</a></nav><p>© Java Practice Lab. Java学習を支援する非公式の学習サイトです。</p></div></footer>
+<script>window.APP_ROOT="../../../";window.CURRENT_PAGE="java-basic-20.html";</script>
+<script src="../../../data/questions.js?v=navigation-pass-20260601"></script>
+<script src="../../../assets/js/app.js?v=navigation-pass-20260601"></script>
+<script src="../../../pwa.js?v=navigation-pass-20260601"></script>
+</body>
+</html>
