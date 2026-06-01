@@ -19,7 +19,6 @@
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-
 <section class="content-page article-body wide-article upgraded-article">
 <h1>継承・interface・ポリモーフィズム完全整理</h1>
 <p class="lead">Silverの継承問題は「なんとなく親子関係を読む」だけでは解けません。宣言型、実体、override、フィールド隠蔽、コンストラクタ連鎖、interfaceの暗黙ルールを分けて判定します。</p>
@@ -456,7 +455,7 @@ class B extends A {
 <li>サブクラスのインスタンスはスーパークラス型で扱える。</li>
 <li>呼べるかどうかは宣言型で決まる。</li>
 <li>overrideされたインスタンスメソッドの実行本体は実体で決まる。</li>
-<li>フィールドとstaticメソッドは通常のoverrideとは違う。</li>
+<li>フィールドとstaticメソッドは通常のoverrideとは一致しない。</li>
 <li>コンストラクタは継承されない。</li>
 <li>interfaceの抽象メソッドは暗黙に <code>public abstract</code>。</li>
 <li>interfaceのフィールドは暗黙に <code>public static final</code>。</li>
@@ -464,8 +463,6 @@ class B extends A {
 <p class="inline-note article-callout">Silverでは「継承しているから使える」と雑に読まないでください。宣言型、実体、アクセス修飾子、メンバ種別の4つで機械的に切るのが正解です。</p>
 </section>
 </section>
-
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>

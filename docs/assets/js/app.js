@@ -1,17 +1,17 @@
 (function () {
 
-  const PAGE_PATHS = {"index.html":"index.html","about.html":"site/about.html","contact.html":"site/contact.html","privacy.html":"site/privacy.html","terms.html":"site/terms.html","offline.html":"site/offline.html","java-basic.html":"courses/java-basic/index.html","java-basic-01.html":"courses/java-basic/lessons/01.html","java-basic-02.html":"courses/java-basic/lessons/02.html","java-basic-03.html":"courses/java-basic/lessons/03.html","java-basic-04.html":"courses/java-basic/lessons/04.html","java-basic-05.html":"courses/java-basic/lessons/05.html","java-basic-06.html":"courses/java-basic/lessons/06.html","java-basic-07.html":"courses/java-basic/lessons/07.html","java-basic-08.html":"courses/java-basic/lessons/08.html","java-basic-09.html":"courses/java-basic/lessons/09.html","java-basic-10.html":"courses/java-basic/lessons/10.html","java-basic-11.html":"courses/java-basic/lessons/11.html","java-basic-12.html":"courses/java-basic/lessons/12.html","java-basic-13.html":"courses/java-basic/lessons/13.html","java-basic-14.html":"courses/java-basic/lessons/14.html","java-basic-15.html":"courses/java-basic/lessons/15.html","java-basic-16.html":"courses/java-basic/lessons/16.html","java-basic-17.html":"courses/java-basic/lessons/17.html","java-basic-18.html":"courses/java-basic/lessons/18.html","java-basic-19.html":"courses/java-basic/lessons/19.html","java-basic-20.html":"courses/java-basic/lessons/20.html","bronze.html":"courses/bronze/index.html","bronze-01.html":"courses/bronze/lessons/01.html","bronze-02.html":"courses/bronze/lessons/02.html","bronze-03.html":"courses/bronze/lessons/03.html","bronze-04.html":"courses/bronze/lessons/04.html","bronze-05.html":"courses/bronze/lessons/05.html","bronze-06.html":"courses/bronze/lessons/06.html","bronze-practice-1.html":"courses/bronze/practice/basic-syntax.html","bronze-practice-2.html":"courses/bronze/practice/oop-basic.html","bronze-exam-a.html":"courses/bronze/exams/a.html","java11silver.html":"courses/silver/index.html","java11silver-01.html":"courses/silver/index.html","java11silver-02.html":"courses/silver/index.html","java11silver-03.html":"courses/silver/index.html","java11silver-04.html":"courses/silver/index.html","java11silver-05.html":"courses/silver/index.html","java11silver-06.html":"courses/silver/index.html","java11silver-07.html":"courses/silver/index.html","java11silver-08.html":"courses/silver/index.html","java11-practice-1.html":"courses/java11-silver/practice/basic-syntax.html","java11-practice-2.html":"courses/java11-silver/practice/oop.html","java11-practice-3.html":"courses/java11-silver/practice/final-check.html","java11-exam-a.html":"courses/java11-silver/exams/a.html","java11-exam-b.html":"courses/java11-silver/exams/b.html","java17silver.html":"courses/silver/index.html","practice-a.html":"courses/silver/index.html#practiceCommon","practice-b.html":"courses/silver/index.html#practiceCommon","practice-l.html":"courses/silver/index.html#practiceCommon","practice-c.html":"courses/silver/index.html#practiceCommon","practice-d.html":"courses/silver/index.html#practiceCommon","practice-e.html":"courses/silver/index.html#practiceCommon","practice-f.html":"courses/silver/index.html#practiceCommon","practice-m.html":"courses/silver/index.html#practiceCommon","practice-i.html":"app/random.html","practice-g.html":"courses/java17-silver/exams/a.html","practice-h.html":"courses/java17-silver/exams/b.html","practice-j.html":"courses/java17-silver/exams/c.html","practice-k.html":"courses/java17-silver/exams/d.html","exam.html":"courses/silver/index.html#exam17","exam-aftercare.html":"app/dashboard.html","exam-quality.html":"courses/java17-silver/exams/quality.html","gold.html":"courses/gold/index.html","gold-01.html":"courses/gold/lessons/01.html","gold-02.html":"courses/gold/lessons/02.html","gold-03.html":"courses/gold/lessons/03.html","gold-04.html":"courses/gold/lessons/04.html","gold-05.html":"courses/gold/lessons/05.html","gold-06.html":"courses/gold/lessons/06.html","gold-07.html":"courses/gold/lessons/07.html","gold-08.html":"courses/gold/lessons/08.html","gold-practice-1.html":"courses/gold17/practice/record-sealed-final.html","gold-practice-2.html":"courses/gold17/practice/switch-pattern-final.html","gold-practice-3.html":"courses/gold17/practice/stream-api-final.html","gold-practice-4.html":"courses/gold17/practice/gold17-comprehensive-final.html","gold-exam-a.html":"courses/gold17/exams/a.html","gold-exam-b.html":"courses/gold17/exams/b.html","articles.html":"articles/index.html","article-types.html":"articles/types/index.html","article-string.html":"articles/string/index.html","article-reference.html":"articles/reference/index.html","article-pitfalls.html":"articles/pitfalls/index.html","article-operators-control.html":"articles/operators-control/index.html","article-class-design.html":"articles/class-design/index.html","article-inheritance.html":"articles/inheritance/index.html","article-exception.html":"articles/exception/index.html","article-compile-errors.html":"articles/compile-errors/index.html","methods.html":"articles/methods/index.html","glossary.html":"articles/glossary/index.html","cheatsheet.html":"articles/cheatsheet/index.html","study-plan.html":"articles/study-plan/index.html","before-exam.html":"articles/before-exam/index.html","weak-guides.html":"articles/weak-guides/index.html","mistake-patterns.html":"articles/mistake-patterns/index.html","exam-strategy.html":"articles/exam-strategy/index.html","dashboard.html":"app/dashboard.html","mode.html":"app/mode.html","learning-path.html":"app/learning-path.html","quality-map.html":"app/quality-map.html","search.html":"app/search.html","random.html":"app/random.html","notes.html":"app/notes.html","settings.html":"app/settings.html","sync.html":"app/sync.html","mistake-reasons.html":"app/mistake-reasons.html","review-wrong.html":"app/review/wrong.html","review-marked.html":"app/review/marked.html","review-weak.html":"app/review/weak.html","review-due.html":"app/review/due.html","tag-index.html":"app/tags/index.html","tag-array.html":"app/tags/array.html","tag-basic.html":"app/tags/basic.html","tag-class.html":"app/tags/class.html","tag-compile.html":"app/tags/compile.html","tag-control.html":"app/tags/control.html","tag-exception.html":"app/tags/exception.html","tag-inheritance.html":"app/tags/inheritance.html","tag-operator.html":"app/tags/operator.html","tag-output.html":"app/tags/output.html","tag-reference.html":"app/tags/reference.html","tag-runtime.html":"app/tags/runtime.html","tag-string.html":"app/tags/string.html","tag-type.html":"app/tags/type.html","java-basic-21.html":"courses/java-basic/lessons/21.html","java-basic-22.html":"courses/java-basic/lessons/22.html","java-basic-23.html":"courses/java-basic/lessons/23.html","java-basic-24.html":"courses/java-basic/lessons/24.html"};
-  const EXTRA_PAGE_PATHS_HEADER_CARDS = {"control-array.html": "courses/bronze/practice/control-array.html", "final-check.html": "courses/bronze/practice/final-check.html", "class-method.html": "courses/bronze/practice/class-method.html", "pitfall-check.html": "courses/bronze/practice/pitfall-check.html", "api-string.html": "courses/java11-silver/practice/api-string.html", "exception-inheritance.html": "courses/java11-silver/practice/exception-inheritance.html", "package-command.html": "courses/java11-silver/practice/package-command.html", "compile-check.html": "courses/java11-silver/practice/compile-check.html", "output-mix.html": "courses/java11-silver/practice/output-mix.html", "stream-advanced.html": "courses/gold17/practice/stream-advanced.html", "concurrency-nio.html": "courses/gold17/practice/concurrency-nio.html", "lambda-optional.html": "courses/gold17/practice/lambda-optional.html", "stream-collectors.html": "courses/gold17/practice/stream-collectors.html", "nio-datetime.html": "courses/gold17/practice/nio-datetime.html", "gold-api-mix.html": "courses/gold17/practice/gold-api-mix.html", "foundation.html": "courses/java-basic/practice/foundation.html", "syntax.html": "courses/java-basic/practice/syntax.html"};
+  const PAGE_PATHS = {"index.html":"index.html","about.html":"site/about.html","contact.html":"site/contact.html","privacy.html":"site/privacy.html","terms.html":"site/terms.html","offline.html":"site/offline.html","java-basic.html":"courses/java-basic/index.html","java-basic-01.html":"courses/java-basic/lessons/01.html","java-basic-02.html":"courses/java-basic/lessons/02.html","java-basic-03.html":"courses/java-basic/lessons/03.html","java-basic-04.html":"courses/java-basic/lessons/04.html","java-basic-05.html":"courses/java-basic/lessons/05.html","java-basic-06.html":"courses/java-basic/lessons/06.html","java-basic-07.html":"courses/java-basic/lessons/07.html","java-basic-08.html":"courses/java-basic/lessons/08.html","java-basic-09.html":"courses/java-basic/lessons/09.html","java-basic-10.html":"courses/java-basic/lessons/10.html","java-basic-11.html":"courses/java-basic/lessons/11.html","java-basic-12.html":"courses/java-basic/lessons/12.html","java-basic-13.html":"courses/java-basic/lessons/13.html","java-basic-14.html":"courses/java-basic/lessons/14.html","java-basic-15.html":"courses/java-basic/lessons/15.html","java-basic-16.html":"courses/java-basic/lessons/16.html","java-basic-17.html":"courses/java-basic/lessons/17.html","java-basic-18.html":"courses/java-basic/lessons/18.html","java-basic-19.html":"courses/java-basic/lessons/19.html","java-basic-20.html":"courses/java-basic/lessons/20.html","bronze.html":"courses/bronze/index.html","bronze-01.html":"courses/java-basic/lessons/01.html","bronze-02.html":"courses/java-basic/lessons/02.html","bronze-03.html":"courses/java-basic/lessons/03.html","bronze-04.html":"courses/java-basic/lessons/04.html","bronze-05.html":"courses/java-basic/lessons/05.html","bronze-06.html":"courses/java-basic/lessons/06.html","bronze-practice-1.html":"courses/bronze/practice/basic-syntax.html","bronze-practice-2.html":"courses/bronze/practice/oop-basic.html","bronze-exam-a.html":"courses/bronze/exams/a.html","java11silver.html":"courses/silver/index.html","java11silver-01.html":"courses/silver/index.html","java11silver-02.html":"courses/silver/index.html","java11silver-03.html":"courses/silver/index.html","java11silver-04.html":"courses/silver/index.html","java11silver-05.html":"courses/silver/index.html","java11silver-06.html":"courses/silver/index.html","java11silver-07.html":"courses/silver/index.html","java11silver-08.html":"courses/silver/index.html","java11-practice-1.html":"courses/java11-silver/practice/basic-syntax.html","java11-practice-2.html":"courses/java11-silver/practice/oop.html","java11-practice-3.html":"courses/java11-silver/practice/final-check.html","java11-exam-a.html":"courses/java11-silver/exams/a.html","java11-exam-b.html":"courses/java11-silver/exams/b.html","java17silver.html":"courses/silver/index.html","practice-a.html":"courses/silver/index.html#practiceCommon","practice-b.html":"courses/silver/index.html#practiceCommon","practice-l.html":"courses/silver/index.html#practiceCommon","practice-c.html":"courses/silver/index.html#practiceCommon","practice-d.html":"courses/silver/index.html#practiceCommon","practice-e.html":"courses/silver/index.html#practiceCommon","practice-f.html":"courses/silver/index.html#practiceCommon","practice-m.html":"courses/silver/index.html#practiceCommon","practice-i.html":"app/random.html","practice-g.html":"courses/java17-silver/exams/a.html","practice-h.html":"courses/java17-silver/exams/b.html","practice-j.html":"courses/java17-silver/exams/c.html","practice-k.html":"courses/java17-silver/exams/d.html","exam.html":"courses/silver/index.html#exam17","exam-aftercare.html":"app/dashboard.html","exam-quality.html":"courses/java17-silver/exams/quality.html","gold.html":"courses/gold/index.html","gold-01.html":"courses/gold/lessons/01.html","gold-02.html":"courses/gold/lessons/02.html","gold-03.html":"courses/gold/lessons/03.html","gold-04.html":"courses/gold/lessons/04.html","gold-05.html":"courses/gold/lessons/05.html","gold-06.html":"courses/gold/lessons/06.html","gold-07.html":"courses/gold/lessons/07.html","gold-08.html":"courses/gold/lessons/08.html","gold-practice-1.html":"courses/gold/practice/record-sealed-final.html","gold-practice-2.html":"courses/gold/practice/switch-pattern-final.html","gold-practice-3.html":"courses/gold/practice/stream-api-final.html","gold-practice-4.html":"courses/gold/practice/gold17-comprehensive-final.html","gold-exam-a.html":"courses/gold/exams/a.html","gold-exam-b.html":"courses/gold/exams/b.html","articles.html":"articles/index.html","article-types.html":"articles/types/index.html","article-string.html":"articles/string/index.html","article-reference.html":"articles/reference/index.html","article-pitfalls.html":"articles/pitfalls/index.html","article-operators-control.html":"articles/operators-control/index.html","article-class-design.html":"articles/class-design/index.html","article-inheritance.html":"articles/inheritance/index.html","article-exception.html":"articles/exception/index.html","article-compile-errors.html":"articles/compile-errors/index.html","methods.html":"articles/methods/index.html","glossary.html":"articles/glossary/index.html","cheatsheet.html":"articles/cheatsheet/index.html","study-plan.html":"articles/study-plan/index.html","before-exam.html":"articles/before-exam/index.html","weak-guides.html":"articles/weak-guides/index.html","mistake-patterns.html":"articles/mistake-patterns/index.html","exam-strategy.html":"articles/exam-strategy/index.html","dashboard.html":"app/dashboard.html","mode.html":"app/random.html","learning-path.html":"articles/study-order/index.html","quality-map.html":"app/quality-map.html","search.html":"app/search.html","random.html":"app/random.html","notes.html":"app/dashboard.html","settings.html":"app/settings.html","sync.html":"app/settings.html","mistake-reasons.html":"articles/mistake-patterns/index.html","review-wrong.html":"app/review/wrong.html","review-marked.html":"app/review/wrong.html","review-weak.html":"app/review/wrong.html","review-due.html":"app/review/wrong.html","tag-index.html":"app/search.html","tag-array.html":"app/search.html","tag-basic.html":"app/search.html","tag-class.html":"app/search.html","tag-compile.html":"app/search.html","tag-control.html":"app/search.html","tag-exception.html":"app/search.html","tag-inheritance.html":"app/search.html","tag-operator.html":"app/search.html","tag-output.html":"app/search.html","tag-reference.html":"app/search.html","tag-runtime.html":"app/search.html","tag-string.html":"app/search.html","tag-type.html":"app/search.html","java-basic-21.html":"courses/java-basic/lessons/21.html","java-basic-22.html":"courses/java-basic/lessons/22.html","java-basic-23.html":"courses/java-basic/lessons/23.html","java-basic-24.html":"courses/java-basic/lessons/24.html"};
+  const EXTRA_PAGE_PATHS_HEADER_CARDS = {"control-array.html": "courses/bronze/practice/control-array.html", "final-check.html": "courses/bronze/practice/final-check.html", "class-method.html": "courses/bronze/practice/class-method.html", "pitfall-check.html": "courses/bronze/practice/pitfall-check.html", "api-string.html": "courses/java11-silver/practice/api-string.html", "exception-inheritance.html": "courses/java11-silver/practice/exception-inheritance.html", "package-command.html": "courses/java11-silver/practice/package-command.html", "compile-check.html": "courses/java11-silver/practice/compile-check.html", "output-mix.html": "courses/java11-silver/practice/output-mix.html", "stream-advanced.html": "courses/gold/practice/stream-api-final.html", "concurrency-nio.html": "courses/gold/practice/gold17-comprehensive-final.html", "lambda-optional.html": "courses/gold/practice/gold17-comprehensive-final.html", "stream-collectors.html": "courses/gold/practice/stream-api-final.html", "nio-datetime.html": "courses/gold/practice/gold17-comprehensive-final.html", "gold-api-mix.html": "courses/gold/practice/gold17-comprehensive-final.html", "foundation.html": "courses/java-basic/practice/foundation.html", "syntax.html": "courses/java-basic/practice/syntax.html"};
   Object.assign(PAGE_PATHS, EXTRA_PAGE_PATHS_HEADER_CARDS);
-  const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold17/practice/stream-optional-extra.html", "gold-practice-12.html": "courses/gold17/practice/collectors-map-extra.html", "gold-practice-13.html": "courses/gold17/practice/generics-functional-extra.html", "gold-practice-14.html": "courses/gold17/practice/nio-concurrency-module-extra.html"};
+  const JAVA11_GOLD_MORE_PAGE_PATHS = {"java11-practice-9.html": "courses/java11-silver/practice/api-boundary-extra.html", "java11-practice-10.html": "courses/java11-silver/practice/inheritance-exception-extra.html", "java11-practice-11.html": "courses/java11-silver/practice/compile-command-extra.html", "java11-practice-12.html": "courses/java11-silver/practice/output-runtime-extra.html", "gold-practice-11.html": "courses/gold/practice/stream-api-final.html", "gold-practice-12.html": "courses/gold/practice/stream-api-final.html", "gold-practice-13.html": "courses/gold/practice/gold17-comprehensive-final.html", "gold-practice-14.html": "courses/gold/practice/gold17-comprehensive-final.html"};
   Object.assign(PAGE_PATHS, JAVA11_GOLD_MORE_PAGE_PATHS);
-  const EXTRA_ADDED_PAGE_PATHS = {"java11-practice-13.html":"courses/java11-silver/practice/comprehensive-extra.html","java11-exam-c.html":"courses/java11-silver/exams/c.html","gold11-practice-15.html":"courses/gold11/practice/comprehensive-extra.html","gold11-exam-c.html":"courses/gold11/exams/c.html","gold17-practice-15.html":"courses/gold17/practice/comprehensive-extra.html","gold17-exam-c.html":"courses/gold17/exams/c.html"};
+  const EXTRA_ADDED_PAGE_PATHS = {"java11-practice-13.html":"courses/java11-silver/practice/comprehensive-extra.html","java11-exam-c.html":"courses/java11-silver/exams/c.html","gold11-practice-15.html":"courses/gold11/practice/comprehensive-extra.html","gold11-exam-c.html":"courses/gold11/exams/c.html","gold17-practice-15.html":"courses/gold/practice/gold17-comprehensive-final.html","gold17-exam-c.html":"courses/gold/exams/c.html"};
   Object.assign(PAGE_PATHS, EXTRA_ADDED_PAGE_PATHS);
   const GOLD_SPLIT_PAGE_PATHS = {"gold11.html":"courses/gold/index.html","gold17.html":"courses/gold/index.html","gold-hub.html":"courses/gold/index.html"};
   Object.assign(PAGE_PATHS, GOLD_SPLIT_PAGE_PATHS);
-  const ADDED_MOCK_PAGE_PATHS = {"bronze-exam-b.html":"courses/bronze/exams/b.html","java11-exam-d.html":"courses/java11-silver/exams/d.html","gold11-exam-d.html":"courses/gold11/exams/d.html","gold17-exam-d.html":"courses/gold17/exams/d.html"};
+  const ADDED_MOCK_PAGE_PATHS = {"bronze-exam-b.html":"courses/bronze/exams/b.html","java11-exam-d.html":"courses/java11-silver/exams/d.html","gold11-exam-d.html":"courses/gold11/exams/d.html","gold17-exam-d.html":"courses/gold/exams/d.html"};
   Object.assign(PAGE_PATHS, ADDED_MOCK_PAGE_PATHS);
-  const EVEN_UNITS_PAGE_PATHS = {"java17-practice-language-additions.html":"courses/java17-silver/units/language-additions.html","java17-record.html":"courses/java17-silver/units/record.html","java17-sealed.html":"courses/java17-silver/units/sealed.html","java17-switch-yield.html":"courses/java17-silver/units/switch-yield.html","java17-pattern-matching.html":"courses/java17-silver/units/pattern-matching.html","java17-comprehensive.html":"courses/java17-silver/units/comprehensive.html","java11-practice-14.html":"courses/java11-silver/practice/final-mix-extra.html","gold11-practice-16.html":"courses/gold11/practice/migration-api-final.html","gold17-practice-16.html":"courses/gold17/practice/gold17-comprehensive-final.html"};
+  const EVEN_UNITS_PAGE_PATHS = {"java17-practice-language-additions.html":"courses/java17-silver/units/language-additions.html","java17-record.html":"courses/java17-silver/units/record.html","java17-sealed.html":"courses/java17-silver/units/sealed.html","java17-switch-yield.html":"courses/java17-silver/units/switch-yield.html","java17-pattern-matching.html":"courses/java17-silver/units/pattern-matching.html","java17-comprehensive.html":"courses/java17-silver/units/comprehensive.html","java11-practice-14.html":"courses/java11-silver/practice/final-mix-extra.html","gold11-practice-16.html":"courses/gold11/practice/migration-api-final.html","gold17-practice-16.html":"courses/gold/practice/gold17-comprehensive-final.html"};
   Object.assign(PAGE_PATHS, EVEN_UNITS_PAGE_PATHS);
   Object.assign(PAGE_PATHS, {"silver.html":"courses/silver/index.html","java11silver.html":"courses/silver/index.html","java17silver.html":"courses/silver/index.html","exam.html":"courses/silver/index.html"});
 
@@ -105,7 +105,7 @@
   ],
   "bronze-p5": [
     "java-bronze-object-basic",
-    "java-silver-static"
+    "class-design"
   ],
   "bronze-p6": [
     "bronze-mistakes-deep",
@@ -117,26 +117,26 @@
     "exam-review-deep"
   ],
   "java11-p1": [
-    "java11-silver-var-string",
+    "types",
     "java-silver-type-promotion"
   ],
   "java11-p2": [
-    "java11-silver-polymorphism-field",
-    "java-silver-overload",
-    "java-silver-constructor"
+    "inheritance",
+    "inheritance",
+    "class-design"
   ],
   "java11-p3": [
-    "java11-silver-precision",
+    "types",
     "cheatsheet",
     "before-exam"
   ],
   "java11-p4": [
-    "java11-silver-stringbuilder-arraylist",
-    "java11-silver-api-check",
-    "java-silver-arraylist-remove"
+    "string",
+    "api-reading",
+    "string"
   ],
   "java11-p5": [
-    "java11-silver-exception-finally",
+    "exception",
     "java-silver-access-modifier",
     "java-silver-default-method"
   ],
@@ -146,7 +146,7 @@
   "java11-p7": [
     "compile-errors",
     "java-silver-compile-vs-runtime",
-    "java11-silver-precision"
+    "types"
   ],
   "java11-p8": [
     "silver-output-problems",
@@ -154,24 +154,24 @@
     "runtime-errors"
   ],
   "java11-p9": [
-    "java11-silver-stringbuilder-arraylist",
-    "java11-silver-api-check",
-    "java-silver-arraylist-remove"
+    "string",
+    "api-reading",
+    "string"
   ],
   "java11-p10": [
-    "java11-silver-polymorphism-field",
-    "java11-silver-exception-finally",
-    "java-silver-constructor-order-cases"
+    "inheritance",
+    "exception",
+    "class-design-order-cases"
   ],
   "java11-p11": [
     "java-command",
     "compile-errors",
-    "java-silver-error-message-reading"
+    "compile-errors"
   ],
   "java11-p12": [
     "silver-output-problems",
     "java-silver-type-promotion",
-    "java-silver-string-immutability"
+    "string"
   ],
   "java11-exam-a": [
     "exam-strategy",
@@ -205,7 +205,7 @@
   "unit04": [
     "class-design",
     "java17-silver-record-details",
-    "java-silver-static"
+    "class-design"
   ],
   "unit05": [
     "inheritance",
@@ -248,42 +248,42 @@
   ],
   "gold-p1": [
     "java-gold-lambda-first",
-    "java-gold-stream-first",
-    "java-gold-type-flow"
+    "java-gold-stream-deep",
+    "types"
   ],
   "gold-p2": [
-    "java-gold-generics-first",
     "java-gold-generics-deep",
-    "java-gold-type-flow"
+    "java-gold-generics-deep",
+    "types"
   ],
   "gold-p3": [
     "java-gold-concurrency-basic",
     "java-gold-nio-path-files",
-    "java-gold-exception-suppressed"
+    "exception"
   ],
   "gold-p4": [
     "java-gold-module-info-check",
-    "java-gold-api-decision-tree",
-    "java-gold-type-flow"
+    "api-reading",
+    "types"
   ],
   "gold-p5": [
     "java-gold-stream-deep",
-    "java-gold-stream-grouping",
+    "java-gold-stream-deep",
     "java-gold-collector-first"
   ],
   "gold-p6": [
-    "java-gold-thread-executor-check",
+    "java-gold-concurrency-basic",
     "java-gold-nio-path-files",
     "java-gold-concurrency-basic"
   ],
   "gold-p7": [
     "java-gold-lambda-first",
     "java-gold-optional-first",
-    "java-gold-optional-flatmap"
+    "java-gold-optional-first"
   ],
   "gold-p8": [
-    "java-gold-stream-pipeline",
-    "java-gold-stream-grouping",
+    "java-gold-stream-deep",
+    "java-gold-stream-deep",
     "java-gold-collector-first"
   ],
   "gold-p9": [
@@ -291,39 +291,39 @@
     "java-gold-concurrency-basic"
   ],
   "gold-p10": [
-    "java-gold-api-decision-tree",
-    "java-gold-type-flow",
+    "api-reading",
+    "types",
     "java-gold-module-info-check"
   ],
   "gold-p11": [
     "java-gold-stream-deep",
     "java-gold-optional-first",
-    "java-gold-optional-flatmap"
+    "java-gold-optional-first"
   ],
   "gold-p12": [
     "java-gold-collector-first",
-    "java-gold-stream-grouping",
-    "java-gold-api-decision-tree"
+    "java-gold-stream-deep",
+    "api-reading"
   ],
   "gold-p13": [
     "java-gold-generics-deep",
-    "java-gold-generics-wildcard",
+    "java-gold-generics-deep",
     "java-gold-lambda-first"
   ],
   "gold-p14": [
     "java-gold-nio-path-files",
-    "java-gold-thread-executor-check",
+    "java-gold-concurrency-basic",
     "java-gold-module-info-check"
   ],
   "gold-exam-a": [
     "exam-strategy",
     "exam-review-deep",
-    "java-gold-api-decision-tree"
+    "api-reading"
   ],
   "gold-exam-b": [
     "exam-strategy",
     "exam-review-deep",
-    "java-gold-type-flow"
+    "types"
   ]
 };
   // Gold split linked article aliases
@@ -353,59 +353,59 @@
   "java-command": "javac・javaコマンドで詰まる原因",
   "java-debug-printing-tips": "Javaのデバッグ出力で確認するポイント",
   "java-exam-review-method": "模試後の復習方法",
-  "java-gold-api-decision-tree": "API判定ツリー：型・実行タイミング・戻り値で読む",
+  "api-reading": "API判定ツリー：型・実行タイミング・戻り値で読む",
   "java-gold-collector-first": "Collectors入門",
   "java-gold-concurrency-basic": "並行処理 / Executor / Future完全整理",
-  "java-gold-exception-suppressed": "try-with-resourcesと抑制された例外",
+  "exception": "try-with-resourcesと抑制された例外",
   "java-gold-generics-deep": "ジェネリクスとワイルドカード",
-  "java-gold-generics-first": "ジェネリクス入門",
-  "java-gold-generics-wildcard": "ワイルドカード",
+  "java-gold-generics-deep": "ジェネリクス入門",
+  "java-gold-generics-deep": "ワイルドカード",
   "java-gold-lambda-first": "ラムダ式と関数型インタフェース完全整理",
   "java-gold-module-info-check": "module-info.java / Javaモジュール完全整理",
   "java-gold-nio-path-files": "PathとFiles",
   "java-gold-optional-first": "Optional完全整理",
-  "java-gold-optional-flatmap": "OptionalとflatMap",
+  "java-gold-optional-first": "OptionalとflatMap",
   "java-gold-stream-deep": "Stream APIを丁寧に読む",
-  "java-gold-stream-first": "Stream API入門",
-  "java-gold-stream-grouping": "Collectors.groupingBy",
-  "java-gold-stream-pipeline": "Streamパイプライン",
-  "java-gold-thread-executor-check": "ExecutorService注意点",
-  "java-gold-type-flow": "型の流れを読む",
+  "java-gold-stream-deep": "Stream API入門",
+  "java-gold-stream-deep": "Collectors.groupingBy",
+  "java-gold-stream-deep": "Streamパイプライン",
+  "java-gold-concurrency-basic": "ExecutorService注意点",
+  "types": "型の流れを読む",
   "java-learning-debug-checklist": "Javaエラー調査チェックリスト",
   "java-learning-roadmap-after-silver": "Silver合格後に何を学ぶべきか",
   "java-silver-access-modifier": "アクセス修飾子まとめ",
   "java-silver-array-covariance": "配列の共変とArrayStoreException",
   "java-silver-array-default": "配列デフォルト値とnull",
-  "java-silver-array-list-difference": "配列とArrayListの違いを整理",
-  "java-silver-arraylist-remove": "ArrayList.removeで間違える理由",
+  "string": "配列とArrayListの違いを整理",
+  "string": "ArrayList.removeで間違える理由",
   "java-silver-cast-instanceof": "キャストとinstanceofの読み方",
   "java-silver-code-reading": "コード読解で落ちない読み方",
   "java-silver-compile-vs-runtime": "コンパイルエラーと実行時例外の分け方",
-  "java-silver-constructor": "コンストラクタで落ちるパターン",
-  "java-silver-constructor-order-cases": "コンストラクタ呼び出し順の頻出パターン",
+  "class-design": "コンストラクタで落ちるパターン",
+  "class-design-order-cases": "コンストラクタ呼び出し順の頻出パターン",
   "java-silver-default-method": "defaultメソッド競合の整理",
-  "java-silver-error-message-reading": "エラーメッセージの読み方",
-  "java-silver-final-rules": "finalの頻出ルール",
-  "java-silver-interface-constant": "interfaceの変数が暗黙にpublic static finalになる理由",
-  "java-silver-interface-default-cases": "interface defaultメソッドの衝突パターン",
-  "java-silver-local-variable": "ローカル変数で間違える理由",
+  "compile-errors": "エラーメッセージの読み方",
+  "inheritance": "finalの頻出ルール",
+  "inheritance": "interfaceの変数が暗黙にpublic static finalになる理由",
+  "inheritance": "interface defaultメソッドの衝突パターン",
+  "types": "ローカル変数で間違える理由",
   "java-silver-method-resolution": "メソッド呼び出し解決まとめ",
   "java-silver-null": "nullとNullPointerException",
   "java-silver-object-equality-cases": "同一性・同値性で落ちるパターン",
-  "java-silver-overload": "オーバーロード解決",
+  "inheritance": "オーバーロード解決",
   "java-silver-sealed": "sealedクラス・interfaceの頻出ルール",
   "java-silver-sealed-record-review": "sealedとrecordのJava17 Silver頻出整理",
-  "java-silver-static": "staticで間違えるポイント",
-  "java-silver-string-immutability": "String不変性で落ちるパターン",
+  "class-design": "staticで間違えるポイント",
+  "string": "String不変性で落ちるパターン",
   "java-silver-switch": "switch文とswitch式",
   "java-silver-switch-yield-cases": "switch文・switch式・yieldの見分け方",
   "java-silver-type-promotion": "数値昇格で間違える理由",
-  "java11-silver-api-check": "頻出APIチェック",
-  "java11-silver-exception-finally": "例外処理とfinally",
-  "java11-silver-polymorphism-field": "ポリモーフィズムとフィールド隠蔽",
-  "java11-silver-precision": "頻出差分と注意点",
-  "java11-silver-stringbuilder-arraylist": "StringBuilderとArrayList",
-  "java11-silver-var-string": "varとString",
+  "api-reading": "頻出APIチェック",
+  "exception": "例外処理とfinally",
+  "inheritance": "ポリモーフィズムとフィールド隠蔽",
+  "types": "頻出差分と注意点",
+  "string": "StringBuilderとArrayList",
+  "types": "varとString",
   "java17-silver-pattern-matching-instanceof": "instanceofパターン変数",
   "java17-silver-record-details": "recordを丁寧に整理",
   "java17-silver-sealed-permits": "sealedとpermits",
@@ -745,7 +745,7 @@
       if (path.includes('/courses/java-basic/') || activePath.startsWith('java-basic')) return 'basic';
       if (path.includes('/courses/bronze/') || activePath.startsWith('bronze')) return 'bronze';
       if (path.includes('/courses/silver/') || path.includes('/courses/java11-silver/') || path.includes('/courses/java17-silver/') || activePath.startsWith('java11') || activePath.startsWith('practice') || activePath === 'exam.html') return 'silver';
-      if (path.includes('/courses/gold/') || path.includes('/courses/gold11/') || path.includes('/courses/gold17/') || activePath.startsWith('gold')) return 'gold';
+      if (path.includes('/courses/gold/') || path.includes('/courses/gold11/') || path.includes('/courses/gold/') || activePath.startsWith('gold')) return 'gold';
       if (path.includes('/articles/') || activePath.startsWith('article') || ["methods.html","glossary.html","cheatsheet.html","before-exam.html","weak-guides.html"].includes(activePath)) return 'articles';
       if (path.includes('/app/') || ["dashboard.html","mode.html","search.html","random.html","notes.html","settings.html","sync.html","mistake-reasons.html"].includes(activePath)) return 'app';
       return 'portal';
@@ -2046,7 +2046,7 @@
       ["/courses/java11-silver/", "courses/silver/index.html"],
       ["/courses/java17-silver/", "courses/silver/index.html"],
       ["/courses/gold11/", "courses/gold/index.html"],
-      ["/courses/gold17/", "courses/gold/index.html"],
+      ["/courses/gold/", "courses/gold/index.html"],
       ["/articles/", "articles/index.html"],
       ["/app/dashboard", "app/dashboard.html"],
       ["/app/search", "app/search.html"],

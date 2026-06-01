@@ -22,12 +22,10 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Collectors完全整理</h1>
 <p class="lead">Collectorsは、Streamの終端操作<code>collect</code>に渡す「集め方」です。Goldでは、結果の型、重複キー、順序、変更可能性、下流Collectorを読めないと落とされます。</p>
-
 <section class="article-section">
 <h2>最初に読む場所</h2>
 <p><code>collect(Collectors.xxx(...))</code>の問題は、Streamの中身を追う前に、まず「どのCollectorに集めているか」を確認します。<code>toList</code>ならList、<code>toMap</code>ならMap、<code>groupingBy</code>ならMapの値側がさらにListやSetなどになります。</p>
 </section>
-
 <table class="study-table ref-table">
 <thead><tr><th>Collector</th><th>主な戻り値</th><th>試験で見る点</th></tr></thead>
 <tbody>
@@ -41,21 +39,17 @@
 <tr><td><code>counting()</code> / <code>summingInt()</code></td><td><code>Long</code> / <code>Integer</code>など</td><td>下流Collectorで使われることが多い。</td></tr>
 </tbody>
 </table>
-
 <section class="article-section">
 <h2><code>collect</code>は終端操作</h2>
 <p><code>collect</code>を呼んだ時点でStreamは消費されます。<code>collect</code>後に同じStreamをもう一度使うことはできません。</p>
 </section>
-
 <pre class="article-code"><code>var stream = Stream.of("A", "B", "C");
 var list = stream.collect(Collectors.toList());
 // stream.count(); // 実行時例外: stream has already been operated upon or closed</code></pre>
-
 <section class="article-section">
 <h2><code>Collectors.toList()</code> と <code>Stream.toList()</code> は別物</h2>
 <p>Gold SE 17では特に重要です。<code>stream.collect(Collectors.toList())</code>と<code>stream.toList()</code>は似ていますが、同じものとして扱うと危険です。</p>
 </section>
-
 <table class="study-table ref-table">
 <thead><tr><th>書き方</th><th>導入</th><th>変更可能性</th><th>試験での注意</th></tr></thead>
 <tbody>
@@ -64,20 +58,16 @@ var list = stream.collect(Collectors.toList());
 <tr><td><code>Collectors.toUnmodifiableList()</code></td><td>Java 10以降</td><td>変更不可</td><td>null要素を許さない。</td></tr>
 </tbody>
 </table>
-
 <pre class="article-code"><code>var a = Stream.of("A", "B").collect(Collectors.toList());
 var b = Stream.of("A", "B").toList();
 
 // a.add("C"); // 実装依存で動くことはあるが、仕様として保証しない
 // b.add("C"); // UnsupportedOperationException</code></pre>
-
 <div class="article-callout">雑に「toListはArrayList」と覚えるのは危険です。試験では、仕様上保証されているかどうかで判断します。</div>
-
 <section class="article-section">
 <h2><code>toSet</code> と <code>toCollection</code></h2>
 <p><code>toSet()</code>は重複を除去します。ただし、戻るSetの具体的な実装型や順序は保証されません。順序や実装型が必要なら<code>toCollection</code>で指定します。</p>
 </section>
-
 <pre class="article-code"><code>var set = Stream.of("B", "A", "A")
     .collect(Collectors.toSet());
 // 重複は消える。ただし表示順は決めつけない。
@@ -85,12 +75,10 @@ var b = Stream.of("A", "B").toList();
 var linked = Stream.of("B", "A", "A")
     .collect(Collectors.toCollection(LinkedHashSet::new));
 // LinkedHashSetを指定しているので、挿入順を保ちやすい。</code></pre>
-
 <section class="article-section">
 <h2><code>joining</code></h2>
 <p><code>joining</code>は文字列を連結するCollectorです。要素型は<code>String</code>などの<code>CharSequence</code>系である必要があります。数値Streamにそのまま<code>joining</code>は使えません。</p>
 </section>
-
 <pre class="article-code"><code>String s1 = Stream.of("A", "B", "C")
     .collect(Collectors.joining());
 System.out.println(s1); // ABC
@@ -103,18 +91,14 @@ String nums = Stream.of(1, 2, 3)
     .map(String::valueOf)
     .collect(Collectors.joining("-"));
 System.out.println(nums); // 1-2-3</code></pre>
-
 <section class="article-section">
 <h2><code>toMap</code>は重複キーで落ちる</h2>
 <p><code>toMap(keyMapper, valueMapper)</code>で同じキーが生成されると、マージ関数を指定していない場合は実行時例外です。コンパイルエラーではありません。</p>
 </section>
-
 <pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb")
     .collect(Collectors.toMap(String::length, s -&gt; s));
 // どちらもキー2になるため、実行時例外: IllegalStateException</code></pre>
-
 <p>重複する可能性があるなら、第三引数でマージ関数を指定します。</p>
-
 <pre class="article-code"><code>Map&lt;Integer, String&gt; map = Stream.of("aa", "bb", "ccc")
     .collect(Collectors.toMap(
         String::length,
@@ -123,7 +107,6 @@ System.out.println(nums); // 1-2-3</code></pre>
     ));
 
 System.out.println(map); // {2=aa, 3=ccc} など</code></pre>
-
 <table class="study-table ref-table">
 <thead><tr><th>toMapの形</th><th>意味</th><th>注意点</th></tr></thead>
 <tbody>
@@ -132,7 +115,6 @@ System.out.println(map); // {2=aa, 3=ccc} など</code></pre>
 <tr><td><code>toMap(key, value, merge, supplier)</code></td><td>Map実装型も指定</td><td><code>LinkedHashMap::new</code>など。</td></tr>
 </tbody>
 </table>
-
 <pre class="article-code"><code>Map&lt;Character, String&gt; map = Stream.of("apple", "ant", "banana")
     .collect(Collectors.toMap(
         s -&gt; s.charAt(0),
@@ -142,28 +124,22 @@ System.out.println(map); // {2=aa, 3=ccc} など</code></pre>
     ));
 
 System.out.println(map); // {a=apple/ant, b=banana}</code></pre>
-
 <section class="article-section">
 <h2><code>toMap</code>のnull</h2>
 <p><code>toMap</code>では、値側がnullになると<code>NullPointerException</code>です。HashMap自体はnull値を扱えることがありますが、<code>Collectors.toMap</code>の処理中ではnull値が問題になります。キー側のnullは実装上通る場合がありますが、試験ではnullを絡めたCollectorは危険箇所として扱うべきです。</p>
 </section>
-
 <pre class="article-code"><code>Stream.of("A")
     .collect(Collectors.toMap(s -&gt; s, s -&gt; null));
 // NullPointerException</code></pre>
-
 <section class="article-section">
 <h2><code>groupingBy</code>は「Mapのキー」と「値側」を分けて読む</h2>
 <p><code>groupingBy</code>の基本形は、分類キーごとに要素をListへ集めます。</p>
 </section>
-
 <pre class="article-code"><code>Map&lt;Integer, List&lt;String&gt;&gt; byLength = Stream.of("a", "bb", "cc", "ddd")
     .collect(Collectors.groupingBy(String::length));
 
 System.out.println(byLength); // {1=[a], 2=[bb, cc], 3=[ddd]} など</code></pre>
-
 <p>第二引数に下流Collectorを渡すと、値側をList以外にできます。</p>
-
 <pre class="article-code"><code>Map&lt;Integer, Long&gt; countByLength = Stream.of("a", "bb", "cc", "ddd")
     .collect(Collectors.groupingBy(
         String::length,
@@ -171,7 +147,6 @@ System.out.println(byLength); // {1=[a], 2=[bb, cc], 3=[ddd]} など</code></pre
     ));
 
 System.out.println(countByLength); // {1=1, 2=2, 3=1} など</code></pre>
-
 <table class="study-table ref-table">
 <thead><tr><th>groupingBy</th><th>戻り値の例</th><th>読み方</th></tr></thead>
 <tbody>
@@ -181,12 +156,10 @@ System.out.println(countByLength); // {1=1, 2=2, 3=1} など</code></pre>
 <tr><td><code>groupingBy(key, LinkedHashMap::new, downstream)</code></td><td>指定Map</td><td>Map実装型も指定。</td></tr>
 </tbody>
 </table>
-
 <section class="article-section">
 <h2>下流Collector: <code>mapping</code> / <code>filtering</code> / <code>flatMapping</code></h2>
 <p>Goldで差がつくのは下流Collectorです。<code>groupingBy</code>の後、値側をどう集めるかをさらに指定できます。</p>
 </section>
-
 <pre class="article-code"><code>record User(String dept, String name, int score) {}
 
 var users = List.of(
@@ -202,7 +175,6 @@ Map&lt;String, List&lt;String&gt;&gt; namesByDept = users.stream()
     ));
 
 System.out.println(namesByDept); // {dev=[A, B], sales=[C]} など</code></pre>
-
 <pre class="article-code"><code>Map&lt;String, List&lt;String&gt;&gt; highScorers = users.stream()
     .collect(Collectors.groupingBy(
         User::dept,
@@ -213,19 +185,15 @@ System.out.println(namesByDept); // {dev=[A, B], sales=[C]} など</code></pre>
     ));
 
 System.out.println(highScorers); // {dev=[A], sales=[C]} など</code></pre>
-
 <p><code>filtering</code>を下流で使う場合、分類キー自体は残ることがあります。Streamの前段で<code>filter</code>する場合とは結果のMap構造が変わる点に注意します。</p>
-
 <section class="article-section">
 <h2><code>partitioningBy</code>はBooleanキーの2分類</h2>
 <p><code>partitioningBy</code>は、条件に合うものを<code>true</code>、合わないものを<code>false</code>に分けます。キーは任意の値ではなく<code>Boolean</code>です。</p>
 </section>
-
 <pre class="article-code"><code>Map&lt;Boolean, List&lt;Integer&gt;&gt; result = Stream.of(1, 2, 3, 4)
     .collect(Collectors.partitioningBy(n -&gt; n % 2 == 0));
 
 System.out.println(result); // {false=[1, 3], true=[2, 4]} など</code></pre>
-
 <pre class="article-code"><code>Map&lt;Boolean, Long&gt; count = Stream.of(1, 2, 3, 4)
     .collect(Collectors.partitioningBy(
         n -&gt; n % 2 == 0,
@@ -233,12 +201,10 @@ System.out.println(result); // {false=[1, 3], true=[2, 4]} など</code></pre>
     ));
 
 System.out.println(count); // {false=2, true=2} など</code></pre>
-
 <section class="article-section">
 <h2>数値集約: <code>counting</code> / <code>summingInt</code> / <code>averagingInt</code> / <code>summarizingInt</code></h2>
 <p>数値系Collectorは、単体でも使えますが、<code>groupingBy</code>の下流でよく出ます。</p>
 </section>
-
 <pre class="article-code"><code>record Item(String type, int price) {}
 
 var items = List.of(
@@ -254,7 +220,6 @@ Map&lt;String, Integer&gt; sum = items.stream()
     ));
 
 System.out.println(sum); // {book=2500, food=500} など</code></pre>
-
 <pre class="article-code"><code>IntSummaryStatistics stats = items.stream()
     .collect(Collectors.summarizingInt(Item::price));
 
@@ -262,12 +227,10 @@ System.out.println(stats.getCount()); // 3
 System.out.println(stats.getSum());   // 3000
 System.out.println(stats.getMin());   // 500
 System.out.println(stats.getMax());   // 1500</code></pre>
-
 <section class="article-section">
 <h2><code>collectingAndThen</code></h2>
 <p><code>collectingAndThen</code>は、集めた後に最後の変換をかけます。たとえば、Listに集めた後で変更不可Listにする、最大値Optionalから値を取り出す、などです。</p>
 </section>
-
 <pre class="article-code"><code>List&lt;String&gt; list = Stream.of("A", "B")
     .collect(Collectors.collectingAndThen(
         Collectors.toList(),
@@ -275,17 +238,14 @@ System.out.println(stats.getMax());   // 1500</code></pre>
     ));
 
 // list.add("C"); // UnsupportedOperationException</code></pre>
-
 <section class="article-section">
 <h2><code>maxBy</code> / <code>minBy</code> はOptionalを返す</h2>
 <p><code>maxBy</code>や<code>minBy</code>は、要素がない可能性があるため<code>Optional&lt;T&gt;</code>を返します。<code>groupingBy</code>の下流で使うと、値側が<code>Optional</code>になります。</p>
 </section>
-
 <pre class="article-code"><code>Optional&lt;String&gt; max = Stream.of("a", "bbb", "cc")
     .collect(Collectors.maxBy(Comparator.comparingInt(String::length)));
 
 System.out.println(max.orElse("none")); // bbb</code></pre>
-
 <pre class="article-code"><code>Map&lt;Integer, Optional&lt;String&gt;&gt; maxByLength = Stream.of("a", "bb", "cc")
     .collect(Collectors.groupingBy(
         String::length,
@@ -293,12 +253,10 @@ System.out.println(max.orElse("none")); // bbb</code></pre>
     ));
 
 System.out.println(maxByLength); // {1=Optional[a], 2=Optional[cc]} など</code></pre>
-
 <section class="article-section">
 <h2><code>reducing</code> は型が読みにくい</h2>
 <p><code>Collectors.reducing</code>は、Streamの<code>reduce</code>に似ていますが、Collectorとして使います。下流Collectorで登場すると型が崩れやすいので、戻り値を必ず書いて確認します。</p>
 </section>
-
 <table class="study-table ref-table">
 <thead><tr><th>reducingの形</th><th>戻り値</th><th>用途</th></tr></thead>
 <tbody>
@@ -307,7 +265,6 @@ System.out.println(maxByLength); // {1=Optional[a], 2=Optional[cc]} など</code
 <tr><td><code>reducing(identity, mapper, op)</code></td><td><code>U</code></td><td>変換してから畳み込む。</td></tr>
 </tbody>
 </table>
-
 <pre class="article-code"><code>Integer total = Stream.of("A", "BB", "CCC")
     .collect(Collectors.reducing(
         0,
@@ -316,11 +273,9 @@ System.out.println(maxByLength); // {1=Optional[a], 2=Optional[cc]} など</code
     ));
 
 System.out.println(total); // 6</code></pre>
-
 <section class="article-section">
 <h2>コンパイルエラーになりやすいパターン</h2>
 </section>
-
 <table class="study-table ref-table">
 <thead><tr><th>コード</th><th>結果</th><th>理由</th></tr></thead>
 <tbody>
@@ -331,12 +286,10 @@ System.out.println(total); // 6</code></pre>
 <tr><td><code>Stream.of("A").toList().add("B")</code></td><td>実行時例外</td><td><code>Stream.toList()</code>の戻り値は変更不可。</td></tr>
 </tbody>
 </table>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
 <p>次のコードの結果を考えます。</p>
 </section>
-
 <pre class="article-code"><code>var result = Stream.of("ant", "apple", "bee", "boat")
     .collect(Collectors.groupingBy(
         s -&gt; s.charAt(0),
@@ -344,19 +297,14 @@ System.out.println(total); // 6</code></pre>
     ));
 
 System.out.println(result);</code></pre>
-
 <p>分類キーは先頭文字です。値側は元の文字列ではなく、<code>mapping(String::length, toList())</code>によって長さのListになります。</p>
-
 <pre class="article-code"><code>{a=[3, 5], b=[3, 4]}  // 表示順はMap実装に依存</code></pre>
-
 <div class="bad-good">
 <div><strong>悪い判断</strong><p><code>groupingBy</code>だから値側は必ず<code>List&lt;String&gt;</code>だと決めつける。</p></div>
 <div><strong>良い判断</strong><p><code>groupingBy</code>の第二引数以降を読み、下流Collectorで値側の型がどう変わるかを確認する。</p></div>
 </div>
-
 <div class="article-callout">Collectors問題は、Streamの流れを追う前に戻り値の型を固定してください。型が見えていない状態で値だけ追うと、<code>Optional</code>、<code>Map&lt;K,List&lt;V&gt;&gt;</code>、<code>Map&lt;K,Long&gt;</code>を取り違えます。</div>
 </article>
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>

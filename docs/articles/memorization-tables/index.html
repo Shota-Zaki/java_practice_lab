@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content="Java Silver・Gold試験直前に見返すための暗記表。型変換、StringBuilder、Optional、Collectors、NIO、並行処理、module-infoを比較表で整理。"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Java Silver・Gold試験直前に見返すための暗記表。型変換、StringBuilder、Optional、Collectors、NIO、並行処理、module-infoを比較表で整理。" name="description"/>
 <title>Java試験 覚える表｜Java Practice Lab</title>
 <meta content="#2563eb" name="theme-color"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
 <link href="../../assets/css/styles.css?v=navigation-pass-20260601" rel="stylesheet"/>
 </head>
 <body class="header-layout article-page memorization-page">
-<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../../index.html">Java Practice Lab</a><nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a class="is-active" aria-current="page" href="../index.html">学習記事</a></nav></div></header>
+<a class="skip-link" href="#mainContent">本文へ移動</a><header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../../index.html">Java Practice Lab</a><nav aria-label="主要メニュー" class="site-nav"><a class="nav-home-button" href="../../index.html">Java学習ポータルトップ</a><a href="../../courses/java-basic/index.html">基礎</a><a href="../../courses/bronze/index.html">Bronze</a><a href="../../courses/silver/index.html">Silver</a><a href="../../courses/gold/index.html">Gold</a><a aria-current="page" class="is-active" href="../index.html">学習記事</a></nav></div></header>
 <div class="layout"><main class="main" id="mainContent">
 <article class="card lesson-hero"><p class="meta">直前確認</p><h1>Java試験 覚える表</h1><p class="lead">長い解説を読み直す前に、混同しやすい差分だけを表で確認します。Silverは文法・型・API、GoldはStream・Optional・Collectors・NIO・並行処理・モジュールを中心に整理します。</p></article>
 <section class="card lesson-section"><h2>プリミティブ型の範囲</h2><div class="table-scroll"><table class="study-table memorize-table"><thead><tr><th>型</th><th>サイズ</th><th>範囲・特徴</th><th>注意</th></tr></thead><tbody><tr><td>byte</td><td>8bit</td><td>-128〜127</td><td>整数リテラルが範囲内なら代入可</td></tr><tr><td>short</td><td>16bit</td><td>-32768〜32767</td><td>演算時は基本intへ昇格</td></tr><tr><td>char</td><td>16bit</td><td>0〜65535</td><td>負数不可。数値としても扱える</td></tr><tr><td>int</td><td>32bit</td><td>整数リテラルの基本型</td><td>整数演算の基本</td></tr><tr><td>long</td><td>64bit</td><td>L/l接尾辞で明示</td><td>小文字lは1と紛らわしい</td></tr><tr><td>float</td><td>32bit</td><td>F/f接尾辞が必要</td><td>小数リテラルは標準でdouble</td></tr><tr><td>double</td><td>64bit</td><td>小数リテラルの基本型</td><td>整数0除算と違いInfinityになる場合あり</td></tr><tr><td>boolean</td><td>規定なし</td><td>true / false</td><td>数値型と互換性なし</td></tr></tbody></table></div></section>

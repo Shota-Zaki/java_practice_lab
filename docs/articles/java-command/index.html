@@ -23,7 +23,6 @@
 <p class="breadcrumb"><a href="../index.html">学習記事</a></p>
 <h1>javac・javaコマンドで詰まる原因</h1>
 <p class="lead">コンパイルと実行は別工程です。<code>javac</code> は <code>.java</code> を検査して <code>.class</code> を作るコマンド、<code>java</code> はクラス名を指定してJVMを起動するコマンドです。ここを曖昧にすると、コマンド問題はほぼ落とします。</p>
-
 <section class="article-section foundation-bridge-section" id="foundation-java-execution-declaration">
 <h2>最初に固定する判定順</h2>
 <p>コマンド問題は、出力結果を追う前に次の順番で切ります。</p>
@@ -36,7 +35,6 @@
 </ol>
 <div class="article-callout strong"><strong>重要:</strong> <code>javac</code> はファイルを指定します。<code>java</code> はクラス名を指定します。この1文を基準にすると、かなりの誤答を切れます。</div>
 </section>
-
 <section class="article-section">
 <h2>javac と java の役割</h2>
 <table class="study-table ref-table">
@@ -59,7 +57,6 @@ javac Sample.java
 java Sample</code></pre>
 <p><code>java Sample.class</code> は、クラス名に <code>.class</code> を付けているので誤りです。<code>java</code> コマンドはファイル名ではなく、JVMに読み込ませるクラス名を指定します。</p>
 </section>
-
 <section class="article-section">
 <h2>publicクラス名とファイル名</h2>
 <p>トップレベルの <code>public</code> クラスがある場合、ファイル名はそのクラス名と一致しなければなりません。大文字小文字も区別します。</p>
@@ -74,7 +71,6 @@ java Sample</code></pre>
 </table>
 <div class="article-callout strong"><strong>切り分け:</strong> ファイル名の制約を受けるのは <code>public</code> なトップレベルクラスです。<code>public</code> ではないトップレベルクラスは、ファイル名と一致しなくてもコンパイルできます。</div>
 </section>
-
 <section class="article-section" id="multiple-top-level-classes">
 <h2>1つのファイルに複数のclassを書いた場合</h2>
 <p>Javaでは、1つの <code>.java</code> ファイルに複数のトップレベルクラスを書けます。ただし、<strong>publicトップレベルクラスは最大1つ</strong>です。<code>javac</code> はファイル内の各トップレベルクラスごとに <code>.class</code> ファイルを作ります。</p>
@@ -109,7 +105,6 @@ C.class</code></pre>
 </tbody>
 </table>
 <div class="article-callout strong"><strong>重要:</strong> 実行時に指定するのは「ファイル名」ではなく「クラス名」です。<code>A.java</code> から生成された <code>B.class</code> でも、<code>B</code> に正しい <code>main</code> があれば <code>java B</code> で起動できます。</div>
-
 <h3>publicクラスがない場合</h3>
 <p>トップレベルクラスがすべて <code>public</code> ではないなら、ファイル名は任意です。</p>
 <pre><code>// Memo.java
@@ -128,7 +123,6 @@ class B {
 java A
 java B</code></pre>
 <p><code>Memo.java</code> というファイル名でも、生成されるのは <code>Memo.class</code> ではなく、<code>A.class</code> と <code>B.class</code> です。<code>class Memo</code> が存在しないなら、<code>java Memo</code> は起動できません。</p>
-
 <h3>packageがある場合</h3>
 <p><code>package</code> 宣言は、そのファイル内のすべてのトップレベルクラスに適用されます。</p>
 <pre><code>// src/ex/A.java
@@ -149,7 +143,6 @@ class B {
 java -cp out ex.A
 java -cp out ex.B</code></pre>
 <p><code>B</code> も <code>ex</code> パッケージ所属なので、<code>java -cp out B</code> ではなく <code>java -cp out ex.B</code> です。<code>-d out</code> を使った場合、生成物は <code>out/ex/A.class</code> と <code>out/ex/B.class</code> になります。</p>
-
 <h3>不可能パターン</h3>
 <table class="study-table ref-table">
 <thead><tr><th>コード・コマンド</th><th>判定</th><th>理由</th></tr></thead>
@@ -162,7 +155,6 @@ java -cp out ex.B</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>mainメソッドのOK・NG</h2>
 <p><code>java</code> コマンドで通常起動するには、起動対象クラスに正しい <code>main</code> が必要です。</p>
@@ -181,7 +173,6 @@ java -cp out ex.B</code></pre>
 </table>
 <div class="article-callout">注意: <code>main</code> が間違っていても、クラス自体はコンパイルできる場合があります。その場合は「コンパイルエラー」ではなく、「起動できない」問題です。</div>
 </section>
-
 <section class="article-section">
 <h2>packageなしの最小パターン</h2>
 <p>まずは <code>package</code> がない単純なケースを固定します。</p>
@@ -205,7 +196,6 @@ java Sample</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>-d でclassファイルの出力先を分ける</h2>
 <p><code>-d</code> は、コンパイル後の <code>.class</code> ファイルをどこに出力するかを指定するオプションです。ソースとclassを混ぜないために使います。</p>
@@ -233,7 +223,6 @@ java -cp out Sample</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>packageありのコンパイルと実行</h2>
 <p><code>package</code> がある場合、実行時はパッケージ名を含めた完全修飾クラス名を指定します。</p>
@@ -266,7 +255,6 @@ java -cp out ex.Sample</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>複数ファイルのコンパイル</h2>
 <p>別クラスを参照している場合、依存するソースも一緒にコンパイルします。</p>
@@ -296,7 +284,6 @@ java -cp out app.Main</code></pre>
 <pre><code>javac -d out src/app/*.java</code></pre>
 <div class="article-callout">Windows PowerShellでも <code>*.java</code> は使えます。ただし、サブディレクトリまで自動で再帰的に拾うわけではありません。</div>
 </section>
-
 <section class="article-section">
 <h2>-cp / -classpath の意味</h2>
 <p><code>-cp</code> は <code>-classpath</code> の短縮形です。実行時にJVMがクラスを探す場所を指定します。</p>
@@ -316,7 +303,6 @@ java -cp out;lib/sample.jar app.Main
 # macOS / Linux
 java -cp out:lib/sample.jar app.Main</code></pre>
 </section>
-
 <section class="article-section">
 <h2>不可能・誤りパターン一覧</h2>
 <p>試験では、正しいコマンドよりも「なぜそれが無理か」を説明できる方が重要です。</p>
@@ -334,7 +320,6 @@ java -cp out:lib/sample.jar app.Main</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>Java 11以降の source-file mode との区別</h2>
 <p>Java 11以降では、単一ソースファイルを直接実行する <strong>source-file mode</strong> があります。</p>
@@ -352,7 +337,6 @@ java -cp out:lib/sample.jar app.Main</code></pre>
 </table>
 <div class="article-callout strong"><strong>雑に覚えるな:</strong> 「<code>java Sample.java</code> は常に不可能」と覚えるのは危険です。Java 11以降では可能なケースがあります。ただし、コンパイル済みclassの起動問題では <code>java Sample</code> が基本です。</div>
 </section>
-
 <section class="article-section">
 <h2>パッケージ宣言とディレクトリの注意</h2>
 <p><code>package</code> 宣言はソースファイルの先頭に書きます。コメント以外を <code>package</code> より前に置くとコンパイルエラーです。</p>
@@ -366,7 +350,6 @@ package ex;
 public class Sample { }</code></pre>
 <p>また、<code>package ex;</code> のクラスを実行するときは、JVMには <code>ex.Sample</code> として見えます。ソースがどこに置かれていたかではなく、コンパイル後の <code>.class</code> がクラスパス上でどう配置されているかが重要です。</p>
 </section>
-
 <section class="article-section">
 <h2>起動引数 args の基本</h2>
 <p><code>java Sample A B C</code> のように実行すると、<code>args</code> は長さ3の配列になります。</p>
@@ -391,7 +374,6 @@ A</code></pre>
 </table>
 <div class="article-callout">引数なしで <code>args[0]</code> を読むと、コンパイルエラーではなく <code>ArrayIndexOutOfBoundsException</code> です。コンパイル時には実行時引数の数は決まりません。</div>
 </section>
-
 <section class="article-section">
 <h2>試験での切り分けテンプレート</h2>
 <p>選択肢を見る前に、次のテンプレートで判定します。</p>
@@ -406,7 +388,6 @@ A</code></pre>
 9. 起動引数を読む箇所で実行時例外が起きないか</code></pre>
 <p>この順番で見ると、コンパイルエラー、起動失敗、実行時例外、正常出力を混ぜずに判断できます。</p>
 </section>
-
 <section class="article-section mini-drill-section">
 <h2>ミニドリル</h2>
 <p>次のコマンドが成功するか、理由付きで判定してください。</p>
@@ -429,7 +410,6 @@ public class Main {
 </table>
 <div class="article-callout">この単元で必要なのは暗記ではありません。<code>javac</code> はソース、<code>java</code> はクラス名、<code>-d</code> は出力先、<code>-cp</code> は検索場所。この4つに分解してください。</div>
 </section>
-
 <p><a class="button" href="../index.html">学習記事一覧へ戻る</a></p>
 </article>
 <section class="study-route-panel related-practice-panel">

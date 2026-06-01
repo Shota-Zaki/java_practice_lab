@@ -20,7 +20,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>ジェネリクスとワイルドカード</h1>
 <p class="lead">Goldで落とされるのは、<code>&lt;T&gt;</code>の記号そのものではなく、「どの型として読めるか」「何を追加できるか」「実行時には型情報が残るのか」を区別できていない場合です。</p>
-
 <section class="article-section">
 <h2>最初に固定する結論</h2>
 <p>ジェネリクスは、主にコンパイル時の型安全性を高める仕組みです。実行時には型引数の多くは消去されます。そのため、<code>List&lt;String&gt;</code>と<code>List&lt;Integer&gt;</code>を実行時に完全に別物として扱えるわけではありません。</p>
@@ -32,7 +31,6 @@
 </tbody></table>
 <div class="article-callout">Silverまでの感覚で「継承関係があるから代入できるはず」と考えると、ジェネリクスで崩れます。<code>String extends Object</code> でも、<code>List&lt;String&gt;</code> は <code>List&lt;Object&gt;</code> のサブタイプではありません。</div>
 </section>
-
 <section class="article-section">
 <h2>基本形：型を固定すると、取り出し時のキャストが不要になる</h2>
 <p>ジェネリクスを使わない場合、コレクションから取り出す値は基本的に<code>Object</code>として扱われます。型を指定すると、コンパイラが「このListにはStringだけを入れる」という前提でチェックできます。</p>
@@ -52,7 +50,6 @@ public class Main {
 <section class="article-section">
 <p>この時点で重要なのは、<code>List&lt;String&gt;</code>は「String専用のListクラスが新しく作られる」という意味ではないことです。コンパイル時に型チェックされ、必要ならキャストが挿入される、と考える方が正確です。</p>
 </section>
-
 <section class="article-section">
 <h2>raw type：コンパイルは通るが、型安全性を捨てている</h2>
 <p><code>List</code> のように型引数を書かないものをraw typeと呼びます。古いJavaとの互換性のために残っていますが、Goldでは「警告は出るがコンパイルは通る」「実行時にClassCastExceptionになる」という形で出されます。</p>
@@ -75,7 +72,6 @@ public class Main {
 <section class="article-section">
 <p>ここで雑に「raw typeはコンパイルエラー」と覚えるのは誤りです。多くの場合は警告です。ただし、型安全性が壊れるので、実行時に落ちる可能性があります。</p>
 </section>
-
 <section class="article-section">
 <h2>ジェネリクスの不変性：List&lt;String&gt;はList&lt;Object&gt;ではない</h2>
 <p>配列には共変性がありますが、ジェネリクスは基本的に不変です。ここを間違えると、ワイルドカードの必要性も理解できません。</p>
@@ -93,7 +89,6 @@ public class Main {
 <section class="article-section">
 <p>この代入が許されると、<code>List&lt;String&gt;</code>の中に<code>Integer</code>を入れられてしまいます。これを防ぐために、<code>List&lt;String&gt;</code>は<code>List&lt;Object&gt;</code>として扱えません。</p>
 </section>
-
 <section class="article-section">
 <h2>配列は共変：だから実行時例外が起きる</h2>
 <p>対比として配列を見ます。<code>String[]</code>は<code>Object[]</code>に代入できます。しかし、不正な値を入れようとすると実行時に<code>ArrayStoreException</code>が発生します。</p>
@@ -109,7 +104,6 @@ public class Main {
 <section class="article-section">
 <p>配列は実行時に要素型を知っています。一方、ジェネリクスは型消去されます。この違いが、配列とジェネリクスの挙動差です。</p>
 </section>
-
 <section class="article-section">
 <h2>List&lt;?&gt;：何のListか不明</h2>
 <p><code>List&lt;?&gt;</code>は「何かの型のList」です。任意の型のListを受け取れますが、要素型が不明なので、具体的な値は追加できません。安全に取り出せる型は<code>Object</code>です。</p>
@@ -133,7 +127,6 @@ public class Main {
 <section class="article-section">
 <p><code>List&lt;?&gt;</code>に<code>null</code>は追加できます。これは<code>null</code>がどの参照型にも代入可能だからです。ただし、<code>List.of()</code>で作ったListは変更不可なので、実行時には<code>UnsupportedOperationException</code>になります。コンパイル可否と実行時可否を分けて見てください。</p>
 </section>
-
 <section class="article-section">
 <h2>? extends T：読む側に強い</h2>
 <p><code>? extends Number</code>は「NumberまたはNumberのサブタイプの何か」です。中身は<code>Integer</code>かもしれないし、<code>Double</code>かもしれません。取り出すときは少なくとも<code>Number</code>として扱えますが、追加は基本的にできません。</p>
@@ -161,7 +154,6 @@ public class Main {
 <section class="article-section">
 <p>追加できない理由は単純です。仮に実体が<code>List&lt;Double&gt;</code>だった場合、<code>Integer</code>を追加できたら壊れます。<code>? extends Number</code>は「Numberとして読める」が、「Numberを入れられる」ではありません。</p>
 </section>
-
 <section class="article-section">
 <h2>? super T：書く側に強い</h2>
 <p><code>? super Integer</code>は「IntegerまたはIntegerのスーパータイプの何か」です。実体は<code>List&lt;Integer&gt;</code>かもしれないし、<code>List&lt;Number&gt;</code>や<code>List&lt;Object&gt;</code>かもしれません。どの場合でも<code>Integer</code>は追加できます。</p>
@@ -186,7 +178,6 @@ public class Main {
 <section class="article-section">
 <p>取り出すときに<code>Integer</code>として扱えないのは、実体が<code>List&lt;Object&gt;</code>かもしれないからです。<code>Object</code>としてなら安全です。</p>
 </section>
-
 <section class="article-section">
 <h2>PECS：Producer extends, Consumer super</h2>
 <p>PECSは暗記語ではありますが、丸暗記だけだと選択肢で崩れます。値を取り出して使うだけなら<code>extends</code>、値を受け取らせるなら<code>super</code>です。</p>
@@ -196,7 +187,6 @@ public class Main {
 <tr><td>読み書き両方</td><td><code>List&lt;T&gt;</code></td><td><code>T</code>として読め、<code>T</code>を追加できる</td><td>受け取れる型の幅は狭い</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>copyメソッドで判断する</h2>
 <p>典型例は、srcから読み、destへ書くメソッドです。srcはproducerなので<code>extends</code>、destはconsumerなので<code>super</code>を使います。</p>
@@ -221,7 +211,6 @@ public class Main {
 <section class="article-section">
 <p>この形はGoldで頻出です。<code>List&lt;? extends T&gt;</code>は取り出し、<code>List&lt;? super T&gt;</code>は追加、と役割で読むべきです。</p>
 </section>
-
 <section class="article-section">
 <h2>型パラメータ：class Box&lt;T&gt;</h2>
 <p>クラスに型パラメータを持たせると、インスタンスごとに扱う型を固定できます。</p>
@@ -252,7 +241,6 @@ class Main {
 <section class="article-section">
 <p><code>T</code>は型名ではなく、型を受け取るための仮の名前です。<code>Box&lt;String&gt;</code>なら、そのインスタンスでは<code>T</code>が<code>String</code>として扱われます。</p>
 </section>
-
 <section class="article-section">
 <h2>ジェネリックメソッド：戻り値や引数だけに型変数を使う</h2>
 <p>クラス全体ではなく、メソッド単位で型パラメータを宣言できます。戻り値型の前に<code>&lt;T&gt;</code>を書く点が試験で問われます。</p>
@@ -271,7 +259,6 @@ class Main {
 <section class="article-section">
 <p><code>static T pick(...)</code>のように、<code>&lt;T&gt;</code>なしでいきなり<code>T</code>を使うことはできません。メソッドの型パラメータは戻り値型の前に宣言します。</p>
 </section>
-
 <section class="article-section">
 <h2>staticメンバでTを使えない</h2>
 <p>クラスの型パラメータは、インスタンスに紐づく型情報として考えます。staticメンバはインスタンスに属さないため、クラスの型パラメータ<code>T</code>を直接使えません。</p>
@@ -288,7 +275,6 @@ class Main {
 <section class="article-section">
 <p>ただし、staticメソッドが独自に<code>&lt;U&gt;</code>を宣言することはできます。クラスの<code>T</code>と、メソッドの<code>U</code>は別物です。</p>
 </section>
-
 <section class="article-section">
 <h2>上限境界：T extends Number</h2>
 <p><code>&lt;T extends Number&gt;</code>と書くと、<code>T</code>として使える型を<code>Number</code>以下に制限できます。これにより、<code>doubleValue()</code>など<code>Number</code>のメソッドを呼べます。</p>
@@ -306,7 +292,6 @@ class Main {
 <section class="article-section">
 <p>ここでの<code>extends</code>は、クラス継承だけでなくインタフェース実装にも使います。型パラメータの境界では、インタフェースでも<code>extends</code>と書きます。</p>
 </section>
-
 <section class="article-section">
 <h2>複数境界：クラスを先に書く</h2>
 <p>複数の境界を指定する場合は<code>&amp;</code>でつなぎます。クラスとインタフェースを混ぜる場合、クラスは最初に書く必要があります。</p>
@@ -332,7 +317,6 @@ class Util {
 <section class="article-section">
 <p>境界にクラスを複数指定することはできません。Javaはクラスの多重継承を許可しないためです。</p>
 </section>
-
 <section class="article-section">
 <h2>Comparable&lt;? super T&gt; の意味</h2>
 <p>Goldでは<code>Comparable&lt;? super T&gt;</code>のような形が出ます。これは「T自身、またはTのスーパータイプを比較対象にできる型」を受け入れるための書き方です。</p>
@@ -365,7 +349,6 @@ public class Main {
 <section class="article-section">
 <p>最初から完全理解しようとしすぎる必要はありません。試験では、<code>Comparable&lt;T&gt;</code>よりも<code>Comparable&lt;? super T&gt;</code>の方が受け入れ範囲が広い、と読めれば十分な場面が多いです。</p>
 </section>
-
 <section class="article-section">
 <h2>型推論とダイヤモンド演算子</h2>
 <p><code>new ArrayList&lt;&gt;()</code>の<code>&lt;&gt;</code>はダイヤモンド演算子です。左辺や文脈から型を推論します。</p>
@@ -388,7 +371,6 @@ public class Main {
 <section class="article-section">
 <p><code>var</code>は「何でもよい型」ではありません。右辺から具体的な型が推論されます。<code>var b = new ArrayList&lt;&gt;();</code>のように型情報が少ないと、意図より広い型になることがあります。</p>
 </section>
-
 <section class="article-section">
 <h2>型消去：実行時にはList&lt;String&gt;かどうかを直接判定できない</h2>
 <p>ジェネリクスの型引数は、基本的にコンパイル後に消去されます。そのため、実行時に<code>List&lt;String&gt;</code>かどうかを<code>instanceof</code>で直接判定できません。</p>
@@ -409,7 +391,6 @@ public class Main {
 <section class="article-section">
 <p><code>List&lt;?&gt;</code>はreifiableな形として扱えるため<code>instanceof</code>に使えます。一方、<code>List&lt;String&gt;</code>は実行時に型引数を確認できないため使えません。</p>
 </section>
-
 <section class="article-section">
 <h2>型消去でオーバーロードできない例</h2>
 <p>型引数だけが異なるメソッドは、型消去後に同じシグネチャになるため、同時に定義できません。</p>
@@ -424,7 +405,6 @@ class Sample {
 <section class="article-section">
 <p>「引数のジェネリクス部分が違うからオーバーロードできる」と考えるのは誤りです。型消去後に同じ形になるかを見ます。</p>
 </section>
-
 <section class="article-section">
 <h2>new T() はできない</h2>
 <p>型パラメータ<code>T</code>は実行時に具体的な型として残るとは限りません。そのため、<code>new T()</code>はできません。</p>
@@ -448,7 +428,6 @@ class Sample {
         return type;
     }
 }</code></pre>
-
 <section class="article-section">
 <h2>new T[] もできない</h2>
 <p>型パラメータの配列を直接作ることもできません。</p>
@@ -459,7 +438,6 @@ class Sample {
 <section class="article-section">
 <p>配列は実行時に要素型を保持します。しかし、<code>T</code>は型消去されるため、実行時にどの型の配列を作ればよいか確定できません。</p>
 </section>
-
 <section class="article-section">
 <h2>List&lt;String&gt;[] は作れない</h2>
 <p>ジェネリック型の配列生成も代表的な不可パターンです。</p>
@@ -478,7 +456,6 @@ class Main {
 <section class="article-section">
 <p><code>List&lt;?&gt;[]</code>は作れますが、実務でも試験でも乱用する形ではありません。「型引数付きの配列生成は危険」と押さえてください。</p>
 </section>
-
 <section class="article-section">
 <h2>プリミティブ型は型引数に使えない</h2>
 <p>型引数に使えるのは参照型です。<code>List&lt;int&gt;</code>は書けません。必要ならラッパークラスを使います。</p>
@@ -495,7 +472,6 @@ public class Main {
         System.out.println(n);
     }
 }</code></pre>
-
 <section class="article-section">
 <h2>ジェネリック例外クラスは作れない</h2>
 <p><code>Throwable</code>のサブクラスをジェネリックにすることはできません。</p>
@@ -505,7 +481,6 @@ public class Main {
 <section class="article-section">
 <p>例外処理は実行時の型判定とcatchの仕組みに強く関係します。型消去されるジェネリック型を例外型にすると、catch判定と整合しないため禁止されています。</p>
 </section>
-
 <section class="article-section">
 <h2>ワイルドカードに値を戻すときの注意</h2>
 <p><code>List&lt;? extends Number&gt;</code>から取り出した値は<code>Number</code>として受け取れます。しかし<code>Integer</code>としては受け取れません。</p>
@@ -521,7 +496,6 @@ class Main {
 <section class="article-section">
 <p>実体が<code>List&lt;Integer&gt;</code>なら動きそうに見えますが、メソッドの中では<code>List&lt;Double&gt;</code>かもしれません。宣言型で安全に言えることだけが許可されます。</p>
 </section>
-
 <section class="article-section">
 <h2>superの読み取りはObjectまで</h2>
 <p><code>List&lt;? super Integer&gt;</code>は<code>Integer</code>を追加できますが、取り出すときは<code>Object</code>です。</p>
@@ -539,7 +513,6 @@ class Main {
 <section class="article-section">
 <p>実体が<code>List&lt;Object&gt;</code>なら、中に<code>String</code>が入っている可能性もあります。そのため、<code>Integer</code>や<code>Number</code>として取り出すことは安全ではありません。</p>
 </section>
-
 <section class="article-section">
 <h2>メソッド引数の選び方</h2>
 <p>メソッドを設計する側の視点で見ると、型の幅を広げるためにワイルドカードを使います。</p>
@@ -550,7 +523,6 @@ class Main {
 <tr><td>型を問わずサイズだけ見る</td><td><code>void size(List&lt;?&gt; list)</code></td><td>要素型を使わないため最も広い</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>ワイルドカードと継承の代入パターン</h2>
 <p>代入可否は、右辺の型が左辺の条件を満たすかで判定します。</p>
@@ -577,7 +549,6 @@ class Main {
 <section class="article-section">
 <p><code>? extends Number</code>は上限がNumberなので、<code>List&lt;Object&gt;</code>は範囲外です。<code>? super Integer</code>はInteger以上の型なので、<code>Integer</code>, <code>Number</code>, <code>Object</code>が入ります。</p>
 </section>
-
 <section class="article-section">
 <h2>戻り値にワイルドカードを使うと、呼び出し側が扱いにくい</h2>
 <p>戻り値を<code>List&lt;? extends Number&gt;</code>にすると、呼び出し側は読み取りには使えますが、追加できません。</p>
@@ -599,7 +570,6 @@ class Main {
 <section class="article-section">
 <p>API設計としては、戻り値にワイルドカードを多用すると使いにくくなります。試験では「コンパイルはできるが、呼び出し側で操作が制限される」と読めば十分です。</p>
 </section>
-
 <section class="article-section">
 <h2>キャプチャ：List&lt;?&gt;の要素を同じListに戻せないことがある</h2>
 <p><code>List&lt;?&gt;</code>から取り出した値は<code>Object</code>として見えます。しかし、その<code>Object</code>を同じListに戻すことはできません。</p>
@@ -615,7 +585,6 @@ class Main {
 <section class="article-section">
 <p>人間から見ると「同じListから取り出した値を戻すだけ」に見えます。しかしコンパイラは、<code>Object</code>を未知の要素型のListに安全に戻せるとは判断しません。</p>
 </section>
-
 <section class="article-section">
 <h2>helperメソッドで型を捕まえる</h2>
 <p>ワイルドカードの型をメソッド型パラメータとして捕まえると、同じ型として扱えることがあります。</p>
@@ -635,7 +604,6 @@ class Main {
 <section class="article-section">
 <p>これはGoldで深く問われる頻度は高くありませんが、<code>?</code>は「完全に何でもあり」ではなく「未知の具体型」と考えると理解しやすくなります。</p>
 </section>
-
 <section class="article-section">
 <h2>ジェネリックvarargsとheap pollution</h2>
 <p>可変長引数は内部的に配列として扱われます。ジェネリック型と配列は相性が悪いため、警告やheap pollutionの話が出ます。</p>
@@ -659,7 +627,6 @@ class Main {
 <section class="article-section">
 <p><code>@SafeVarargs</code>は「このvarargsメソッドは危険な操作をしていない」と表明するアノテーションです。使える場所は制限されます。staticメソッド、finalメソッド、privateメソッド、コンストラクタなどが代表です。</p>
 </section>
-
 <section class="article-section">
 <h2>不可能パターン一覧</h2>
 <table class="study-table ref-table"><thead><tr><th>コード</th><th>結果</th><th>理由</th></tr></thead><tbody>
@@ -674,7 +641,6 @@ class Main {
 <tr><td><code>void m(List&lt;String&gt;)</code> と <code>void m(List&lt;Integer&gt;)</code></td><td>不可</td><td>型消去後に同じシグネチャ</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>よくある選択肢の切り方</h2>
 <table class="study-table ref-table"><thead><tr><th>選択肢の主張</th><th>判定</th><th>理由</th></tr></thead><tbody>
@@ -686,7 +652,6 @@ class Main {
 <tr><td><code>obj instanceof List&lt;?&gt;</code>は使える</td><td>正しい</td><td>非境界ワイルドカードは判定可能</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>ミニ演習1：これはコンパイルできるか</h2>
 </section>
@@ -702,7 +667,6 @@ class Main {
 <section class="article-section">
 <p>コメントを外さなければコンパイルできます。<code>get</code>の戻り値は<code>Number</code>として扱えます。<code>null</code>の追加はコンパイル上は可能です。ただし<code>list.add(1)</code>は不可です。</p>
 </section>
-
 <section class="article-section">
 <h2>ミニ演習2：これは何が出るか</h2>
 </section>
@@ -720,7 +684,6 @@ public class Main {
 <section class="article-section">
 <p>コンパイル時にはunchecked warningが出ますが、コンパイル自体は通る可能性があります。実行すると、<code>Integer</code>を<code>String</code>として取り出すところで<code>ClassCastException</code>になります。</p>
 </section>
-
 <section class="article-section">
 <h2>ミニ演習3：extendsとsuperの代入</h2>
 </section>
@@ -742,7 +705,6 @@ class Main {
 <section class="article-section">
 <p><code>x = a</code>はOKです。<code>x = c</code>は<code>Object</code>が<code>Number</code>以下ではないため不可です。<code>y = c</code>はOKで、<code>Integer</code>を追加できます。</p>
 </section>
-
 <section class="article-section">
 <h2>試験での解き方</h2>
 <ol class="article-list">
@@ -755,7 +717,6 @@ class Main {
 </ol>
 <div class="article-callout">Goldのジェネリクスは、記号の意味を雰囲気で読むと落ちます。毎回「この変数から何型として取り出せるか」「この変数へ何型を追加できるか」に分解してください。</div>
 </section>
-
 </article>
 </main>
 </div>

@@ -38,7 +38,7 @@
 Item b = a;</code></pre><p>このとき、ヒープ上に<code>Item</code>オブジェクトが1つ作られる。スタック上の<code>a</code>と<code>b</code>は、その同じオブジェクトを指す参照を持つ。</p><pre><code>b = new Item();</code></pre><p>ここで<code>b</code>だけが新しい<code>Item</code>を指すようになる。<code>a</code>が指す先は変わらない。</p></section><section class="card lesson-section"><h2>プリミティブ型は値のコピー</h2><pre><code>int a = 10;
 int b = a;
 b = 20;
-System.out.println(a); // 10</code></pre><p><code>int</code>では値がコピーされる。<code>b</code>を変えても<code>a</code>は変わらない。参照型の「同じオブジェクトを見ている」動きとは違う。</p></section><section class="card lesson-section"><h2>ガベージコレクションの入口</h2><p>どこからも参照されなくなったオブジェクトは、将来的にガベージコレクションの対象になる。いつ回収されるかをプログラマが正確に決めるわけではない。</p><pre><code>Object a = new Object();
+System.out.println(a); // 10</code></pre><p><code>int</code>では値がコピーされる。<code>b</code>を変えても<code>a</code>は変わらない。参照型の「同じオブジェクトを見ている」動きとは一致しない。</p></section><section class="card lesson-section"><h2>ガベージコレクションの入口</h2><p>どこからも参照されなくなったオブジェクトは、将来的にガベージコレクションの対象になる。いつ回収されるかをプログラマが正確に決めるわけではない。</p><pre><code>Object a = new Object();
 a = null; // さきほどのObjectは参照されなくなる</code></pre></section><section class="card lesson-section"><h2>手を動かすミニ課題</h2><p>次のコードで、最後に参照されていないオブジェクトがどれかを考える。</p><pre><code>Object a = new Object(); // Object#1
 Object b = new Object(); // Object#2
 Object c = a;
@@ -47,7 +47,7 @@ b = c;</code></pre></section><section class="card lesson-section quality-section
 Object b = new Object();
 Object c = a;
 a = null;
-b = null;</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>1つ目のObject</td><td><code>c</code>がまだ参照している</td><td>GC対象ではない</td></tr><tr><td>2つ目のObject</td><td><code>b</code>がnullになり参照なし</td><td>GC対象</td></tr><tr><td>結論</td><td>対象は2つ目だけ</td><td>ただし回収タイミングは未定</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong><code>null</code>にすると必ずすぐメモリ解放、は違う</strong><p>GC対象になるだけ。実際の回収タイミングはJVMが決める。</p></div><div class="mistake-callout"><strong>参照をコピーするとオブジェクトも増える、は違う</strong><p>増えるのは参照を持つ変数。オブジェクト本体は増えない。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードで、最後にGC対象になる可能性があるのはどちらのオブジェクトか。</p><p class="code-caption">確認問題</p><pre><code>Object x = new Object(); // 1つ目
+b = null;</code></pre><div class="table-scroll"><table class="study-table"><thead><tr><th>確認する点</th><th>このコードでの判断</th><th>結論</th></tr></thead><tbody><tr><td>1つ目のObject</td><td><code>c</code>がまだ参照している</td><td>GC対象ではない</td></tr><tr><td>2つ目のObject</td><td><code>b</code>がnullになり参照なし</td><td>GC対象</td></tr><tr><td>結論</td><td>対象は2つ目だけ</td><td>ただし回収タイミングは未定</td></tr></tbody></table></div></section><section class="card lesson-section"><h2>よくある誤解を潰す</h2><div class="mistake-callout"><strong>nullにしてもすぐメモリ解放されるとは限らない</strong><p>GC対象になるだけ。実際の回収タイミングはJVMが決める。</p></div><div class="mistake-callout"><strong>参照をコピーしてもオブジェクト本体は増えない</strong><p>増えるのは参照を持つ変数。オブジェクト本体は増えない。</p></div></section><section class="card lesson-section"><h2>確認問題：答えまで言語化する</h2><p>次のコードで、最後にGC対象になる可能性があるのはどちらのオブジェクトか。</p><p class="code-caption">確認問題</p><pre><code>Object x = new Object(); // 1つ目
 Object y = new Object(); // 2つ目
 x = y;
 y = null;</code></pre><details class="answer-panel"><summary>考え方と答えを見る</summary><p>1つ目のオブジェクトがGC対象になる。</p><p><code>x = y</code>で<code>x</code>は2つ目のオブジェクトを参照するようになる。この時点で1つ目への参照がなくなる。<code>y = null</code>後も<code>x</code>が2つ目を参照しているため、2つ目は対象ではない。</p></details></section><section class="card lesson-section flow-section"><h2>理解の流れを整える補強</h2>

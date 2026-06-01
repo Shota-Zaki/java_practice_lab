@@ -20,7 +20,6 @@
 <article class="content-page long-article gold-deep-article">
 <h1>Stream API完全整理</h1>
 <p class="lead">GoldでStreamを落とす原因は、メソッド名の暗記不足ではありません。型の流れ、評価タイミング、終端操作の戻り値、Collectorの戻り値を追えていないことです。ここではコードを読む順番で整理します。</p>
-
 <section class="article-section">
 <h2>最初に見るべき4点</h2>
 <p>Stream問題は、次の順番で読むと崩れにくくなります。</p>
@@ -31,7 +30,6 @@
 <li>実際に何個の要素が評価されるか。遅延評価と短絡操作を確認する。</li>
 </ol>
 </section>
-
 <section class="article-section">
 <h2>Streamはデータそのものではなく、処理の流れ</h2>
 <p><code>Stream</code>はコレクションではありません。要素を保持する箱ではなく、要素を流して処理するためのパイプラインです。そのため、基本的に同じStreamを2回使うことはできません。</p>
@@ -40,7 +38,6 @@
 System.out.println(stream.count());
 System.out.println(stream.count()); // IllegalStateException</code></pre>
 <div class="article-callout">一度終端操作を実行したStreamは消費済みです。2回目の終端操作は実行時例外です。これはコンパイルエラーではありません。</div>
-
 <section class="article-section">
 <h2>Streamの作り方</h2>
 <table class="study-table ref-table"><thead><tr><th>作り方</th><th>例</th><th>要素型</th><th>注意点</th></tr></thead><tbody>
@@ -52,7 +49,6 @@ System.out.println(stream.count()); // IllegalStateException</code></pre>
 <tr><td><code>Stream.iterate</code></td><td><code>Stream.iterate(1, n -&gt; n + 1)</code></td><td>初期値の型</td><td>無限Stream。Java 9以降は条件付きiterateもある。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>中間操作と終端操作</h2>
 <p>中間操作はStreamを返してパイプラインを続けます。終端操作はStream以外の結果を返すか、副作用を実行してパイプラインを終了します。</p>
@@ -69,7 +65,6 @@ System.out.println(stream.count()); // IllegalStateException</code></pre>
 <tr><td>終端操作</td><td><code>collect</code></td><td>Collector次第</td><td>List、Set、Map、Stringなどに集約。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>遅延評価: 中間操作だけでは実行されない</h2>
 <p>中間操作は「予約」されるだけです。終端操作が呼ばれて初めて、必要な要素が上流から流れます。</p>
@@ -80,7 +75,6 @@ System.out.println(stream.count()); // IllegalStateException</code></pre>
 // ここでは何も表示されない
 s.count(); // 終端操作</code></pre>
 <p>ただし、<code>count</code>はサイズが既知のソースでは最適化され、<code>peek</code>が実行されないことがあります。試験では<code>peek</code>の副作用に頼る読み方は危険です。<code>peek</code>は「必ず表示確認に使える操作」と雑に覚えるべきではありません。</p>
-
 <section class="article-section">
 <h2>filter・map・peekの実行順</h2>
 <p>Streamは「全要素にfilterを全部かけてからmap」ではなく、基本的には要素ごとにパイプラインを流れます。</p>
@@ -97,7 +91,6 @@ s.count(); // 終端操作</code></pre>
     .forEach(s -&gt; System.out.print("E" + s + " "));
 
 // Fa Fbb Mbb EBB Fccc Mccc ECCC</code></pre>
-
 <section class="article-section">
 <h2>短絡操作: 全要素を評価しないことがある</h2>
 <p><code>anyMatch</code>、<code>allMatch</code>、<code>noneMatch</code>、<code>findFirst</code>、<code>limit</code>は、結果が確定した時点で処理を止めることがあります。</p>
@@ -113,7 +106,6 @@ s.count(); // 終端操作</code></pre>
 <tr><td><code>noneMatch</code></td><td><code>true</code></td><td>trueになる要素が見つかった時点で終了。</td></tr>
 <tr><td><code>findFirst</code></td><td><code>Optional.empty()</code></td><td>最初の要素が見つかれば終了。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>mapとflatMapの違い</h2>
 <p><code>map</code>は1要素を1つの結果に変換します。<code>flatMap</code>は1要素をStreamに変換し、それらを1本のStreamに平らにします。</p>
@@ -128,7 +120,6 @@ var b = list.stream()
     .flatMap(s -&gt; Arrays.stream(s.split(",")));
 // Stream&lt;String&gt;</code></pre>
 <div class="article-callout">flatMapのラムダは、値そのものではなくStreamを返します。<code>.flatMap(s -&gt; s.toUpperCase())</code> のようなコードは戻り値型が合わずコンパイルエラーです。</div>
-
 <section class="article-section">
 <h2>プリミティブStream: Stream&lt;Integer&gt;とは別物</h2>
 <p><code>IntStream</code>、<code>LongStream</code>、<code>DoubleStream</code>は、<code>Stream&lt;Integer&gt;</code>などとは別の型です。使えるメソッドと戻り値が変わります。</p>
@@ -145,7 +136,6 @@ var b = list.stream()
     .sum(); // 30
 
 OptionalDouble avg = IntStream.of(10, 20, 30).average();</code></pre>
-
 <section class="article-section">
 <h2>reduceの3パターン</h2>
 <p><code>reduce</code>は要素を1つの値へ畳み込みます。オーバーロードごとに戻り値が違います。</p>
@@ -166,7 +156,6 @@ int c = Stream.of("A", "BB")
         (sum, s) -&gt; sum + s.length(),
         (x, y) -&gt; x + y); // 3</code></pre>
 <div class="article-callout">3引数reduceは、逐次Streamではcombinerが目立たないことがあります。しかしparallelではcombinerが重要です。試験では「accumulatorとcombinerの型が合うか」を優先して見ます。</div>
-
 <section class="article-section">
 <h2>collectとCollectors</h2>
 <p><code>collect</code>は、Streamの要素をList、Set、Map、Stringなどへ集約します。戻り値は指定したCollectorで決まります。</p>
@@ -180,7 +169,6 @@ int c = Stream.of("A", "BB")
 <tr><td><code>Collectors.partitioningBy()</code></td><td><code>Map&lt;Boolean, ...&gt;</code></td><td>キーは<code>true</code>と<code>false</code>。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>toList()とCollectors.toList()</h2>
 <p>Java 16以降はStreamに<code>toList()</code>があります。ただし、試験やコード読解では<code>collect(Collectors.toList())</code>との違いを雑に扱わないでください。</p>
@@ -189,7 +177,6 @@ int c = Stream.of("A", "BB")
 List&lt;String&gt; b = Stream.of("A", "B").collect(Collectors.toList());</code></pre>
 <p>Java Gold SE 11だけを見る場合、<code>Stream.toList()</code>はJava 16以降のAPIなので対象外です。SE 11では基本的に<code>collect(Collectors.toList())</code>で読みます。SE 17範囲まで見るなら、<code>Stream.toList()</code>との違いも押さえます。</p>
 <p><code>Stream.toList()</code>の戻り値は変更不可です。<code>a.add("C")</code>は実行時に<code>UnsupportedOperationException</code>です。<code>Collectors.toList()</code>は変更可能なListを返すことが多いですが、仕様として具体的な型や変更可能性に依存すべきではありません。</p>
-
 <section class="article-section">
 <h2>toMapは重複キーで落ちる</h2>
 <p><code>Collectors.toMap</code>はキーが重複すると、マージ関数を指定していない限り実行時例外です。</p>
@@ -207,7 +194,6 @@ List&lt;String&gt; b = Stream.of("A", "B").collect(Collectors.toList());</code><
         (oldValue, newValue) -&gt; oldValue + newValue
     ));
 // {a=8, b=6} のように集約</code></pre>
-
 <section class="article-section">
 <h2>groupingByは値側を見る</h2>
 <p><code>groupingBy</code>は、分類関数だけなら <code>Map&lt;K, List&lt;T&gt;&gt;</code> です。下流Collectorを指定すると値側の型が変わります。</p>
@@ -225,7 +211,6 @@ var result = Stream.of(
 
 // Map&lt;String, Integer&gt;
 // {book=2500, food=500}</code></pre>
-
 <section class="article-section">
 <h2>joiningはString専用ではなくCharSequence系</h2>
 <p><code>Collectors.joining</code>は、Streamの要素が<code>CharSequence</code>系のときに使います。数値Streamにそのまま使うのは不可能です。</p>
@@ -238,7 +223,6 @@ String nums = IntStream.of(1, 2, 3)
     .mapToObj(String::valueOf)
     .collect(Collectors.joining("-"));
 // 1-2-3</code></pre>
-
 <section class="article-section">
 <h2>sortedとComparator</h2>
 <p><code>sorted()</code>は自然順序で並べます。要素が<code>Comparable</code>でない場合はコンパイルは通っても実行時に<code>ClassCastException</code>になることがあります。比較基準が必要なら<code>Comparator</code>を渡します。</p>
@@ -252,7 +236,6 @@ var names = Stream.of(
     .map(User::name)
     .toList();
 // [A, B]</code></pre>
-
 <section class="article-section">
 <h2>forEachとforEachOrdered</h2>
 <p>逐次Streamでは同じに見えることが多いですが、parallel Streamでは<code>forEach</code>の実行順は保証されません。順序が必要なら<code>forEachOrdered</code>です。</p>
@@ -262,7 +245,6 @@ var names = Stream.of(
 
 List.of(1, 2, 3, 4).parallelStream()
     .forEachOrdered(System.out::print); // encounter orderを維持</code></pre>
-
 <section class="article-section">
 <h2>無限Streamはlimitなしだと終わらない</h2>
 <p><code>generate</code>や<code>iterate</code>は無限Streamを作ります。<code>limit</code>や短絡終端操作がないと、処理が終わりません。</p>
@@ -274,7 +256,6 @@ List.of(1, 2, 3, 4).parallelStream()
 boolean found = Stream.iterate(1, n -&gt; n + 1)
     .anyMatch(n -&gt; n == 5); // trueで停止</code></pre>
 <div class="article-callout">無限Streamに<code>sorted()</code>のように全要素を必要とする操作を組み合わせると、結果が出ません。短絡するかどうかを必ず見ます。</div>
-
 <section class="article-section">
 <h2>Optionalを返す終端操作</h2>
 <p><code>findFirst</code>、<code>findAny</code>、<code>max</code>、<code>min</code>、初期値なし<code>reduce</code>は、値が存在しない可能性があるため<code>Optional</code>を返します。</p>
@@ -285,7 +266,6 @@ System.out.println(first.orElse("none")); // none
 String value = Stream.&lt;String&gt;empty()
     .findFirst()
     .get(); // NoSuchElementException</code></pre>
-
 <section class="article-section">
 <h2>nullとStream</h2>
 <p>Streamはnull要素を絶対に持てないわけではありません。ただし、null要素に対してメソッド参照やインスタンスメソッドを呼ぶと実行時例外になります。</p>
@@ -299,7 +279,6 @@ String value = Stream.&lt;String&gt;empty()
     .map(String::length)
     .forEach(System.out::println);
 // 1 1</code></pre>
-
 <section class="article-section">
 <h2>不可能・誤りパターン</h2>
 <table class="study-table ref-table"><thead><tr><th>コード</th><th>結果</th><th>理由</th></tr></thead><tbody>
@@ -313,7 +292,6 @@ String value = Stream.&lt;String&gt;empty()
 <tr><td><code>Optional.empty().get()</code></td><td>実行時例外</td><td>値がないOptionalから取得している。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
 <h3>問題1</h3>
@@ -341,7 +319,6 @@ System.out.println(result);</code></pre>
 System.out.println(result.get(1).size());</code></pre>
 <p><strong>答え:</strong> <code>2</code>。長さ1の要素は<code>A</code>と<code>B</code>です。分類関数だけの<code>groupingBy</code>は、値側がListになります。</p>
 </section>
-
 <section class="article-section">
 <h2>試験での最短判定手順</h2>
 <ol>
@@ -355,7 +332,6 @@ System.out.println(result.get(1).size());</code></pre>
 </section>
 <div class="article-callout">Stream APIは「何をしたいか」ではなく「各メソッドの戻り値型が次のメソッドに接続できるか」で読むべきです。雰囲気でチェーンを追うと、Goldの問題では高確率で落ちます。</div>
 </article>
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>

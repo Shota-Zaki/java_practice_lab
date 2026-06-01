@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
@@ -21,7 +22,6 @@
 <section class="content-page article-body wide-article upgraded-article">
 <h1>String・StringBuilder・配列・ArrayList完全整理</h1>
 <p class="lead">SilverのAPI問題は、暗記ではなく「不変か可変か」「配列かListか」「戻り値か副作用か」「範囲外か」を分けて読む単元です。ここを曖昧にすると、出力問題でほぼ確実に落とします。</p>
-
 <section class="article-section">
 <h2>最初に固定する判定軸</h2>
 <div class="article-card">
@@ -35,7 +35,6 @@
 </ol>
 </div>
 </section>
-
 <section class="article-section">
 <h2>Stringは不変</h2>
 <p><code>String</code> は一度作られると中身を変更できません。変更しているように見えるメソッドは、変更後の新しい <code>String</code> を返します。</p>
@@ -50,7 +49,6 @@ s = s.replace("J", "j");
 System.out.println(s); // "java"</code></pre>
 <div class="article-callout warn">試験では「メソッドを呼んだか」ではなく「戻り値を受け取ったか」を見ます。ここを飛ばすと、String問題は安定しません。</div>
 </section>
-
 <section class="article-section">
 <h2>文字列プール・new・intern</h2>
 <p>文字列リテラルは文字列プールを使います。同じリテラルは同じインスタンスを参照します。</p>
@@ -73,7 +71,6 @@ System.out.println(a == b); // true
 System.out.println(a == c); // false
 System.out.println(c == d); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>コンパイル時定数の文字列結合</h2>
 <p>リテラル同士やコンパイル時定数だけの結合は、コンパイル時に1つの文字列として扱われます。</p>
@@ -91,7 +88,6 @@ String z = x + y;
 System.out.println(z == "ab");      // false
 System.out.println(z.equals("ab")); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>Stringの頻出メソッド</h2>
 <table class="ref-table study-table"><thead><tr><th>メソッド</th><th>戻り値</th><th>要点</th><th>ひっかけ</th></tr></thead><tbody>
@@ -107,7 +103,6 @@ System.out.println(z.equals("ab")); // true</code></pre>
 <tr><td><code>equalsIgnoreCase(s)</code></td><td><code>boolean</code></td><td>大文字小文字を無視</td><td>呼び出し元がnullならNPE</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>substring・charAtの境界</h2>
 <p><code>substring(begin, end)</code> は begin以上、end未満です。<code>end</code> の文字は含みません。</p>
@@ -122,7 +117,6 @@ System.out.println(s.substring(4));    // ef</code></pre>
 // s.substring(2, 1); // StringIndexOutOfBoundsException
 // s.substring(4);    // StringIndexOutOfBoundsException</code></pre>
 </section>
-
 <section class="article-section">
 <h2>nullとString</h2>
 <p><code>+</code> による文字列連結では、<code>null</code> は文字列 <code>"null"</code> として扱われます。</p>
@@ -136,7 +130,6 @@ System.out.println("x".equals(s)); // false</code></pre>
 <pre class="article-code"><code>String s = "A";
 // s.concat(null); // NullPointerException</code></pre>
 </section>
-
 <section class="article-section">
 <h2>StringBuilderは可変</h2>
 <p><code>StringBuilder</code> は同じオブジェクトの中身を書き換えます。戻り値を受け取らなくても、変更は残ります。</p>
@@ -151,7 +144,6 @@ System.out.println(sb);      // abc
 System.out.println(r);       // abc
 System.out.println(sb == r); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>StringBuilderの頻出メソッド</h2>
 <table class="ref-table study-table"><thead><tr><th>メソッド</th><th>戻り値</th><th>動作</th><th>注意点</th></tr></thead><tbody>
@@ -165,7 +157,6 @@ System.out.println(sb == r); // true</code></pre>
 <tr><td><code>toString()</code></td><td><code>String</code></td><td>Stringへ変換</td><td>内容比較で使う</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>StringBuilderのsubstringとequals</h2>
 <p><code>StringBuilder.substring</code> は <code>String</code> を返すだけで、元のBuilderは変わりません。</p>
@@ -180,7 +171,6 @@ System.out.println(a == b);      // false
 System.out.println(a.equals(b)); // false
 System.out.println(a.toString().equals(b.toString())); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>StringBuilderのコンストラクタと容量</h2>
 <p><code>new StringBuilder(10)</code> は文字列 <code>"10"</code> を入れるのではなく、容量10の空Builderを作ります。</p>
@@ -191,7 +181,6 @@ System.out.println(sb.capacity()); // 10</code></pre>
 <pre class="article-code"><code>StringBuilder sb = new StringBuilder("10");
 System.out.println(sb.length()); // 2</code></pre>
 </section>
-
 <section class="article-section">
 <h2>配列の基本</h2>
 <p>配列は同じ型の値または参照を並べる固定長オブジェクトです。作成後に長さは変わりません。</p>
@@ -205,7 +194,6 @@ System.out.println(s.length()); // Stringはメソッド
 System.out.println(a.length);   // 配列はフィールド
 // System.out.println(a.length()); // コンパイルエラー</code></pre>
 </section>
-
 <section class="article-section">
 <h2>配列の宣言・生成・初期化</h2>
 <table class="ref-table study-table"><thead><tr><th>コード</th><th>可否</th><th>理由</th></tr></thead><tbody>
@@ -218,7 +206,6 @@ System.out.println(a.length);   // 配列はフィールド
 <tr><td><code>int[3] a;</code></td><td>NG</td><td>Javaでは宣言側に要素数を書かない</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>配列の初期値</h2>
 <table class="ref-table study-table"><thead><tr><th>型</th><th>初期値</th><th>例</th></tr></thead><tbody>
@@ -232,7 +219,6 @@ System.out.println(a.length);   // 配列はフィールド
 System.out.println(names[0]); // null
 // System.out.println(names[0].length()); // NullPointerException</code></pre>
 </section>
-
 <section class="article-section">
 <h2>配列の添字と実行時例外</h2>
 <p>添字は0から始まり、最後は <code>length - 1</code> です。</p>
@@ -242,7 +228,6 @@ System.out.println(a[2]); // 30
 // System.out.println(a[3]); // ArrayIndexOutOfBoundsException</code></pre>
 <p>添字が範囲外かどうかは、コードが実行されるまで確定しないことがあります。よって、基本的には実行時例外です。</p>
 </section>
-
 <section class="article-section">
 <h2>多次元配列とジャグ配列</h2>
 <p>Javaの多次元配列は「配列の配列」です。各行の長さが違っても構いません。</p>
@@ -257,7 +242,6 @@ System.out.println(a[1].length); // 3</code></pre>
 <pre class="article-code"><code>int[][] a = new int[2][];
 // System.out.println(a[0][0]); // NullPointerException</code></pre>
 </section>
-
 <section class="article-section">
 <h2>配列の参照コピー</h2>
 <p>配列変数には配列オブジェクトへの参照が入ります。代入すると中身をコピーするのではなく、参照をコピーします。</p>
@@ -268,7 +252,6 @@ b[0] = 99;
 System.out.println(a[0]); // 99
 System.out.println(a == b); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>拡張for文と配列</h2>
 <p>拡張for文の変数は、各要素の値または参照を受け取ります。プリミティブ配列では、ループ変数を書き換えても配列要素は変わりません。</p>
@@ -284,7 +267,6 @@ for (StringBuilder sb : arr) {
 }
 System.out.println(arr[0]); // AB</code></pre>
 </section>
-
 <section class="article-section">
 <h2>Arraysユーティリティ</h2>
 <p>配列をそのまま出力すると、内容ではなく型名とハッシュのような表示になります。内容確認には <code>Arrays.toString</code> を使います。</p>
@@ -297,7 +279,6 @@ Arrays.sort(a);
 System.out.println(Arrays.toString(a)); // [1, 2, 3]</code></pre>
 <p>多次元配列の内容表示は <code>Arrays.deepToString</code> です。</p>
 </section>
-
 <section class="article-section">
 <h2>配列の共変性とArrayStoreException</h2>
 <p>参照型配列は共変です。<code>String[]</code> は <code>Object[]</code> として扱えます。ただし、実体が <code>String[]</code> なら、<code>Integer</code> は入れられません。</p>
@@ -306,26 +287,24 @@ arr[0] = "A";
 // arr[1] = Integer.valueOf(10); // ArrayStoreException</code></pre>
 <p>これはコンパイルエラーではなく実行時例外です。宣言型だけでなく、実体型を見る必要があります。</p>
 </section>
-
 <section class="article-section">
 <h2>ArrayListの基本</h2>
 <p><code>ArrayList</code> は要素数を増減できるコレクションです。使うには通常 <code>java.util.ArrayList</code> をimportします。</p>
 <pre class="article-code"><code>import java.util.ArrayList;
 
-ArrayList<String> list = new ArrayList<>();
+ArrayList<string> list = new ArrayList&lt;&gt;();
 list.add("A");
 list.add("B");
 System.out.println(list.size()); // 2
-System.out.println(list.get(0)); // A</code></pre>
+System.out.println(list.get(0)); // A</string></code></pre>
 <p>配列は <code>length</code>、ArrayListは <code>size()</code> です。</p>
 <pre class="article-code"><code>int[] a = {1, 2, 3};
-ArrayList<Integer> list = new ArrayList<>();
+ArrayList<integer> list = new ArrayList&lt;&gt;();
 list.add(1);
 
 System.out.println(a.length);
-System.out.println(list.size());</code></pre>
+System.out.println(list.size());</integer></code></pre>
 </section>
-
 <section class="article-section">
 <h2>ArrayListの頻出メソッド</h2>
 <table class="ref-table study-table"><thead><tr><th>メソッド</th><th>戻り値</th><th>動作</th><th>注意点</th></tr></thead><tbody>
@@ -340,78 +319,73 @@ System.out.println(list.size());</code></pre>
 <tr><td><code>isEmpty()</code></td><td><code>boolean</code></td><td>空か確認</td><td><code>size()==0</code></td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>add・set・removeの戻り値</h2>
 <p>Silverでは、メソッドの副作用だけでなく戻り値も問われます。</p>
 <pre class="article-code"><code>import java.util.*;
 
-ArrayList<String> list = new ArrayList<>();
+ArrayList<string> list = new ArrayList&lt;&gt;();
 System.out.println(list.add("A")); // true
 list.add("B");
 System.out.println(list.set(0, "X")); // A
 System.out.println(list); // [X, B]
 System.out.println(list.remove(1)); // B
-System.out.println(list); // [X]</code></pre>
+System.out.println(list); // [X]</string></code></pre>
 <p><code>add(index, e)</code> は <code>void</code> なので、出力しようとするとコンパイルエラーです。</p>
-<pre class="article-code"><code>ArrayList<String> list = new ArrayList<>();
-// System.out.println(list.add(0, "A")); // コンパイルエラー</code></pre>
+<pre class="article-code"><code>ArrayList<string> list = new ArrayList&lt;&gt;();
+// System.out.println(list.add(0, "A")); // コンパイルエラー</string></code></pre>
 </section>
-
 <section class="article-section">
 <h2>remove(int) と remove(Object)</h2>
 <p><code>ArrayList</code> の最重要ひっかけです。<code>remove(1)</code> は「値1」ではなく「添字1」を削除しようとします。</p>
 <pre class="article-code"><code>import java.util.*;
 
-ArrayList<Integer> list = new ArrayList<>();
+ArrayList<integer> list = new ArrayList&lt;&gt;();
 list.add(1);
 list.add(2);
 list.add(3);
 
 System.out.println(list.remove(1)); // 2: 添字1の要素を削除
-System.out.println(list);           // [1, 3]</code></pre>
+System.out.println(list);           // [1, 3]</integer></code></pre>
 <p>値としての <code>Integer.valueOf(1)</code> を消したいなら、引数を <code>Object</code> 側に寄せます。</p>
-<pre class="article-code"><code>ArrayList<Integer> list = new ArrayList<>(List.of(1, 2, 3));
+<pre class="article-code"><code>ArrayList<integer> list = new ArrayList&lt;&gt;(List.of(1, 2, 3));
 System.out.println(list.remove(Integer.valueOf(1))); // true
-System.out.println(list); // [2, 3]</code></pre>
+System.out.println(list); // [2, 3]</integer></code></pre>
 <div class="article-callout warn">ここは暗記ではなく、オーバーロード解決です。<code>1</code> は <code>int</code> として <code>remove(int index)</code> に合いやすい。</div>
 </section>
-
 <section class="article-section">
 <h2>List.of と Arrays.asList</h2>
 <p><code>List.of</code> は変更不可のListを返します。<code>add</code> や <code>set</code> は実行時例外です。</p>
 <pre class="article-code"><code>import java.util.*;
 
-List<String> list = List.of("A", "B");
+List<string> list = List.of("A", "B");
 // list.add("C"); // UnsupportedOperationException
-// list.set(0, "X"); // UnsupportedOperationException</code></pre>
+// list.set(0, "X"); // UnsupportedOperationException</string></code></pre>
 <p><code>Arrays.asList</code> は固定サイズのListです。<code>set</code> は可能ですが、<code>add</code> / <code>remove</code> は不可です。また元の配列と連動します。</p>
 <pre class="article-code"><code>import java.util.*;
 
 String[] arr = {"A", "B"};
-List<String> list = Arrays.asList(arr);
+List<string> list = Arrays.asList(arr);
 list.set(0, "X");
 System.out.println(Arrays.toString(arr)); // [X, B]
-// list.add("C"); // UnsupportedOperationException</code></pre>
+// list.add("C"); // UnsupportedOperationException</string></code></pre>
 <p>変更可能な <code>ArrayList</code> にしたいなら、包み直します。</p>
-<pre class="article-code"><code>ArrayList<String> list = new ArrayList<>(List.of("A", "B"));
+<pre class="article-code"><code>ArrayList<string> list = new ArrayList&lt;&gt;(List.of("A", "B"));
 list.add("C");
-System.out.println(list); // [A, B, C]</code></pre>
+System.out.println(list); // [A, B, C]</string></code></pre>
 </section>
-
 <section class="article-section">
 <h2>ArrayListとnull</h2>
 <p><code>ArrayList</code> は通常 <code>null</code> を要素として持てます。</p>
-<pre class="article-code"><code>ArrayList<String> list = new ArrayList<>();
+<pre class="article-code"><code>ArrayList<string> list = new ArrayList&lt;&gt;();
 list.add(null);
 System.out.println(list.size()); // 1
-System.out.println(list.get(0)); // null</code></pre>
+System.out.println(list.get(0)); // null</string></code></pre>
 <p>ただし、取り出した <code>null</code> に対してメソッドを呼べばNPEです。</p>
-<pre class="article-code"><code>ArrayList<String> list = new ArrayList<>();
+<pre class="article-code"><code>ArrayList<string> list = new ArrayList&lt;&gt;();
 list.add(null);
-// System.out.println(list.get(0).length()); // NullPointerException</code></pre>
+// System.out.println(list.get(0).length()); // NullPointerException</string></code></pre>
 </section>
-
 <section class="article-section">
 <h2>配列とArrayListの違い</h2>
 <table class="ref-table study-table"><thead><tr><th>観点</th><th>配列</th><th>ArrayList</th></tr></thead><tbody>
@@ -424,7 +398,6 @@ list.add(null);
 <tr><td>範囲外</td><td><code>ArrayIndexOutOfBoundsException</code></td><td><code>IndexOutOfBoundsException</code></td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>不可能・誤りパターン</h2>
 <table class="ref-table study-table"><thead><tr><th>コード</th><th>結果</th><th>理由</th></tr></thead><tbody>
@@ -439,7 +412,6 @@ list.add(null);
 <tr><td><code>new StringBuilder("a").equals(new StringBuilder("a"))</code></td><td><code>false</code></td><td>内容比較ではない</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>出力問題での読み順</h2>
 <ol class="article-list priority-list">
@@ -451,7 +423,6 @@ list.add(null);
 <li><strong>nullを見る。</strong> 出力なら <code>null</code> と表示される場合があるが、メソッド呼び出しならNPE。</li>
 </ol>
 </section>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
 <details class="article-card"><summary><strong>Q1. <code>String s="abc"; s.toUpperCase(); System.out.println(s);</code></strong></summary><p><code>abc</code>。<code>String</code> は不変で、戻り値を受け取っていません。</p></details>
@@ -463,7 +434,6 @@ list.add(null);
 <p class="inline-note article-callout">次に読む: <a href="../operators-control/index.html">演算子・制御構造</a> / <a href="../java-silver-array-covariance/index.html">配列の共変性</a> / <a href="../reference/index.html">参照の同一性と同値比較</a></p>
 </section>
 </section>
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>

@@ -22,7 +22,6 @@
 <section class="content-page article-body wide-article upgraded-article">
 <h1>演算子・制御構造完全整理</h1>
 <p class="lead">Silverの演算子・制御構造は、暗記よりも読解手順です。コンパイル可否、式の型、評価順、副作用、分岐、ループ、switch、到達不能コードを順番に切ると、出力問題の精度が上がります。</p>
-
 <section class="article-section article-card important">
 <h2>最初の結論: 出力を見る前に5段階で判定する</h2>
 <p>演算子・制御構造の問題で一番危険なのは、いきなり出力を計算することです。Javaは、実行結果以前にコンパイルで落ちる問題が多いです。</p>
@@ -35,7 +34,6 @@
 </ol>
 <div class="article-callout warn"><strong>試験での現実:</strong> 「なんとなく上から読む」は弱いです。特に<code>++</code>、短絡評価、switchのフォールスルー、ループの更新式は、手順なしで読むと簡単に外します。</div>
 </section>
-
 <section class="article-section">
 <h2>演算子の優先順位は頻出だけ正確に押さえる</h2>
 <p>優先順位表を全暗記する必要は薄いですが、Silverで頻出の階層は正確に必要です。迷ったら括弧を補って読めるかを確認します。</p>
@@ -55,7 +53,6 @@
 </table>
 <div class="article-callout"><strong>補足:</strong> 優先順位よりも、コンパイル可否の方が先です。優先順位どおりに計算できても、型が不正なら実行されません。</div>
 </section>
-
 <section class="article-section">
 <h2>前置・後置インクリメントは「渡す値」と「残る値」を分ける</h2>
 <p><code>++</code>と<code>--</code>は、式の値と変数の更新を同時に扱うため、出力問題の主戦場です。</p>
@@ -71,10 +68,9 @@
 <pre class="article-code"><code>int a = 10;
 int b = ++a; // aは11になり、bにも11が入る
 int c = a++; // cには11が入り、その後aは12になる
-System.out.println(a + &quot;,&quot; + b + &quot;,&quot; + c); // 12,11,11</code></pre>
+System.out.println(a + "," + b + "," + c); // 12,11,11</code></pre>
 <div class="article-callout warn"><strong>甘い覚え方:</strong> 「前置は先、後置は後」だけでは足りません。「式に渡る値」と「変数の現在値」を分けてください。</div>
 </section>
-
 <section class="article-section">
 <h2>複雑な++/--は表に分解する</h2>
 <p>同じ変数が1つの式に何度も出る場合は、暗算ではなく表で追います。左から評価し、各地点で式に渡る値と評価後の変数値を書きます。</p>
@@ -93,7 +89,6 @@ System.out.println(b);</code></pre>
 </table>
 <p>したがって、<code>b = 10 + 11 + 11 - 10 + 10</code>で、出力は<code>32</code>です。</p>
 </section>
-
 <section class="article-section">
 <h2>代入式は値を持つ</h2>
 <p><code>=</code>や<code>+=</code>は、処理をするだけでなく、式全体として値を持ちます。代入後の値が式の値になります。</p>
@@ -108,7 +103,6 @@ System.out.println(a + b); // 16</code></pre>
 <li>その8が<code>b</code>へ代入される。</li>
 </ol>
 </section>
-
 <section class="article-section">
 <h2>複合代入は単純代入と完全には同じではない</h2>
 <p><code>a += b</code>は概念的には<code>a = a + b</code>ですが、代入先型への暗黙キャストを含みます。ここはSilverの頻出です。</p>
@@ -116,13 +110,12 @@ System.out.println(a + b); // 16</code></pre>
 // b = b + 1; // NG: b + 1 は int
 b += 1;       // OK: 内部的には b = (byte)(b + 1) のように扱われる
 
-char c = &#x27;A&#x27;;
+char c = 'A';
 // c = c + 1; // NG: c + 1 は int
 c += 1;       // OK
 System.out.println(c); // B</code></pre>
 <div class="article-callout warn"><strong>要点:</strong> <code>byte</code>、<code>short</code>、<code>char</code>は演算で原則<code>int</code>になります。単純代入なら落ちるが、複合代入なら通る、という差を狙われます。</div>
 </section>
-
 <section class="article-section">
 <h2>数値演算ではbyte/short/charがintへ昇格する</h2>
 <p>小さい整数型同士の演算でも、結果は基本的に<code>int</code>です。値が小さいかどうかではなく、式の型で判定します。</p>
@@ -145,7 +138,6 @@ byte z = x + y;    // OK: コンパイル時定数式で範囲内</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>整数除算・剰余・0除算</h2>
 <p>整数同士の割り算は小数部を切り捨てます。剰余<code>%</code>は余りを返します。0除算は整数と浮動小数で挙動が違います。</p>
@@ -158,7 +150,6 @@ System.out.println(5.0 / 0);  // Infinity
 System.out.println(0.0 / 0);  // NaN</code></pre>
 <div class="article-callout"><strong>判定順:</strong> <code>5 / 0</code>は構文・型としてはコンパイル可能です。落ちるのは実行時です。一方、<code>5 / false</code>はコンパイルエラーです。</div>
 </section>
-
 <section class="article-section">
 <h2>オーバーフローはコンパイルエラーではない</h2>
 <p>整数型の範囲を超える演算結果は循環します。実行時例外にもなりません。</p>
@@ -173,17 +164,15 @@ System.out.println(b);       // -128</code></pre>
 <pre class="article-code"><code>// long a = 2147483648;  // NG: 右辺リテラルがint範囲外
 long b = 2147483648L;    // OK</code></pre>
 </section>
-
 <section class="article-section">
 <h2>String結合は左から読む</h2>
 <p><code>+</code>は数値加算にも文字列結合にも使われます。片方が<code>String</code>になった地点から、以降の<code>+</code>は文字列結合として進みます。</p>
-<pre class="article-code"><code>System.out.println(1 + 2 + &quot;A&quot;);     // 3A
-System.out.println(&quot;A&quot; + 1 + 2);     // A12
-System.out.println(&quot;A&quot; + (1 + 2));   // A3
-System.out.println(1 + 2 + &quot;A&quot; + 3 + 4); // 3A34</code></pre>
+<pre class="article-code"><code>System.out.println(1 + 2 + "A");     // 3A
+System.out.println("A" + 1 + 2);     // A12
+System.out.println("A" + (1 + 2));   // A3
+System.out.println(1 + 2 + "A" + 3 + 4); // 3A34</code></pre>
 <div class="article-callout warn"><strong>出力問題のコツ:</strong> <code>+</code>を全部足し算だと思うと落ちます。左から現在の式が数値なのかStringなのかを毎回確定してください。</div>
 </section>
-
 <section class="article-section">
 <h2>比較演算子と等価演算子を混同しない</h2>
 <table class="study-table ref-table">
@@ -198,12 +187,11 @@ boolean y = false;
 System.out.println(x == y); // false
 // System.out.println(x &lt;= y); // NG: booleanに大小比較はない
 
-String a = new String(&quot;x&quot;);
-String b = new String(&quot;x&quot;);
+String a = new String("x");
+String b = new String("x");
 System.out.println(a == b);      // false
 System.out.println(a.equals(b)); // true</code></pre>
 </section>
-
 <section class="article-section">
 <h2>短絡評価と非短絡評価</h2>
 <p><code>&amp;&amp;</code>と<code>||</code>は短絡評価します。<code>&amp;</code>と<code>|</code>は、boolean同士に使った場合でも右辺を評価します。</p>
@@ -225,7 +213,6 @@ if (false &amp; ++b &gt; 0) { }
 System.out.println(b); // 1</code></pre>
 <div class="article-callout warn"><strong>よくある誤読:</strong> <code>&amp;</code>と<code>|</code>はビット演算専用ではありません。boolean同士にも使えます。ただし短絡しません。</div>
 </section>
-
 <section class="article-section">
 <h2>論理演算子の型と結果</h2>
 <p>booleanの論理演算と整数のビット演算は、同じ記号でも別の読み方になります。</p>
@@ -241,7 +228,6 @@ System.out.println(5 ^ 3); // 6  : 0101 ^ 0011 = 0110</code></pre>
 <pre class="article-code"><code>// int x = 1 &amp;&amp; 2; // NG
 int y = 1 &amp; 2;     // OK: ビット演算</code></pre>
 </section>
-
 <section class="article-section">
 <h2>if / while / do-whileの条件はbooleanだけ</h2>
 <p>Javaでは、<code>0</code>をfalse、非0をtrueとして扱いません。条件式には必ずboolean式が必要です。</p>
@@ -260,7 +246,6 @@ do {
 } while (i &lt; 3); // セミコロン必須
 System.out.println(i); // 3</code></pre>
 </section>
-
 <section class="article-section">
 <h2>if-elseは「近いif」に結びつく</h2>
 <p>中括弧を省略した場合、<code>else</code>は直前の対応可能な<code>if</code>に結びつきます。見た目のインデントでは決まりません。</p>
@@ -268,29 +253,27 @@ System.out.println(i); // 3</code></pre>
 int b = 20;
 if (a &gt; 0)
     if (b &lt; 0)
-        System.out.println(&quot;A&quot;);
+        System.out.println("A");
     else
-        System.out.println(&quot;B&quot;); // このelseは内側のifに対応
+        System.out.println("B"); // このelseは内側のifに対応
 // B</code></pre>
 <div class="article-callout"><strong>実務では:</strong> 中括弧を省略しない方が安全です。試験では、省略時の結合先を狙われます。</div>
 </section>
-
 <section class="article-section">
 <h2>三項演算子は条件・評価側・型を分ける</h2>
 <p>三項演算子は<code>条件 ? 式1 : 式2</code>です。条件はbooleanです。実行時に評価されるのは選ばれた側だけです。</p>
 <pre class="article-code"><code>int a = 10;
 int b = 20;
-String result = a &gt; b ? &quot;A&quot; : &quot;B&quot;;
+String result = a &gt; b ? "A" : "B";
 System.out.println(result); // B
 
 int x = a &gt; 0 ? 1 : 10 / 0;
 System.out.println(x); // 1。選ばれない 10 / 0 は実行されない</code></pre>
 <p>ただし、選ばれない側でも、構文や型として不正ならコンパイルエラーです。</p>
 <pre class="article-code"><code>boolean ok = true;
-// int n = ok ? 1 : &quot;x&quot;; // NG: intに代入できる共通の型ではない
-Object o = ok ? 1 : &quot;x&quot;; // OK: IntegerまたはStringをObjectとして扱える</code></pre>
+// int n = ok ? 1 : "x"; // NG: intに代入できる共通の型ではない
+Object o = ok ? 1 : "x"; // OK: IntegerまたはStringをObjectとして扱える</code></pre>
 </section>
-
 <section class="article-section">
 <h2>for文は初期化・条件・本体・更新の順番で読む</h2>
 <p>基本の<code>for</code>は、初期化が1回、その後は条件→本体→更新→条件の順に進みます。</p>
@@ -315,7 +298,6 @@ for (; i &lt; 3; ) {
 
 // for (;;) { } // 無限ループとして構文上はOK</code></pre>
 </section>
-
 <section class="article-section">
 <h2>for文の初期化部で宣言した変数のスコープ</h2>
 <p><code>for</code>の初期化部で宣言した変数は、for文の中だけで有効です。</p>
@@ -325,12 +307,11 @@ for (; i &lt; 3; ) {
 // System.out.println(i); // NG: iはスコープ外</code></pre>
 <p>複数変数を宣言する場合、同じ型で宣言します。型の違う変数宣言をカンマで混ぜることはできません。</p>
 <pre class="article-code"><code>for (int i = 0, j = 10; i &lt; 3; i++, j--) {
-    System.out.println(i + &quot;:&quot; + j);
+    System.out.println(i + ":" + j);
 }
 
 // for (int i = 0, long j = 10; i &lt; 3; i++) { } // NG</code></pre>
 </section>
-
 <section class="article-section">
 <h2>拡張for文は配列またはIterableを回す</h2>
 <p>拡張for文は、配列または<code>Iterable</code>を実装したオブジェクトを順に取り出します。ループ変数は各要素の値または参照値を受け取ります。</p>
@@ -340,13 +321,12 @@ for (int n : nums) {
 }
 System.out.println(nums[0]); // 1。nを変えても配列要素は変わらない</code></pre>
 <p>参照型配列の場合、ループ変数が参照するオブジェクトの中身を変えれば、元のオブジェクトにも影響します。</p>
-<pre class="article-code"><code>StringBuilder[] arr = { new StringBuilder(&quot;A&quot;) };
+<pre class="article-code"><code>StringBuilder[] arr = { new StringBuilder("A") };
 for (StringBuilder sb : arr) {
-    sb.append(&quot;B&quot;);
+    sb.append("B");
 }
 System.out.println(arr[0]); // AB</code></pre>
 </section>
-
 <section class="article-section">
 <h2>breakとcontinue</h2>
 <p><code>break</code>はループまたはswitchを抜けます。<code>continue</code>は現在の反復を終え、次の反復へ進みます。</p>
@@ -358,7 +338,6 @@ System.out.println(arr[0]); // AB</code></pre>
 // 02</code></pre>
 <p><code>continue</code>の後は、for文なら更新式へ進みます。while文なら条件式へ戻ります。</p>
 </section>
-
 <section class="article-section">
 <h2>ラベル付きbreak / continue</h2>
 <p>ラベルを使うと、外側のループを対象にできます。ただし、ラベルは濫用すると読みにくいので、試験用の読解ポイントとして押さえます。</p>
@@ -366,7 +345,7 @@ System.out.println(arr[0]); // AB</code></pre>
 for (int i = 0; i &lt; 3; i++) {
     for (int j = 0; j &lt; 3; j++) {
         if (i == 1 &amp;&amp; j == 1) break outer;
-        System.out.print(i + &quot;:&quot; + j + &quot; &quot;);
+        System.out.print(i + ":" + j + " ");
     }
 }
 // 0:0 0:1 0:2 1:0</code></pre>
@@ -374,30 +353,28 @@ for (int i = 0; i &lt; 3; i++) {
 for (int i = 0; i &lt; 3; i++) {
     for (int j = 0; j &lt; 3; j++) {
         if (j == 1) continue outer;
-        System.out.print(i + &quot;:&quot; + j + &quot; &quot;);
+        System.out.print(i + ":" + j + " ");
     }
 }
 // 0:0 1:0 2:0</code></pre>
 </section>
-
 <section class="article-section">
 <h2>到達不能コード</h2>
 <p>Javaでは、明らかに到達できない文はコンパイルエラーになります。<code>return</code>、<code>throw</code>、<code>break</code>、<code>continue</code>の直後は要注意です。</p>
 <pre class="article-code"><code>void test() {
     return;
-    // System.out.println(&quot;A&quot;); // NG: unreachable statement
+    // System.out.println("A"); // NG: unreachable statement
 }</code></pre>
 <p>ただし、条件式の扱いには例外があります。<code>while(false)</code>の本体は到達不能ですが、<code>if(false)</code>の本体はコンパイル上許されます。</p>
 <pre class="article-code"><code>if (false) {
-    System.out.println(&quot;A&quot;); // OK
+    System.out.println("A"); // OK
 }
 
 // while (false) {
-//     System.out.println(&quot;B&quot;); // NG: unreachable statement
+//     System.out.println("B"); // NG: unreachable statement
 // }</code></pre>
 <div class="article-callout warn"><strong>注意:</strong> 到達不能コードは「実行されないからOK」ではありません。Javaのコンパイラが到達不能と判断する形ならコンパイルエラーです。</div>
 </section>
-
 <section class="article-section">
 <h2>switch文の対象型</h2>
 <p>switchの対象にできる型は限定されています。<code>long</code>、<code>float</code>、<code>double</code>、<code>boolean</code>は使えません。</p>
@@ -408,17 +385,16 @@ for (int i = 0; i &lt; 3; i++) {
 <tr><td>対応するラッパークラス、<code>String</code>、enum</td><td>一般の<code>Object</code>、配列、<code>List</code>など</td></tr>
 </tbody>
 </table>
-<pre class="article-code"><code>String s = &quot;B&quot;;
+<pre class="article-code"><code>String s = "B";
 switch (s) {
-    case &quot;A&quot;: System.out.println(&quot;A&quot;); break;
-    case &quot;B&quot;: System.out.println(&quot;B&quot;); break;
-    default:  System.out.println(&quot;other&quot;);
+    case "A": System.out.println("A"); break;
+    case "B": System.out.println("B"); break;
+    default:  System.out.println("other");
 }
 
 // long n = 1L;
 // switch (n) { } // NG</code></pre>
 </section>
-
 <section class="article-section">
 <h2>caseラベルは互換性のあるコンパイル時定数</h2>
 <p><code>case</code>ラベルは、switch対象型と互換性があり、コンパイル時に値が確定している必要があります。</p>
@@ -444,54 +420,51 @@ switch (b) {
     // case 128: break; // NG: byteの範囲外
 }</code></pre>
 </section>
-
 <section class="article-section">
 <h2>switch文はbreakがなければフォールスルーする</h2>
 <p>switch文は、一致したcaseから実行が始まり、<code>break</code>などで抜けるまで下へ流れます。<code>default</code>は最後でなくても構文上は可能です。</p>
 <pre class="article-code"><code>int n = 2;
 switch (n) {
-    case 1: System.out.print(&quot;A&quot;);
-    case 2: System.out.print(&quot;B&quot;);
-    default: System.out.print(&quot;C&quot;);
+    case 1: System.out.print("A");
+    case 2: System.out.print("B");
+    default: System.out.print("C");
 }
 // BC</code></pre>
 <pre class="article-code"><code>int n = 9;
 switch (n) {
-    default: System.out.print(&quot;D&quot;);
-    case 1: System.out.print(&quot;A&quot;);
-    case 2: System.out.print(&quot;B&quot;);
+    default: System.out.print("D");
+    case 1: System.out.print("A");
+    case 2: System.out.print("B");
 }
 // DAB</code></pre>
 <div class="article-callout warn"><strong>試験対策:</strong> <code>default</code>は「どこに書いても最後に実行される」わけではありません。実行開始位置の候補になるだけです。開始後は下へ流れます。</div>
 </section>
-
 <section class="article-section">
 <h2>switch対象がnullの場合</h2>
 <p>従来のswitch文で、対象式が<code>null</code>になると実行時に<code>NullPointerException</code>です。</p>
 <pre class="article-code"><code>String s = null;
 // switch (s) {
-//     case &quot;A&quot;: System.out.println(&quot;A&quot;);
+//     case "A": System.out.println("A");
 // }
 // 実行時にNullPointerException</code></pre>
 <p>コンパイル可否と実行時例外を混同しないでください。<code>String</code>はswitch対象として使えるため、コンパイルは可能です。落ちるのは実行時です。</p>
 </section>
-
 <section class="article-section">
 <h2>switch式とyield</h2>
 <p>Java 17範囲では、switch式も重要です。switch文は分岐処理ですが、switch式は値を返せます。</p>
 <pre class="article-code"><code>int n = 2;
 String result = switch (n) {
-    case 1 -&gt; &quot;one&quot;;
-    case 2 -&gt; &quot;two&quot;;
-    default -&gt; &quot;other&quot;;
+    case 1 -&gt; "one";
+    case 2 -&gt; "two";
+    default -&gt; "other";
 };
 System.out.println(result); // two</code></pre>
 <p><code>-&gt;</code>形式はフォールスルーしません。ブロックで複数文を書く場合、値を返すには<code>yield</code>を使います。</p>
 <pre class="article-code"><code>int n = 3;
 String result = switch (n) {
-    case 1 -&gt; &quot;one&quot;;
+    case 1 -&gt; "one";
     default -&gt; {
-        String text = &quot;other&quot;;
+        String text = "other";
         yield text;
     }
 };
@@ -499,15 +472,14 @@ System.out.println(result); // other</code></pre>
 <p>switch式では、全ての可能性に対して値を返せる必要があります。</p>
 <pre class="article-code"><code>int n = 1;
 // String s = switch (n) {
-//     case 1 -&gt; &quot;one&quot;;
+//     case 1 -&gt; "one";
 // }; // NG: nが1以外の場合の値がない
 
 String t = switch (n) {
-    case 1 -&gt; &quot;one&quot;;
-    default -&gt; &quot;other&quot;;
+    case 1 -&gt; "one";
+    default -&gt; "other";
 }; // OK</code></pre>
 </section>
-
 <section class="article-section">
 <h2>break・yield・returnを混同しない</h2>
 <table class="study-table ref-table">
@@ -521,14 +493,13 @@ String t = switch (n) {
 </table>
 <pre class="article-code"><code>int n = 2;
 String s = switch (n) {
-    case 1 -&gt; &quot;A&quot;;
+    case 1 -&gt; "A";
     default -&gt; {
-        // break &quot;B&quot;; // NG
-        yield &quot;B&quot;;    // OK
+        // break "B"; // NG
+        yield "B";    // OK
     }
 };</code></pre>
 </section>
-
 <section class="article-section">
 <h2>コンパイルエラー・実行時例外・正常実行の典型</h2>
 <table class="study-table ref-table">
@@ -547,7 +518,6 @@ String s = switch (n) {
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
 <details class="article-details mini-exercise"><summary><strong>Q1. 代入式</strong></summary><div class="mini-exercise-body"><p><code>int a = 1; int b = a += 2; System.out.println(a + b);</code></p><div class="article-callout strong"><strong>答え:</strong> <code>6</code>。<code>a += 2</code>で<code>a</code>は3。式全体の値も3なので<code>b</code>も3。</div></div></details>

@@ -21,7 +21,6 @@
 <section class="content-page article-body wide-article upgraded-article">
 <h1>型・変数・リテラル完全整理</h1>
 <p class="lead">Silverの型問題は、暗記よりも判定順です。リテラルの型、式の型、代入変換、初期化、スコープ、<code>var</code>、配列、参照型を順に切ると、コンパイルエラー・実行時例外・出力を安定して判定できます。</p>
-
 <section class="article-section article-card important">
 <h2>最初の結論: 型問題はこの順番で読む</h2>
 <p>型・変数・リテラルの問題で一番危険なのは、「値が小さいから入る」「見た目が同じだから同じ」と処理することです。Javaは、コードの見た目ではなく、式が持つ型で判定します。</p>
@@ -35,7 +34,6 @@
 </ol>
 <div class="article-callout warn"><strong>試験での落とし穴:</strong> <code>byte b = 1 + 2;</code> と <code>byte b = a + 2;</code> は同じではありません。前者は定数式、後者は変数を含む式です。</div>
 </section>
-
 <section class="article-section">
 <h2>値・型・変数・リテラル・式・文を分ける</h2>
 <p>用語を分けないままコードを読むと、ほぼ確実にどこかで誤判定します。特に「リテラル」と「式の型」は別物です。</p>
@@ -51,7 +49,6 @@
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>プリミティブ型と参照型</h2>
 <p>Javaの型は、大きくプリミティブ型と参照型に分かれます。Silverではここを曖昧にすると、<code>null</code>、<code>==</code>、配列、ラッパークラスで落ちます。</p>
@@ -67,12 +64,11 @@ int b = a;
 b = 20;
 System.out.println(a); // 10: 値がコピーされただけ
 
-String s = &quot;abc&quot;;
+String s = "abc";
 String t = s;
 System.out.println(s == t); // true: 同じ参照値をコピー</code></pre>
 <div class="article-callout warn"><strong><code>null</code>の位置:</strong> <code>null</code>は参照型専用です。<code>int n = null;</code>はコンパイルエラーです。<code>String s = null;</code>はコンパイルできますが、<code>s.length()</code>は実行時に落ちます。</div>
 </section>
-
 <section class="article-section">
 <h2>8つのプリミティブ型</h2>
 <p>範囲を丸暗記する必要は限られますが、<code>byte</code>、<code>short</code>、<code>char</code>、<code>int</code>、<code>long</code>、<code>float</code>、<code>double</code>、<code>boolean</code> の役割は正確に分けます。</p>
@@ -90,7 +86,6 @@ System.out.println(s == t); // true: 同じ参照値をコピー</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>数値リテラルの基本型</h2>
 <p>ソースコードに直接書いた数値は、見た目で型が決まります。代入先の型だけで決まるわけではありません。</p>
@@ -114,7 +109,6 @@ double e = 1.0F;   // OK: float から double へ拡大変換</code></pre>
 <pre class="article-code"><code>// long x = 2147483648;  // NG: 右辺はまず int リテラルとして判定され、int範囲外
 long y = 2147483648L;    // OK</code></pre>
 </section>
-
 <section class="article-section">
 <h2>整数リテラルの進数表記</h2>
 <p>先頭の書き方で基数が変わります。特に<code>0</code>始まりの8進数は、実務では避けたい書き方ですが試験ではよく出ます。</p>
@@ -135,7 +129,6 @@ System.out.println(a + b + c + d); // 68
 
 // int e = 089; // NG: 8進数に 8/9 は使えない</code></pre>
 </section>
-
 <section class="article-section">
 <h2>アンダースコアを置ける場所・置けない場所</h2>
 <p><code>_</code>は数値リテラルの読みやすさを上げるだけで、値には影響しません。ただし置ける場所に制限があります。</p>
@@ -154,7 +147,6 @@ System.out.println(a + b + c + d); // 68
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>識別子のルール</h2>
 <p>変数名・クラス名・メソッド名などの識別子は、使える文字と使えない文字があります。予約語も使えません。</p>
@@ -172,7 +164,6 @@ System.out.println(a + b + c + d); // 68
 </table>
 <div class="article-callout"><strong>試験対策:</strong> <code>var</code>を変数名にできるかは引っかけです。<code>int var = 1;</code>は可能です。ただし<code>var a = 1;</code>では型推論として解釈されます。</div>
 </section>
-
 <section class="article-section">
 <h2>ローカル変数とフィールドの初期値</h2>
 <p>フィールドにはデフォルト値があります。ローカル変数にはデフォルト値がありません。ここはSilverで頻出です。</p>
@@ -206,7 +197,6 @@ System.out.println(a + b + c + d); // 68
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>スコープと同名変数</h2>
 <p>スコープは、その変数名が有効な範囲です。同じ名前を使えるかどうかは、同じスコープ内か、別スコープかで決まります。</p>
@@ -228,7 +218,6 @@ System.out.println(a + b + c + d); // 68
     }
 }</code></pre>
 </section>
-
 <section class="article-section">
 <h2>代入変換: 拡大変換と縮小変換</h2>
 <p>代入では、右辺の型を左辺の型として扱えるかを見ます。広い型へは暗黙変換できます。狭い型へは原則キャストが必要です。</p>
@@ -239,7 +228,6 @@ float f = l;       // OK: long から float。精度低下の可能性はある
 int y = (int) l;   // OK: 明示キャスト</code></pre>
 <div class="article-callout warn"><strong>範囲と精度を分ける:</strong> <code>long</code>から<code>float</code>への変換はコンパイルできます。ただし精度は失われる可能性があります。試験では「コンパイル可否」と「正確な値」を分けて考えます。</div>
 </section>
-
 <section class="article-section">
 <h2><code>byte</code>・<code>short</code>・<code>char</code>は演算で<code>int</code>になる</h2>
 <p>小さい整数型は、演算に入ると原則<code>int</code>に昇格します。ここを外すと、型問題の正答率は安定しません。</p>
@@ -252,14 +240,13 @@ byte e = (byte)(a + b);  // OK
 short s1 = 1;
 short s2 = 2;
 // short s3 = s1 + s2;   // NG: s1 + s2 は int</code></pre>
-<pre class="article-code"><code>char c = &#x27;A&#x27;;
+<pre class="article-code"><code>char c = 'A';
 System.out.println(c);       // A
 System.out.println(c + 1);   // 66
 // char next = c + 1;        // NG: c + 1 は int
 char next = (char)(c + 1);   // OK
 System.out.println(next);    // B</code></pre>
 </section>
-
 <section class="article-section">
 <h2>二項数値昇格</h2>
 <p>左右のオペランドの型が違う場合、より広い型へ寄せられます。ざっくり優先順位は <code>double</code>、<code>float</code>、<code>long</code>、<code>int</code> です。</p>
@@ -282,7 +269,6 @@ double g = 2.0;
 // float h = f + g; // NG: f + g は double
 double i = f + g;   // OK</code></pre>
 </section>
-
 <section class="article-section">
 <h2>定数式なら小さい型へ入る場合がある</h2>
 <p>右辺がコンパイル時に確定できる定数式で、代入先の範囲内なら、<code>byte</code>、<code>short</code>、<code>char</code>へ代入できます。</p>
@@ -291,7 +277,7 @@ byte b = 10 + 20;     // OK: 定数式で範囲内
 // byte c = 100 + 100; // NG: 200 は byte の範囲外
 
 short s = 1000 + 2000; // OK
-char ch = 65;          // OK: &#x27;A&#x27;</code></pre>
+char ch = 65;          // OK: 'A'</code></pre>
 <p>変数を含むと、たとえ実際の値が範囲内でも通常は代入できません。</p>
 <pre class="article-code"><code>byte a = 10;
 // byte b = a + 1; // NG: a + 1 は int
@@ -303,7 +289,6 @@ final int y;
 y = 10;
 // byte d = y;     // NGになり得る: 宣言時初期化された定数式ではない</code></pre>
 </section>
-
 <section class="article-section">
 <h2>複合代入は暗黙キャストを含む</h2>
 <p><code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>などの複合代入は、左辺の型へのキャストを含むように動きます。</p>
@@ -315,7 +300,6 @@ b += 1;       // OK: b = (byte)(b + 1) 相当</code></pre>
 b += 1;
 System.out.println(b); // -128</code></pre>
 </section>
-
 <section class="article-section">
 <h2>オーバーフロー</h2>
 <p>整数型は範囲を超えると循環します。キャストや複合代入では、コンパイルできるが値が予想外になるケースがあります。</p>
@@ -326,7 +310,6 @@ int max = Integer.MAX_VALUE;
 System.out.println(max + 1); // -2147483648</code></pre>
 <p>「コンパイルエラー」なのか、「実行できるが値が循環する」のかを必ず分けてください。</p>
 </section>
-
 <section class="article-section">
 <h2>整数除算と浮動小数点除算</h2>
 <p>割り算は、左辺に<code>double</code>を置けば小数になる、という話ではありません。先に右辺の式が評価されます。</p>
@@ -340,7 +323,6 @@ double c = a / b;
 System.out.println(c);         // 2.0</code></pre>
 <p><code>double c = a / b;</code>は、先に<code>int / int</code>が計算されて<code>2</code>になり、その後<code>double</code>に代入されます。</p>
 </section>
-
 <section class="article-section">
 <h2>0除算: 整数と浮動小数点で違う</h2>
 <p>整数の0除算は実行時例外です。浮動小数点の0除算は例外ではなく、<code>Infinity</code>や<code>NaN</code>になります。</p>
@@ -349,7 +331,6 @@ System.out.println(10.0 / 0);    // Infinity
 System.out.println(-10.0 / 0);   // -Infinity
 System.out.println(0.0 / 0);     // NaN</code></pre>
 </section>
-
 <section class="article-section">
 <h2><code>boolean</code>は数値型ではない</h2>
 <p>Javaの<code>boolean</code>は、<code>0</code>や<code>1</code>と互換性がありません。C系言語の感覚で読むと間違えます。</p>
@@ -358,7 +339,7 @@ System.out.println(0.0 / 0);     // NaN</code></pre>
 // int b = true;   // NG
 
 if (flag) {
-    System.out.println(&quot;OK&quot;);
+    System.out.println("OK");
 }
 
 // if (1) { }      // NG: 条件式は boolean でなければならない</code></pre>
@@ -368,23 +349,21 @@ boolean b = false;
 System.out.println(a == b); // OK: false
 // System.out.println(a &lt; b); // NG</code></pre>
 </section>
-
 <section class="article-section">
 <h2><code>char</code>は文字だが数値としても扱われる</h2>
 <p><code>char</code>は文字を表しますが、内部的には数値コードを持ちます。演算すると<code>int</code>になります。</p>
-<pre class="article-code"><code>char a = &#x27;A&#x27;;
+<pre class="article-code"><code>char a = 'A';
 char b = 65;
 System.out.println(a);      // A
 System.out.println(b);      // A
 System.out.println(a == b); // true
 System.out.println(a + b);  // 130</code></pre>
 <p>文字リテラルはシングルクォート、文字列リテラルはダブルクォートです。</p>
-<pre class="article-code"><code>char c1 = &#x27;A&#x27;;      // OK
-String s1 = &quot;A&quot;;    // OK
-// char c2 = &quot;A&quot;;   // NG: Stringはcharではない
-// String s2 = &#x27;A&#x27;;  // NG: charはStringではない</code></pre>
+<pre class="article-code"><code>char c1 = 'A';      // OK
+String s1 = "A";    // OK
+// char c2 = "A";   // NG: Stringはcharではない
+// String s2 = 'A';  // NG: charはStringではない</code></pre>
 </section>
-
 <section class="article-section">
 <h2>ラッパークラス・オートボクシング・アンボクシング</h2>
 <p>プリミティブ型には対応するラッパークラスがあります。<code>int</code>なら<code>Integer</code>、<code>long</code>なら<code>Long</code>です。</p>
@@ -400,14 +379,13 @@ Long d = 10L;      // OK: long -&gt; Long</code></pre>
 <pre class="article-code"><code>Integer n = null;
 // int x = n; // 実行時例外: NullPointerException</code></pre>
 </section>
-
 <section class="article-section">
 <h2><code>var</code>は型を消す機能ではない</h2>
 <p><code>var</code>はローカル変数の型推論です。型がなくなるわけではありません。コンパイル時に右辺から型が決まります。</p>
 <pre class="article-code"><code>var a = 10;       // int
 var b = 10L;      // long
 var c = 1.0;      // double
-var d = &quot;abc&quot;;    // String
+var d = "abc";    // String
 
 // a = 10L;       // NG: aはintとして推論済み</code></pre>
 <table class="study-table ref-table">
@@ -423,7 +401,6 @@ var d = &quot;abc&quot;;    // String
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>配列型と初期化の基本</h2>
 <p>配列は参照型です。変数は配列オブジェクトへの参照を持ちます。</p>
@@ -445,7 +422,6 @@ data[0] = new int[] {1, 2};
 data[1] = new int[] {3, 4, 5};
 System.out.println(data[1][2]); // 5</code></pre>
 </section>
-
 <section class="article-section">
 <h2>コンパイルエラー・実行時例外・正常実行を分ける</h2>
 <p>型問題では、結果を3分類で判定してください。</p>
@@ -461,7 +437,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 </tbody>
 </table>
 </section>
-
 <section class="article-section article-card">
 <h2>不可能・誤りパターン一覧</h2>
 <table class="study-table ref-table">
@@ -476,14 +451,12 @@ System.out.println(data[1][2]); // 5</code></pre>
 <tr><td><code>var x;</code></td><td>型推論できない。</td><td><code>var x = 10;</code></td></tr>
 <tr><td><code>var x = null;</code></td><td><code>null</code>だけでは型が決まらない。</td><td><code>String x = null;</code></td></tr>
 <tr><td><code>int[] a; a = {1, 2};</code></td><td>配列初期化子だけの代入は不可。</td><td><code>a = new int[] {1, 2};</code></td></tr>
-<tr><td><code>Long x = 10;</code></td><td><code>int -> long -> Long</code>とは変換されない。</td><td><code>Long x = 10L;</code></td></tr>
+<tr><td><code>Long x = 10;</code></td><td><code>int -&gt; long -&gt; Long</code>とは変換されない。</td><td><code>Long x = 10L;</code></td></tr>
 </tbody>
 </table>
 </section>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
-
 <details class="article-details mini-exercise">
 <summary>問1: コンパイル可否</summary>
 <div class="mini-exercise-body">
@@ -491,7 +464,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 <div class="article-callout strong"><strong>答え:</strong> できます。<code>10 + 20</code>は定数式で、結果の<code>30</code>が<code>byte</code>範囲内だからです。</div>
 </div>
 </details>
-
 <details class="article-details mini-exercise">
 <summary>問2: コンパイル可否</summary>
 <div class="mini-exercise-body">
@@ -499,7 +471,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 <div class="article-callout strong"><strong>答え:</strong> できません。<code>a + 20</code>は変数を含む式で、結果の型は<code>int</code>です。<code>byte</code>へ代入するにはキャストが必要です。</div>
 </div>
 </details>
-
 <details class="article-details mini-exercise">
 <summary>問3: 出力</summary>
 <div class="mini-exercise-body">
@@ -507,7 +478,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 <div class="article-callout strong"><strong>答え:</strong> <code>-128</code>です。複合代入は暗黙キャストを含み、<code>byte</code>の範囲を超えて循環します。</div>
 </div>
 </details>
-
 <details class="article-details mini-exercise">
 <summary>問4: 出力</summary>
 <div class="mini-exercise-body">
@@ -515,7 +485,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 <div class="article-callout strong"><strong>答え:</strong> <code>2.0</code>です。先に<code>int / int</code>で<code>2</code>になり、その後<code>double</code>へ代入されます。</div>
 </div>
 </details>
-
 <details class="article-details mini-exercise">
 <summary>問5: 実行時例外</summary>
 <div class="mini-exercise-body">
@@ -524,7 +493,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 </div>
 </details>
 </section>
-
 <section class="article-section article-card important">
 <h2>試験での最終チェック</h2>
 <ul class="article-list">
@@ -539,7 +507,6 @@ System.out.println(data[1][2]); // 5</code></pre>
 </ul>
 </section>
 </section>
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>

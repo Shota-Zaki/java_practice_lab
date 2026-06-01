@@ -19,11 +19,9 @@
 </header>
 <div class="layout">
 <main class="main" id="mainContent">
-
 <article class="content-page long-article gold-deep-article">
 <h1>module-info.java / Javaモジュール完全整理</h1>
 <p class="lead">Goldのモジュール問題は、<code>module-info.java</code>の暗記だけでは足りません。<code>classpath</code>と<code>module-path</code>の違い、<code>requires</code>と<code>exports</code>の関係、<code>opens</code>とリフレクション、サービス提供までを、コンパイル可否・実行可否の順で判定します。</p>
-
 <section class="article-section">
 <h2>最初に押さえる判定順</h2>
 <p>モジュール問題は、先に構成を確認します。コード本文だけを見て判断すると外します。</p>
@@ -37,7 +35,6 @@
 <li>コマンドが<code>--class-path</code>ではなく<code>--module-path</code>になっているか。</li>
 </ol>
 </section>
-
 <section class="article-section">
 <h2>モジュールは「パッケージの公開」と「依存関係」を宣言する単位</h2>
 <p>Javaのモジュールは、複数のパッケージをまとめた単位です。モジュールは、外部に公開するパッケージと、必要とする他モジュールを<code>module-info.java</code>で宣言します。</p>
@@ -52,7 +49,6 @@
 <tr><td><code>exports com.example.app.api</code></td><td>外部公開パッケージ</td><td>公開はクラス単位ではなくパッケージ単位。</td></tr>
 </tbody></table>
 <div class="article-callout"><code>public class</code>であっても、そのパッケージが<code>exports</code>されていなければ、他モジュールから通常アクセスできません。</div>
-
 <section class="article-section">
 <h2>module-info.javaの置き場所</h2>
 <p><code>module-info.java</code>は、そのモジュールのルートに置きます。通常のクラスと違い、<code>package</code>宣言を書きません。</p>
@@ -83,7 +79,6 @@ public class Main {
 <tr><td>モジュール名とパッケージ名が同じ</td><td>可能</td><td>別概念。ただし混同しやすい。</td></tr>
 <tr><td>モジュール名とパッケージ名が違う</td><td>可能</td><td>一致必須ではない。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>モジュールのコンパイルと実行コマンド</h2>
 <p>名前付きモジュールは、通常の<code>javac Sample.java</code>や<code>java Sample</code>だけで判断しません。<code>--module-source-path</code>、<code>--module-path</code>、<code>-m</code>を読む必要があります。</p>
@@ -101,7 +96,6 @@ java --module-path out -m com.example.app/com.example.app.Main</code></pre>
 <tr><td><code>-m module/package.Main</code></td><td>実行するモジュールとmainクラス</td><td>通常の<code>java Main</code>ではない。</td></tr>
 </tbody></table>
 <div class="bad-good"><div><strong>悪い判断</strong><p><code>java com.example.app.Main</code>で実行できると考える。</p></div><div><strong>良い判断</strong><p>名前付きモジュールとして実行するなら、<code>java --module-path out -m com.example.app/com.example.app.Main</code>と読む。</p></div></div>
-
 <section class="article-section">
 <h2>複数モジュールの最小例</h2>
 <p>モジュールの基本は「使う側は<code>requires</code>」「使われる側は<code>exports</code>」です。片方だけでは足りません。</p>
@@ -142,7 +136,6 @@ public class Main {
 <pre class="article-code"><code>javac -d out --module-source-path src -m com.example.app
 java --module-path out -m com.example.app/com.example.app.Main</code></pre>
 <div class="article-callout">この例では、<code>com.example.app</code>をコンパイル対象にすると、必要な<code>com.example.lib</code>も合わせて解決されます。</div>
-
 <section class="article-section">
 <h2>requiresは「読む権限」</h2>
 <p><code>requires</code>は、他のモジュールを読むための宣言です。モジュール内のコードが別モジュールの型を使うなら、基本的に<code>requires</code>が必要です。</p>
@@ -156,7 +149,6 @@ java --module-path out -m com.example.app/com.example.app.Main</code></pre>
 <tr><td><code>requires static com.example.tool;</code></td><td>コンパイル時だけ必要</td><td>実行時には必須依存にしない。</td></tr>
 <tr><td><code>requires java.base;</code></td><td>基礎モジュール</td><td>暗黙に依存するため、通常は書かない。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>requires transitive</h2>
 <p><code>requires transitive</code>は、依存先を自分の利用者にも読ませる指定です。ライブラリの公開APIが別モジュールの型を露出している場合に必要になります。</p>
@@ -178,7 +170,6 @@ module com.example.app {
     // com.example.api を直接 requires しなくても読める
 }</code></pre>
 <div class="article-callout">試験では「appはapiを直接requiresしていないから不可」と単純判断すると誤りです。間に<code>requires transitive</code>があるか確認します。</div>
-
 <section class="article-section">
 <h2>requires static</h2>
 <p><code>requires static</code>は、コンパイル時には必要だが、実行時の必須依存にはしない指定です。アノテーション用モジュールなどで使われます。</p>
@@ -191,7 +182,6 @@ module com.example.app {
 <tr><td><code>requires static</code></td><td>必要</td><td>必須ではない</td></tr>
 <tr><td><code>requires transitive</code></td><td>必要</td><td>必要。さらに利用側へ伝播</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>exportsは「通常アクセスの公開」</h2>
 <p><code>exports</code>は、外部モジュールから通常のJavaコードとしてアクセスできるパッケージを指定します。クラス単位ではなく、パッケージ単位です。</p>
@@ -211,7 +201,6 @@ import com.example.lib.api.Message;
 <tr><td>パッケージは<code>exports</code>されているが、クラスがpackage-private</td><td>不可</td><td>通常のアクセス修飾子の制限を受ける。</td></tr>
 <tr><td><code>exports</code>に存在しないパッケージを書く</td><td>コンパイルエラー</td><td>空または存在しないパッケージはexportできない。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>限定exports</h2>
 <p><code>exports パッケージ to モジュール;</code>と書くと、指定したモジュールにだけ公開できます。</p>
@@ -223,7 +212,6 @@ import com.example.lib.api.Message;
 <tr><td><code>com.example.app</code></td><td>可能</td><td><code>to</code>で指定されている。</td></tr>
 <tr><td><code>com.example.other</code></td><td>不可</td><td>限定公開の対象外。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>opensは「リフレクション向けに開く」</h2>
 <p><code>opens</code>は通常のコンパイル時アクセスを許可するものではありません。リフレクションによる深いアクセスを許可するための指定です。</p>
@@ -237,7 +225,6 @@ import com.example.lib.api.Message;
 <tr><td><code>exports p; opens p;</code></td><td>可能</td><td>可能</td><td>通常APIかつ反射利用。</td></tr>
 </tbody></table>
 <div class="bad-good"><div><strong>悪い判断</strong><p><code>opens</code>されているから<code>import</code>できると考える。</p></div><div><strong>良い判断</strong><p>通常コードから使うなら<code>exports</code>、リフレクションなら<code>opens</code>を見る。</p></div></div>
-
 <section class="article-section">
 <h2>限定opens</h2>
 <p><code>opens パッケージ to モジュール;</code>と書くと、指定したモジュールにだけリフレクション用に開けます。</p>
@@ -246,7 +233,6 @@ import com.example.lib.api.Message;
     opens com.example.lib.model to com.fasterxml.jackson.databind;
 }</code></pre>
 <p>この指定は、通常の<code>import</code>可否ではなく、反射アクセスの可否に関係します。</p>
-
 <section class="article-section">
 <h2>open module</h2>
 <p><code>open module</code>にすると、そのモジュール内の全パッケージをリフレクション向けに開きます。ただし、通常アクセスを公開するには、やはり<code>exports</code>が必要です。</p>
@@ -259,7 +245,6 @@ import com.example.lib.api.Message;
 <tr><td><code>open module m { opens p; }</code></td><td>コンパイルエラー</td><td><code>open module</code>内では個別<code>opens</code>は不要であり、許可されない。</td></tr>
 <tr><td><code>open module</code>だけで通常import</td><td>不可</td><td><code>exports</code>がないと通常アクセスは公開されない。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>exportsとopensの違いをコードで読む</h2>
 <p>次のモジュールでは、<code>com.example.lib.api</code>は通常アクセス可能ですが、<code>com.example.lib.model</code>は通常アクセスできません。</p>
@@ -273,7 +258,6 @@ import com.example.lib.api.PublicApi;
 
 // NG: opensされていてもexportsされていない
 // import com.example.lib.model.User;</code></pre>
-
 <section class="article-section">
 <h2>services: uses / provides ... with ...</h2>
 <p>サービスローダーを使う場合、利用側は<code>uses</code>、提供側は<code>provides ... with ...</code>を宣言します。実装クラスを直接<code>new</code>する設計とは違います。</p>
@@ -305,7 +289,6 @@ for (Plugin p : loader) {
 <tr><td><code>exports</code></td><td>APIモジュール</td><td>サービス型そのものを外部から見えるようにする。</td></tr>
 </tbody></table>
 <div class="article-callout">実装クラスのパッケージは必ずしも<code>exports</code>する必要はありません。サービス経由で見せるなら、外部に直接公開しない設計が可能です。</div>
-
 <section class="article-section">
 <h2>classpathとmodule-pathの違い</h2>
 <p>従来の<code>-cp</code> / <code>--class-path</code>はクラスを探す場所です。モジュールとして解決するには<code>--module-path</code>を使います。</p>
@@ -320,7 +303,6 @@ java -cp out com.example.app.Main
 
 # module-path実行
 java --module-path out -m com.example.app/com.example.app.Main</code></pre>
-
 <section class="article-section">
 <h2>名前付きモジュール・無名モジュール・自動モジュール</h2>
 <p>Goldでは、すべてが明示的な<code>module-info.java</code>を持つとは限りません。クラスパス上のコード、モジュールパス上の通常JARも区別します。</p>
@@ -331,7 +313,6 @@ java --module-path out -m com.example.app/com.example.app.Main</code></pre>
 </tbody></table>
 </section>
 <div class="article-callout">名前付きモジュールから、クラスパス上の無名モジュールを<code>requires</code>することはできません。ここは実務でも試験でも混乱しやすい点です。</div>
-
 <section class="article-section">
 <h2>モジュールJARの作成と実行</h2>
 <p>コンパイルしたモジュールはJAR化できます。モジュールJARは<code>--module-path</code>に置いて実行します。</p>
@@ -344,7 +325,6 @@ jar --create --file mods/com.example.app.jar \
 java --module-path mods \
     -m com.example.app/com.example.app.Main</code></pre>
 <p><code>jar --describe-module --file mods/com.example.app.jar</code>を使うと、JARのモジュール記述を確認できます。</p>
-
 <section class="article-section">
 <h2>標準モジュールの確認コマンド</h2>
 <p>JDKに含まれるモジュールは<code>java --list-modules</code>で確認できます。依存関係の調査には<code>jdeps</code>も使います。</p>
@@ -357,7 +337,6 @@ jdeps --module-path mods --module com.example.app</code></pre>
 <tr><td><code>java --describe-module モジュール名</code></td><td>モジュールのrequiresやexportsを見る。</td></tr>
 <tr><td><code>jdeps</code></td><td>クラスやJARの依存関係を調べる。</td></tr>
 </tbody></table>
-
 <section class="article-section">
 <h2>コンパイルエラーになりやすいパターン</h2>
 <table class="study-table ref-table"><thead><tr><th>パターン</th><th>結果</th><th>理由</th></tr></thead><tbody>
@@ -373,7 +352,6 @@ jdeps --module-path mods --module com.example.app</code></pre>
 <tr><td>名前付きモジュールからclasspath上の無名モジュールを<code>requires</code></td><td>不可</td><td>無名モジュールにはrequiresで指定できる名前がない。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>実行時に失敗しやすいパターン</h2>
 <table class="study-table ref-table"><thead><tr><th>コマンド・状況</th><th>結果</th><th>理由</th></tr></thead><tbody>
@@ -384,7 +362,6 @@ jdeps --module-path mods --module com.example.app</code></pre>
 <tr><td>サービス提供モジュールをmodule-pathに置かない</td><td>サービスが見つからない</td><td><code>provides</code>側が解決対象にない。</td></tr>
 </tbody></table>
 </section>
-
 <section class="article-section">
 <h2>読解ミニ演習</h2>
 <h3>演習1: publicだがexportsされていない</h3>
@@ -396,30 +373,25 @@ module lib {
 package internal;
 public class Tool {}</code></pre>
 <p><strong>判定:</strong> 他モジュールから<code>internal.Tool</code>を通常importすることはできません。<code>public</code>でも、パッケージが<code>exports</code>されていないからです。</p>
-
 <h3>演習2: opensだけのパッケージ</h3>
 <pre class="article-code"><code>module lib {
     opens lib.model;
 }</code></pre>
 <p><strong>判定:</strong> <code>lib.model</code>のクラスを他モジュールから通常importすることはできません。<code>opens</code>はリフレクション向けです。</p>
-
 <h3>演習3: requires transitive</h3>
 <pre class="article-code"><code>module api { exports api; }
 module lib { requires transitive api; exports lib; }
 module app { requires lib; }</code></pre>
 <p><strong>判定:</strong> <code>app</code>は<code>api</code>を直接<code>requires</code>していなくても、<code>lib</code>経由で<code>api</code>を読めます。<code>requires transitive</code>があるためです。</p>
-
 <h3>演習4: open module内のopens</h3>
 <pre class="article-code"><code>open module app {
     opens app.model;
 }</code></pre>
 <p><strong>判定:</strong> コンパイルエラーです。<code>open module</code>内では、個別の<code>opens</code>指定はできません。</p>
-
 <h3>演習5: モジュール実行コマンド</h3>
 <pre class="article-code"><code>java --module-path out -m com.example.app/com.example.app.Main</code></pre>
 <p><strong>判定:</strong> <code>out</code>から<code>com.example.app</code>モジュールを探し、その中の<code>com.example.app.Main</code>を起動します。<code>-m</code>の左側はモジュール名、右側は完全修飾クラス名です。</p>
 </section>
-
 <section class="article-section">
 <h2>試験での判断基準</h2>
 <ul class="article-list">
@@ -433,11 +405,8 @@ module app { requires lib; }</code></pre>
 <li>サービスは<code>uses</code>と<code>provides ... with ...</code>を対応させて読む。</li>
 </ul>
 </section>
-
 <div class="article-callout">モジュール問題で一番危険なのは「publicなら使える」というSilverの感覚をそのまま持ち込むことです。Goldでは、publicに加えて、モジュールがそのパッケージを公開しているかを必ず確認します。</div>
 </article>
-
-
 <section class="study-route-panel related-practice-panel">
 <h2>この内容を確認する演習</h2>
 <p>この記事を読んだあと、次の演習で確認してください。</p>
